@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph", "src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj", "{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E40F277-C83D-4970-8823-A693E229D4D4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
