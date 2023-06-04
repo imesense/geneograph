@@ -10,11 +10,8 @@
         Title="ImeSense.GeneoGraph"
         Icon="/Assets/avalonia-logo.ico"
         WindowStartupLocation="CenterScreen">
-    <Design.DataContext>
+    <Window.DataContext>
         <vm:MainViewModel/>
-    </Design.DataContext>
+    </Window.DataContext>
 
-    <TextBlock Text="{Binding Greeting}"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center" />
-</Window>
+    </Window>
