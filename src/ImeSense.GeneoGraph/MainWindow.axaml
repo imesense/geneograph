@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
+        xmlns:views="using:ImeSense.GeneoGraph.Views"
         mc:Ignorable="d"
         d:DesignWidth="800"
         d:DesignHeight="450"
@@ -13,5 +14,15 @@
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
+
+    <Border>
+        <ContentControl Content="{Binding Path=CurrentViewModel}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type vm:PeopleViewModel}">
+                    <views:MainView />
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+    </Border>
 
     </Window>
