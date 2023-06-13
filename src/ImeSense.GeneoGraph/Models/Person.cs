@@ -10,14 +10,14 @@ namespace ImeSense.GeneoGraph.Models {
     {
         public int Id { get; set; }
 
-        public string? Sex { get; set; }
-
         public string? FirstName { get; set; } = "Unknown";
         public string? LastName { get; set; }
 
         public string? Patronim { get; set; }
 
         public string? MaidenName { get; set; }
+
+        public string? Sex { get; set; }
 
         public bool IsAlive { get; set; }
 

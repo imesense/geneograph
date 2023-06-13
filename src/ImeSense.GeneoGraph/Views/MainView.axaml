@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="ImeSense.GeneoGraph.Views.MainView"
              xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels" 
              Foreground="Black">
@@ -12,8 +12,11 @@
     
     <Border Background="White">
         <Grid RowDefinitions="40, *" ColumnDefinitions="*, 200" ShowGridLines="True">
-            <StackPanel Background="Gray" Grid.ColumnSpan="2">
-            </StackPanel>
+
+            <Border Background="Gray" Grid.ColumnSpan="2">
+                <Button Content="Add" Margin="10,0,0,0"/>
+            </Border>
+            
             <Grid Grid.Column="1" Grid.Row="1" RowDefinitions="*,*" ShowGridLines="True" Background="Gray">
                 <TextBlock Text="List People" Margin="5"/>
                 <Border Background="DimGray" Margin="10,25,10,10">
@@ -31,28 +34,42 @@
                 <TextBlock Text="Properties" Margin="5" Grid.Row="1"/>
                 
                 <Border Background="DimGray" Margin="10,25,10,10" Grid.Row="1">
-                    
-                    <StackPanel Margin="5">
-                        
+                    <Grid Margin="5" RowDefinitions="*,*,*,*,*,*,*">
+                                           
                         <TextBox Watermark="First Name"
                                  Text="{Binding SelectedPerson.FirstName}"
                                  CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5">
                         </TextBox>
                         
                         <TextBox Watermark="Last Name" 
+                                 Grid.Row="1"
                                  Text="{Binding SelectedPerson.LastName}"
                                  CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
                         
                         <DropDown Items="{Binding PeopleSex}"
+                                  Grid.Row="2"
                                   SelectedItem="{Binding SelectedPerson.Sex}"
                                   HorizontalAlignment="Stretch"/>
-                        
-                        <StackPanel Orientation="Horizontal">
+
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBlock Text="Birth:    " VerticalAlignment="Center" />
+                            <CalendarDatePicker Watermark="01/01/1970" Grid.Column="1"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <TextBlock Text="Deceased " VerticalAlignment="Center"/>
                             <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}"/>
-                            <TextBlock Text="Alive " VerticalAlignment="Center"/>
+                        </StackPanel>
+
+
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Death:  " VerticalAlignment="Center" />
+                            <CalendarDatePicker Watermark="01/01/1970" Grid.Column="1"/>
                         </StackPanel>
                         
-                    </StackPanel>
+                        <Button Content="Delete" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="6"/>
+
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>
