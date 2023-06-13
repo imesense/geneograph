@@ -15,14 +15,27 @@
         <vm:MainViewModel/>
     </Window.DataContext>
 
-    <Border>
-        <ContentControl Content="{Binding Path=CurrentViewModel}">
-            <ContentControl.ContentTemplate>
-                <DataTemplate DataType="{x:Type vm:PeopleViewModel}">
-                    <views:MainView />
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
-        </ContentControl>
-    </Border>
+    <Grid ColumnDefinitions="*, 200" RowDefinitions="40,*">
+        <Border Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <ContentControl Content="{Binding Path=CurrentViewModel}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type vm:PeopleViewModel}">
+                        <views:MainView />
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+        </Border>
+        <Border Grid.Row="1">
+            <ContentControl Content="{Binding Path=CurrentViewModel}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type vm:PeopleViewModel}">
+                        <views:Person />
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+        </Border>
+    </Grid>
+
+
 
     </Window>
