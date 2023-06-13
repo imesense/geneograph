@@ -27,12 +27,23 @@ namespace ImeSense.GeneoGraph.Models {
 
         public int Age { get; set; } /// Should be calculated based on Birth\Death date
 
+        public override string ToString() {
+            return FullName;
+        }
+
+        public string FullName => $"{Id}. {FirstName} {LastName}";
 
 
-        public ObservableCollection<Person> People = new() {
+        public static ObservableCollection<Person> People = new() {
             new Person() { Id = 1,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsAlive = true},
-            new Person() { Id = 2,Sex = "Female",FirstName = "FemaleName",LastName = "LastName", IsAlive = true}
+            new Person() { Id = 2,Sex = "Female",FirstName = "FemaleName",LastName = "LastName", IsAlive = false}
         };
+
+
+        public static ObservableCollection<Person> GetPeople() 
+        {
+            return People;
+        }
 
     }
 }

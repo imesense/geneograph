@@ -4,27 +4,54 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ImeSense.GeneoGraph.Views.MainView"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels" 
              Foreground="Black">
+    <UserControl.DataContext>
+        <vm:PeopleViewModel/>
+    </UserControl.DataContext>
+    
     <Border Background="White">
-        <Grid RowDefinitions="40, *" ColumnDefinitions="*, 140" ShowGridLines="True">
+        <Grid RowDefinitions="40, *" ColumnDefinitions="*, 200" ShowGridLines="True">
             <StackPanel Background="Gray" Grid.ColumnSpan="2">
             </StackPanel>
             <Grid Grid.Column="1" Grid.Row="1" RowDefinitions="*,*" ShowGridLines="True" Background="Gray">
                 <TextBlock Text="List People" Margin="5"/>
                 <Border Background="DimGray" Margin="10,25,10,10">
-                    <ListBox></ListBox>
+                    <ListBox 
+                        Items="{Binding PeopleList}"
+                        SelectedItem="{Binding SelectedPerson}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" FontSize="10"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Border>
 
                 <TextBlock Text="Properties" Margin="5" Grid.Row="1"/>
+                
                 <Border Background="DimGray" Margin="10,25,10,10" Grid.Row="1">
+                    
                     <StackPanel Margin="5">
-                        <TextBox x:Name="PersonFirstName" CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
-                        <TextBox x:Name="PersonLastName" CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
-                        <DropDown Items="Male, Female" HorizontalAlignment="Stretch"/>
+                        
+                        <TextBox Watermark="First Name"
+                                 Text="{Binding SelectedPerson.FirstName}"
+                                 CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5">
+                        </TextBox>
+                        
+                        <TextBox Watermark="Last Name" 
+                                 Text="{Binding SelectedPerson.LastName}"
+                                 CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
+                        
+                        <DropDown Items="{Binding PeopleSex}"
+                                  SelectedItem="{Binding SelectedPerson.Sex}"
+                                  HorizontalAlignment="Stretch"/>
+                        
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox/>
+                            <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}"/>
                             <TextBlock Text="Alive " VerticalAlignment="Center"/>
                         </StackPanel>
+                        
                     </StackPanel>
                 </Border>
             </Grid>
