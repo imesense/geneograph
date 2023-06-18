@@ -5,21 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Avalonia.Controls;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Views;
 
 namespace ImeSense.GeneoGraph.ViewModels {
     public class PeopleViewModel : ObservableObject
     {
         private Person _selectedPerson;
+        private ObservableCollection<Person> _people;
 
-        public ObservableCollection<Person> PeopleList { get; set; }
         public List<string> PeopleSex { get; set; } = new List<string>() {"Male", "Female", "Unknown"};
 
         public PeopleViewModel() 
         {
-            PeopleList = new ObservableCollection<Person>(Person.GetPeople());
+            People = Person.GetPeople();
+
         }
 
         public Person SelectedPerson 
@@ -28,6 +32,19 @@ namespace ImeSense.GeneoGraph.ViewModels {
             set => SetProperty(ref _selectedPerson, value);
         }
 
+        public ObservableCollection<Person> People {
+            get => _people;
+            set => SetProperty(ref _people, value);
+        }
+
+
+        public void AddPersonOpen() 
+        {
+
+            Window AddPersonWindow = new NewPerson();
+            AddPersonWindow.Show();
+
+        }
 
     }
 }
