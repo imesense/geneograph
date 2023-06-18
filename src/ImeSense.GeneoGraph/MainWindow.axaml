@@ -10,12 +10,20 @@
         d:DesignHeight="450"
         Title="ImeSense.GeneoGraph"
         Icon="/Assets/avalonia-logo.ico"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        DockProperties.IsDragEnabled="True"
+        DockProperties.IsDropEnabled="True">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
 
-    <Grid ColumnDefinitions="*, 200" RowDefinitions="40,*">
+    <Panel Margin="{Binding #MainWindowView.OffScreenMargin}">
+        <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
+            <views:MainView />
+        </Panel>
+    </Panel>
+
+    <!--<Grid ColumnDefinitions="*, 200" RowDefinitions="40,*">
         <Border Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl Content="{Binding Path=CurrentViewModel}">
                 <ContentControl.ContentTemplate>
@@ -34,8 +42,6 @@
                 </ContentControl.ContentTemplate>
             </ContentControl>
         </Border>
-    </Grid>
-
-
+    </Grid>-->
 
     </Window>

@@ -19,7 +19,7 @@ namespace ImeSense.GeneoGraph.Models {
 
         public string? Sex { get; set; }
 
-        public bool IsAlive { get; set; }
+        public bool IsDeceased { get; set; }
 
         public DateOnly BirthDate { get; set; }
 
@@ -35,14 +35,27 @@ namespace ImeSense.GeneoGraph.Models {
 
 
         public static ObservableCollection<Person> People = new() {
-            new Person() { Id = 1,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsAlive = true},
-            new Person() { Id = 2,Sex = "Female",FirstName = "FemaleName",LastName = "LastName", IsAlive = false}
+            new Person() { Id = 1,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 2,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 3,Sex = "Female",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 4,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 5,Sex = "Female",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 6,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 7,Sex = "Female",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 8,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 9,Sex = "Male",FirstName = "MaleName",LastName = "LastName", IsDeceased = true},
+            new Person() { Id = 10,Sex = "Female",FirstName = "FemaleName",LastName = "LastName", IsDeceased = false}
         };
 
 
         public static ObservableCollection<Person> GetPeople() 
         {
             return People;
+        }
+
+        public static void AddPerson(string sex, string firstname, string lastname, bool isDeceased, DateOnly birthdate, DateOnly deathdate) {
+            int newID = People.Last().Id + 1;
+            People.Add(new Person() { Id = newID, Sex = sex, FirstName = firstname, LastName = lastname, IsDeceased = isDeceased, BirthDate = birthdate, DeathDate = deathdate });
         }
 
     }
