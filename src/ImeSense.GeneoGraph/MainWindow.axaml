@@ -13,10 +13,6 @@
         WindowStartupLocation="CenterScreen"
         DockProperties.IsDragEnabled="True"
         DockProperties.IsDropEnabled="True">
-    <Window.DataContext>
-        <vm:MainViewModel/>
-    </Window.DataContext>
-
     <Panel Margin="{Binding #MainWindowView.OffScreenMargin}">
         <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
             <views:MainView />
