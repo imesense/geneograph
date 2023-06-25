@@ -21,6 +21,5 @@
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.21" Condition="'$(Configuration)' == 'Debug'" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
         <PackageReference Include="Dock.Avalonia" Version="0.10.18.1" />
-        <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
     </ItemGroup>
 </Project>

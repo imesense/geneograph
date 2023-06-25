@@ -10,13 +10,14 @@ using ImeSense.GeneoGraph.Views;
 namespace ImeSense.GeneoGraph;
 
 public partial class App : Application {
-    public override void Initialize() => AvaloniaXamlLoader.Load(this);
+    public override void Initialize() =>
+        AvaloniaXamlLoader.Load(this);
 
     public override void OnFrameworkInitializationCompleted() {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-            // Line below is needed to remove Avalonia data validation.
-            // Without this line you will get duplicate validations from both Avalonia and CT
+            // Remove Avalonia data validation
             ExpressionObserver.DataValidators.RemoveAll(x => x is DataAnnotationsValidationPlugin);
+
             desktop.MainWindow = new MainWindow {
                 DataContext = new MainViewModel(),
             };
