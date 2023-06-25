@@ -4,24 +4,23 @@ using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 
-namespace ImeSense.GeneoGraph {
-    public class ViewLocator : IDataTemplate {
-        public IControl Build(object data) {
-            var name = data.GetType().FullName!.Replace("ViewModel", "View");
-            var type = Type.GetType(name);
+namespace ImeSense.GeneoGraph;
 
-            if (type != null) {
-                return (Control) Activator.CreateInstance(type)!;
-            }
+public class ViewLocator : IDataTemplate {
+    public IControl Build(object data) {
+        var name = data.GetType().FullName!.Replace("ViewModel", "View");
+        var type = Type.GetType(name);
 
-            return new TextBlock {
-                Text = "Not Found: " + name
-            };
+        if (type != null) {
+            return (Control) Activator.CreateInstance(type)!;
         }
 
-        public bool Match(object data) {
+        return new TextBlock {
+            Text = "Not Found: " + name
+        };
+    }
 
-            return data is INotifyPropertyChanged;
-        }
+    public bool Match(object data) {
+        return data is INotifyPropertyChanged;
     }
 }
