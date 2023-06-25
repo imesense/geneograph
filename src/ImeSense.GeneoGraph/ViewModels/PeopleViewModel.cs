@@ -40,10 +40,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
 
         public void AddPersonOpen() 
         {
-
-            Window AddPersonWindow = new NewPerson();
-            AddPersonWindow.Show();
-
+            NewPersonViewModel.AddPersonOpen();
         }
 
     }
