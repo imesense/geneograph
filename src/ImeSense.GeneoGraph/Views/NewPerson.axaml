@@ -1,11 +1,13 @@
-<Window xmlns="https://github.com/avaloniaui"
+<Window x:Class="ImeSense.GeneoGraph.Views.NewPerson"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
         xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
         xmlns:views="using:ImeSense.GeneoGraph.Views"
-        x:Class="ImeSense.GeneoGraph.Views.NewPerson"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         Width="800"
@@ -13,17 +15,20 @@
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1">
-
     <Window.DataContext>
         <vm:NewPersonViewModel/>
     </Window.DataContext>
-    
-    <Border CornerRadius="5" Background="#1b1b1b" BorderBrush="#3d3d3d" BorderThickness="1">
-        <Border CornerRadius="5" Background="Transparent" Margin="10">
-            <Grid ColumnDefinitions="Auto,*"
-                  RowDefinitions="*,*,*,*,*,*,*,*,*" 
-                  Margin="5">
 
+    <Border CornerRadius="5"
+            Background="#1b1b1b"
+            BorderBrush="#3d3d3d"
+            BorderThickness="1">
+        <Border CornerRadius="5"
+                Background="Transparent"
+                Margin="10">
+            <Grid ColumnDefinitions="Auto,*"
+                  RowDefinitions="*,*,*,*,*,*,*,*,*"
+                  Margin="5">
                 <Label Grid.Column="1"
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Stretch"
@@ -31,77 +36,96 @@
                        FontSize="16"
                        BorderBrush="White"
                        BorderThickness="0,0,0,1">Add New Person</Label>
-                
-                <TextBlock Text="Gender" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Text="First Name" Grid.Row="2" VerticalAlignment="Center"/>
-                <TextBlock Text="Last Name" Grid.Row="3" VerticalAlignment="Center"/>
-                <TextBlock Text="Maiden Name" Grid.Row="4" VerticalAlignment="Center"/>
-                <TextBlock Text="Birth Date" Grid.Row="5" VerticalAlignment="Center"/>
-                <TextBlock Text="Deceased" Grid.Row="6" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Gender"
+                           Grid.Row="1"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="First Name"
+                           Grid.Row="2"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Last Name"
+                           Grid.Row="3"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Maiden Name"
+                           Grid.Row="4"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Birth Date"
+                           Grid.Row="5"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Deceased"
+                           Grid.Row="6"
+                           VerticalAlignment="Center" />
                 <TextBlock Text="Death Date"
                            Grid.Row="7"
                            VerticalAlignment="Center"
-                           IsVisible="{Binding ElementName=DeceasedCB, Path=IsChecked}"/>
+                           IsVisible="{Binding ElementName=DeceasedCB, Path=IsChecked}" />
 
-                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <StackPanel Grid.Column="1"
+                            Grid.Row="1"
+                            Orientation="Horizontal">
                     <RadioButton GroupName="Gender"
                                  Content="Male"
                                  Margin="10,0,20,0"
-                                 IsChecked="{Binding GenderMale}"/>
+                                 IsChecked="{Binding GenderMale}" />
                     <RadioButton GroupName="Gender"
                                  Content="Female"
                                  Margin="0,0,20,0"
-                                 IsChecked="{Binding GenderFemale}"/>
+                                 IsChecked="{Binding GenderFemale}" />
                     <RadioButton GroupName="Gender"
                                  Content="Unknown"
                                  IsChecked="True"
-                                 IsDefault="True"/>
+                                 IsDefault="True" />
                 </StackPanel>
 
                 <TextBox Text="{Binding FirstName}"
                          Grid.Column="1"
-                         Grid.Row="2" 
-                         Margin="5"/>
-                
+                         Grid.Row="2"
+                         Margin="5" />
+
                 <TextBox Text="{Binding LastName}"
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="5" />
-                <TextBox Grid.Column="1" Grid.Row="4" Margin="5" Watermark="Not yet added" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="4"
+                         Margin="5"
+                         Watermark="Not yet added" />
 
                 <CalendarDatePicker Text="{Binding BirthDate}"
                                     Grid.Column="1" 
                                     Grid.Row="5" 
                                     Margin="5" 
-                                    HorizontalAlignment="Stretch"/>
+                                    HorizontalAlignment="Stretch" />
                 
                 <CheckBox x:Name="DeceasedCB"
                           Grid.Column="1"
                           Grid.Row="6"
-                          IsChecked="{Binding IsDeceased}"/>
+                          IsChecked="{Binding IsDeceased}" />
 
-                
                 <CalendarDatePicker Text="{Binding DeathDate}"
                                     Grid.Column="1"
                                     Grid.Row="7"
                                     Margin="5"
                                     HorizontalAlignment="Stretch"
                                     IsEnabled="{Binding ElementName=DeceasedCB, Path=IsChecked}"
-                                    IsVisible="{Binding ElementName=DeceasedCB, Path=IsChecked}"/>
+                                    IsVisible="{Binding ElementName=DeceasedCB, Path=IsChecked}" />
 
-                <StackPanel Grid.Column="1" Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Grid.Column="1"
+                            Grid.Row="8"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
                     <Button Content="Save" 
                             HorizontalContentAlignment="Center" 
                             Margin="0,5,30,5" 
                             Background="Green" 
                             Width="100"
-                            Command="{Binding AddPersonCommand}"/>
+                            Command="{Binding AddPersonCommand}" />
                     <Button Content="Cancel"  
                             HorizontalContentAlignment="Center" 
                             Margin="30,5,0,5" 
                             Background="DarkSlateBlue" 
                             Width="100"
-                            Command="{Binding AddPersonClose}"/>
+                            Command="{Binding AddPersonClose}" />
                 </StackPanel>
             </Grid>
         </Border>

@@ -1,16 +1,18 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl x:Class="ImeSense.GeneoGraph.Views.MainView"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
-             x:Class="ImeSense.GeneoGraph.Views.MainView"
+             mc:Ignorable="d"
+             d:DesignWidth="1920"
+             d:DesignHeight="1080"
              xmlns:id="clr-namespace:Dock.Avalonia;assembly=Dock.Avalonia"
              xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
              Foreground="#fafafa">
     <UserControl.DataContext>
-        <vm:PeopleViewModel/>
+        <vm:PeopleViewModel />
     </UserControl.DataContext>
-    
+
     <Grid RowDefinitions="Auto, Auto, Auto, *"
           ColumnDefinitions="Auto, 2, *, 2, Auto" 
           ShowGridLines="False"
@@ -23,13 +25,14 @@
         <DockPanel Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Open..."/>
-                    <Separator/>
-                    <MenuItem Header="_Exit"/>
+                    <MenuItem Header="_Open..." />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
                 </MenuItem>
+
                 <MenuItem Header="_Edit">
-                    <MenuItem Header="Copy"/>
-                    <MenuItem Header="Paste"/>
+                    <MenuItem Header="Copy" />
+                    <MenuItem Header="Paste" />
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -40,48 +43,46 @@
             <StackPanel Margin="10"
                         Orientation="Horizontal">
                 <Button Content="Open"
-                        Margin="0,0,10,0"/>
+                        Margin="0,0,10,0" />
                 <Button Content="Undo"
-                        Margin="0,0,10,0"/>
+                        Margin="0,0,10,0" />
                 <Button Content="Redo"
-                        Margin="0,0,10,0"/>
+                        Margin="0,0,10,0" />
                 <Button Content="Test"
-                        Margin="0,0,10,0"/>
+                        Margin="0,0,10,0" />
                 <Button Content="Test"
-                        Margin="0,0,10,0"/>
+                        Margin="0,0,10,0" />
                 <Button Content="Test"
-                        Margin="0,0,10,0"/>
+                        Margin="0,0,10,0" />
             </StackPanel>
         </DockPanel>
         
         <Slider Grid.Column="4"
-                Grid.Row="1"
-                />
+                Grid.Row="1" />
         
         <!--Tabs-->
         <TabControl Grid.Row="2"
                     Grid.Column="2"
                     Grid.RowSpan="2">
-                        
             <TabItem Header="FamilyTree"
                      VerticalContentAlignment="Center">
-                <TextBlock Text="Just pretend you see a family tree here" 
+                <TextBlock Text="Just pretend you see a family tree here"
                            HorizontalAlignment="Left" 
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center" />
             </TabItem>
-            
+
             <TabItem>
                 <TabItem.Header>
                     <TextBlock VerticalAlignment="Center">Person Details</TextBlock>
                 </TabItem.Header>
+
                 <StackPanel>
                     <TextBlock Text="Something intresting will be added soon" 
                                HorizontalAlignment="Left" 
-                               VerticalAlignment="Center"/>
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </TabItem>
         </TabControl>
-        
 
         <!--Left ToolBar-->
         <Border Grid.Row="2"
@@ -93,22 +94,20 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         Margin="10,40,10,10"
-                        Command="{Binding AddPersonOpen}"/>
+                        Command="{Binding AddPersonOpen}" />
 
                 <Button Content="D"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
-                        Margin="10,0,10,0"/>
+                        Margin="10,0,10,0" />
                 <Button Content="M"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
-                        Margin="10,10,10,0"/>
-
+                        Margin="10,10,10,0" />
             </StackPanel>
         </Border>
 
         <!--Canvas-->
-        
         <Border Grid.Column="2"
                 Grid.Row="3"
                 BorderBrush="#3d3d3d"
@@ -116,13 +115,11 @@
         </Border>
 
         <!--Right Tool Bar-->
-         
         <Grid Grid.Column="4"
               Grid.Row="2"
               Grid.RowSpan="2"
               RowDefinitions="Auto,*,2,*"
               ShowGridLines="False">
-
             <Border Grid.Row="0"
                     BorderBrush="#3d3d3d"
                     BorderThickness="1,1,1,0">
@@ -136,7 +133,6 @@
             <Border BorderBrush="#3d3d3d"
                     BorderThickness="1,0,1,1"
                     Grid.Row="1">
-                
                 <Grid RowDefinitions="Auto, *"
                       ColumnDefinitions="*, Auto"
                       Grid.Row="1">
@@ -145,26 +141,27 @@
                             BorderThickness="0,1,0,1"
                             Background="#383838">
                         <TextBox Watermark="Search"
-                                 BorderThickness="0"/>
+                                 BorderThickness="0" />
                     </Border>
+
                     <ListBox Items="{Binding People}"
                              SelectedItem="{Binding SelectedPerson}"
                              Grid.Row="1"
                              Background="Transparent">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}" FontSize="12"/>
+                                <TextBlock Text="{Binding}" FontSize="12" />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+
                     <ScrollViewer Grid.Column="1"
                                   Grid.Row="1"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto" />
                 </Grid>
             </Border>
 
             <!--Properties-->
-
             <Border Grid.Row="3"
                     BorderBrush="#3d3d3d"
                     BorderThickness="1">
@@ -180,8 +177,7 @@
                              CornerRadius="0" 
                              HorizontalAlignment="Stretch" 
                              Margin="0,0,0,5"
-                             BorderThickness="0,0,0,1">
-                    </TextBox>
+                             BorderThickness="0,0,0,1" />
 
                     <TextBox Watermark="Last Name"
                                 Grid.Row="2"
@@ -189,107 +185,41 @@
                                 CornerRadius="0" 
                                 HorizontalAlignment="Stretch" 
                                 Margin="0,0,0,5"
-                                BorderThickness="0,0,0,1"/>
+                                BorderThickness="0,0,0,1" />
 
                     <DropDown Items="{Binding PeopleSex}"
                                 Grid.Row="3"
                                 SelectedItem="{Binding SelectedPerson.Sex}"
                                 HorizontalAlignment="Stretch"
                                 CornerRadius="0"
-                                BorderThickness="0,0,0,1"/>
+                                BorderThickness="0,0,0,1" />
 
                     <StackPanel Grid.Row="4" 
                                 Orientation="Horizontal"
                                 Margin="5">
                         <TextBlock Text="Birth:"
                                    VerticalAlignment="Center"
-                                   Width="50"/>
+                                   Width="50" />
                         <CalendarDatePicker />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="5"
                                 Margin="5">
-                        <TextBlock Text="Deceased " VerticalAlignment="Center"/>
-                        <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}"/>
+                        <TextBlock Text="Deceased " VerticalAlignment="Center" />
+                        <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}" />
                     </StackPanel>
 
-
-                    <StackPanel Grid.Row="6" 
+                    <StackPanel Grid.Row="6"
                                 Orientation="Horizontal"
                                 Margin="5">
-                        <TextBlock Text="Death:" 
+                        <TextBlock Text="Death:"
                                    VerticalAlignment="Center"
-                                   Width="50"/>
-                        <CalendarDatePicker/>
+                                   Width="50" />
+                        <CalendarDatePicker />
                     </StackPanel>
-
                 </Grid>
             </Border>
         </Grid>
-
-
-        <!--<Border Background="Gray" Grid.ColumnSpan="2">
-            <Button Content="Add" Margin="10,10,0,10"/>
-        </Border>
-
-
-
-        <Grid Grid.Column="1" Grid.Row="1" RowDefinitions="*,*" ShowGridLines="True">
-            <TextBlock Text="List People" Margin="5"/>
-            <Border Background="DimGray" Margin="10,25,10,10">
-                <ListBox
-                    Items="{Binding PeopleList}"
-                    SelectedItem="{Binding SelectedPerson}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}" FontSize="10"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Border>
-
-            <TextBlock Text="Properties" Margin="5" Grid.Row="1"/>
-
-            <Border Background="DimGray" Margin="10,25,10,10" Grid.Row="1">
-                <Grid Margin="5" RowDefinitions="*,*,*,*,*,*,*">
-
-                    <TextBox Watermark="First Name"
-                                Text="{Binding SelectedPerson.FirstName}"
-                                CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5">
-                    </TextBox>
-
-                    <TextBox Watermark="Last Name"
-                                Grid.Row="1"
-                                Text="{Binding SelectedPerson.LastName}"
-                                CornerRadius="0" HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
-
-                    <DropDown Items="{Binding PeopleSex}"
-                                Grid.Row="2"
-                                SelectedItem="{Binding SelectedPerson.Sex}"
-                                HorizontalAlignment="Stretch"/>
-
-                    <StackPanel Grid.Row="3" Orientation="Horizontal">
-                        <TextBlock Text="Birth:    " VerticalAlignment="Center" />
-                        <CalendarDatePicker Watermark="01/01/1970" Grid.Column="1"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="4">
-                        <TextBlock Text="Deceased " VerticalAlignment="Center"/>
-                        <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}"/>
-                    </StackPanel>
-
-
-                    <StackPanel Grid.Row="5" Orientation="Horizontal">
-                        <TextBlock Text="Death:  " VerticalAlignment="Center" />
-                        <CalendarDatePicker Watermark="01/01/1970" Grid.Column="1"/>
-                    </StackPanel>
-
-                    <Button Content="Delete" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="6"/>
-
-                </Grid>
-            </Border>
-         
-        </Grid>-->
     </Grid>
 </UserControl>
