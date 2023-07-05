@@ -144,7 +144,7 @@
                                  BorderThickness="0" />
                     </Border>
 
-                    <ListBox Items="{Binding People}"
+                    <ListBox ItemsSource="{Binding People}"
                              SelectedItem="{Binding SelectedPerson}"
                              Grid.Row="1"
                              Background="Transparent">
@@ -187,7 +187,7 @@
                                 Margin="0,0,0,5"
                                 BorderThickness="0,0,0,1" />
 
-                    <DropDown Items="{Binding PeopleSex}"
+                    <ComboBox ItemsSource="{Binding PeopleSex}"
                                 Grid.Row="3"
                                 SelectedItem="{Binding SelectedPerson.Sex}"
                                 HorizontalAlignment="Stretch"
