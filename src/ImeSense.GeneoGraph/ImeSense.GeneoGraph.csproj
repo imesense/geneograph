@@ -16,11 +16,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.21" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.21" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.21" Condition="'$(Configuration)' == 'Debug'" />
+        <PackageReference Include="Avalonia" Version="11.0.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.0" Condition="'$(Configuration)' == 'Debug'" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-        <PackageReference Include="Dock.Avalonia" Version="0.10.18.1" />
+        <PackageReference Include="Dock.Avalonia" Version="11.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     </ItemGroup>
 </Project>

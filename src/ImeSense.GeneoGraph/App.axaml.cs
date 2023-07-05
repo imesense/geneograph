@@ -29,10 +29,6 @@ public partial class App : Application {
 
     public override void OnFrameworkInitializationCompleted() {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-            // Remove Avalonia data validation
-            ExpressionObserver.DataValidators.RemoveAll(x =>
-                x is DataAnnotationsValidationPlugin);
-
             desktop.MainWindow = _serviceProvider
                 .GetRequiredService<MainWindow>();
             desktop.MainWindow.DataContext = _serviceProvider

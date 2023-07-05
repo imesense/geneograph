@@ -6,7 +6,7 @@ namespace ImeSense.GeneoGraph.Views;
 /// <summary>
 /// Interaction logic for NewPerson.axaml
 /// </summary>
-public class NewPerson : Window {
+public partial class NewPerson : Window {
     private void InitializeComponent() =>
         AvaloniaXamlLoader.Load(this);
 
