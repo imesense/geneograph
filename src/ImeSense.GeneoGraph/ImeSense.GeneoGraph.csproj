@@ -24,4 +24,8 @@
         <PackageReference Include="Dock.Avalonia" Version="11.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Views\PropertiesView.axaml" />
+    </ItemGroup>
 </Project>

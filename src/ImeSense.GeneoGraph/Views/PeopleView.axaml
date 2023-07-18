@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
+             x:Class="ImeSense.GeneoGraph.Views.PeopleView"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels">
+    <UserControl.DataContext>
+        <vm:PeopleViewModel />
+    </UserControl.DataContext>
+    <Border>
+        <Grid RowDefinitions="Auto,Auto,*">
+            <Label FontSize="14"
+                   Margin="0,0,0,9">
+                Properties
+            </Label>
+            <Border BorderBrush="#3d3d3d"
+                    BorderThickness="1,0,1,1"
+                    Grid.Row="1">
+                <Grid RowDefinitions="Auto, *"
+                      ColumnDefinitions="*, Auto"
+                      Grid.Row="1">
+                    <Border Grid.ColumnSpan="2"
+                            BorderBrush="#3d3d3d"
+                            BorderThickness="0,1,0,1"
+                            Background="#383838">
+                        <TextBox Watermark="Search"
+                                 BorderThickness="0" />
+                    </Border>
+
+                    <ListBox ItemsSource="{Binding People}"
+                             SelectedItem="{Binding SelectedPerson}"
+                             Grid.Row="2"
+                             Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" FontSize="12" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+        </Grid>
+
+    </Border>
+
+
+</UserControl>
