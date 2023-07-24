@@ -15,7 +15,8 @@
         DockProperties.IsDropEnabled="True"
         Foreground="#fafafa">
     <Grid
-        RowDefinitions="Auto, Auto, *">
+        RowDefinitions="Auto, Auto, *"
+        ColumnDefinitions="*,Auto">
 
         <!--Top Menu-->
         <DockPanel Grid.ColumnSpan="3">
@@ -53,12 +54,21 @@
             </StackPanel>
         </DockPanel>
         
-    <Panel 
-        Grid.Row="2"
-        Margin="{Binding #MainWindowView.OffScreenMargin}">
+    <Panel Grid.Row="2"
+           Margin="{Binding #MainWindowView.OffScreenMargin}">
         <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
             <views:MainView />
         </Panel>
     </Panel>
+
+        <Panel Grid.Row="2"
+               Grid.Column="1"
+               Margin="{Binding #MainWindowView.OffScreenMargin}">
+            <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
+                <views:FileSystem />
+            </Panel>
+        </Panel>
+        
+        
     </Grid>
 </Window>

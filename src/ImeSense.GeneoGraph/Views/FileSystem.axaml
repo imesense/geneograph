@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
+             x:Class="ImeSense.GeneoGraph.Views.FileSystem"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels">
+    <UserControl.DataContext>
+        <vm:ExplorerViewModel />
+    </UserControl.DataContext>
+    
+    <!--Files-->
+    <Border BorderBrush="#3d3d3d"
+            BorderThickness="1"
+            Width="200"
+            Background="#1b1b1b">
+        <Grid
+            RowDefinitions="Auto,*">
+
+            <Label>Explorer</Label>
+            
+            <ListBox ItemsSource="{Binding Files}"
+                     Background="Transparent"
+                     Grid.Row="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="12" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+        </Grid>
+    </Border>
+</UserControl>
