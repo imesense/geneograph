@@ -30,7 +30,7 @@
                      VerticalContentAlignment="Center">
                 <TextBlock Text="Just pretend you see a family tree here"
                            HorizontalAlignment="Left" 
-                           VerticalAlignment="Center" />
+                           VerticalAlignment="Center"/>
             </TabItem>
 
             <TabItem>
@@ -41,7 +41,7 @@
                 <StackPanel>
                     <TextBlock Text="Something intresting will be added soon" 
                                HorizontalAlignment="Left" 
-                               VerticalAlignment="Center" />
+                               VerticalAlignment="Center"/>
                 </StackPanel>
             </TabItem>
         </TabControl>

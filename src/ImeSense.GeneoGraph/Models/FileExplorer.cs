@@ -5,30 +5,23 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace ImeSense.GeneoGraph.Models {
     public class FileExplorer
     {
-        static readonly string dirName = @"E:\Programming\VStudio\geneograph\projects\project_1";
+        public static List<string> ListDirectory(string? dirName)
+        {
+            DirectoryInfo directory = new DirectoryInfo(dirName);
+            return directory.GetDirectories().Select(x => x.Name).ToList();
 
-        public DirectoryInfo directory = new DirectoryInfo(dirName);
+        }
+        public static List<string> ListFiles(string? dirName)
+        {
+            DirectoryInfo directory = new DirectoryInfo(dirName);
+            return directory.GetFiles().Select(x => x.Name).ToList();
 
-        public static ObservableCollection<string> FilesList => new();
-
-        public FileExplorer() {
-            if (Directory.Exists(dirName)) {
-                string[] dirs = Directory.GetDirectories(dirName);
-                foreach (string s in dirs) {
-                    FilesList.Add(s);
-                }
-
-                string[] files = Directory.GetFiles(dirName);
-                foreach (string s in files) {
-                    FilesList.Add(s);
-                }
-            }
         }
 
-        public static ObservableCollection<string> GetFiles => FilesList;
     }
 }

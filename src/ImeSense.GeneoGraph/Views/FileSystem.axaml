@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
              x:Class="ImeSense.GeneoGraph.Views.FileSystem"
-             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels">
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+             Foreground="White">
     <UserControl.DataContext>
         <vm:ExplorerViewModel />
     </UserControl.DataContext>
@@ -19,9 +20,10 @@
 
             <Label>Explorer</Label>
             
-            <ListBox ItemsSource="{Binding Files}"
+            <ListBox ItemsSource="{Binding FilesList}"
                      Background="Transparent"
-                     Grid.Row="1">
+                     Grid.Row="1"
+                     Foreground="White">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" FontSize="12" />

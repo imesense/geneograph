@@ -13,10 +13,12 @@
         WindowStartupLocation="CenterScreen"
         DockProperties.IsDragEnabled="True"
         DockProperties.IsDropEnabled="True"
-        Foreground="#fafafa">
+        Foreground="#fafafa"
+        Background="#1b1b1b">
+    
     <Grid
         RowDefinitions="Auto, Auto, *"
-        ColumnDefinitions="*,Auto">
+        ColumnDefinitions="*,Auto, Auto">
 
         <!--Top Menu-->
         <DockPanel Grid.ColumnSpan="3">
@@ -53,7 +55,8 @@
                         Margin="0,0,10,0" />
             </StackPanel>
         </DockPanel>
-        
+
+        <!--Main view-->
     <Panel Grid.Row="2"
            Margin="{Binding #MainWindowView.OffScreenMargin}">
         <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
@@ -61,6 +64,7 @@
         </Panel>
     </Panel>
 
+        <!--Explorer-->
         <Panel Grid.Row="2"
                Grid.Column="1"
                Margin="{Binding #MainWindowView.OffScreenMargin}">
@@ -68,7 +72,27 @@
                 <views:FileSystem />
             </Panel>
         </Panel>
-        
+
+        <!--List and Properties-->
+        <Grid Grid.Row="2"
+              Grid.Column="2"
+              RowDefinitions="Auto,Auto">
+            
+            <Panel Grid.Row="1"
+                   Margin="{Binding #MainWindowView.OffScreenMargin}">
+                <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
+                    <views:PropertiesView />
+                </Panel>
+            </Panel>
+
+            <Panel 
+                   Margin="{Binding #MainWindowView.OffScreenMargin}">
+                <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
+                    <views:PeopleView />
+                </Panel>
+            </Panel>
+            
+        </Grid>
         
     </Grid>
 </Window>
