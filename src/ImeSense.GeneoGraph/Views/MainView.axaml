@@ -27,7 +27,8 @@
                     Grid.Column="2"
                     Grid.RowSpan="2">
             <TabItem Header="FamilyTree"
-                     VerticalContentAlignment="Center">
+                     VerticalContentAlignment="Center"
+                     Foreground="White">
                 <TextBlock Text="Just pretend you see a family tree here"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Center"/>
@@ -35,7 +36,9 @@
 
             <TabItem>
                 <TabItem.Header>
-                    <TextBlock VerticalAlignment="Center">Person Details</TextBlock>
+                    <TextBlock Foreground="White"
+                               VerticalAlignment="Center">Person Details
+                    </TextBlock>
                 </TabItem.Header>
 
                 <StackPanel>

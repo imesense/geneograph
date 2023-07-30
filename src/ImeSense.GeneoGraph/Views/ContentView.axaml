@@ -3,24 +3,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="50" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
              x:Class="ImeSense.GeneoGraph.Views.ContentView">
+
+    <UserControl.DataContext>
+        <vm:PeopleViewModel />
+    </UserControl.DataContext>
     
     <!--Left ToolBar-->
     <Border Width="50"
             BorderBrush="#3d3d3d"
-            BorderThickness="1">
+            BorderThickness="1"
+            Background="#1b1b1b">
         <StackPanel>
-            <Button Content="A"
+            <Button Content="B"
+                    Background="Gray"
+                    Foreground="White"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="10,40,10,10"
-                    Command="{Binding AddPersonOpen}" />
+                    Command="{Binding AddPersonOpen}"/>
 
-            <Button Content="D"
+            <Button Content="U"
+                    Background="Gray"
+                    Foreground="White"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="10,0,10,0" />
-            <Button Content="M"
+            <Button Content="T"
+                    Background="Gray"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="10,10,10,0" />
+            <Button Content="T"
+                    Background="Gray"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="10,10,10,0" />
+            <Button Content="O"
+                    Background="Gray"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="10,10,10,0" />
+            <Button Content="N"
+                    Background="Gray"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="10,10,10,0" />
+            <Button Content="S"
+                    Background="Gray"
+                    Foreground="White"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="10,10,10,0" />

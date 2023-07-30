@@ -6,8 +6,8 @@
         xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
         xmlns:views="using:ImeSense.GeneoGraph.Views"
         mc:Ignorable="d"
-        d:DesignWidth="800"
-        d:DesignHeight="450"
+        d:DesignWidth="1920"
+        d:DesignHeight="1080"
         Title="ImeSense.GeneoGraph"
         Icon="/Assets/avalonia-logo.ico"
         WindowStartupLocation="CenterScreen"
@@ -18,46 +18,39 @@
     
     <Grid
         RowDefinitions="Auto, Auto, *"
-        ColumnDefinitions="*,Auto, Auto">
+        ColumnDefinitions="Auto,*,Auto, Auto"
+        ShowGridLines="True">
 
         <!--Top Menu-->
         <DockPanel Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
+                <MenuItem Header="_File"
+                          Foreground="White">
                     <MenuItem Header="_Open..." />
                     <Separator />
                     <MenuItem Header="_Exit" />
                 </MenuItem>
 
-                <MenuItem Header="_Edit">
+                <MenuItem Header="_Edit"
+                          Foreground="White">
                     <MenuItem Header="Copy" />
                     <MenuItem Header="Paste" />
                 </MenuItem>
             </Menu>
         </DockPanel>
 
-        <!--Top ToolBar-->
-        <DockPanel Grid.Row="1"
-                   Grid.ColumnSpan="3">
-            <StackPanel Margin="10"
-                        Orientation="Horizontal">
-                <Button Content="Open"
-                        Margin="0,0,10,0" />
-                <Button Content="Undo"
-                        Margin="0,0,10,0" />
-                <Button Content="Redo"
-                        Margin="0,0,10,0" />
-                <Button Content="Test"
-                        Margin="0,0,10,0" />
-                <Button Content="Test"
-                        Margin="0,0,10,0" />
-                <Button Content="Test"
-                        Margin="0,0,10,0" />
-            </StackPanel>
-        </DockPanel>
+        <!--Left bar view-->
+        <Panel Grid.Row="2"
+               Margin="{Binding #MainWindowView.OffScreenMargin}">
+            <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
+                <views:ContentView />
+            </Panel>
+        </Panel>
+
 
         <!--Main view-->
     <Panel Grid.Row="2"
+           Grid.Column="1"
            Margin="{Binding #MainWindowView.OffScreenMargin}">
         <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
             <views:MainView />
@@ -66,7 +59,7 @@
 
         <!--Explorer-->
         <Panel Grid.Row="2"
-               Grid.Column="1"
+               Grid.Column="2"
                Margin="{Binding #MainWindowView.OffScreenMargin}">
             <Panel Margin="{Binding #MainWindowView.WindowDecorationMargin}">
                 <views:FileSystem />
@@ -75,7 +68,7 @@
 
         <!--List and Properties-->
         <Grid Grid.Row="2"
-              Grid.Column="2"
+              Grid.Column="3"
               RowDefinitions="Auto,Auto">
             
             <Panel Grid.Row="1"

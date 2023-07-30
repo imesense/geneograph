@@ -24,6 +24,7 @@ public class NewPersonViewModel : ObservableObject {
     private DateOnly _deathdate;
 
     private IRelayCommand? _addPersonCommand;
+    private IRelayCommand? _addPersonCloseCommand;
 
     private static Window _addPersonWindow;
 
@@ -88,6 +89,7 @@ public class NewPersonViewModel : ObservableObject {
     }
 
     public IRelayCommand AddPersonCommand => _addPersonCommand ??= new RelayCommand(AddPerson);
+    public IRelayCommand AddPersonCloseCommand => _addPersonCloseCommand ??= new RelayCommand(AddPersonClose);
 
     public static void AddPersonOpen() {
         _addPersonWindow = new NewPerson();

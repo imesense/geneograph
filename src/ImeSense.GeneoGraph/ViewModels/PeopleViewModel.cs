@@ -8,7 +8,7 @@ using ImeSense.GeneoGraph.Models;
 namespace ImeSense.GeneoGraph.ViewModels;
 
 public class PeopleViewModel : ObservableObject {
-    private Person _selectedPerson;
+    private Person? _selectedPerson;
     private ObservableCollection<Person> _people;
 
     public List<string> PeopleSex { get; set; } = new List<string>() {
@@ -19,7 +19,7 @@ public class PeopleViewModel : ObservableObject {
         People = Person.People;
     }
 
-    public Person SelectedPerson {
+    public Person? SelectedPerson {
         get => _selectedPerson;
         set => SetProperty(ref _selectedPerson, value);
     }

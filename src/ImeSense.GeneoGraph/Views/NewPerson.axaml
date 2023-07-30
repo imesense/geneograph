@@ -14,7 +14,8 @@
         Height="450"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
-        ExtendClientAreaTitleBarHeightHint="-1">
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Foreground="White">
     <Window.DataContext>
         <vm:NewPersonViewModel/>
     </Window.DataContext>
@@ -66,13 +67,16 @@
                     <RadioButton GroupName="Gender"
                                  Content="Male"
                                  Margin="10,0,20,0"
+                                 Foreground="White"
                                  IsChecked="{Binding GenderMale}" />
                     <RadioButton GroupName="Gender"
                                  Content="Female"
                                  Margin="0,0,20,0"
+                                 Foreground="White"
                                  IsChecked="{Binding GenderFemale}" />
                     <RadioButton GroupName="Gender"
                                  Content="Unknown"
+                                 Foreground="White"
                                  IsChecked="True"
                                  IsDefault="True" />
                 </StackPanel>
@@ -117,15 +121,17 @@
                     <Button Content="Save" 
                             HorizontalContentAlignment="Center" 
                             Margin="0,5,30,5" 
-                            Background="Green" 
+                            Background="Green"
+                            Foreground="White"
                             Width="100"
                             Command="{Binding AddPersonCommand}" />
                     <Button Content="Cancel"  
                             HorizontalContentAlignment="Center" 
-                            Margin="30,5,0,5" 
-                            Background="DarkSlateBlue" 
+                            Foreground="White"
+                            Background="DarkSlateBlue"
+                            Margin="30,5,0,5"
                             Width="100"
-                            Command="{Binding AddPersonClose}" />
+                            Command="{Binding AddPersonCloseCommand}" />
                 </StackPanel>
             </Grid>
         </Border>
