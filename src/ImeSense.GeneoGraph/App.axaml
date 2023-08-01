@@ -1,7 +1,8 @@
 <Application x:Class="ImeSense.GeneoGraph.App"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:l="using:ImeSense.GeneoGraph">
+             xmlns:l="using:ImeSense.GeneoGraph"
+             RequestedThemeVariant="Dark">
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
