@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:l="using:ImeSense.GeneoGraph"
              RequestedThemeVariant="Dark">
+    <Application.DataTemplates>
+        <l:ViewLocator />
+    </Application.DataTemplates>
+
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
