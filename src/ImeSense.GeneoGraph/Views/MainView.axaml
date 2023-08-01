@@ -10,7 +10,7 @@
              xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
              Foreground="#fafafa">
     <UserControl.DataContext>
-        <vm:PeopleViewModel />
+        <vm:PeopleListViewModel />
     </UserControl.DataContext>
 
     <Grid RowDefinitions="Auto, Auto, Auto, *"

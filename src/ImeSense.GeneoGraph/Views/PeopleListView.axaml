@@ -1,13 +1,16 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl x:Class="ImeSense.GeneoGraph.Views.PeopleListView"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
-             x:Class="ImeSense.GeneoGraph.Views.PeopleView"
-             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels">
+             mc:Ignorable="d"
+             d:DesignWidth="200"
+             d:DesignHeight="450"
+             xmlns:vm="using:ImeSense.GeneoGraph.ViewModels">
     <UserControl.DataContext>
-        <vm:PeopleViewModel />
+        <vm:PeopleListViewModel />
     </UserControl.DataContext>
+
     <Border>
         <Grid RowDefinitions="Auto,Auto,*">
             <Label FontSize="14"
@@ -15,6 +18,7 @@
                    Foreground="White">
                 People
             </Label>
+
             <Border BorderBrush="#3d3d3d"
                     BorderThickness="1,0,1,1"
                     Grid.Row="1">
@@ -43,8 +47,5 @@
                 </Grid>
             </Border>
         </Grid>
-
     </Border>
-
-
 </UserControl>

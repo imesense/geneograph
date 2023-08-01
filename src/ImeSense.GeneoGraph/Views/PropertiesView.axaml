@@ -7,7 +7,7 @@
              x:Class="ImeSense.GeneoGraph.Views.PropertiesView">
 
     <UserControl.DataContext>
-        <vm:PeopleViewModel />
+        <vm:PeopleListViewModel />
     </UserControl.DataContext>
     
     <Border
