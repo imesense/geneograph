@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace ImeSense.GeneoGraph.Views;
 
@@ -7,9 +6,5 @@ namespace ImeSense.GeneoGraph.Views;
 /// Interaction logic for MainView.axaml
 /// </summary>
 public partial class MainView : UserControl {
-    private void InitializeComponent() =>
-        AvaloniaXamlLoader.Load(this);
-
-    public MainView() =>
-        InitializeComponent();
+    public MainView() => InitializeComponent();
 }
