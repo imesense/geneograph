@@ -26,10 +26,9 @@ public partial class App : Application {
 
     public override void OnFrameworkInitializationCompleted() {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-            desktop.MainWindow = _serviceProvider
-                .GetRequiredService<MainWindow>();
-            desktop.MainWindow.DataContext = _serviceProvider
-                .GetRequiredService<MainViewModel>();
+            desktop.MainWindow = new MainWindow {
+                DataContext = new MainViewModel(),
+            };
         }
 
         base.OnFrameworkInitializationCompleted();
