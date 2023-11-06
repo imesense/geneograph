@@ -2,71 +2,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="450"
              xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
-             x:Class="ImeSense.GeneoGraph.Views.PropertiesView">
+             x:Class="ImeSense.GeneoGraph.Views.PropertiesView"
+             Background="Transparent"
+             Foreground="#dedede">
 
     <UserControl.DataContext>
         <vm:PeopleListViewModel />
     </UserControl.DataContext>
     
-    <Border
-          BorderBrush="#3d3d3d"
-          BorderThickness="1"
-          Width="200">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
-            <Label FontSize="14"
-                    Margin="0,0,0,9">
-                Properties
-            </Label>
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
 
-            <TextBox Grid.Row="1"
-                     Watermark="First Name"
-                     Text="{Binding SelectedPerson.FirstName}"
-                     CornerRadius="0"
-                     HorizontalAlignment="Stretch"
-                     Margin="0,0,0,5"
-                     BorderThickness="0,0,0,1" />
-
-            <TextBox Watermark="Last Name"
-                        Grid.Row="2"
-                        Text="{Binding SelectedPerson.LastName}"
-                        CornerRadius="0"
-                        HorizontalAlignment="Stretch"
-                        Margin="0,0,0,5"
-                        BorderThickness="0,0,0,1" />
-
-            <ComboBox ItemsSource="{Binding PeopleSex}"
-                        Grid.Row="3"
-                        SelectedItem="{Binding SelectedPerson.Sex}"
-                        HorizontalAlignment="Stretch"
-                        CornerRadius="0"
-                        BorderThickness="0,0,0,1" />
-
-            <StackPanel Grid.Row="4"
-                        Orientation="Horizontal"
-                        Margin="5">
-                <TextBlock Text="Birth:"
-                           VerticalAlignment="Center"
-                           Width="50" />
-                <CalendarDatePicker />
+        <Grid ColumnDefinitions="Auto, *, Auto">
+            <StackPanel Grid.Column="1"
+                        Margin="10,10,0,10">
+                <Label>
+                    Nikita Lebedin
+                </Label>
+                <Label>
+                    25 years
+                </Label>
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="5"
-                        Margin="5">
-                <TextBlock Text="Deceased " VerticalAlignment="Center" />
-                <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="6"
-                        Orientation="Horizontal"
-                        Margin="5">
-                <TextBlock Text="Death:"
-                           VerticalAlignment="Center"
-                           Width="50" />
-                <CalendarDatePicker />
-            </StackPanel>
+            
+            <Border Width="80"
+                    Height="100"
+                    Background="#dedede"
+                    Grid.Column="2"
+                    Margin="10"/>
         </Grid>
-    </Border>
+
+        <Expander Grid.Row="1"
+                  HorizontalAlignment="Stretch"
+                  Background="Transparent"
+                  BorderBrush="Transparent">
+            <Expander.Header>
+                MAIN INFORMATION
+            </Expander.Header>
+            <Grid ColumnDefinitions="*, *">
+                <StackPanel>
+                    <Label FontSize="12">
+                        First Name
+                    </Label>
+                    <TextBox Watermark="First Name"
+                             Text="{Binding SelectedPerson.FirstName}"
+                             CornerRadius="0"
+                             HorizontalAlignment="Stretch"
+                             BorderThickness="0,0,0,1" />
+
+                    <Label FontSize="12">
+                        Middle Name
+                    </Label>
+                    <TextBox Watermark="Middle Name"
+                             CornerRadius="0"
+                             HorizontalAlignment="Stretch"
+                             BorderThickness="0,0,0,1" />
+
+                    <Label FontSize="12">
+                        Birth Date
+                    </Label>
+                    <CalendarDatePicker/>
+                    
+                    <Label FontSize="12">
+                        Death Date
+                    </Label>
+                    <CalendarDatePicker/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="10,0,0,0">
+                    <Label FontSize="12">
+                        Last Name
+                    </Label>
+                    <TextBox Watermark="Last Name"
+                             Text="{Binding SelectedPerson.LastName}"
+                             CornerRadius="0"
+                             HorizontalAlignment="Stretch"
+                             BorderThickness="0,0,0,1" />
+
+                    <Label FontSize="12">
+                        Gender
+                    </Label>
+
+                    <ComboBox ItemsSource="{Binding PeopleSex}"
+                              SelectedItem="{Binding SelectedPerson.Sex}"
+                              HorizontalAlignment="Stretch"
+                              CornerRadius="0"
+                              BorderThickness="0,0,0,1" />
+
+                    <Label FontSize="12">
+                        Deceased
+                    </Label>
+                    <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}" />
+                </StackPanel>
+            </Grid>
+        </Expander>
+    </Grid>
 </UserControl>
