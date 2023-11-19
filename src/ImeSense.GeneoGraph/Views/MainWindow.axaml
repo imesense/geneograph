@@ -14,40 +14,82 @@
         WindowStartupLocation="CenterScreen"
         Foreground="#dedede"
         Background="#121212"
+        FontFamily="Cascadia Mono"
         UseLayoutRounding="True">
+
+    <Window.Styles>
+        <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#83ad76"/>
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#9dce8e"/>
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#9dce8e"/>
+        </Style>
+        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#9dce8e"/>
+        </Style>
+
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#9dce8e"/>
+        </Style>
+        <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#9dce8e"/>
+        </Style>
+        <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+            <Setter Property="Background" Value="#9dce8e"/>
+        </Style>
+    </Window.Styles>
+
     <Grid
         ColumnDefinitions="*"
-        RowDefinitions="54,Auto,*"
-        ShowGridLines="False">
+        RowDefinitions="*">
 
-        <!--
-        <Image Source="E:\Programming\VStudio\geneograph\src\ImeSense.GeneoGraph\Assets\ico_green.png"
-               Width="50"
-               Margin="10"/>-->
-        
-        <Border Background="#dedede"
-                Grid.Row="1"
+        <Border Background="#414141"
                 Height="2"
-                Opacity="90"/>
-        
+                VerticalAlignment="Top"
+                Margin="0,49,0,0"/>
+
         <TabControl 
-                    Margin="0,10,0,0"
-                    Grid.RowSpan="3">
-            <TabItem Header="PROJECTS">
+                    Background="Transparent"
+                    Padding="0">
+            <TabItem Header="PROJECTS"
+                     FontSize="16"
+                     Margin="70,5,5,0">
                 <v:ProjectsView/>
             </TabItem>
 
-            <TabItem Header="FAMILY TREE">
+            <TabItem Header="FAMILY TREE"
+                     FontSize="16"
+                     Margin="5,5,5,0">
                 <v:FamTreeView/>
             </TabItem>
 
-            <TabItem Header="PERSON DETAILS">
+            <TabItem Header="PERSON DETAILS"
+                     FontSize="16"
+                     Margin="5,5,5,0">
 
             </TabItem>
             
-            <TabItem Header="ALBUMS"/>
-            <TabItem Header="FILES"/>
+            <TabItem Header="ALBUMS"
+                     FontSize="16"
+                     Margin="5,5,5,0"/>
+            <TabItem Header="FILES"
+                     FontSize="16"
+                     Margin="5,5,5,0"/>
+            <TabItem Header="NOTES"
+                     FontSize="16"
+                     Margin="5,5,5,0"/>
         </TabControl>
+
+
+        <Image Source="..\Assets\ico_green.png"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Width="40"
+               Margin="5"/>
+
         
     </Grid>
 </Window>
