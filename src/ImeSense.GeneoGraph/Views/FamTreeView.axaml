@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+             x:Class="ImeSense.GeneoGraph.Views.FamTreeView"       
+             xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
+             Background="#121212"
+             Foreground="#dedede">
+    
+    <Grid ColumnDefinitions="Auto, *, Auto"
+          ShowGridLines="False">
+        
+        <Border Background="#171717">
+            <StackPanel Orientation="Vertical">
+                <Button
+                        Width="50"
+                        Height="50"
+                        Margin="10"
+                        Background="Transparent">
+                        <Image Source="..\Assets\Buttons\add.png"
+                               Stretch="Uniform"/>
+                </Button>
+                
+                <Button Background="#dedede"
+                        Width="50"
+                        Height="50"
+                        Margin="10"
+                        Opacity="99"/>
+                
+                <Button Background="#dedede"
+                        Width="50"
+                        Height="50"
+                        Margin="10"
+                        Opacity="99"/>       
+                
+                <Button Background="#dedede"
+                        Width="50"
+                        Height="50"
+                        Margin="10"
+                        Opacity="99"/>     
+                
+                <Button Background="#dedede"
+                        Width="50"
+                        Height="50"
+                        Margin="10"
+                        Opacity="99"/>    
+                
+                <Button Background="#dedede"
+                        Width="50"
+                        Height="50"
+                        Margin="10"
+                        Opacity="99"/>
+            </StackPanel>
+        </Border>
+
+        <Border Background="#171717"
+                Grid.Column="2">
+            <v:PropertiesView/>
+        </Border>
+
+    </Grid>
+</UserControl>
