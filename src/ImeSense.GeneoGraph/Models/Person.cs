@@ -2,6 +2,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
+using ImeSense.GeneoGraph.ViewModels;
+
 namespace ImeSense.GeneoGraph.Models;
 
 public class Person {
@@ -15,20 +17,24 @@ public class Person {
 
     public string? MaidenName { get; set; }
 
-    public string? Sex { get; set; }
+    public string? Gender { get; set; }
 
     public bool IsDeceased { get; set; }
 
-    public DateOnly BirthDate { get; set; }
+    public DateTime? BirthDate { get; set; }
 
-    public DateOnly DeathDate { get; set; }
+    public string? BirthPlace { get; set; }
+
+    public DateTime? DeathDate { get; set; }
+
+    public string? DeathPlace { get; set; }
+
 
     /// <summary>
     /// Should be calculated based on <see cref="BirthDate" />
     /// and <see cref="DeathDate" /> date
     /// </summary>
     public int Age { get; set; }
-
     public override string ToString() => FullName;
 
     public string FullName => $"{Id}. {FirstName} {LastName}";
@@ -36,47 +42,59 @@ public class Person {
     public static ObservableCollection<Person> People => new() {
         new Person() {
             Id = 1,
-            Sex = "Male",
-            FirstName = "MaleName",
-            LastName = "LastName",
-            IsDeceased = true,
+            Gender = "Male",
+            FirstName = "Nikita",
+            LastName = "Lebedin",
+            IsDeceased = false,
+            BirthDate = new DateTime(1998,03,03),
+            BirthPlace = "Kharkov, Ukraine",
         },
         new Person() {
             Id = 2,
-            Sex = "Male",
-            FirstName = "MaleName",
-            LastName = "LastName",
+            Gender = "Male",
+            FirstName = "Vasiliy",
+            LastName = "Petrov",
             IsDeceased = true,
+            BirthDate = new DateTime(1898,01,01),
+            DeathDate = new DateTime(1975,01,07),
+            BirthPlace = "Unknown"
         },
         new Person() {
             Id = 3,
-            Sex = "Female",
-            FirstName = "MaleName",
-            LastName = "LastName",
+            Gender = "Female",
+            FirstName = "Anna",
+            LastName = "Aristova",
             IsDeceased = true,
+            BirthDate = new DateTime(1888,12,12),
+            BirthPlace = "Somewhere"
+
         },
         new Person() {
             Id = 4,
-            Sex = "Male",
-            FirstName = "MaleName",
-            LastName = "LastName",
-            IsDeceased = true,
+            Gender = "Male",
+            FirstName = "Ivan",
+            LastName = "Vanov",
+            IsDeceased = false,
+            BirthDate = new DateTime(1765,05,23),
+            BirthPlace = "Mukhosransk"
         },
         new Person() {
             Id = 5,
-            Sex = "Female",
-            FirstName = "MaleName",
-            LastName = "LastName",
+            Gender = "Female",
+            FirstName = "Fiona",
+            LastName = "Shrekova",
             IsDeceased = true,
+            BirthDate = new DateTime(1856,02,13),
+            BirthPlace = "Gradograd, Hochland"
         },
     };
 
-    public static void AddPerson(string sex, string firstname, string lastname,
-        bool isDeceased, DateOnly birthdate, DateOnly deathdate) {
+    public static void AddPerson(string gender, string firstname, string lastname,
+        bool isDeceased, DateTime birthdate, DateTime deathdate) {
         var newID = People.Last().Id + 1;
         People.Add(new Person() {
             Id = newID,
-            Sex = sex,
+            Gender = gender,
             FirstName = firstname,
             LastName = lastname,
             IsDeceased = isDeceased,
