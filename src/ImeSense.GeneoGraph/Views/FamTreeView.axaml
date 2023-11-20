@@ -5,55 +5,97 @@
              mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="ImeSense.GeneoGraph.Views.FamTreeView"       
              xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
              Background="#121212"
              Foreground="#dedede">
+
+    <UserControl.DataContext>
+        <vm:PeopleListViewModel />
+    </UserControl.DataContext>
     
-    <Grid ColumnDefinitions="Auto, *, Auto"
+    <Grid ColumnDefinitions="Auto, *, 250"
           ShowGridLines="False">
         
+        <!--Left toolbar-->
         <Border Background="#171717">
             <StackPanel Orientation="Vertical">
                 <Button
                         Width="50"
                         Height="50"
                         Margin="10"
-                        Background="Transparent">
+                        Background="Transparent"
+                        Command="{Binding AddPersonOpen}">
                         <Image Source="..\Assets\Buttons\add.png"
                                Stretch="Uniform"/>
                 </Button>
-                
-                <Button Background="#dedede"
+
+                <Border Background="#414141"
+                        Height="2"
+                        Margin="5,0,5,0"/>
+
+                <Button
                         Width="50"
                         Height="50"
-                        Margin="10"
-                        Opacity="99"/>
-                
-                <Button Background="#dedede"
+                        Margin="10,10,0,5"
+                        Background="Transparent">
+                    <Image Source="..\Assets\Buttons\undo.png"
+                           Stretch="Uniform"/>
+                </Button>
+
+                <Button
                         Width="50"
                         Height="50"
-                        Margin="10"
-                        Opacity="99"/>       
-                
-                <Button Background="#dedede"
+                        Margin="10,5,0,10"
+                        Background="Transparent">
+                    <Image Source="..\Assets\Buttons\redo.png"
+                           Stretch="Uniform"/>
+                </Button>
+
+                <Border Background="#414141"
+                        Height="2"
+                        Margin="5,0,5,0"/>
+
+                <Button
                         Width="50"
                         Height="50"
-                        Margin="10"
-                        Opacity="99"/>     
-                
-                <Button Background="#dedede"
+                        Margin="10,5,0,10"
+                        Background="Transparent">
+                    <Image Source="..\Assets\Buttons\download.png"
+                           Stretch="Uniform"/>
+                </Button>
+
+                <Button
                         Width="50"
                         Height="50"
-                        Margin="10"
-                        Opacity="99"/>    
-                
-                <Button Background="#dedede"
-                        Width="50"
-                        Height="50"
-                        Margin="10"
-                        Opacity="99"/>
+                        Margin="10,5,0,10"
+                        Background="Transparent">
+                    <Image Source="..\Assets\Buttons\print.png"
+                           Stretch="Uniform"/>
+                </Button>
             </StackPanel>
         </Border>
 
+        <!--Family tree-->
+
+        <DataGrid Name="Test" 
+                  ItemsSource="{Binding People}"
+                  Grid.Column="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Deceased" Binding="{Binding IsDeceased}"/>
+                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat=dd-MMM-yyyy}"/>
+                <DataGridTextColumn Header="Birth Place" Binding="{Binding BirthPlace}"/>
+                <DataGridTextColumn Header="Death Date" Binding="{Binding DeathDate, StringFormat=dd-MMM-yyyy}"/>
+                <DataGridTextColumn Header="Death Place" Binding="{Binding DeathPlace}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <!--Right toolbar-->
         <Border Background="#171717"
                 Grid.Column="2">
             <v:PropertiesView/>

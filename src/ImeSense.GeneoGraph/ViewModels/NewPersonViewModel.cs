@@ -20,13 +20,13 @@ public class NewPersonViewModel : ObservableObject {
 
     private bool _isdeceased = false;
 
-    private DateOnly _birthdate;
-    private DateOnly _deathdate;
+    private DateTime _birthdate;
+    private DateTime _deathdate;
 
     private IRelayCommand? _addPersonCommand;
     private IRelayCommand? _addPersonCloseCommand;
 
-    private static Window _addPersonWindow;
+    private static Window? _addPersonWindow;
 
     public bool GenderMale {
         get => _gendermale;
@@ -58,12 +58,12 @@ public class NewPersonViewModel : ObservableObject {
         set => SetProperty(ref _isdeceased, value);
     }
 
-    public DateOnly BirthDate {
+    public DateTime BirthDate {
         get => _birthdate;
         set => SetProperty(ref _birthdate, value);
     }
 
-    public DateOnly DeathDate {
+    public DateTime DeathDate {
         get => _deathdate;
         set => SetProperty(ref _deathdate, value);
     }
