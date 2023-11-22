@@ -6,11 +6,12 @@
              x:Class="ImeSense.GeneoGraph.Views.FamTreeView"       
              xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
              xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+
              Background="#121212"
              Foreground="#dedede">
 
     <UserControl.DataContext>
-        <vm:PeopleListViewModel />
+        <vm:FamilyTreeViewModel />
     </UserControl.DataContext>
     
     <Grid ColumnDefinitions="Auto, *, 250"
@@ -37,7 +38,8 @@
                         Width="50"
                         Height="50"
                         Margin="10,10,0,5"
-                        Background="Transparent">
+                        Background="Transparent"
+                        Command="{Binding AddTest}">
                     <Image Source="..\Assets\Buttons\undo.png"
                            Stretch="Uniform"/>
                 </Button>
@@ -72,17 +74,22 @@
                     <Image Source="..\Assets\Buttons\print.png"
                            Stretch="Uniform"/>
                 </Button>
+               
             </StackPanel>
         </Border>
 
         <!--Family tree-->
 
-        <DataGrid Name="Test" 
-                  ItemsSource="{Binding People}"
+        <DataGrid x:Name="PeopleListGrid" 
+                  ItemsSource="{Binding PeopleList}"
                   Grid.Column="1"
                   AutoGenerateColumns="False"
+                  SelectionMode="Single"
+                  SelectedItem="{Binding SelectedPerson}"
+                  SelectedIndex="{Binding SelectedIndex}"
                   IsReadOnly="True">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
@@ -91,6 +98,7 @@
                 <DataGridTextColumn Header="Birth Place" Binding="{Binding BirthPlace}"/>
                 <DataGridTextColumn Header="Death Date" Binding="{Binding DeathDate, StringFormat=dd-MMM-yyyy}"/>
                 <DataGridTextColumn Header="Death Place" Binding="{Binding DeathPlace}"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
             </DataGrid.Columns>
         </DataGrid>
 

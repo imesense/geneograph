@@ -13,7 +13,7 @@ public class Person {
 
     public string? LastName { get; set; }
 
-    public string? Patronim { get; set; }
+    public string? Patronym { get; set; }
 
     public string? MaidenName { get; set; }
 
@@ -21,25 +21,28 @@ public class Person {
 
     public bool IsDeceased { get; set; }
 
-    public DateTime? BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
 
     public string? BirthPlace { get; set; }
 
     public DateTime? DeathDate { get; set; }
 
     public string? DeathPlace { get; set; }
+    public string? DeathCause { get; set; }
+    public string? BurialPlace { get; set; }
 
 
     /// <summary>
     /// Should be calculated based on <see cref="BirthDate" />
     /// and <see cref="DeathDate" /> date
     /// </summary>
-    public int Age { get; set; }
+    public int Age => DateTime.Now.AddTicks(0 - BirthDate.Ticks).Year - 1;
+
     public override string ToString() => FullName;
 
-    public string FullName => $"{Id}. {FirstName} {LastName}";
+    public string FullName => $"{FirstName} {LastName}";
 
-    public static ObservableCollection<Person> People => new() {
+    public static ObservableCollection<Person>? PeopleList = new() {
         new Person() {
             Id = 1,
             Gender = "Male",
@@ -47,7 +50,7 @@ public class Person {
             LastName = "Lebedin",
             IsDeceased = false,
             BirthDate = new DateTime(1998,03,03),
-            BirthPlace = "Kharkov, Ukraine",
+            BirthPlace = "Kharkov, Ukraine"
         },
         new Person() {
             Id = 2,
@@ -89,17 +92,20 @@ public class Person {
         },
     };
 
-    public static void AddPerson(string gender, string firstname, string lastname,
-        bool isDeceased, DateTime birthdate, DateTime deathdate) {
-        var newID = People.Last().Id + 1;
-        People.Add(new Person() {
-            Id = newID,
-            Gender = gender,
-            FirstName = firstname,
-            LastName = lastname,
-            IsDeceased = isDeceased,
-            BirthDate = birthdate,
-            DeathDate = deathdate,
+    public static ObservableCollection<Person> GetPeople () {
+        return PeopleList;
+    }
+
+
+    public static void AddPerson() {
+        PeopleList.Add(new Person() {
+            Id = 1,
+            Gender = "Male",
+            FirstName = "Nikita",
+            LastName = "Lebedin",
+            IsDeceased = false,
+            BirthDate = new DateTime(1998, 03, 03),
+            BirthPlace = "Kharkov, Ukraine"
         });
     }
 }

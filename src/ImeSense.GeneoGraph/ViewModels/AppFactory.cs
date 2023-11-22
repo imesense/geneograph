@@ -9,6 +9,7 @@ using Dock.Model.Mvvm.Controls;
 
 using ImeSense.GeneoGraph.ViewModels.Docks;
 using ImeSense.GeneoGraph.ViewModels.Documents;
+using ImeSense.GeneoGraph.ViewModels.Tools;
 
 namespace ImeSense.GeneoGraph.ViewModels;
 
