@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
         xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
+        xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Views.Tools"
         mc:Ignorable="d"
         d:DesignWidth="1920"
         d:DesignHeight="1080"
@@ -69,7 +70,7 @@
             <TabItem Header="PERSON DETAILS"
                      FontSize="16"
                      Margin="5,5,5,0">
-
+                <vt:PeopleListView/>
             </TabItem>
             
             <TabItem Header="ALBUMS"

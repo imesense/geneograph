@@ -5,5 +5,6 @@ namespace ImeSense.GeneoGraph.Views {
         public FamTreeView() {
             InitializeComponent();
         }
+
     }
 }

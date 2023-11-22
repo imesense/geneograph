@@ -9,10 +9,6 @@
              Background="#171717"
              Foreground="#dedede">
 
-    <UserControl.DataContext>
-        <vm:PeopleListViewModel />
-    </UserControl.DataContext>
-
     <UserControl.Styles>
         <Style Selector="ToggleButton">
             <Setter Property="BorderThickness" Value="0,2,0,2"/>
@@ -30,9 +26,7 @@
         <Grid ColumnDefinitions="Auto, *, Auto">
             <StackPanel Grid.Column="1"
                         Margin="10,10,0,10">
-                <Label>
-                    Nikita Lebedin
-                </Label>
+                <Label Content="{Binding SelectedPerson.FullName}"/>
                 <Label>
                     25 years
                 </Label>
@@ -92,14 +86,16 @@
                         Birth Date
                     </Label>
                     <CalendarDatePicker
-                        Width="100"/>
+                        Width="100"
+                        SelectedDate="{Binding SelectedPerson.BirthDate}"/>
                     
                     <Label FontSize="14"
                            Margin="0,5,0,0">
                         Death Date
                     </Label>
                     <CalendarDatePicker
-                        Width="100"/>
+                        Width="100"
+                        SelectedDate="{Binding SelectedPerson.DeathDate}"/>
                 </StackPanel>
 
                 <!--Right column-->
@@ -125,8 +121,8 @@
                            Margin="0,5,0,0">
                         Gender
                     </Label>
-                    <ComboBox ItemsSource="{Binding PeopleSex}"
-                              SelectedItem="{Binding SelectedPerson.Sex}"
+                    <ComboBox ItemsSource="{Binding PeopleGender}"
+                              SelectedItem="{Binding SelectedPerson.Gender}"
                               FontSize="10"
                              VerticalContentAlignment="Center"
                               HorizontalAlignment="Left"
@@ -140,8 +136,7 @@
                            Margin="0,5,0,0">
                         Deceased
                     </Label>
-                    <CheckBox IsChecked="{Binding SelectedPerson.IsAlive}" />
-                    
+                    <CheckBox IsChecked="{Binding SelectedPerson.IsDeceased}" />
                 </StackPanel>
             </Grid>
         </Expander>
