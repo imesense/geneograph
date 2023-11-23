@@ -13,8 +13,19 @@
     <UserControl.DataContext>
         <vm:FamilyTreeViewModel />
     </UserControl.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="ToggleButton">
+            <Setter Property="BorderThickness" Value="0,2,0,2"/>
+            <Setter Property="Background" Value="#171717"/>
+        </Style>
+
+        <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#171717"/>
+        </Style>
+    </UserControl.Styles>
     
-    <Grid ColumnDefinitions="Auto, *, 250"
+    <Grid ColumnDefinitions="Auto, *, Auto"
           ShowGridLines="False">
         
         <!--Left toolbar-->
@@ -38,8 +49,7 @@
                         Width="50"
                         Height="50"
                         Margin="10,10,0,5"
-                        Background="Transparent"
-                        Command="{Binding AddTest}">
+                        Background="Transparent">
                     <Image Source="..\Assets\Buttons\undo.png"
                            Stretch="Uniform"/>
                 </Button>
@@ -81,7 +91,7 @@
         <!--Family tree-->
 
         <DataGrid x:Name="PeopleListGrid" 
-                  ItemsSource="{Binding PeopleList}"
+                  ItemsSource="{Binding PeopleList, Mode=TwoWay}"
                   Grid.Column="1"
                   AutoGenerateColumns="False"
                   SelectionMode="Single"
@@ -104,10 +114,28 @@
 
 
         <!--Right toolbar-->
-        <Border Background="#171717"
-                Grid.Column="2">
-            <v:PropertiesView/>
-        </Border>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="2">
+            <Button
+                Width="25"
+                Height="30"
+                VerticalAlignment="Top"
+                Margin="0,0,0,0"
+                CornerRadius="10,0,0,10"
+                Command="{Binding SideBarOpenCloseCommand}"
+                HorizontalAlignment="Left">
+                <Image Source="..\Assets\Buttons\angle.png"
+       Stretch="UniformToFill"/>
+            </Button>
+
+            <DockPanel Grid.Column="2"
+                       IsVisible="{Binding SidebarStatus}">
+                <Border Background="#171717"
+                        Grid.Column="2">
+                    <v:PropertiesView/>
+                </Border>
+            </DockPanel>
+        </StackPanel>
 
     </Grid>
 </UserControl>

@@ -27,9 +27,16 @@
             <StackPanel Grid.Column="1"
                         Margin="10,10,0,10">
                 <Label Content="{Binding SelectedPerson.FullName}"/>
-                <Label>
-                    25 years
-                </Label>
+                
+                <Label Content="Deceased" IsVisible="{Binding SelectedPerson.IsDeceased}"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>
+                        Age:
+                    </Label>
+                    <Label Content="{Binding SelectedPerson.Age}"/>
+                </StackPanel>
+
             </StackPanel>
             
             <Border Width="80"

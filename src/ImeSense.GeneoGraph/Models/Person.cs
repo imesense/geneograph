@@ -19,9 +19,9 @@ public class Person {
 
     public string? Gender { get; set; }
 
-    public bool IsDeceased { get; set; }
+    public bool IsDeceased { get; set; } = false;
 
-    public DateTime BirthDate { get; set; }
+    public DateTime? BirthDate { get; set; }
 
     public string? BirthPlace { get; set; }
 
@@ -36,7 +36,27 @@ public class Person {
     /// Should be calculated based on <see cref="BirthDate" />
     /// and <see cref="DeathDate" /> date
     /// </summary>
-    public int Age => DateTime.Now.AddTicks(0 - BirthDate.Ticks).Year - 1;
+    public int? Age => GetAge(IsDeceased, BirthDate, DeathDate);
+
+    public static int? GetAge(bool isdeceased, DateTime? birthdate, DateTime? deathdate) 
+    {
+        if (birthdate == null) 
+        { 
+            return null;
+        }
+        else if (isdeceased == false) 
+        {
+            return DateTime.Now.AddTicks(0 - birthdate.GetValueOrDefault(DateTime.Now).Ticks).Year - 1; ;
+        }
+        else if (isdeceased == true && deathdate == null)
+        {
+            return null;
+        }
+        else        
+        {
+            return deathdate.GetValueOrDefault(DateTime.Now).AddTicks(0 - birthdate.GetValueOrDefault(DateTime.Now).Ticks).Year - 1;
+        }
+    }
 
     public override string ToString() => FullName;
 
