@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ namespace ImeSense.GeneoGraph.Models {
         public string NoteHeader { get; set; }
 
         public string NoteText { get; set; }
+        public string NoteDescription { get; set; }
+
+        public string Category { get; set; }
+
+        public DateTime AddedTime { get; set; }
 
     }
 }

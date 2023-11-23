@@ -1,0 +1,101 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+             x:Class="ImeSense.GeneoGraph.Views.NotesView"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+             Foreground="#dedede"
+             Background="#121212"
+             FontFamily="Cascadia Mono"
+             FontSize="14">
+
+    <UserControl.DataContext>
+        <vm:NotesViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="Auto,*,Auto"
+          RowDefinitions="Auto,*"
+          ShowGridLines="True">
+        <!--Left bar-->
+        
+        <Border Background="#171717"
+                Grid.RowSpan="2"/>
+                        
+        <Button Content=" +  Add note   "
+                Margin="20,30,20,30"
+                Padding="10"
+                CornerRadius="20"
+                Background="Transparent"
+                BorderBrush="#666666"
+                BorderThickness="2"
+                VerticalAlignment="Center"
+                FontSize="18"/>
+
+
+        <ListBox ItemsSource="{Binding CategoryList}"
+                 SelectedItem="{Binding SelectedCategory}"
+                 Background="Transparent"
+                 Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Border Height="2" Background="#666666"/>
+                        <TextBlock Text="{Binding  CategoryName}"
+                                    Margin="20"/>
+                        <Border Height="2" Background="#666666"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--Central part-->
+        <Label  Grid.Column="1"
+                Content="{Binding SelectedCategory}"
+                Margin="30"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="Bold">
+        </Label>
+
+
+        <ListBox Grid.Column="1"
+                 Grid.Row="1"
+                 ItemsSource="{Binding NotesList}"
+                 Background="Transparent">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding NoteHeader}"
+                                   Margin="20,10,0,15"
+                                   FontWeight="SemiBold"
+                                   FontSize="16"/>
+                        <TextBlock Text="{Binding NoteDescription}"
+                                   Margin="20,0,0,30"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Created:"
+                                       Margin="20,0,0,0"/>
+                            <TextBlock Text="{Binding AddedTime}"
+                                       Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--Right part-->
+            
+
+
+    </Grid>
+
+
+
+</UserControl>

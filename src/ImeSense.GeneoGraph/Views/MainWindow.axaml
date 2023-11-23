@@ -40,6 +40,7 @@
         </Style>
         <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
             <Setter Property="Background" Value="#9dce8e"/>
+
         </Style>
     </Window.Styles>
 
@@ -63,7 +64,8 @@
 
             <TabItem Header="FAMILY TREE"
                      FontSize="16"
-                     Margin="5,5,5,0">
+                     Margin="5,5,5,0"
+                     VerticalAlignment="Top">
                 <v:FamTreeView/>
             </TabItem>
 
@@ -81,7 +83,9 @@
                      Margin="5,5,5,0"/>
             <TabItem Header="NOTES"
                      FontSize="16"
-                     Margin="5,5,5,0"/>
+                     Margin="5,5,5,0">
+                <v:NotesView/>
+            </TabItem>
         </TabControl>
 
 

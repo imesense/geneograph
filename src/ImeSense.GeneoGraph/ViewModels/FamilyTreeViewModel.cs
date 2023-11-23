@@ -18,6 +18,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
     public class FamilyTreeViewModel : ObservableObject {
 
         private Person? _selectedPerson;
+        private bool _sidebarStatus = false;
 
         private ObservableCollection<Person>? _peopleList;
 
@@ -25,6 +26,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
 
         private IRelayCommand? _addPersonOpenCommand;
         private IRelayCommand? _addPersonCloseCommand;
+        private IRelayCommand? _sideBarOpenCloseCommand;
 
         private static Window? _addPersonWindow;
 
@@ -32,11 +34,17 @@ namespace ImeSense.GeneoGraph.ViewModels {
             PeopleGender = new() {
             "Male", "Female", "Unknown",
             };
-            PeopleList = new ObservableCollection<Person>(Person.GetPeople());
+
+            PeopleList = Person.GetPeople();
 
         }
 
         public List<string> PeopleGender { get; set; }
+
+        public bool SidebarStatus {
+            get => _sidebarStatus;
+            set => SetProperty(ref _sidebarStatus, value);
+        }
 
         public ObservableCollection<Person>? PeopleList {
             get => _peopleList;
@@ -55,6 +63,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
 
         public IRelayCommand AddPersonOpenCommand => _addPersonOpenCommand ??= new RelayCommand(AddPersonOpen);
         public IRelayCommand AddPersonCloseCommand => _addPersonCloseCommand ??= new RelayCommand(AddPersonClose);
+        public IRelayCommand SideBarOpenCloseCommand => _sideBarOpenCloseCommand ??= new RelayCommand(SideBarOpenClose);
 
         public static void AddPersonOpen() {
             _addPersonWindow = new NewPerson();
@@ -64,6 +73,23 @@ namespace ImeSense.GeneoGraph.ViewModels {
 
         public static void AddPersonClose() {
             _addPersonWindow.Close();
+        }
+
+        public void SideBarOpenClose() 
+        {
+           if (SidebarStatus == false && SelectedPerson == null) 
+            {
+                SelectedPerson = PeopleList.First();
+                SidebarStatus = true;
+            }
+           else if (SidebarStatus == false)
+            {
+                SidebarStatus = true;
+            }
+           else 
+           {
+                SidebarStatus = false;
+           }
         }
     }
 }
