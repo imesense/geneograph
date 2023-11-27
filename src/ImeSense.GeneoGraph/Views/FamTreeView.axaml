@@ -32,8 +32,8 @@
         <Border Background="#171717">
             <StackPanel Orientation="Vertical">
                 <Button
-                        Width="50"
-                        Height="50"
+                        Width="45"
+                        Height="45"
                         Margin="10"
                         Background="Transparent"
                         Command="{Binding AddPersonOpen}">
@@ -46,17 +46,17 @@
                         Margin="5,0,5,0"/>
 
                 <Button
-                        Width="50"
-                        Height="50"
-                        Margin="10,10,0,5"
+                        Width="45"
+                        Height="45"
+                        Margin="10,10,0,0"
                         Background="Transparent">
                     <Image Source="..\Assets\Buttons\undo.png"
                            Stretch="Uniform"/>
                 </Button>
 
                 <Button
-                        Width="50"
-                        Height="50"
+                        Width="45"
+                        Height="45"
                         Margin="10,5,0,10"
                         Background="Transparent">
                     <Image Source="..\Assets\Buttons\redo.png"
@@ -68,18 +68,18 @@
                         Margin="5,0,5,0"/>
 
                 <Button
-                        Width="50"
-                        Height="50"
-                        Margin="10,5,0,10"
+                        Width="45"
+                        Height="45"
+                        Margin="10,5,0,0"
                         Background="Transparent">
                     <Image Source="..\Assets\Buttons\download.png"
                            Stretch="Uniform"/>
                 </Button>
 
                 <Button
-                        Width="50"
-                        Height="50"
-                        Margin="10,5,0,10"
+                        Width="45"
+                        Height="45"
+                        Margin="10,5,0,0"
                         Background="Transparent">
                     <Image Source="..\Assets\Buttons\print.png"
                            Stretch="Uniform"/>

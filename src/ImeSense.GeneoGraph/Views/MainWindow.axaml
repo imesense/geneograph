@@ -72,7 +72,7 @@
             <TabItem Header="PERSON DETAILS"
                      FontSize="16"
                      Margin="5,5,5,0">
-                <vt:PeopleListView/>
+                <v:PersonDetailsView/>
             </TabItem>
             
             <TabItem Header="ALBUMS"
@@ -80,7 +80,9 @@
                      Margin="5,5,5,0"/>
             <TabItem Header="FILES"
                      FontSize="16"
-                     Margin="5,5,5,0"/>
+                     Margin="5,5,5,0">
+                <v:FilesView/>
+            </TabItem>
             <TabItem Header="NOTES"
                      FontSize="16"
                      Margin="5,5,5,0">
@@ -93,7 +95,7 @@
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
                Width="40"
-               Margin="5"/>
+               Margin="12,5,5,5"/>
 
         
     </Grid>

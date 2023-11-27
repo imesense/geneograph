@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using ImeSense.GeneoGraph.Models;
 
@@ -14,9 +15,13 @@ namespace ImeSense.GeneoGraph.ViewModels {
     {
         private ObservableCollection<NoteCategory> _categoryList;
         private ObservableCollection<Note> _notesList;
+        private List<Note> _filteredNotes;
 
-        private string _selectedCategory;
-        private string _selectedNote;
+        private NoteCategory _selectedCategory;
+        private Note _selectedNote;
+
+        private IRelayCommand? _addNoteCommand;
+
 
         public NotesViewModel() 
         {
@@ -41,7 +46,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
                 NoteHeader = "Test Note",
                 NoteDescription= "Test Lorem Ipsum",
                 NoteText= "Test Lorem Ipsum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                Category= "All notes",
+                Category= CategoryList[0],
                 AddedTime= DateTime.Now
                 },
                 new Note
@@ -50,12 +55,24 @@ namespace ImeSense.GeneoGraph.ViewModels {
                 NoteHeader = "Test Note 2",
                 NoteDescription= "Test Lorem Ipsum 2",
                 NoteText= "Test Lorem Ipsum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                Category= "All notes",
+                Category= CategoryList[0],
+                AddedTime= DateTime.Now
+                },
+                new Note
+                {
+                NoteId = 2,
+                NoteHeader = "Test Note 3",
+                NoteDescription= "Test Lorem Ipsum 3",
+                NoteText= "Test Lorem Ipsum This is an example of some long text although it might not be very long actually, but I try to make it look as long as I can",
+                Category= CategoryList[0],
                 AddedTime= DateTime.Now
                 },
             };
 
-            SelectedCategory = CategoryList[0].CategoryName;
+            SelectedCategory = CategoryList[0];
+
+            FilteredNotes = NotesList.Where(note => note.Category == SelectedCategory).ToList();
+
 
         }
 
@@ -69,15 +86,36 @@ namespace ImeSense.GeneoGraph.ViewModels {
             set => SetProperty(ref _notesList, value);
         }
 
-        public string SelectedCategory {
+        public List<Note> FilteredNotes {
+            get => _filteredNotes;
+            set => SetProperty(ref _filteredNotes, value);
+        }
+
+        public NoteCategory SelectedCategory {
             get => _selectedCategory;
             set => SetProperty(ref _selectedCategory, value);
         }
 
-        public string SelectedNote {
+        public Note SelectedNote {
             get => _selectedNote;
             set => SetProperty(ref _selectedNote, value);
         }
+
+        public IRelayCommand AddNoteCommand => _addNoteCommand ??= new RelayCommand(AddNote);
+
+        public void AddNote() 
+        {
+            NotesList.Add(new Note() 
+            {
+                NoteId = NotesList.Last().NoteId + 1,
+                NoteHeader = "New note",
+                Category = SelectedCategory,
+                AddedTime= DateTime.Now
+        });
+            SelectedNote= NotesList.Last();
+        }
+
+
 
     }
 }
