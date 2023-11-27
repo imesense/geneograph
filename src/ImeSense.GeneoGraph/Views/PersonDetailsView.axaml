@@ -1,0 +1,113 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+             x:Class="ImeSense.GeneoGraph.Views.PersonDetailsView"
+             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+             FontFamily="Cascadia Mono"
+             FontSize="14"
+             Background="#121212"
+             Foreground="#dedede">
+
+    <UserControl.DataContext>
+        <vm:FamilyTreeViewModel />
+    </UserControl.DataContext>
+
+    <Grid ColumnDefinitions="*, Auto">
+        <Border CornerRadius="15"
+                Width="400"
+                Margin="15"
+                HorizontalAlignment="Left">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,40%"
+                                     EndPoint="-148%,100%"
+                                     SpreadMethod="Reflect">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.1" 
+                                      Color="#2c2c2c" />
+                        <GradientStop Offset="0.8" 
+                                      Color="#101010"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <!--Photo section-->
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20">
+                <Border Width="150"
+                        Height="200"
+                        Grid.Row="1"
+                        Grid.RowSpan="3"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        BorderThickness="2"
+                        BorderBrush="#dedede">
+                    <Label Content="+"
+                           Grid.Row="1"
+                           Grid.RowSpan="3"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="50"/>
+                </Border>
+
+                <StackPanel Orientation="Vertical"
+                            Margin="20,0,0,0">
+                    <Label Content="{Binding SelectedPerson.FullName}"/>
+                    <Label Content="{Binding SelectedPerson.BirthDate, StringFormat=dd-MMM-yyyy}"
+                           FontSize="12"
+                           Margin="0,10,0,0"/>
+                    <Label Content="{Binding SelectedPerson.BirthPlace}"
+                           FontSize="12"
+                           Margin="0,5,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        
+        <!--Search bar-->
+            <Grid Grid.Column="1"
+                RowDefinitions="Auto,*"
+                Background="#171717">
+
+                <TextBox Watermark="Find person..."
+                         BorderThickness="1"
+                         FontSize="10"
+                         VerticalContentAlignment="Center"
+                         Padding="40,0,40,0"
+                         Margin="10"
+                         Background="#121212"
+                         BorderBrush="#9dce8e"
+                         CornerRadius="25">
+                    <TextBox.Background>
+                        <ImageBrush Source="..\Assets\Buttons\search.png"
+                                    Stretch="Uniform"
+                                    AlignmentX="Left">
+                            <ImageBrush.Transform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                    <TranslateTransform X="8" Y="7"/>
+                                </TransformGroup>
+                            </ImageBrush.Transform>
+                        </ImageBrush>
+                    </TextBox.Background>
+                </TextBox>
+                
+                        <ListBox ItemsSource="{Binding PeopleList}"
+                                 SelectedItem="{Binding SelectedPerson}"
+                                 SelectedIndex="{Binding SelectedIndex}"
+                                 Grid.Row="1"
+                                 Background="Transparent"
+                                 Foreground="#dedede">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" FontSize="12"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+            </Grid>
+    </Grid>
+    
+
+</UserControl>

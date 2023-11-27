@@ -6,21 +6,21 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Xml.Linq;
 
 namespace ImeSense.GeneoGraph.Models {
     public class FileExplorer
     {
-        public static List<string> ListDirectory(string? dirName)
-        {
-            DirectoryInfo directory = new DirectoryInfo(dirName);
-            return directory.GetDirectories().Select(x => x.Name).ToList();
+        public ObservableCollection<FileExplorer>? SubNodes { get; }
+        public string Title { get; }
 
+        public FileExplorer(string title) {
+            Title = title;
         }
-        public static List<string> ListFiles(string? dirName)
-        {
-            DirectoryInfo directory = new DirectoryInfo(dirName);
-            return directory.GetFiles().Select(x => x.Name).ToList();
 
+        public FileExplorer(string title, ObservableCollection<FileExplorer> subNodes) {
+            Title = title;
+            SubNodes = subNodes;
         }
 
     }

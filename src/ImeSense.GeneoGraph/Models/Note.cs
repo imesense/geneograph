@@ -16,7 +16,7 @@ namespace ImeSense.GeneoGraph.Models {
         public string NoteText { get; set; }
         public string NoteDescription { get; set; }
 
-        public string Category { get; set; }
+        public NoteCategory Category { get; set; }
 
         public DateTime AddedTime { get; set; }
 
