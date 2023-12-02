@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Reactive;
+
 using Avalonia.Controls;
-using CommunityToolkit.Mvvm.Input;
-using Dock.Model.Mvvm.Controls;
-using System.Linq;
+
+using Dock.Model.ReactiveUI.Controls;
+
 using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Views;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels.Tools;
 
@@ -15,10 +18,6 @@ public class PeopleListViewModel : Tool {
     private Person? _selectedPerson;
 
     private int _selectedIndex;
-
-    private IRelayCommand? _addPersonOpenCommand;
-    private IRelayCommand? _addPersonCloseCommand;
-    private IRelayCommand? _addPersonUpdateCommand;
 
     private static Window? _addPersonWindow;
 
@@ -83,17 +82,17 @@ public class PeopleListViewModel : Tool {
 
     public Person? SelectedPerson {
         get => _selectedPerson;
-        set => SetProperty(ref _selectedPerson, value);
+        set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
     }
 
     public int SelectedIndex {
         get => _selectedIndex;
-        set => SetProperty(ref _selectedIndex, value);
+        set => this.RaiseAndSetIfChanged(ref _selectedIndex, value);
     }
 
-    public IRelayCommand AddPersonOpenCommand => _addPersonOpenCommand ??= new RelayCommand(AddPersonOpen);
-    public IRelayCommand AddPersonCloseCommand => _addPersonCloseCommand ??= new RelayCommand(AddPersonClose);
-    public IRelayCommand AddPersonUpdateCommand => _addPersonUpdateCommand ??= new RelayCommand(AddPersonUpdate);
+    public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
+    public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
+    public IReactiveCommand<Unit, Unit> AddPersonUpdateCommand { get; set; } = ReactiveCommand.Create(AddPersonUpdate);
 
     public static void AddPersonOpen() {
         _addPersonWindow = new NewPerson();

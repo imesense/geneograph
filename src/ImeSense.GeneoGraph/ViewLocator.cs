@@ -3,9 +3,9 @@ using System;
 using Avalonia.Controls.Templates;
 using Avalonia.Controls;
 
-using CommunityToolkit.Mvvm.ComponentModel;
-
 using Dock.Model.Core;
+
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph;
 
@@ -18,13 +18,14 @@ public class ViewLocator : IDataTemplate {
         if (type != null) {
             return (Control) Activator.CreateInstance(type)!;
         }
-
         return new TextBlock {
             Text = name,
         };
     }
 
     public bool Match(object? data) {
-        return data is ObservableObject || data is IDockable;
+        return
+            data is ReactiveObject ||
+            data is IDockable;
     }
 }

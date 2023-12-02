@@ -1,4 +1,6 @@
-using Dock.Model.Mvvm.Controls;
+using Dock.Model.ReactiveUI.Controls;
+
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels.Documents;
 
@@ -7,6 +9,6 @@ public class FileViewModel : Document {
 
     public string? Path {
         get => _path;
-        set => SetProperty(ref _path, value);
+        set => this.RaiseAndSetIfChanged(ref _path, value);
     }
 }

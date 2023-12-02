@@ -1,17 +1,17 @@
-using CommunityToolkit.Mvvm.ComponentModel;
-
 using Dock.Model.Controls;
 using Dock.Model.Core;
 
+using ReactiveUI;
+
 namespace ImeSense.GeneoGraph.ViewModels;
 
-public class MainViewModel : ObservableObject {
+public class MainViewModel : ReactiveObject {
     private readonly IFactory? _factory;
     private IRootDock? _layout;
 
     public IRootDock? Layout {
         get => _layout;
-        set => SetProperty(ref _layout, value);
+        set => this.RaiseAndSetIfChanged(ref _layout, value);
     }
 
     public MainViewModel() {
