@@ -9,7 +9,7 @@ namespace ImeSense.GeneoGraph.Models {
     {
         public int Id { get; set; }
 
-        public string CategoryName { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
 
         public override string ToString() 
         { 

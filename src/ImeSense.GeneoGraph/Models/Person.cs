@@ -114,12 +114,15 @@ public class Person {
     };
 
     public static ObservableCollection<Person> GetPeople () {
-        return PeopleList;
+        if (PeopleList is not null) {
+            return PeopleList;
+        }
+        return new ObservableCollection<Person>();
     }
 
 
     public static void AddPerson() {
-        PeopleList.Add(new Person() {
+        PeopleList?.Add(new Person() {
             Id = 1,
             Gender = "Male",
             FirstName = "Nikita",

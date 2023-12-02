@@ -11,12 +11,12 @@ namespace ImeSense.GeneoGraph.Models {
 
         public int NoteId { get; set; }
 
-        public string NoteHeader { get; set; }
+        public string NoteHeader { get; set; } = string.Empty;
 
-        public string NoteText { get; set; }
-        public string NoteDescription { get; set; }
+        public string NoteText { get; set; } = string.Empty;
+        public string NoteDescription { get; set; } = string.Empty;
 
-        public NoteCategory Category { get; set; }
+        public NoteCategory Category { get; set; } = new();
 
         public DateTime AddedTime { get; set; }
 

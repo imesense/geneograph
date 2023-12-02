@@ -79,7 +79,7 @@ public class PeopleListViewModel : Tool {
 
     public List<string> PeopleSex { get; set; }
 
-    public static ObservableCollection<Person> PeopleList { get; set; }
+    public static ObservableCollection<Person> PeopleList { get; set; } = new();
 
     public Person? SelectedPerson {
         get => _selectedPerson;
@@ -101,7 +101,7 @@ public class PeopleListViewModel : Tool {
     }
 
     public static void AddPersonClose() {
-        _addPersonWindow.Close();
+        _addPersonWindow?.Close();
     }
 
     public static void AddPersonUpdate() {
