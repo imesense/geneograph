@@ -13,12 +13,12 @@ using ImeSense.GeneoGraph.Models;
 namespace ImeSense.GeneoGraph.ViewModels {
     public class NotesViewModel : ObservableObject 
     {
-        private ObservableCollection<NoteCategory> _categoryList;
-        private ObservableCollection<Note> _notesList;
-        private List<Note> _filteredNotes;
+        private ObservableCollection<NoteCategory> _categoryList = new();
+        private ObservableCollection<Note> _notesList = new();
+        private List<Note> _filteredNotes = new();
 
-        private NoteCategory _selectedCategory;
-        private Note _selectedNote;
+        private NoteCategory _selectedCategory = new();
+        private Note _selectedNote = new();
 
         private IRelayCommand? _addNoteCommand;
 

@@ -72,14 +72,14 @@ namespace ImeSense.GeneoGraph.ViewModels {
         }
 
         public static void AddPersonClose() {
-            _addPersonWindow.Close();
+            _addPersonWindow?.Close();
         }
 
         public void SideBarOpenClose() 
         {
            if (SidebarStatus == false && SelectedPerson == null) 
             {
-                SelectedPerson = PeopleList.First();
+                SelectedPerson = PeopleList?.FirstOrDefault();
                 SidebarStatus = true;
             }
            else if (SidebarStatus == false)

@@ -134,9 +134,9 @@ public class NewPersonViewModel : ObservableObject {
        public static void AddPerson(string gender, string firstname, string? lastname, string? patronym, string? maidenname,
     bool isDeceased, DateTime birthdate, string? birthplace, DateTime deathdate, string? deathplace, string? deathcause, string? burialplace) {
         var list = Person.PeopleList;
-        var newID = list.Last().Id + 1;
-        list.Add(new Person() {
-            Id = newID,
+        var newID = list?.Last().Id + 1;
+        list?.Add(new Person() {
+            Id = newID ?? 0,
             Gender = gender,
             FirstName = firstname,
             LastName = lastname,
