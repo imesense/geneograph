@@ -8,3 +8,6 @@
 # Build results
 obj/
 bin/
+
+# Generated files
+FodyWeavers.xsd

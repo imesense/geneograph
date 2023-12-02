@@ -9,17 +9,10 @@ using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Views;
 
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels {
     public class FamilyTreeViewModel : ReactiveObject {
-
-        private Person? _selectedPerson;
-        private bool _sidebarStatus = false;
-
-        private ObservableCollection<Person>? _peopleList;
-
-        private int _selectedIndex;
-
         private static Window? _addPersonWindow;
 
         public FamilyTreeViewModel() {
@@ -34,25 +27,17 @@ namespace ImeSense.GeneoGraph.ViewModels {
 
         public List<string> PeopleGender { get; set; }
 
-        public bool SidebarStatus {
-            get => _sidebarStatus;
-            set => this.RaiseAndSetIfChanged(ref _sidebarStatus, value);
-        }
+        [Reactive]
+        public bool SidebarStatus { get; set; } = false;
 
-        public ObservableCollection<Person>? PeopleList {
-            get => _peopleList;
-            set => this.RaiseAndSetIfChanged(ref _peopleList, value);
-        }
+        [Reactive]
+        public ObservableCollection<Person>? PeopleList { get; set; }
 
-        public Person? SelectedPerson {
-            get => _selectedPerson;
-            set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
-        }
+        [Reactive]
+        public Person? SelectedPerson { get; set; }
 
-        public int SelectedIndex {
-            get => _selectedIndex;
-            set => this.RaiseAndSetIfChanged(ref _selectedIndex, value);
-        }
+        [Reactive]
+        public int SelectedIndex { get; set; }
 
         public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
         public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
