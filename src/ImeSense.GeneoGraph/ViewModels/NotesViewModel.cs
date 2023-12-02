@@ -44,7 +44,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
                 NoteHeader = "Test Note 2",
                 NoteDescription= "Test Lorem Ipsum 2",
                 NoteText= "Test Lorem Ipsum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                Category= CategoryList[0],
+                Category= CategoryList[1],
                 AddedTime= DateTime.Now
                 },
                 new Note
@@ -53,17 +53,22 @@ namespace ImeSense.GeneoGraph.ViewModels {
                 NoteHeader = "Test Note 3",
                 NoteDescription= "Test Lorem Ipsum 3",
                 NoteText= "Test Lorem Ipsum This is an example of some long text although it might not be very long actually, but I try to make it look as long as I can",
-                Category= CategoryList[0],
+                Category= CategoryList[2],
                 AddedTime= DateTime.Now
                 },
             };
 
             SelectedCategory = CategoryList[0];
 
-            FilteredNotes = NotesList.Where(note => note.Category == SelectedCategory).ToList();
-
             AddNoteCommand = ReactiveCommand.Create(AddNote);
         }
+
+
+        private NoteCategory _selectedCategory;
+
+        private Note _selectedNote;
+
+        private List<Note> _filteredNotes;
 
         [Reactive]
         public ObservableCollection<NoteCategory> CategoryList { get; set; } = new();
@@ -72,13 +77,27 @@ namespace ImeSense.GeneoGraph.ViewModels {
         public ObservableCollection<Note> NotesList { get; set; } = new();
 
         [Reactive]
-        public List<Note> FilteredNotes { get; set; } = new();
+        public List<Note> FilteredNotes 
+        {
+            get => _filteredNotes;
+            set => this.RaiseAndSetIfChanged(ref _filteredNotes, value);
+        }
+
+        public NoteCategory SelectedCategory 
+        {
+            get => _selectedCategory;
+            set {
+                this.RaiseAndSetIfChanged(ref _selectedCategory, value);
+                UpdateNotes();
+            }
+        }
 
         [Reactive]
-        public NoteCategory SelectedCategory { get; set; } = new();
-
-        [Reactive]
-        public Note SelectedNote { get; set; } = new();
+        public Note SelectedNote 
+        {
+            get => _selectedNote;
+            set => this.RaiseAndSetIfChanged(ref _selectedNote, value);
+        }
 
         public IReactiveCommand<Unit, Unit> AddNoteCommand { get; set; }
 
@@ -91,9 +110,14 @@ namespace ImeSense.GeneoGraph.ViewModels {
                 Category = SelectedCategory,
                 AddedTime= DateTime.Now
         });
-            SelectedNote= NotesList.Last();
+            SelectedNote = NotesList.Last();
+            UpdateNotes();
         }
 
+        private void UpdateNotes() {
+            FilteredNotes = NotesList.Where(note => note.Category == _selectedCategory).ToList();
+
+        }
 
 
     }

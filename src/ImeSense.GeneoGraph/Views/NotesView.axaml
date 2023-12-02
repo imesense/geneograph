@@ -108,7 +108,7 @@
 
         <ListBox Grid.Column="1"
                  Grid.Row="1"
-                 ItemsSource="{Binding NotesList}"
+                 ItemsSource="{Binding FilteredNotes}"
                  SelectedItem="{Binding SelectedNote}"
                  Background="Transparent">
             <ListBox.ItemTemplate>
