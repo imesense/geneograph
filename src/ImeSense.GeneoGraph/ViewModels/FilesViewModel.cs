@@ -1,21 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 using ImeSense.GeneoGraph.Models;
-using ImeSense.GeneoGraph.ViewModels.Tools;
-using ImeSense.GeneoGraph.Views;
 
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels {
-    public class FilesViewModel : ObservableObject 
-    {
+    public class FilesViewModel : ReactiveObject {
         public ObservableCollection<FileExplorer> Nodes { get; }
 
         public FilesViewModel() {

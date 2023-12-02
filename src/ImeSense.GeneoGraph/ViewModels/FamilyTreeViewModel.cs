@@ -1,21 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reactive;
 
-using Avalonia.Collections;
 using Avalonia.Controls;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Views;
 
+using ReactiveUI;
+
 namespace ImeSense.GeneoGraph.ViewModels {
-    public class FamilyTreeViewModel : ObservableObject {
+    public class FamilyTreeViewModel : ReactiveObject {
 
         private Person? _selectedPerson;
         private bool _sidebarStatus = false;
@@ -23,10 +19,6 @@ namespace ImeSense.GeneoGraph.ViewModels {
         private ObservableCollection<Person>? _peopleList;
 
         private int _selectedIndex;
-
-        private IRelayCommand? _addPersonOpenCommand;
-        private IRelayCommand? _addPersonCloseCommand;
-        private IRelayCommand? _sideBarOpenCloseCommand;
 
         private static Window? _addPersonWindow;
 
@@ -37,33 +29,34 @@ namespace ImeSense.GeneoGraph.ViewModels {
 
             PeopleList = Person.GetPeople();
 
+            SideBarOpenCloseCommand = ReactiveCommand.Create(SideBarOpenClose);
         }
 
         public List<string> PeopleGender { get; set; }
 
         public bool SidebarStatus {
             get => _sidebarStatus;
-            set => SetProperty(ref _sidebarStatus, value);
+            set => this.RaiseAndSetIfChanged(ref _sidebarStatus, value);
         }
 
         public ObservableCollection<Person>? PeopleList {
             get => _peopleList;
-            set => SetProperty(ref _peopleList, value);
+            set => this.RaiseAndSetIfChanged(ref _peopleList, value);
         }
 
         public Person? SelectedPerson {
             get => _selectedPerson;
-            set => SetProperty(ref _selectedPerson, value);
+            set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
         }
 
         public int SelectedIndex {
             get => _selectedIndex;
-            set => SetProperty(ref _selectedIndex, value);
+            set => this.RaiseAndSetIfChanged(ref _selectedIndex, value);
         }
 
-        public IRelayCommand AddPersonOpenCommand => _addPersonOpenCommand ??= new RelayCommand(AddPersonOpen);
-        public IRelayCommand AddPersonCloseCommand => _addPersonCloseCommand ??= new RelayCommand(AddPersonClose);
-        public IRelayCommand SideBarOpenCloseCommand => _sideBarOpenCloseCommand ??= new RelayCommand(SideBarOpenClose);
+        public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
+        public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
+        public IReactiveCommand<Unit, Unit> SideBarOpenCloseCommand { get; set; }
 
         public static void AddPersonOpen() {
             _addPersonWindow = new NewPerson();

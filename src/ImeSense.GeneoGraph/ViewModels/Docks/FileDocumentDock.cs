@@ -1,8 +1,8 @@
-using CommunityToolkit.Mvvm.Input;
-
-using Dock.Model.Mvvm.Controls;
+using Dock.Model.ReactiveUI.Controls;
 
 using ImeSense.GeneoGraph.ViewModels.Documents;
+
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels.Docks;
 
@@ -19,6 +19,6 @@ public class FileDocumentDock : DocumentDock {
     }
 
     public FileDocumentDock() {
-        CreateDocument = new RelayCommand(CreateNewDocument);
+        CreateDocument = ReactiveCommand.Create(CreateNewDocument);
     }
 }

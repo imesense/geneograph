@@ -1,22 +1,17 @@
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
-
-using Avalonia.Controls;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using System.Reactive;
 
 using ImeSense.GeneoGraph.Models;
-using ImeSense.GeneoGraph.ViewModels.Tools;
-using ImeSense.GeneoGraph.Views;
+
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels;
 
-public class NewPersonViewModel : ObservableObject {
+public class NewPersonViewModel : ReactiveObject {
 
-    public NewPersonViewModel() { 
-
+    public NewPersonViewModel() {
+        AddPersonCommand = ReactiveCommand.Create(AddPerson);
     }
 
     private bool _gendermale;
@@ -38,78 +33,75 @@ public class NewPersonViewModel : ObservableObject {
     private string? _deathcause;
     private string? _burialplace;
 
-    private IRelayCommand? _addPersonCommand;
-    private IRelayCommand? _addPersonCloseCommand;
-
     public bool GenderMale {
         get => _gendermale;
-        set => SetProperty(ref _gendermale, value);
+        set => this.RaiseAndSetIfChanged(ref _gendermale, value);
     }
 
     public bool GenderFemale {
         get => _genderfemale;
-        set => SetProperty(ref _genderfemale, value);
+        set => this.RaiseAndSetIfChanged(ref _genderfemale, value);
     }
 
     public string SelectedGender {
         get => _selectedgender;
-        set => SetProperty(ref _selectedgender, value);
+        set => this.RaiseAndSetIfChanged(ref _selectedgender, value);
     }
 
     public string? FirstName {
         get => _firstname;
-        set => SetProperty(ref _firstname, value);
+        set => this.RaiseAndSetIfChanged(ref _firstname, value);
     }
 
     public string? LastName {
         get => _lastname;
-        set => SetProperty(ref _lastname, value);
+        set => this.RaiseAndSetIfChanged(ref _lastname, value);
     }
 
     public string? Patronym {
         get => _patronym;
-        set => SetProperty(ref _patronym, value);
+        set => this.RaiseAndSetIfChanged(ref _patronym, value);
     }
 
     public string? MaidenName {
         get => _maidenname;
-        set => SetProperty(ref _maidenname, value);
+        set => this.RaiseAndSetIfChanged(ref _maidenname, value);
     }
 
     public bool IsDeceased {
         get => _isdeceased;
-        set => SetProperty(ref _isdeceased, value);
+        set => this.RaiseAndSetIfChanged(ref _isdeceased, value);
     }
 
     public DateTime BirthDate {
         get => _birthdate;
-        set => SetProperty(ref _birthdate, value);
+        set => this.RaiseAndSetIfChanged(ref _birthdate, value);
     }
 
     public string? BirthPlace {
         get => _birthplace;
-        set => SetProperty(ref _birthplace, value);
+        set => this.RaiseAndSetIfChanged(ref _birthplace, value);
     }
 
     public DateTime DeathDate {
         get => _deathdate;
-        set => SetProperty(ref _deathdate, value);
+        set => this.RaiseAndSetIfChanged(ref _deathdate, value);
     }
 
 
     public string? DeathPlace {
         get => _deathplace;
-        set => SetProperty(ref _deathplace, value);
+        set => this.RaiseAndSetIfChanged(ref _deathplace, value);
     }
 
     public string? DeathCause {
         get => _deathcause;
-        set => SetProperty(ref _deathcause, value);
+        set => this.RaiseAndSetIfChanged(ref _deathcause, value);
     }
 
     public string? BurialPlace {
         get => _burialplace;
-        set => SetProperty(ref _burialplace, value);
+        set => this.RaiseAndSetIfChanged(ref _burialplace, value);
     }
 
 
@@ -152,8 +144,8 @@ public class NewPersonViewModel : ObservableObject {
         });
     }
 
-    public IRelayCommand AddPersonCommand => _addPersonCommand ??= new RelayCommand(AddPerson);
-    public IRelayCommand AddPersonCloseCommand => _addPersonCloseCommand ??= new RelayCommand(AddPersonClose);
+    public IReactiveCommand<Unit, Unit> AddPersonCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
 
 
     public static void AddPersonClose() {
