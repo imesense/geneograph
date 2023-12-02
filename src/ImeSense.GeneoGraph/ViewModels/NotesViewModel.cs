@@ -7,17 +7,11 @@ using System.Reactive;
 using ImeSense.GeneoGraph.Models;
 
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels {
     public class NotesViewModel : ReactiveObject 
     {
-        private ObservableCollection<NoteCategory> _categoryList = new();
-        private ObservableCollection<Note> _notesList = new();
-        private List<Note> _filteredNotes = new();
-
-        private NoteCategory _selectedCategory = new();
-        private Note _selectedNote = new();
-
         public NotesViewModel() 
         {
             CategoryList = new()
@@ -71,30 +65,20 @@ namespace ImeSense.GeneoGraph.ViewModels {
             AddNoteCommand = ReactiveCommand.Create(AddNote);
         }
 
-        public ObservableCollection<NoteCategory> CategoryList {
-            get => _categoryList;
-            set => this.RaiseAndSetIfChanged(ref _categoryList, value);
-        }
+        [Reactive]
+        public ObservableCollection<NoteCategory> CategoryList { get; set; } = new();
 
-        public ObservableCollection<Note> NotesList {
-            get => _notesList;
-            set => this.RaiseAndSetIfChanged(ref _notesList, value);
-        }
+        [Reactive]
+        public ObservableCollection<Note> NotesList { get; set; } = new();
 
-        public List<Note> FilteredNotes {
-            get => _filteredNotes;
-            set => this.RaiseAndSetIfChanged(ref _filteredNotes, value);
-        }
+        [Reactive]
+        public List<Note> FilteredNotes { get; set; } = new();
 
-        public NoteCategory SelectedCategory {
-            get => _selectedCategory;
-            set => this.RaiseAndSetIfChanged(ref _selectedCategory, value);
-        }
+        [Reactive]
+        public NoteCategory SelectedCategory { get; set; } = new();
 
-        public Note SelectedNote {
-            get => _selectedNote;
-            set => this.RaiseAndSetIfChanged(ref _selectedNote, value);
-        }
+        [Reactive]
+        public Note SelectedNote { get; set; } = new();
 
         public IReactiveCommand<Unit, Unit> AddNoteCommand { get; set; }
 

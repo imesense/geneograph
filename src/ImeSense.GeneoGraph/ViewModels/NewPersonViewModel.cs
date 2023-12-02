@@ -5,106 +5,56 @@ using System.Reactive;
 using ImeSense.GeneoGraph.Models;
 
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels;
 
 public class NewPersonViewModel : ReactiveObject {
-
     public NewPersonViewModel() {
         AddPersonCommand = ReactiveCommand.Create(AddPerson);
     }
 
-    private bool _gendermale;
-    private bool _genderfemale;
+    [Reactive]
+    public bool GenderMale { get; set; }
 
-    private string _selectedgender = "Unknown";
-    private string? _firstname;
-    private string? _lastname;
-    private string? _patronym;
-    private string? _maidenname;
+    [Reactive]
+    public bool GenderFemale { get; set; }
 
-    private bool _isdeceased = false;
+    [Reactive]
+    public string SelectedGender { get; set; } = "Unknown";
 
-    private DateTime _birthdate;
-    private string? _birthplace;
+    [Reactive]
+    public string? FirstName { get; set; }
 
-    private DateTime _deathdate;
-    private string? _deathplace;
-    private string? _deathcause;
-    private string? _burialplace;
+    [Reactive]
+    public string? LastName { get; set; }
 
-    public bool GenderMale {
-        get => _gendermale;
-        set => this.RaiseAndSetIfChanged(ref _gendermale, value);
-    }
+    [Reactive]
+    public string? Patronym { get; set; }
 
-    public bool GenderFemale {
-        get => _genderfemale;
-        set => this.RaiseAndSetIfChanged(ref _genderfemale, value);
-    }
+    [Reactive]
+    public string? MaidenName { get; set; }
 
-    public string SelectedGender {
-        get => _selectedgender;
-        set => this.RaiseAndSetIfChanged(ref _selectedgender, value);
-    }
+    [Reactive]
+    public bool IsDeceased { get; set; } = false;
 
-    public string? FirstName {
-        get => _firstname;
-        set => this.RaiseAndSetIfChanged(ref _firstname, value);
-    }
+    [Reactive]
+    public DateTime BirthDate { get; set; }
 
-    public string? LastName {
-        get => _lastname;
-        set => this.RaiseAndSetIfChanged(ref _lastname, value);
-    }
+    [Reactive]
+    public string? BirthPlace { get; set; }
 
-    public string? Patronym {
-        get => _patronym;
-        set => this.RaiseAndSetIfChanged(ref _patronym, value);
-    }
+    [Reactive]
+    public DateTime DeathDate { get; set; }
 
-    public string? MaidenName {
-        get => _maidenname;
-        set => this.RaiseAndSetIfChanged(ref _maidenname, value);
-    }
+    [Reactive]
+    public string? DeathPlace { get; set; }
 
-    public bool IsDeceased {
-        get => _isdeceased;
-        set => this.RaiseAndSetIfChanged(ref _isdeceased, value);
-    }
+    [Reactive]
+    public string? DeathCause { get; set; }
 
-    public DateTime BirthDate {
-        get => _birthdate;
-        set => this.RaiseAndSetIfChanged(ref _birthdate, value);
-    }
-
-    public string? BirthPlace {
-        get => _birthplace;
-        set => this.RaiseAndSetIfChanged(ref _birthplace, value);
-    }
-
-    public DateTime DeathDate {
-        get => _deathdate;
-        set => this.RaiseAndSetIfChanged(ref _deathdate, value);
-    }
-
-
-    public string? DeathPlace {
-        get => _deathplace;
-        set => this.RaiseAndSetIfChanged(ref _deathplace, value);
-    }
-
-    public string? DeathCause {
-        get => _deathcause;
-        set => this.RaiseAndSetIfChanged(ref _deathcause, value);
-    }
-
-    public string? BurialPlace {
-        get => _burialplace;
-        set => this.RaiseAndSetIfChanged(ref _burialplace, value);
-    }
-
-
+    [Reactive]
+    public string? BurialPlace { get; set; }
     private void GenderSelector() {
         if (GenderMale == true) {
             SelectedGender = "Male";

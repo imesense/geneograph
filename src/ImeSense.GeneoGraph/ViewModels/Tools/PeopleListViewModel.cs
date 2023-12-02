@@ -11,14 +11,11 @@ using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Views;
 
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels.Tools;
 
 public class PeopleListViewModel : Tool {
-    private Person? _selectedPerson;
-
-    private int _selectedIndex;
-
     private static Window? _addPersonWindow;
 
     public PeopleListViewModel() {
@@ -80,15 +77,11 @@ public class PeopleListViewModel : Tool {
 
     public static ObservableCollection<Person> PeopleList { get; set; } = new();
 
-    public Person? SelectedPerson {
-        get => _selectedPerson;
-        set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
-    }
+    [Reactive]
+    public Person? SelectedPerson { get; set; }
 
-    public int SelectedIndex {
-        get => _selectedIndex;
-        set => this.RaiseAndSetIfChanged(ref _selectedIndex, value);
-    }
+    [Reactive]
+    public int SelectedIndex { get; set; }
 
     public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
     public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
