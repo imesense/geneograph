@@ -1,0 +1,158 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        x:Class="ImeSense.GeneoGraph.Views.AddNoteWindow"
+        d:DesignWidth="950"
+        d:DesignHeight="650"
+        xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
+        xmlns:views="using:ImeSense.GeneoGraph.Views"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Width="950"
+        Height="650"
+        FontSize="14"
+        FontFamily="Cascadia Mono"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Foreground="#dedede">
+
+    <Window.DataContext>
+        <vm:AddNoteViewModel/>
+    </Window.DataContext>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Styles>
+
+    <Border CornerRadius="5"
+        Background="#171717"
+        BorderBrush="#3d3d3d"
+        BorderThickness="1">
+
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, *, Auto"
+              Margin="20">
+            <Label
+                   HorizontalAlignment="Stretch"
+                   HorizontalContentAlignment="Center"
+                   FontSize="18"
+                   BorderBrush="#dedede"
+                   Padding="0,0,0,20"
+                   BorderThickness="0,0,0,1">Add note</Label>
+            
+            <Grid Grid.Row="1"
+                  RowDefinitions="Auto,Auto"
+                  ColumnDefinitions="Auto,*"
+                        Margin="0, 20, 0, 0"
+                        HorizontalAlignment="Stretch">
+                <Label>
+                    Category
+                </Label>
+                
+                <ComboBox Grid.Row="1"
+                          HorizontalAlignment="Stretch"
+                          Width="150"
+                          ItemsSource="{Binding CategoryList}"
+                          SelectedItem="{Binding SelectedCategory}"/>
+
+                <Button BorderThickness="2"
+                        CornerRadius="25"
+                        Command=""
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right">
+                    <Label FontSize="16"
+                           Padding="20,5,20,5"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="Black">
+                        + Connect
+                    </Label>
+                </Button>
+            </Grid>
+
+            <StackPanel Grid.Row="2"
+                        Margin="0, 20, 0, 0">
+                <Label>
+                    Header
+                </Label>
+                <TextBox FontSize="12"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding NewNoteHeader}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="3"
+                        Margin="0, 20, 0, 0">
+                <Label>
+                    Description
+                </Label>
+                <TextBox Watermark="Add note description (optional)"
+                         FontSize="12"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding NewNoteDescription}"/>
+            </StackPanel>     
+            
+            <StackPanel Grid.Row="4"
+                        Margin="0, 20, 0, 0">
+                <Label>
+                    Note Text
+                </Label>
+            </StackPanel>
+            
+            <TextBox Grid.Row="5"
+                     FontSize="12"
+                     VerticalContentAlignment="Top"
+                     Text="{Binding NewNoteText}"/>
+
+            <StackPanel Grid.Row="6"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button BorderThickness="2"
+                        CornerRadius="25"
+                        Margin="0,30,30,5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Command="{Binding AddNote}">
+                    <Label FontSize="16"
+                           Padding="20,5,20,5"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="Black">
+                        Save
+                    </Label>
+                </Button>
+                <Button BorderThickness="2"
+                        Foreground="#dedede"
+                        Background="Transparent"
+                        BorderBrush="#dedede"
+                        CornerRadius="25"
+                        Margin="30,30,0,5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Command="{Binding AddNoteClose}">
+                    <Label FontSize="16"
+                           HorizontalAlignment="Center"
+                           Padding="20,5,20,5">
+                        Cancel
+                    </Label>
+                </Button>
+            </StackPanel>
+            
+            
+            
+        </Grid>
+        
+    </Border>
+</Window>

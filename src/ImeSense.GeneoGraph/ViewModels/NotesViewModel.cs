@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
+using System.Security.Cryptography.X509Certificates;
+
+using Avalonia.Controls;
 
 using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Views;
+
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -12,63 +18,25 @@ using ReactiveUI.Fody.Helpers;
 namespace ImeSense.GeneoGraph.ViewModels {
     public class NotesViewModel : ReactiveObject 
     {
+
+        public static Window? _addNoteWindow;
+        public static Window? _addCategoryWindow;
         public NotesViewModel() 
         {
-            CategoryList = new()
-            {
-                new NoteCategory {
-                Id = 1,
-                CategoryName = "All notes"},
-                new NoteCategory {
-                Id = 2,
-                CategoryName = "Recent"},
-                new NoteCategory {
-                Id = 3,
-                CategoryName = "Custom"},
-            };
+            CategoryList = NoteCategory.CategoryList;
 
-            NotesList = new() 
-            {
-                new Note 
-                {
-                NoteId = 1,
-                NoteHeader = "Test Note",
-                NoteDescription= "Test Lorem Ipsum",
-                NoteText= "Test Lorem Ipsum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                Category= CategoryList[0],
-                AddedTime= DateTime.Now
-                },
-                new Note
-                {
-                NoteId = 2,
-                NoteHeader = "Test Note 2",
-                NoteDescription= "Test Lorem Ipsum 2",
-                NoteText= "Test Lorem Ipsum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                Category= CategoryList[1],
-                AddedTime= DateTime.Now
-                },
-                new Note
-                {
-                NoteId = 2,
-                NoteHeader = "Test Note 3",
-                NoteDescription= "Test Lorem Ipsum 3",
-                NoteText= "Test Lorem Ipsum This is an example of some long text although it might not be very long actually, but I try to make it look as long as I can",
-                Category= CategoryList[2],
-                AddedTime= DateTime.Now
-                },
-            };
+            NotesList = Note.NotesList;
 
             SelectedCategory = CategoryList[0];
 
-            AddNoteCommand = ReactiveCommand.Create(AddNote);
+            AddNoteOpenCommand = ReactiveCommand.Create(AddNoteOpen);
+            AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
+
+
         }
 
-
         private NoteCategory _selectedCategory;
-
         private Note _selectedNote;
-
-        private List<Note> _filteredNotes;
 
         [Reactive]
         public ObservableCollection<NoteCategory> CategoryList { get; set; } = new();
@@ -77,11 +45,8 @@ namespace ImeSense.GeneoGraph.ViewModels {
         public ObservableCollection<Note> NotesList { get; set; } = new();
 
         [Reactive]
-        public List<Note> FilteredNotes 
-        {
-            get => _filteredNotes;
-            set => this.RaiseAndSetIfChanged(ref _filteredNotes, value);
-        }
+        public ObservableCollection<Note> FilteredNotes { get; set; } = new();
+
 
         public NoteCategory SelectedCategory 
         {
@@ -99,25 +64,26 @@ namespace ImeSense.GeneoGraph.ViewModels {
             set => this.RaiseAndSetIfChanged(ref _selectedNote, value);
         }
 
-        public IReactiveCommand<Unit, Unit> AddNoteCommand { get; set; }
-
-        public void AddNote() 
-        {
-            NotesList.Add(new Note() 
-            {
-                NoteId = NotesList.Last().NoteId + 1,
-                NoteHeader = "New note",
-                Category = SelectedCategory,
-                AddedTime= DateTime.Now
-        });
-            SelectedNote = NotesList.Last();
-            UpdateNotes();
+        public static void AddNoteOpen() {
+            _addNoteWindow = new AddNoteWindow();
+            _addNoteWindow.Show();
         }
+
 
         private void UpdateNotes() {
-            FilteredNotes = NotesList.Where(note => note.Category == _selectedCategory).ToList();
-
+            var filterupdate = NotesList.Where(note => note.Category == _selectedCategory);
+            FilteredNotes = new ObservableCollection<Note>(filterupdate);
         }
+
+        public static void AddCategoryOpen() {
+            _addCategoryWindow = new AddCategoryWindow();
+            _addCategoryWindow.Show();
+        }
+
+
+        public IReactiveCommand<Unit, Unit> AddNoteOpenCommand { get; set; }
+        public IReactiveCommand<Unit, Unit> AddCategoryOpenCommand { get; set; }
+
 
 
     }

@@ -32,7 +32,7 @@
                 Grid.RowSpan="2"/>
                         
         <Button Content=" +  Add note   "
-                Command="{Binding AddNoteCommand}"
+                Command="{Binding AddNoteOpen}"
                 Margin="20,30,20,30"
                 Padding="10"
                 CornerRadius="20"
@@ -41,36 +41,51 @@
                 BorderThickness="2"
                 VerticalAlignment="Center"
                 FontSize="14"/>
+        
+        
+        <StackPanel Grid.Row="1">
+            <ListBox ItemsSource="{Binding CategoryList}"
+                     SelectedItem="{Binding SelectedCategory}"
+                     Background="Transparent"
+                     BorderThickness="0,1,0,0"
+                     BorderBrush="#666666">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding  CategoryName}"
+                                        Margin="10"
+                                       FontSize="12"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="BorderBrush" Value="#666666"/>
+                    </Style>
+                    <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#121212"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="BorderBrush" Value="#666666"/>
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+
+            <Button Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    BorderBrush="#666666"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    Padding="20"
+                    Command="{Binding AddCategoryOpenCommand}">
+                + New Category
+            </Button>
 
 
-        <ListBox ItemsSource="{Binding CategoryList}"
-                 SelectedItem="{Binding SelectedCategory}"
-                 Background="Transparent"
-                 Grid.Row="1"
-                 BorderThickness="0,1,0,0"
-                 BorderBrush="#666666">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding  CategoryName}"
-                                    Margin="10"
-                                   FontSize="12"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.Styles>
-                <Style Selector="ListBoxItem">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                    <Setter Property="BorderBrush" Value="#666666"/>
-                </Style>
-                <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
-                    <Setter Property="Background" Value="#121212"/>
-                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                    <Setter Property="BorderBrush" Value="#666666"/>
-                </Style>
-            </ListBox.Styles>
-        </ListBox>
+        </StackPanel>
+
+
 
         <!--Central part-->
         <Label  Grid.Column="1"

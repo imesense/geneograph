@@ -1,0 +1,97 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="ImeSense.GeneoGraph.Views.AddCategoryWindow"
+        d:DesignWidth="500"
+        d:DesignHeight="300"
+        xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
+        xmlns:views="using:ImeSense.GeneoGraph.Views"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Width="500"
+        Height="300"
+        FontSize="14"
+        FontFamily="Cascadia Mono"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Foreground="#dedede">
+    <Window.DataContext>
+        <vm:AddNoteViewModel/>
+    </Window.DataContext>
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Styles>
+
+    <Border CornerRadius="5"
+            Background="#171717"
+            BorderBrush="#3d3d3d"
+            BorderThickness="1">
+
+        <Grid RowDefinitions="Auto, Auto, Auto"
+              Margin="20">
+            <Label
+                   HorizontalAlignment="Stretch"
+                   HorizontalContentAlignment="Center"
+                   FontSize="18"
+                   BorderBrush="#dedede"
+                   Padding="0,0,0,20"
+                   BorderThickness="0,0,0,1">Enter Category Name</Label>
+
+            <TextBox Grid.Row="1"
+                     FontSize="12"
+                     Margin="20,40,20,10"
+                     Padding="15"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Text="{Binding NewCategoryName}"/>
+
+            <StackPanel Grid.Row="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+                <Button BorderThickness="2"
+                        CornerRadius="25"
+                        Margin="0,30,30,5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Command="{Binding AddCategory}">
+                    <Label FontSize="16"
+                           Padding="20,5,20,5"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="Black">
+                        Save
+                    </Label>
+                </Button>
+                <Button BorderThickness="2"
+                        Foreground="#dedede"
+                        Background="Transparent"
+                        BorderBrush="#dedede"
+                        CornerRadius="25"
+                        Margin="30,30,0,5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Command="{Binding AddCategoryClose}">
+                    <Label FontSize="16"
+                           HorizontalAlignment="Center"
+                           Padding="20,5,20,5">
+                        Cancel
+                    </Label>
+                </Button>
+            </StackPanel>
+            
+        </Grid>
+    </Border>
+</Window>
