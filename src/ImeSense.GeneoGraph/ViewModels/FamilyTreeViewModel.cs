@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 
 using Avalonia.Controls;
 
@@ -14,6 +15,9 @@ using ReactiveUI.Fody.Helpers;
 namespace ImeSense.GeneoGraph.ViewModels {
     public class FamilyTreeViewModel : ReactiveObject {
         private static Window? _addPersonWindow;
+
+        private bool _sidebarStatus;
+        private Person? _selectedPerson;
 
         public FamilyTreeViewModel() {
             PeopleGender = new() {
@@ -28,13 +32,21 @@ namespace ImeSense.GeneoGraph.ViewModels {
         public List<string> PeopleGender { get; set; }
 
         [Reactive]
-        public bool SidebarStatus { get; set; } = false;
+        public bool SidebarStatus 
+        {
+            get => _sidebarStatus;
+            set => this.RaiseAndSetIfChanged(ref _sidebarStatus, value);
+        }
 
         [Reactive]
         public ObservableCollection<Person>? PeopleList { get; set; }
 
         [Reactive]
-        public Person? SelectedPerson { get; set; }
+        public Person? SelectedPerson 
+        {
+            get => _selectedPerson;
+            set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
+        }
 
         [Reactive]
         public int SelectedIndex { get; set; }
