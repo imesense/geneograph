@@ -141,7 +141,7 @@
             </Button>
 
             <DockPanel Grid.Column="2"
-                       IsVisible="{Binding SidebarStatus}">
+                       IsVisible="{Binding SidebarStatus, Mode=TwoWay}">
                 <Border Background="#171717"
                         Grid.Column="2">
                     <v:PropertiesView/>

@@ -32,7 +32,6 @@ namespace ImeSense.GeneoGraph.ViewModels {
             AddNoteOpenCommand = ReactiveCommand.Create(AddNoteOpen);
             AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
 
-
         }
 
         private NoteCategory _selectedCategory;
