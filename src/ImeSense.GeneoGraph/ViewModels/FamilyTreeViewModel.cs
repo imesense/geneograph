@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System;
 using System.Reactive;
 using System.Reactive.Linq;
-
 using Avalonia.Controls;
-
 using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Views;
 
@@ -15,8 +14,7 @@ using ReactiveUI.Fody.Helpers;
 namespace ImeSense.GeneoGraph.ViewModels {
     public class FamilyTreeViewModel : ReactiveObject {
         private static Window? _addPersonWindow;
-
-        private bool _sidebarStatus;
+        private bool _sidebarStatus = false;
         private Person? _selectedPerson;
 
         public FamilyTreeViewModel() {
@@ -24,10 +22,19 @@ namespace ImeSense.GeneoGraph.ViewModels {
             "Male", "Female", "Unknown",
             };
 
-            PeopleList = Person.GetPeople();
+            PeopleList = Person.PeopleList;
 
             SideBarOpenCloseCommand = ReactiveCommand.Create(SideBarOpenClose);
+
+            this.WhenAnyValue(x => x.SelectedPerson)
+                .Skip(2) // Skip initial null value
+                .Where(person => person != null)
+                .Subscribe(_ => SidebarStatus = true);
+
+            SidebarStatus = false;
+            SelectedPerson= null;
         }
+
 
         public List<string> PeopleGender { get; set; }
 

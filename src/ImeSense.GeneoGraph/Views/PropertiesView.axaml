@@ -44,7 +44,7 @@
 
             </StackPanel>
             
-            <Image Source="..\Assets\Profile\Profile_picture.png" Width="80"
+            <Image Source="{Binding SelectedPerson.ProfileImg}" Width="80"
                    Height="100"
                    Grid.Column="2"
                    Margin="10"/>

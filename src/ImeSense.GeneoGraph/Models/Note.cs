@@ -8,6 +8,7 @@ using ImeSense.GeneoGraph.ViewModels;
 
 using ReactiveUI.Fody.Helpers;
 using ImeSense.GeneoGraph.Models;
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.Models {
     public class Note {

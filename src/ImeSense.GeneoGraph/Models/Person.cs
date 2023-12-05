@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
+using Avalonia.Media.Imaging;
+
 using ImeSense.GeneoGraph.ViewModels;
 
 namespace ImeSense.GeneoGraph.Models;
@@ -31,6 +33,8 @@ public class Person {
     public string? DeathPlace { get; set; }
     public string? DeathCause { get; set; }
     public string? BurialPlace { get; set; }
+
+    public Bitmap? ProfileImg { get; set; }
 
 
     /// <summary>
@@ -72,6 +76,7 @@ public class Person {
             IsDeceased = false,
             BirthDate = new DateTime(1998,03,03),
             BirthPlace = "Kharkov, Ukraine"
+
         },
         new Person() {
             Id = 2,
@@ -113,23 +118,4 @@ public class Person {
         },
     };
 
-    public static ObservableCollection<Person> GetPeople () {
-        if (PeopleList is not null) {
-            return PeopleList;
-        }
-        return new ObservableCollection<Person>();
-    }
-
-
-    public static void AddPerson() {
-        PeopleList?.Add(new Person() {
-            Id = 1,
-            Gender = "Male",
-            FirstName = "Nikita",
-            LastName = "Lebedin",
-            IsDeceased = false,
-            BirthDate = new DateTime(1998, 03, 03),
-            BirthPlace = "Kharkov, Ukraine"
-        });
-    }
 }
