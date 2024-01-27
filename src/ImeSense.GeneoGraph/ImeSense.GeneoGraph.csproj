@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <OutputType>Library</OutputType>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+        <AvaloniaResource Include="Assets\Photos\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="FodyWeavers.xsd">
+            <DependentUpon>FodyWeavers.xml</DependentUpon>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.7" Condition="'$(Configuration)' == 'Debug'" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.7" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7" />
+        <PackageReference Include="Dock.Avalonia" Version="11.0.0.5" />
+        <PackageReference Include="Dock.Model.ReactiveUI" Version="11.0.0.5" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="ReactiveUI.Fody" Version="19.5.39" />
+    </ItemGroup>
+</Project>
