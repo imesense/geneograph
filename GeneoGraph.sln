@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph", "src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj", "{A51A4007-FD61-442F-AA79-E126F17CE394}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Browser", "src\ImeSense.GeneoGraph.Browser\ImeSense.GeneoGraph.Browser.csproj", "{143E1605-CD5B-464B-A710-5F022C975501}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{A51A4007-FD61-442F-AA79-E126F17CE394}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A51A4007-FD61-442F-AA79-E126F17CE394}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A51A4007-FD61-442F-AA79-E126F17CE394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{143E1605-CD5B-464B-A710-5F022C975501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143E1605-CD5B-464B-A710-5F022C975501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143E1605-CD5B-464B-A710-5F022C975501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143E1605-CD5B-464B-A710-5F022C975501}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
