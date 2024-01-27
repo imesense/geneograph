@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "name": "GeneoGraph",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.csproj": "xml",
+            "*.props": "xml"
+        },
+        "dotnet.defaultSolution": "GeneoGraph.sln",
+        "markdownlint.ignore": [
+            ".github/**.md"
+        ],
+        "vsicons.dontShowNewVersionMessage": true,
+        "vssolution.lineEndings": "crlf"
+    }
+}
