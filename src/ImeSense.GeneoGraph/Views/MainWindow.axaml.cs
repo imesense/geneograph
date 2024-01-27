@@ -7,5 +7,4 @@ namespace ImeSense.GeneoGraph.Views;
 /// </summary>
 public partial class MainWindow : Window {
     public MainWindow() => InitializeComponent();
-
 }
