@@ -9,8 +9,7 @@ using ImeSense.GeneoGraph;
 
 [assembly: SupportedOSPlatform("browser")]
 
-internal partial class Program
-{
+internal partial class Program {
     public static AppBuilder BuildAvaloniaApp() =>
         AppBuilder.Configure<App>();
 
