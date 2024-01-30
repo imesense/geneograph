@@ -1,152 +1,164 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="1080"
-             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
-             x:Class="ImeSense.GeneoGraph.Views.PropertiesView"
-             FontFamily="Cascadia Mono"
-             FontSize="12"
-             Background="#171717"
-             Foreground="#dedede">
-
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Views.PropertiesView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+    d:DesignHeight="1080"
+    d:DesignWidth="300"
+    Background="#171717"
+    FontFamily="Cascadia Mono"
+    FontSize="12"
+    Foreground="#dedede"
+    mc:Ignorable="d">
     <UserControl.Styles>
         <Style Selector="ToggleButton">
-            <Setter Property="BorderThickness" Value="0,2,0,2"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0,2,0,2" />
+            <Setter Property="Background" Value="Transparent" />
         </Style>
 
         <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent" />
         </Style>
     </UserControl.Styles>
-    
-    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-          ColumnDefinitions="*"
-          Width="300">
 
+    <Grid
+        Width="300"
+        ColumnDefinitions="*"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
         <Grid ColumnDefinitions="Auto, *, Auto">
-            <StackPanel Grid.Column="1"
-                        Margin="10,10,0,10">
-                <Label Content="{Binding SelectedPerson.FullName}"
-                       FontSize="14"/>
-                
-                <Label Content="Deceased" 
-                       IsVisible="{Binding SelectedPerson.IsDeceased}"
-                       FontSize="12"/>
+            <StackPanel
+                Grid.Column="1"
+                Margin="10,10,0,10">
+                <Label
+                    Content="{Binding SelectedPerson.FullName}"
+                    FontSize="14" />
+
+                <Label
+                    Content="Deceased"
+                    FontSize="12"
+                    IsVisible="{Binding SelectedPerson.IsDeceased}" />
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Age: "
-                           FontSize="12"/>
-                    <Label Content="{Binding SelectedPerson.Age}"
-                           FontSize="12"/>
+                    <Label
+                        Content="Age: "
+                        FontSize="12" />
+                    <Label
+                        Content="{Binding SelectedPerson.Age}"
+                        FontSize="12" />
                 </StackPanel>
-
             </StackPanel>
-            
-            <Image Source="{Binding SelectedPerson.ProfileImg}" Width="80"
-                   Height="100"
-                   Grid.Column="2"
-                   Margin="10"/>
+
+            <Image
+                Grid.Column="2"
+                Width="80"
+                Height="100"
+                Margin="10"
+                Source="{Binding SelectedPerson.ProfileImg}" />
         </Grid>
 
-        <Expander Grid.Row="1"
-                  HorizontalAlignment="Stretch"
-                  Background="Transparent"
-                  BorderBrush="Transparent"
-                  IsExpanded="True">
-            
+        <Expander
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            IsExpanded="True">
             <Expander.Header>
                 MAIN INFORMATION
             </Expander.Header>
 
-            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-                  ColumnDefinitions="*,*"
-                  ShowGridLines="False">
-
-                <!--First name-->
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                ShowGridLines="False">
+                <!-- First name -->
                 <StackPanel>
                     <Label>
                         First Name
                     </Label>
-                    <TextBox 
-                             Text="{Binding SelectedPerson.FirstName}"
-                             VerticalContentAlignment="Center"
-                             CornerRadius="4"
-                             HorizontalAlignment="Stretch"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Margin="0,5,5,5"/>
+                    <TextBox
+                        Text="{Binding SelectedPerson.FirstName}"
+                        Margin="0,5,5,5"
+                        HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#9dce8e"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="4" />
                 </StackPanel>
 
-                <!--Last name-->
-                <StackPanel Grid.Column="1"
-                            Margin="5,0,0,0">
+                <!-- Last name -->
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="5,0,0,0">
                     <Label>
                         Last Name
                     </Label>
-                    <TextBox 
-                             Text="{Binding SelectedPerson.LastName}"
-                             CornerRadius="4"
-                             VerticalContentAlignment="Center"
-                             HorizontalAlignment="Stretch"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Margin="0,5,0,5"/>
+                    <TextBox
+                        Text="{Binding SelectedPerson.LastName}"
+                        Margin="0,5,0,5"
+                        HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#9dce8e"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="4" />
                 </StackPanel>
 
-                <!--Patronym-->
-                <StackPanel Grid.Row="1"
-                            Margin="0,5,0,0">
+                <!-- Patronym -->
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="0,5,0,0">
                     <Label>
                         Patronym
                     </Label>
                     <TextBox
-                             Text="{Binding SelectedPerson.Patronym}"
-                             VerticalContentAlignment="Center"
-                             CornerRadius="4"
-                             HorizontalAlignment="Stretch"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Margin="0,5,5,5"/>
+                        Text="{Binding SelectedPerson.Patronym}"
+                        Margin="0,5,5,5"
+                        HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#9dce8e"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="4" />
                 </StackPanel>
 
-                <!--Maiden name-->
-                <StackPanel Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="5,5,0,0">
+                <!-- Maiden name -->
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="5,5,0,0">
                     <Label>
                         Maiden name
                     </Label>
                     <TextBox
-                             Text="{Binding SelectedPerson.MaidenName}"
-                             VerticalContentAlignment="Center"
-                             CornerRadius="4"
-                             HorizontalAlignment="Stretch"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Margin="0,5,0,5"/>
+                        Text="{Binding SelectedPerson.MaidenName}"
+                        Margin="0,5,0,5"
+                        HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#9dce8e"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="4" />
                 </StackPanel>
 
-                <!--Birth date-->
-                <StackPanel Grid.ColumnSpan="2"
-                            Grid.Row="2"
-                            Orientation="Vertical"
-                            Margin="0,5,0,0"
-                            VerticalAlignment="Center">
-                    <Label Content="Birth date"/>
-                    
+                <!-- Birth date -->
+                <StackPanel
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    Margin="0,5,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <Label Content="Birth date" />
+
                     <Grid ColumnDefinitions="Auto,*">
                         <ComboBox
-                             VerticalContentAlignment="Center"
-                             HorizontalAlignment="Stretch"
-                             CornerRadius="4"
-                             FontSize="12"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Margin="0,5,5,0"
-                             SelectedIndex="0"
-                             Width="100">
+                            Width="100"
+                            Margin="0,5,5,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            BorderBrush="#9dce8e"
+                            BorderThickness="0,0,0,1"
+                            CornerRadius="4"
+                            FontSize="12"
+                            SelectedIndex="0">
                             <ComboBoxItem>Exactly</ComboBoxItem>
                             <ComboBoxItem>Before</ComboBoxItem>
                             <ComboBoxItem>After</ComboBoxItem>
@@ -156,70 +168,71 @@
                         </ComboBox>
                         <CalendarDatePicker
                             Grid.Column="1"
-                            HorizontalAlignment="Stretch"
-                            CornerRadius="4"
-                            BorderThickness="0,0,0,1"
-                            BorderBrush="#9dce8e"
                             Margin="5,5,0,0"
-                            Watermark="DD-MM-YYYY"
-                            SelectedDate="{Binding SelectedPerson.BirthDate}"/>
+                            HorizontalAlignment="Stretch"
+                            BorderBrush="#9dce8e"
+                            BorderThickness="0,0,0,1"
+                            CornerRadius="4"
+                            SelectedDate="{Binding SelectedPerson.BirthDate}"
+                            Watermark="DD-MM-YYYY" />
                     </Grid>
                 </StackPanel>
 
-                <!--BirthPlace-->
-                <StackPanel Grid.ColumnSpan="2"
-                            Grid.Row="3"
-                            Orientation="Vertical"
-                            Margin="0,10,0,0"
-                            VerticalAlignment="Center">
-                    <Label Content="Birth Place"/>
+                <!-- BirthPlace -->
+                <StackPanel
+                    Grid.ColumnSpan="2"
+                    Grid.Row="3"
+                    Margin="0,10,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <Label Content="Birth Place" />
                     <TextBox
-                             VerticalContentAlignment="Center"
-                             CornerRadius="4"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Text="{Binding SelectedPerson.BirthPlace}"
-                             Margin="0,5,0,0"/>
+                        Text="{Binding SelectedPerson.BirthPlace}"
+                        Margin="0,5,0,0"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#9dce8e"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="4" />
                 </StackPanel>
 
-
-
-                <!--IsDeceased-->
-                <StackPanel Grid.Row="4"
-                            Grid.Column="1"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="0,15,0,0">
-                    <CheckBox x:Name="DeceasedCB"
-                              IsChecked="{Binding SelectedPerson.IsDeceased}"
-                              VerticalAlignment="Center"/>
-                    <Label Content="Deceased"
-                           VerticalAlignment="Center"
-                           Margin="10,0,0,0"/>
-
+                <!-- IsDeceased -->
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    Margin="0,15,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <CheckBox
+                        x:Name="DeceasedCB"
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding SelectedPerson.IsDeceased}" />
+                    <Label
+                        Content="Deceased"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center" />
                 </StackPanel>
 
-
-                <!--Death date-->
-                <StackPanel Grid.ColumnSpan="2"
-                            Grid.Row="5"
-                            Orientation="Vertical"
-                            Margin="0,5,0,0"
-                            VerticalAlignment="Center"
-                            IsVisible="{Binding SelectedPerson.IsDeceased}">
-                    <Label Content="Death date"/>
+                <!-- Death date -->
+                <StackPanel
+                    Grid.ColumnSpan="2"
+                    Grid.Row="5"
+                    Margin="0,5,0,0"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding SelectedPerson.IsDeceased}"
+                    Orientation="Vertical">
+                    <Label Content="Death date" />
 
                     <Grid ColumnDefinitions="Auto,*">
                         <ComboBox
-                             VerticalContentAlignment="Center"
-                             HorizontalAlignment="Stretch"
-                             CornerRadius="4"
-                             FontSize="12"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Margin="0,5,5,0"
-                             SelectedIndex="0"
-                             Width="100">
+                            Width="100"
+                            Margin="0,5,5,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            BorderBrush="#9dce8e"
+                            BorderThickness="0,0,0,1"
+                            CornerRadius="4"
+                            FontSize="12"
+                            SelectedIndex="0">
                             <ComboBoxItem>Exactly</ComboBoxItem>
                             <ComboBoxItem>Before</ComboBoxItem>
                             <ComboBoxItem>After</ComboBoxItem>
@@ -229,33 +242,33 @@
                         </ComboBox>
                         <CalendarDatePicker
                             Grid.Column="1"
-                            HorizontalAlignment="Stretch"
-                            CornerRadius="4"
-                            BorderThickness="0,0,0,1"
-                            BorderBrush="#9dce8e"
                             Margin="5,5,0,0"
-                            Watermark="DD-MM-YYYY"
-                            SelectedDate="{Binding SelectedPerson.DeathDate}"/>
+                            HorizontalAlignment="Stretch"
+                            BorderBrush="#9dce8e"
+                            BorderThickness="0,0,0,1"
+                            CornerRadius="4"
+                            SelectedDate="{Binding SelectedPerson.DeathDate}"
+                            Watermark="DD-MM-YYYY" />
                     </Grid>
                 </StackPanel>
 
-                <!--Death place-->
-                <StackPanel Grid.ColumnSpan="2"
-                            Grid.Row="6"
-                            Orientation="Vertical"
-                            Margin="0,10,0,0"
-                            VerticalAlignment="Center"
-                            IsVisible="{Binding SelectedPerson.IsDeceased}">
-                    <Label Content="Death Place"/>
+                <!-- Death place -->
+                <StackPanel
+                    Grid.ColumnSpan="2"
+                    Grid.Row="6"
+                    Margin="0,10,0,0"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding SelectedPerson.IsDeceased}"
+                    Orientation="Vertical">
+                    <Label Content="Death Place" />
                     <TextBox
-                             VerticalContentAlignment="Center"
-                             CornerRadius="4"
-                             BorderThickness="0,0,0,1"
-                             BorderBrush="#9dce8e"
-                             Text="{Binding SelectedPerson.DeathPlace}"
-                             Margin="0,5,0,0"/>
+                        Text="{Binding SelectedPerson.DeathPlace}"
+                        Margin="0,5,0,0"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#9dce8e"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="4" />
                 </StackPanel>
-                
             </Grid>
         </Expander>
     </Grid>

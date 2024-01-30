@@ -1,8 +1,9 @@
-<Application x:Class="ImeSense.GeneoGraph.App"
-             xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:l="using:ImeSense.GeneoGraph"
-             RequestedThemeVariant="Dark">
+<Application
+    x:Class="ImeSense.GeneoGraph.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:l="using:ImeSense.GeneoGraph"
+    RequestedThemeVariant="Dark">
     <Application.DataTemplates>
         <l:ViewLocator />
     </Application.DataTemplates>
@@ -10,6 +11,6 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://Dock.Avalonia/Themes/DockFluentTheme.axaml" />
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
     </Application.Styles>
 </Application>

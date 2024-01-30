@@ -1,15 +1,17 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
-             x:Class="ImeSense.GeneoGraph.Views.FilesView"
-             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
-             Foreground="#dedede"
-             Background="#121212"
-             FontFamily="Cascadia Mono"
-             FontSize="12">
-
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Views.FilesView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#121212"
+    FontFamily="Cascadia Mono"
+    FontSize="12"
+    Foreground="#dedede"
+    mc:Ignorable="d">
     <UserControl.DataContext>
         <vm:FilesViewModel />
     </UserControl.DataContext>
@@ -17,9 +19,8 @@
     <TreeView ItemsSource="{Binding Nodes}">
         <TreeView.ItemTemplate>
             <TreeDataTemplate ItemsSource="{Binding SubNodes}">
-                <TextBlock Text="{Binding Title}"/>
+                <TextBlock Text="{Binding Title}" />
             </TreeDataTemplate>
         </TreeView.ItemTemplate>
     </TreeView>
-    
 </UserControl>

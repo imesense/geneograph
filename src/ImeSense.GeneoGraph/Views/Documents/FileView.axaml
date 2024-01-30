@@ -1,52 +1,61 @@
-<UserControl x:Class="ImeSense.GeneoGraph.Views.Documents.FileView"
-             xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             d:DesignWidth="1920"
-             d:DesignHeight="1080"
-             Foreground="#fafafa">
-    <Grid RowDefinitions="Auto, Auto, Auto, *"
-          ColumnDefinitions="Auto, 2, *, 2, Auto" 
-          ShowGridLines="False"
-          Background="#1b1b1b">
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Views.Documents.FileView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Foreground="#fafafa"
+    mc:Ignorable="d">
+    <Grid
+        Background="#1b1b1b"
+        ColumnDefinitions="Auto, 2, *, 2, Auto"
+        RowDefinitions="Auto, Auto, Auto, *"
+        ShowGridLines="False">
+        <!--
+            Rows list: Top Menu, Top ToolBar, Tabs, Main View
+            Columns list: Left Tool Bar, Main View, Right Tool Bar
+        -->
 
-        <!--Rows list: Top Menu, Top ToolBar, Tabs, Main View
-            Columns list: Left Tool Bar, Main View, Right Tool Bar-->
-
-        <!--Tabs-->
-        <TabControl Grid.Row="2"
-                    Grid.Column="2"
-                    Grid.RowSpan="2">
-            <TabItem Header="FamilyTree"
-                     VerticalContentAlignment="Center"
-                     Foreground="White">
-                <TextBlock Text="Just pretend you see a family tree here"
-                           HorizontalAlignment="Left" 
-                           VerticalAlignment="Center"/>
+        <!-- Tabs -->
+        <TabControl
+            Grid.Column="2"
+            Grid.Row="2"
+            Grid.RowSpan="2">
+            <TabItem
+                VerticalContentAlignment="Center"
+                Foreground="White"
+                Header="FamilyTree">
+                <TextBlock
+                    Text="Just pretend you see a family tree here"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
             </TabItem>
 
             <TabItem>
                 <TabItem.Header>
-                    <TextBlock Foreground="White"
-                               VerticalAlignment="Center">Person Details
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="White">
+                        Person Details
                     </TextBlock>
                 </TabItem.Header>
 
                 <StackPanel>
-                    <TextBlock Text="Something intresting will be added soon" 
-                               HorizontalAlignment="Left" 
-                               VerticalAlignment="Center"/>
+                    <TextBlock
+                        Text="Something intresting will be added soon"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" />
                 </StackPanel>
             </TabItem>
         </TabControl>
 
-        <!--Canvas-->
-        <Border Grid.Column="2"
-                Grid.Row="3"
-                BorderBrush="#3d3d3d"
-                BorderThickness="1">
-        </Border>
+        <!-- Canvas -->
+        <Border
+            Grid.Column="2"
+            Grid.Row="3"
+            BorderBrush="#3d3d3d"
+            BorderThickness="1" />
     </Grid>
 </UserControl>
