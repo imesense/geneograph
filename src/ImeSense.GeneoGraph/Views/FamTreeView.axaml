@@ -1,153 +1,184 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
-             x:Class="ImeSense.GeneoGraph.Views.FamTreeView"       
-             xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
-             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
-
-             Background="#121212"
-             Foreground="#dedede">
-
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Views.FamTreeView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#121212"
+    Foreground="#dedede"
+    mc:Ignorable="d">
     <UserControl.DataContext>
         <vm:FamilyTreeViewModel />
     </UserControl.DataContext>
 
     <UserControl.Styles>
         <Style Selector="ToggleButton">
-            <Setter Property="BorderThickness" Value="0,2,0,2"/>
-            <Setter Property="Background" Value="#171717"/>
+            <Setter Property="BorderThickness" Value="0,2,0,2" />
+            <Setter Property="Background" Value="#171717" />
         </Style>
-
         <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="#171717"/>
+            <Setter Property="Background" Value="#171717" />
         </Style>
     </UserControl.Styles>
-    
-    <Grid ColumnDefinitions="Auto, *, Auto"
-          ShowGridLines="False">
-        
-        <!--Left toolbar-->
+
+    <Grid
+        ColumnDefinitions="Auto, *, Auto"
+        ShowGridLines="False">
+        <!-- Left toolbar -->
         <Border Background="#171717">
             <StackPanel Orientation="Vertical">
                 <Button
-                           Width="45"
-                           Height="45"
-                           Margin="10"
-                           Background="Transparent"
-                           Command="{Binding AddPersonOpen}">
-                    <Image Source="..\Assets\Buttons\family-tree.png"
-                           Stretch="Uniform"/>
-                </Button>
-                <Border Background="#414141"
-        Height="2"
-        Margin="5,0,5,0"/>
-                <Button
-                        Width="45"
-                        Height="45"
-                        Margin="10"
-                        Background="Transparent"
-                        Command="{Binding AddPersonOpen}">
-                        <Image Source="..\Assets\Buttons\add.png"
-                               Stretch="Uniform"/>
+                    Command="{Binding AddPersonOpen}"
+                    Width="45"
+                    Height="45"
+                    Margin="10"
+                    Background="Transparent">
+                    <Image
+                        Source="..\Assets\Buttons\family-tree.png"
+                        Stretch="Uniform" />
                 </Button>
 
-                <Border Background="#414141"
-                        Height="2"
-                        Margin="5,0,5,0"/>
-
+                <Border
+                    Height="2"
+                    Margin="5,0,5,0"
+                    Background="#414141" />
                 <Button
-                        Width="45"
-                        Height="45"
-                        Margin="10,10,0,0"
-                        Background="Transparent">
-                    <Image Source="..\Assets\Buttons\undo.png"
-                           Stretch="Uniform"/>
+                    Command="{Binding AddPersonOpen}"
+                    Width="45"
+                    Height="45"
+                    Margin="10"
+                    Background="Transparent">
+                    <Image
+                        Source="..\Assets\Buttons\add.png"
+                        Stretch="Uniform" />
                 </Button>
 
-                <Button
-                        Width="45"
-                        Height="45"
-                        Margin="10,5,0,10"
-                        Background="Transparent">
-                    <Image Source="..\Assets\Buttons\redo.png"
-                           Stretch="Uniform"/>
-                </Button>
-
-                <Border Background="#414141"
-                        Height="2"
-                        Margin="5,0,5,0"/>
+                <Border
+                    Height="2"
+                    Margin="5,0,5,0"
+                    Background="#414141" />
 
                 <Button
-                        Width="45"
-                        Height="45"
-                        Margin="10,5,0,0"
-                        Background="Transparent">
-                    <Image Source="..\Assets\Buttons\download.png"
-                           Stretch="Uniform"/>
+                    Width="45"
+                    Height="45"
+                    Margin="10,10,0,0"
+                    Background="Transparent">
+                    <Image
+                        Source="..\Assets\Buttons\undo.png"
+                        Stretch="Uniform" />
                 </Button>
 
                 <Button
-                        Width="45"
-                        Height="45"
-                        Margin="10,5,0,0"
-                        Background="Transparent">
-                    <Image Source="..\Assets\Buttons\print.png"
-                           Stretch="Uniform"/>
+                    Width="45"
+                    Height="45"
+                    Margin="10,5,0,10"
+                    Background="Transparent">
+                    <Image
+                        Source="..\Assets\Buttons\redo.png"
+                        Stretch="Uniform" />
                 </Button>
-               
+
+                <Border
+                    Height="2"
+                    Margin="5,0,5,0"
+                    Background="#414141" />
+
+                <Button
+                    Width="45"
+                    Height="45"
+                    Margin="10,5,0,0"
+                    Background="Transparent">
+                    <Image
+                        Source="..\Assets\Buttons\download.png"
+                        Stretch="Uniform" />
+                </Button>
+
+                <Button
+                    Width="45"
+                    Height="45"
+                    Margin="10,5,0,0"
+                    Background="Transparent">
+                    <Image
+                        Source="..\Assets\Buttons\print.png"
+                        Stretch="Uniform" />
+                </Button>
             </StackPanel>
         </Border>
 
-        <!--Family tree-->
-
-        <DataGrid x:Name="PeopleListGrid" 
-                  ItemsSource="{Binding PeopleList, Mode=TwoWay}"
-                  Grid.Column="1"
-                  AutoGenerateColumns="False"
-                  SelectionMode="Single"
-                  SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
-                  SelectedIndex="{Binding SelectedIndex}"
-                  IsReadOnly="True">
+        <!-- Family tree -->
+        <DataGrid
+            x:Name="PeopleListGrid"
+            Grid.Column="1"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding PeopleList, Mode=TwoWay}"
+            SelectedIndex="{Binding SelectedIndex}"
+            SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
+            SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
-                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
-                <DataGridTextColumn Header="Deceased" Binding="{Binding IsDeceased}"/>
-                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat=dd-MMM-yyyy}"/>
-                <DataGridTextColumn Header="Birth Place" Binding="{Binding BirthPlace}"/>
-                <DataGridTextColumn Header="Death Date" Binding="{Binding DeathDate, StringFormat=dd-MMM-yyyy}"/>
-                <DataGridTextColumn Header="Death Place" Binding="{Binding DeathPlace}"/>
-                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                <DataGridTextColumn
+                    Binding="{Binding Id}"
+                    Header="ID" />
+                <DataGridTextColumn
+                    Binding="{Binding FirstName}"
+                    Header="First Name" />
+                <DataGridTextColumn
+                    Binding="{Binding LastName}"
+                    Header="Last Name" />
+                <DataGridTextColumn
+                    Binding="{Binding Gender}"
+                    Header="Gender" />
+                <DataGridTextColumn
+                    Binding="{Binding IsDeceased}"
+                    Header="Deceased" />
+                <DataGridTextColumn
+                    Binding="{Binding BirthDate, StringFormat=dd-MMM-yyyy}"
+                    Header="Birth Date" />
+                <DataGridTextColumn
+                    Binding="{Binding BirthPlace}"
+                    Header="Birth Place" />
+                <DataGridTextColumn
+                    Binding="{Binding DeathDate, StringFormat=dd-MMM-yyyy}"
+                    Header="Death Date" />
+                <DataGridTextColumn
+                    Binding="{Binding DeathPlace}"
+                    Header="Death Place" />
+                <DataGridTextColumn
+                    Binding="{Binding Age}"
+                    Header="Age" />
             </DataGrid.Columns>
         </DataGrid>
 
-
-        <!--Right toolbar-->
-        <StackPanel Orientation="Horizontal"
-                    Grid.Column="2">
+        <!-- Right toolbar -->
+        <StackPanel
+            Grid.Column="2"
+            Orientation="Horizontal">
             <Button
+                Command="{Binding SideBarOpenCloseCommand}"
                 Width="25"
                 Height="30"
-                VerticalAlignment="Top"
                 Margin="0,0,0,0"
-                CornerRadius="10,0,0,10"
-                Command="{Binding SideBarOpenCloseCommand}"
-                HorizontalAlignment="Left">
-                <Image Source="..\Assets\Buttons\angle.png"
-       Stretch="UniformToFill"/>
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                CornerRadius="10,0,0,10">
+                <Image
+                    Source="..\Assets\Buttons\angle.png"
+                    Stretch="UniformToFill" />
             </Button>
 
-            <DockPanel Grid.Column="2"
-                       IsVisible="{Binding SidebarStatus, Mode=TwoWay}">
-                <Border Background="#171717"
-                        Grid.Column="2">
-                    <v:PropertiesView/>
+            <DockPanel
+                Grid.Column="2"
+                IsVisible="{Binding SidebarStatus, Mode=TwoWay}">
+                <Border
+                    Grid.Column="2"
+                    Background="#171717">
+                    <v:PropertiesView />
                 </Border>
             </DockPanel>
         </StackPanel>
-
     </Grid>
 </UserControl>

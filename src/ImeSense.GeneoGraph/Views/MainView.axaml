@@ -1,94 +1,99 @@
-<UserControl x:Class="ImeSense.GeneoGraph.Views.MainView"
-             x:DataType="vm:MainViewModel"
-             xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
-             xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
-             xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Views.Tools"
-             mc:Ignorable="d"
-             Foreground="#dedede"
-             Background="#121212"
-             FontFamily="Cascadia Mono">
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+    xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Views.Tools"
+    x:DataType="vm:MainViewModel"
+    Background="#121212"
+    FontFamily="Cascadia Mono"
+    Foreground="#dedede"
+    mc:Ignorable="d">
     <UserControl.Styles>
         <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="#83ad76"/>
+            <Setter Property="Foreground" Value="#83ad76" />
         </Style>
         <Style Selector="TabItem:focus">
-            <Setter Property="Foreground" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="#9dce8e" />
         </Style>
         <Style Selector="TabItem:focus">
-            <Setter Property="Foreground" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="#9dce8e" />
         </Style>
         <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="#9dce8e" />
         </Style>
 
         <Style Selector="TabItem:selected">
-            <Setter Property="Foreground" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="#9dce8e" />
         </Style>
         <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="#9dce8e"/>
+            <Setter Property="Foreground" Value="#9dce8e" />
         </Style>
         <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
-            <Setter Property="Background" Value="#9dce8e"/>
+            <Setter Property="Background" Value="#9dce8e" />
         </Style>
     </UserControl.Styles>
 
     <Grid
         ColumnDefinitions="*"
         RowDefinitions="*">
-
-        <Border Background="#414141"
-                Height="2"
-                VerticalAlignment="Top"
-                Margin="0,49,0,0"/>
+        <Border
+            Height="2"
+            Margin="0,49,0,0"
+            VerticalAlignment="Top"
+            Background="#414141" />
 
         <TabControl
-                    Background="Transparent"
-                    Padding="0">
-            <TabItem Header="PROJECTS"
-                     FontSize="16"
-                     Margin="70,5,5,0">
-                <v:ProjectsView/>
+            Padding="0"
+            Background="Transparent">
+            <TabItem
+                Margin="70,5,5,0"
+                FontSize="16"
+                Header="PROJECTS">
+                <v:ProjectsView />
             </TabItem>
 
-            <TabItem Header="FAMILY TREE"
-                     FontSize="16"
-                     Margin="5,5,5,0"
-                     VerticalAlignment="Top">
-                <v:FamTreeView/>
+            <TabItem
+                Margin="5,5,5,0"
+                VerticalAlignment="Top"
+                FontSize="16"
+                Header="FAMILY TREE">
+                <v:FamTreeView />
             </TabItem>
 
-            <TabItem Header="PERSON DETAILS"
-                     FontSize="16"
-                     Margin="5,5,5,0">
-                <v:PersonDetailsView/>
+            <TabItem
+                Margin="5,5,5,0"
+                FontSize="16"
+                Header="PERSON DETAILS">
+                <v:PersonDetailsView />
             </TabItem>
 
-            <TabItem Header="ALBUMS"
-                     FontSize="16"
-                     Margin="5,5,5,0"/>
-            <TabItem Header="FILES"
-                     FontSize="16"
-                     Margin="5,5,5,0">
-                <v:FilesView/>
+            <TabItem
+                Margin="5,5,5,0"
+                FontSize="16"
+                Header="ALBUMS" />
+            <TabItem
+                Margin="5,5,5,0"
+                FontSize="16"
+                Header="FILES">
+                <v:FilesView />
             </TabItem>
-            <TabItem Header="NOTES"
-                     FontSize="16"
-                     Margin="5,5,5,0">
-                <v:NotesView/>
+            <TabItem
+                Margin="5,5,5,0"
+                FontSize="16"
+                Header="NOTES">
+                <v:NotesView />
             </TabItem>
         </TabControl>
 
-
-        <Image Source="..\Assets\ico_green.png"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Left"
-               Width="40"
-               Margin="12,5,5,5"/>
-
-
+        <Image
+            Width="40"
+            Margin="12,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Source="..\Assets\ico_green.png" />
     </Grid>
 </UserControl>
