@@ -22,6 +22,16 @@ indent_size = 4
 indent_style = space
 insert_final_newline = true
 
+# JSON-based files
+[*.{json,XamlStyler}]
+
+# Common settings
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+
 # C# code style settings
 [*.cs]
 
