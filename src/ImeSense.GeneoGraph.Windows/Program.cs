@@ -15,7 +15,8 @@ internal class Program {
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace()
-            .UseReactiveUI();
+            .UseReactiveUI()
+            .UseWin32();
 
     /// <summary>
     /// Initialization code
