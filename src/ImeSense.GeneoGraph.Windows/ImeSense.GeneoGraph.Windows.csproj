@@ -8,12 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="app.manifest">
-            <DependentUpon>App.axaml</DependentUpon>
-        </None>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Avalonia.Desktop" Version="11.0.7" />
     </ItemGroup>
 
