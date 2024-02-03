@@ -52,7 +52,7 @@ jobs:
 
       - name: Restore workloads
         run: |
-          dotnet workload restore
+          dotnet workload install wasm-tools-net7
 
       - name: Restore dependencies
         run: |
