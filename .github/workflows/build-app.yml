@@ -54,9 +54,20 @@ jobs:
         run: |
           dotnet workload install wasm-tools-net7
 
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          key: GeneoGraph-NuGet-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            GeneoGraph-NuGet-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-
+          path: |
+            ~/.nuget/packages
+
       - name: Restore dependencies
         run: |
-          dotnet restore $env:Solution
+          dotnet restore $env:Solution `
+            --locked-mode
 
       - name: Build application
         run: |
