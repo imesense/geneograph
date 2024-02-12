@@ -11,7 +11,7 @@
     "IgnoreDesignTimeReferencePrefix": false,
     "EnableAttributeReordering": true,
     "AttributeOrderingRuleGroups": [
-        "x:Class, x:Key, Key, x:Name, Name, x:Uid, Uid. x:DataType, DataType, x:ClassModifier, ClassModifier",
+        "x:Class, x:Key, Key, x:Name, Name, x:Uid, Uid, x:DataType, DataType, x:ClassModifier, ClassModifier",
         "xmlns, xmlns:x, xmlns:mc, xmlns:d",
         "xmlns:*",
         "Title",
