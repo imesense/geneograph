@@ -50,6 +50,16 @@ jobs:
         with:
           dotnet-version: '7.0.x'
 
+      - name: Cache workloads (Windows)
+        uses: actions/cache@v4
+        if: ${{ contains(matrix.system, 'windows') }}
+        with:
+          key: GeneoGraph-Workloads-
+          restore-keys: |
+            GeneoGraph-Workloads-
+          path: |
+            C:\ProgramData\dotnet\workloads
+
       - name: Restore workloads
         run: |
           dotnet workload install wasm-tools-net7
