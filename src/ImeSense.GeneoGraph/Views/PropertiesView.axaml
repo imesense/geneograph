@@ -6,56 +6,76 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
     d:DesignHeight="1080"
-    d:DesignWidth="300"
-    Background="#171717"
-    FontFamily="Cascadia Mono"
-    FontSize="12"
+    d:DesignWidth="465"
+    Background="#1a1a1a"
+    FontFamily="Inter"
+    FontWeight="Medium"
+    FontSize="14"
     Foreground="#dedede"
     mc:Ignorable="d">
     <UserControl.Styles>
         <Style Selector="ToggleButton">
             <Setter Property="BorderThickness" Value="0,2,0,2" />
             <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontFamily" Value="Roboto" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Height" Value="70" />
         </Style>
 
         <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontFamily" Value="Roboto" />
+            <Setter Property="FontSize" Value="18" />
         </Style>
     </UserControl.Styles>
 
     <Grid
-        Width="300"
+        Width="465"
         ColumnDefinitions="*"
-        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
-        <Grid ColumnDefinitions="Auto, *, Auto">
+        RowDefinitions="150,Auto,Auto,Auto,Auto,Auto,Auto"
+        ShowGridLines="True">
+        <Grid ColumnDefinitions="Auto, *, Auto"
+              ShowGridLines="False">
+            <Button
+                    Command="{Binding SideBarOpenCloseCommand}"
+                    Width="60"
+                    Height="40"
+                    Margin="0,30,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    CornerRadius="0,20,20,0"
+                    Background="#1e1e1e"
+                    BorderThickness="1,1,0,1"
+                    BorderBrush="#777777">
+                <Image
+                    Source="..\Assets\Buttons\next.png"
+                    Stretch="Uniform"/>
+            </Button>
             <StackPanel
                 Grid.Column="1"
-                Margin="10,10,0,10">
+                Margin="20,25,0,10">
                 <Label
-                    Content="{Binding SelectedPerson.FullName}"
-                    FontSize="14" />
-
+                    Content="Nikita Lebedin"
+                    FontSize="18"
+                    FontWeight="Medium"/>
                 <Label
-                    Content="Deceased"
-                    FontSize="12"
-                    IsVisible="{Binding SelectedPerson.IsDeceased}" />
-
-                <StackPanel Orientation="Horizontal">
-                    <Label
-                        Content="Age: "
-                        FontSize="12" />
-                    <Label
-                        Content="{Binding SelectedPerson.Age}"
-                        FontSize="12" />
-                </StackPanel>
+                    Content="26 years"
+                    FontSize="16"
+                    FontWeight="Regular"/>
             </StackPanel>
+            <Border Grid.Column="2"
+                    ClipToBounds="True"
+                    CornerRadius="100"
+                    Height="100"
+                    Width="100">
+                <Image
+                    Source="..\Assets\Profile\Profile_picture.png"
+                    Stretch="UniformToFill"
+                    Width="110"
+                    Height="110"/>
+            </Border>
 
-            <Image
-                Grid.Column="2"
-                Width="80"
-                Height="100"
-                Margin="10"
-                Source="{Binding SelectedPerson.ProfileImg}" />
         </Grid>
 
         <Expander
@@ -71,7 +91,7 @@
             <Grid
                 ColumnDefinitions="*,*"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-                ShowGridLines="False">
+                ShowGridLines="True">
                 <!-- First name -->
                 <StackPanel>
                     <Label>
@@ -143,7 +163,7 @@
                 <StackPanel
                     Grid.ColumnSpan="2"
                     Grid.Row="2"
-                    Margin="0,5,0,0"
+                    Margin="0,20,0,0"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
                     <Label Content="Birth date" />
@@ -197,18 +217,20 @@
 
                 <!-- IsDeceased -->
                 <StackPanel
-                    Grid.Column="1"
                     Grid.Row="4"
-                    Margin="0,15,0,0"
-                    HorizontalAlignment="Center"
+                    Grid.ColumnSpan="2"
+                    Margin="0,30,0,30"
+                    HorizontalAlignment="Left"
                     Orientation="Horizontal">
-                    <CheckBox
-                        x:Name="DeceasedCB"
-                        VerticalAlignment="Center"
-                        IsChecked="{Binding SelectedPerson.IsDeceased}" />
+                    <RadioButton/>
+                    <Label
+                        Content="Living"
+                        Margin="0,0,50,0"
+                        VerticalAlignment="Center" />
+                    <RadioButton/>
                     <Label
                         Content="Deceased"
-                        Margin="10,0,0,0"
+                        Margin="0,0,0,0"
                         VerticalAlignment="Center" />
                 </StackPanel>
 
@@ -270,6 +292,49 @@
                         CornerRadius="4" />
                 </StackPanel>
             </Grid>
+        </Expander>
+
+        <Expander
+            Grid.Row="2"
+            HorizontalAlignment="Stretch"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            IsExpanded="False">
+            <Expander.Header>
+                PHOTOS
+            </Expander.Header>
+        </Expander>
+
+        <Expander
+            Grid.Row="3"
+            HorizontalAlignment="Stretch"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            IsExpanded="False">
+            <Expander.Header>
+                FILES
+            </Expander.Header>
+        </Expander>
+        
+        <Expander
+            Grid.Row="4"
+            HorizontalAlignment="Stretch"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            IsExpanded="False">
+            <Expander.Header>
+                NOTES
+            </Expander.Header>
+        </Expander>
+        <Expander
+            Grid.Row="5"
+            HorizontalAlignment="Stretch"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            IsExpanded="False">
+            <Expander.Header>
+                TIMELINE
+            </Expander.Header>
         </Expander>
     </Grid>
 </UserControl>
