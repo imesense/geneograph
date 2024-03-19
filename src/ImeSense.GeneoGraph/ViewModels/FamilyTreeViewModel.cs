@@ -15,6 +15,7 @@ namespace ImeSense.GeneoGraph.ViewModels {
     public class FamilyTreeViewModel : ReactiveObject {
         private static Window? _addPersonWindow;
         private bool _sidebarStatus = false;
+        private bool _sidebarButtonVisibility = true;
         private Person? _selectedPerson;
 
         public FamilyTreeViewModel() {
@@ -43,6 +44,11 @@ namespace ImeSense.GeneoGraph.ViewModels {
         {
             get => _sidebarStatus;
             set => this.RaiseAndSetIfChanged(ref _sidebarStatus, value);
+        }
+
+        public bool SidebarButtonVisibility {
+            get => _sidebarButtonVisibility;
+            set => this.RaiseAndSetIfChanged(ref _sidebarButtonVisibility, value);
         }
 
         [Reactive]
@@ -78,15 +84,18 @@ namespace ImeSense.GeneoGraph.ViewModels {
             {
                 SelectedPerson = PeopleList?.FirstOrDefault();
                 SidebarStatus = true;
+                SidebarButtonVisibility = false;
             }
            else if (SidebarStatus == false)
             {
                 SidebarStatus = true;
+                SidebarButtonVisibility = false;
             }
            else 
            {
                 SidebarStatus = false;
-           }
+                SidebarButtonVisibility = true;
+            }
         }
     }
 }

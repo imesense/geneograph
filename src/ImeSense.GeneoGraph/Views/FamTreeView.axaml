@@ -27,85 +27,80 @@
 
     <Grid
         ColumnDefinitions="Auto, *, Auto"
-        ShowGridLines="False">
+        ShowGridLines="True">
+        
         <!-- Left toolbar -->
-        <Border Background="#171717">
-            <StackPanel Orientation="Vertical">
+        <Border Background="Transparent">
+            <StackPanel Orientation="Vertical"
+                        Margin="10"
+                        VerticalAlignment="Bottom">
                 <Button
-                    Command="{Binding AddPersonOpen}"
-                    Width="45"
-                    Height="45"
-                    Margin="10"
-                    Background="Transparent">
+                    Width="48"
+                    Height="48"
+                    Margin="0"
+                    Background="#474747"
+                    BorderBrush="#636363">
                     <Image
                         Source="..\Assets\Buttons\family-tree.png"
                         Stretch="Uniform" />
                 </Button>
-
-                <Border
-                    Height="2"
-                    Margin="5,0,5,0"
-                    Background="#414141" />
+                
                 <Button
-                    Command="{Binding AddPersonOpen}"
-                    Width="45"
-                    Height="45"
-                    Margin="10"
-                    Background="Transparent">
+                    Width="48"
+                    Height="48"
+                    Margin="0,10,0,0"
+                    Background="#474747"
+                    BorderBrush="#636363">
                     <Image
-                        Source="..\Assets\Buttons\add.png"
+                        Source="..\Assets\Buttons\family-tree_h.png"
                         Stretch="Uniform" />
                 </Button>
-
-                <Border
-                    Height="2"
-                    Margin="5,0,5,0"
-                    Background="#414141" />
-
+                
                 <Button
-                    Width="45"
-                    Height="45"
-                    Margin="10,10,0,0"
-                    Background="Transparent">
+                    Width="48"
+                    Height="48"
+                    Margin="0,10,0,0"
+                    Background="#474747"
+                    BorderBrush="#636363">
                     <Image
-                        Source="..\Assets\Buttons\undo.png"
+                        Source="..\Assets\Buttons\table.png"
                         Stretch="Uniform" />
                 </Button>
-
+                
                 <Button
-                    Width="45"
-                    Height="45"
-                    Margin="10,5,0,10"
-                    Background="Transparent">
+                    Width="48"
+                    Height="48"
+                    Margin="0,25,0,0"
+                    Background="#474747"
+                    BorderBrush="#636363">
                     <Image
-                        Source="..\Assets\Buttons\redo.png"
+                        Source="..\Assets\Buttons\plus.png"
                         Stretch="Uniform" />
                 </Button>
-
-                <Border
-                    Height="2"
-                    Margin="5,0,5,0"
-                    Background="#414141" />
-
+                
                 <Button
-                    Width="45"
-                    Height="45"
-                    Margin="10,5,0,0"
-                    Background="Transparent">
+                    Width="48"
+                    Height="48"
+                    Margin="0,10,0,0"
+                    Background="#474747"
+                    BorderBrush="#636363">
                     <Image
-                        Source="..\Assets\Buttons\download.png"
+                        Source="..\Assets\Buttons\minus.png"
                         Stretch="Uniform" />
                 </Button>
-
+                
                 <Button
-                    Width="45"
-                    Height="45"
-                    Margin="10,5,0,0"
-                    Background="Transparent">
+                    Width="48"
+                    Height="48"
+                    Margin="0,25,0,0"
+                    Background="#474747"
+                    BorderBrush="#636363">
                     <Image
-                        Source="..\Assets\Buttons\print.png"
+                        Source="..\Assets\Buttons\settings.png"
                         Stretch="Uniform" />
                 </Button>
+                
+
             </StackPanel>
         </Border>
 
@@ -159,23 +154,27 @@
             Orientation="Horizontal">
             <Button
                 Command="{Binding SideBarOpenCloseCommand}"
-                Width="25"
-                Height="30"
-                Margin="0,0,0,0"
+                IsVisible="{Binding SidebarButtonVisibility}"
+                Width="60"
+                Height="40"
+                Margin="0,30,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                CornerRadius="10,0,0,10">
+                CornerRadius="20,0,0,20"
+                Background="#1e1e1e"
+                BorderThickness="1,1,0,1"
+                BorderBrush="#777777">
                 <Image
-                    Source="..\Assets\Buttons\angle.png"
-                    Stretch="UniformToFill" />
+                    Source="..\Assets\Buttons\next.png"
+                    Stretch="Uniform"
+                    RenderTransform="rotate(180deg)"/>
             </Button>
 
             <DockPanel
                 Grid.Column="2"
                 IsVisible="{Binding SidebarStatus, Mode=TwoWay}">
                 <Border
-                    Grid.Column="2"
-                    Background="#171717">
+                    Grid.Column="2">
                     <v:PropertiesView />
                 </Border>
             </DockPanel>

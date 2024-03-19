@@ -7,201 +7,254 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
-    FontFamily="Cascadia Mono"
+    FontFamily="Inter"
     Foreground="#dedede"
     mc:Ignorable="d">
     <UserControl.Styles>
         <Style Selector="Button:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#9dce8e" />
-            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
+        </Style>
+        <Style Selector="Button#Open:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
         </Style>
     </UserControl.Styles>
 
     <Grid
-        ColumnDefinitions="Auto, 50, *, *"
-        RowDefinitions="50, Auto, Auto, *"
-        ShowGridLines="False">
+        ColumnDefinitions="270, *, *"
+        RowDefinitions="80, 80, *"
+        ShowGridLines="True">
         <!-- Left part -->
-        <Label
-            Grid.Row="1"
-            Margin="20"
+        <Border
+            Background="#1A1A1A"
+            Grid.RowSpan="3">
+        </Border>
+        
+        <TextBlock
+            Grid.Row="0"
             HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
             FontSize="24"
-            FontWeight="SemiBold">
+            FontWeight="SemiBold"
+            FontFamily="Inter">
             GeneoGraph
-        </Label>
+        </TextBlock>
+
+        <StackPanel
+            Grid.Row="2">
+            <Button
+                x:Name="Createnew"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="50"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold">
+                    Create new
+                </Label>
+            </Button>
+            <Button
+                x:Name="Open"
+                Width="150"
+                Height="50"
+                HorizontalAlignment="Center"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212"
+                Margin="0,50,0,0">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold">
+                    Open
+                </Label>
+            </Button>
+            
+        </StackPanel>
+
+
 
         <!-- Central part - Recent -->
         <Label
-            Grid.Column="2"
-            Grid.Row="1"
-            Margin="20"
-            FontSize="20">
+            Grid.Column="1"
+            VerticalAlignment="Bottom"
+            Margin="120,0,0,0"
+            FontSize="24"
+            FontWeight="SemiBold">
             Recent
         </Label>
 
+
+        <StackPanel
+            Margin="120,0,0,0"
+            Grid.Column="1"
+            Grid.Row="2"
+            Orientation="Horizontal">
+            <StackPanel>
+                <Button
+                    Width="150"
+                    Height="175"
+                    Background="Transparent"
+                    CornerRadius="20"
+                    Padding="0"
+                    Margin="0,0,0,35">
+                    <StackPanel>
+                        <Border Height="150"
+                                Width="150"
+                                Background="#4A4A4A"
+                                CornerRadius="20"/>
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="150"
+                    Height="175"
+                    Background="Transparent"
+                    CornerRadius="20"
+                    Padding="0"
+                    Margin="0,0,0,35">
+                    <StackPanel>
+                        <Border Height="150"
+                                Width="150"
+                                Background="#4A4A4A"
+                                CornerRadius="20"/>
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="150"
+                    Height="175"
+                    Background="Transparent"
+                    CornerRadius="20"
+                    Padding="0"
+                    Margin="0,0,0,35">
+                    <StackPanel>
+                        <Border Height="150"
+                                Width="150"
+                                Background="#4A4A4A"
+                                CornerRadius="20"/>
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            <StackPanel
+                Margin="70,0,0,0">
+                <Button
+                    Width="150"
+                    Height="175"
+                    Background="Transparent"
+                    CornerRadius="20"
+                    Padding="0"
+                    Margin="0,0,0,35">
+                    <StackPanel>
+                        <Border Height="150"
+                                Width="150"
+                                Background="#4A4A4A"
+                                CornerRadius="20"/>
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="150"
+                    Height="175"
+                    Background="Transparent"
+                    CornerRadius="20"
+                    Padding="0"
+                    Margin="0,0,0,35">
+                    <StackPanel>
+                        <Border Height="150"
+                                Width="150"
+                                Background="#4A4A4A"
+                                CornerRadius="20"/>
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="150"
+                    Height="175"
+                    Background="Transparent"
+                    CornerRadius="20"
+                    Padding="0"
+                    Margin="0,0,0,35">
+                    <StackPanel>
+                        <Border Height="150"
+                                Width="150"
+                                Background="#4A4A4A"
+                                CornerRadius="20"/>
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </StackPanel>
+
+
+
         <!-- Right part -->
         <Label
-            Grid.Column="3"
-            Grid.Row="1"
-            Margin="0,20,0,0"
-            FontSize="20">
+            Grid.Column="2"
+            VerticalAlignment="Bottom"
+            Margin="20,0,0,0"
+            FontSize="24"
+            FontWeight="SemiBold">
             Project settings
         </Label>
-
-        <Button
-            Grid.Row="2"
-            Margin="0,30,0,20"
-            HorizontalAlignment="Center"
-            Background="Transparent"
-            BorderBrush="White"
-            BorderThickness="2"
-            CornerRadius="25"
-            Foreground="White"
-            Opacity="50">
-            <Label
-                Padding="15,5,15,5"
-                FontSize="18">
-                Create new
-            </Label>
-        </Button>
 
         <StackPanel
             Grid.Column="2"
             Grid.Row="2"
-            Grid.RowSpan="2"
-            Orientation="Horizontal">
-            <StackPanel>
-                <Button
-                    Width="200"
-                    Height="225"
-                    Margin="15,0,15,10"
-                    Background="Transparent"
-                    CornerRadius="15">
-                    <StackPanel>
-                        <Image Source="..\Assets\Recent.png" />
-                        <Label
-                            Margin="5"
-                            HorizontalAlignment="Center">
-                            Nikita project
-                        </Label>
-                    </StackPanel>
-                </Button>
-
-                <Button
-                    Width="200"
-                    Height="225"
-                    Margin="15,0,15,10"
-                    Background="Transparent"
-                    CornerRadius="15">
-                    <StackPanel>
-                        <Image Source="..\Assets\Recent.png" />
-                        <Label
-                            Margin="5"
-                            HorizontalAlignment="Center">
-                            Second project
-                        </Label>
-                    </StackPanel>
-                </Button>
-
-                <Button
-                    Width="200"
-                    Height="225"
-                    Margin="15,0,15,10"
-                    Background="Transparent"
-                    CornerRadius="15">
-                    <StackPanel>
-                        <Image Source="..\Assets\Recent.png" />
-                        <Label
-                            Margin="5"
-                            HorizontalAlignment="Center">
-                            Lalala project
-                        </Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-
-            <StackPanel>
-                <Button
-                    Width="200"
-                    Height="225"
-                    Margin="15,0,15,10"
-                    Background="Transparent"
-                    CornerRadius="15">
-                    <StackPanel>
-                        <Image Source="..\Assets\Recent.png" />
-                        <Label
-                            Margin="5"
-                            HorizontalAlignment="Center">
-                            EEEEEE project
-                        </Label>
-                    </StackPanel>
-                </Button>
-
-                <Button
-                    Width="200"
-                    Height="225"
-                    Margin="15,0,15,10"
-                    Background="Transparent"
-                    CornerRadius="15">
-                    <StackPanel>
-                        <Image Source="..\Assets\Recent.png" />
-                        <Label
-                            Margin="5"
-                            HorizontalAlignment="Center">
-                            Waaaaagh project
-                        </Label>
-                    </StackPanel>
-                </Button>
-
-                <Button
-                    Width="200"
-                    Height="225"
-                    Margin="15,0,15,10"
-                    Background="Transparent"
-                    CornerRadius="15">
-                    <StackPanel>
-                        <Image Source="..\Assets\Recent.png" />
-                        <Label
-                            Margin="5"
-                            HorizontalAlignment="Center">
-                            Test project
-                        </Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </StackPanel>
-
-        <StackPanel
-            Grid.Column="3"
-            Grid.Row="2">
+            Margin="30,0,0,0">
             <Label
-                Margin="0,0,0,20"
-                FontSize="18">
+                Margin="0,0,0,60"
+                FontSize="20"
+                FontWeight="SemiBold">
                 Project Name:
             </Label>
 
-            <Label FontSize="18">
+            <Label FontSize="20"
+                   FontWeight="SemiBold">
                 Location:
             </Label>
         </StackPanel>
 
-        <Button
-            Grid.Row="3"
-            Margin="0,30,0,20"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Background="Transparent"
-            BorderBrush="White"
-            BorderThickness="2"
-            CornerRadius="25"
-            Foreground="White"
-            Opacity="50">
-            <Label
-                Padding="20,5,20,5"
-                FontSize="18">
-                Open
-            </Label>
-        </Button>
+
     </Grid>
 </UserControl>
