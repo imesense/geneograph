@@ -8,8 +8,7 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
-    FontFamily="Cascadia Mono"
-    FontSize="12"
+    FontFamily="Inter"
     Foreground="#dedede"
     mc:Ignorable="d">
     <UserControl.DataContext>
@@ -17,202 +16,302 @@
     </UserControl.DataContext>
 
     <UserControl.Styles>
-        <Style Selector="Button:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#9dce8e" />
-            <Setter Property="Foreground" Value="Black" />
+        <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
+        </Style>
+
+        <Style Selector="ToggleButton">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="100,0,0,0"/>
+            <Setter Property="Margin" Value="0,30,0,0"/>
+            <Setter Property="FlowDirection" Value="RightToLeft"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style Selector="ToggleButton:pointerover /template/ Border#ToggleButtonBackground">
+            <Setter Property="Background" Value="#272727" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ Border#ExpandCollapseChevronBorder">
+            <Setter Property="Background" Value="#272727" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ Path#ExpandCollapseChevron">
+            <Setter Property="Stroke" Value="White" />
         </Style>
     </UserControl.Styles>
 
     <Grid
-        ColumnDefinitions="Auto,*,500"
-        RowDefinitions="Auto,*"
+        ColumnDefinitions="270,*,*"
+        RowDefinitions="110,*"
         ShowGridLines="False">
+        
+        
         <!-- Left bar -->
         <Border
             Grid.RowSpan="2"
-            Background="#171717" />
+            Background="#1a1a1a" />
 
         <Button
-            Content=" +  Add note   "
-            Command="{Binding AddNoteOpen}"
-            Margin="20,30,20,30"
-            Padding="10"
-            VerticalAlignment="Center"
-            Background="Transparent"
-            BorderBrush="#9dce8e"
-            BorderThickness="2"
-            CornerRadius="20"
-            FontSize="14" />
-
-        <!-- Central part -->
-        <Label
-            Grid.Column="1"
-            Content="{Binding SelectedCategory}"
-            Margin="30"
-            VerticalAlignment="Center"
-            FontSize="16"
-            FontWeight="Bold" />
-
-        <TextBox
-            Grid.Column="1"
-            Width="200"
-            Margin="0,0,30,0"
-            Padding="45,5,0,5"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Left"
-            VerticalContentAlignment="Center"
-            CornerRadius="25"
-            Watermark="Find...">
-            <TextBox.Background>
-                <ImageBrush
-                    AlignmentX="Left"
-                    Source="..\Assets\Buttons\search.png"
-                    Stretch="Uniform">
-                    <ImageBrush.Transform>
-                        <TransformGroup>
-                            <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
-                            <TranslateTransform X="8" Y="7" />
-                        </TransformGroup>
-                    </ImageBrush.Transform>
-                </ImageBrush>
-            </TextBox.Background>
-        </TextBox>
-
-        <!-- Right part -->
-        <Border
-            Grid.Column="2"
-            Background="#171717">
-            <TextBox
-                Text="{Binding SelectedNote.NoteHeader}"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Background="Transparent"
-                BorderBrush="#666666"
-                BorderThickness="0,0,0,1"
-                FontSize="16"
-                Watermark="Note header" />
+                x:Name="Createnew"
+                Command="{Binding AddNoteOpen}"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="50"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212">
+            <Label
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold">
+                Add Note
+            </Label>
+        </Button>
+        
+        <Border Background="#2f2f2f"
+                Height="1"
+                VerticalAlignment="Bottom">
         </Border>
 
         <StackPanel Grid.Row="1">
-            <ListBox
-                Background="Transparent"
-                BorderBrush="#666666"
-                BorderThickness="0,1,0,0"
-                ItemsSource="{Binding CategoryList}"
-                SelectedItem="{Binding SelectedCategory}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock
-                                Text="{Binding CategoryName}"
-                                Margin="10"
-                                FontSize="12" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-
-                <ListBox.Styles>
-                    <Style Selector="ListBoxItem">
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="BorderThickness" Value="0,0,0,1" />
-                        <Setter Property="BorderBrush" Value="#666666" />
-                    </Style>
-                    <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
-                        <Setter Property="Background" Value="#121212" />
-                        <Setter Property="BorderThickness" Value="0,0,0,1" />
-                        <Setter Property="BorderBrush" Value="#666666" />
-                    </Style>
-                </ListBox.Styles>
-            </ListBox>
+            <Button
+                HorizontalAlignment="Stretch"
+                Margin="20,30,20,0"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="..\Assets\Buttons\home.png"
+                        Stretch="Uniform"
+                        Width="32"
+                        Height="32"/>
+                    <Label Content="All Notes"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           Padding="0,5,0,5"/>
+                </StackPanel>
+            </Button>
 
             <Button
-                Command="{Binding AddCategoryOpenCommand}"
-                Padding="20"
                 HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Left"
-                Background="Transparent"
-                BorderBrush="#666666"
-                BorderThickness="0,0,0,1">
-                + New Category
+                Margin="20,20,20,0"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="..\Assets\Buttons\recent.png"
+                        Stretch="Uniform"
+                        Width="32"
+                        Height="32"/>
+                    <Label Content="Recent"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           Padding="0,5,0,5"/>
+                </StackPanel>
             </Button>
+
+            <Button
+                HorizontalAlignment="Stretch"
+                Margin="20,20,20,0"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="..\Assets\Buttons\star.png"
+                        Stretch="Uniform"
+                        Width="32"
+                        Height="32"/>
+                    <Label Content="Favorites"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           Padding="0,5,0,5"/>
+                </StackPanel>
+            </Button>
+
+            <Button
+                HorizontalAlignment="Stretch"
+                Margin="20,20,20,30"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="..\Assets\Buttons\source.png"
+                        Stretch="Uniform"
+                        Width="32"
+                        Height="32"/>
+                    <Label Content="Sources"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           Padding="0,5,0,5"/>
+                </StackPanel>
+            </Button>
+            
+            <Border Background="#2f2f2f"
+                    Height="1"
+                    VerticalAlignment="Bottom">
+            </Border>
+            
+            <Expander             
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                IsExpanded="True">
+            <Expander.Header>
+                Categories
+            </Expander.Header>
+                <ListBox
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    ItemsSource="{Binding CategoryList}"
+                    SelectedItem="{Binding SelectedCategory}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="8"
+                                    Height="8"
+                                    Background="White"
+                                    CornerRadius="8"
+                                    Margin="10,0,15,0"/>
+                                <TextBlock
+                                    Text="{Binding CategoryName}"
+                                    Margin="0,5,0,0"
+                                    FontSize="18"
+                                    FontWeight="Medium"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="#666666" />
+                        </Style>
+                        <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Style>
+                    </ListBox.Styles>
+                </ListBox>
+            </Expander>
         </StackPanel>
 
-        <ListBox
-            Grid.Column="1"
-            Grid.Row="1"
-            Background="Transparent"
-            ItemsSource="{Binding FilteredNotes}"
-            SelectedItem="{Binding SelectedNote}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock
-                            Text="{Binding NoteHeader}"
-                            Margin="0,10,0,15"
-                            FontSize="14"
-                            FontWeight="SemiBold" />
-                        <TextBlock
-                            Text="{Binding NoteDescription}"
-                            Margin="0,0,0,30"
-                            FontSize="12" />
+        <!-- Central part -->
+        <StackPanel Grid.Column="1"
+                    Orientation="Vertical"
+                    Margin="30,25,30,0">
+            <Label
+                Content="{Binding SelectedCategory}"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold"/>
+            <Label
+                Content="15 notes"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="Regular"/>
+        </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                Text="Created:"
-                                Margin="0,0,0,0"
-                                FontSize="12" />
-                            <TextBlock
-                                Text="{Binding AddedTime}"
-                                Margin="20,0,0,0"
-                                FontSize="12" />
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-
-            <ListBox.Styles>
-                <Style Selector="ListBoxItem">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="BorderThickness" Value="0,0,0,1" />
-                    <Setter Property="BorderBrush" Value="#666666" />
-                    <Setter Property="Margin" Value="15,0,15,0" />
-                </Style>
-                <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
-                    <Setter Property="Background" Value="#242424" />
-                    <Setter Property="BorderThickness" Value="0,0,0,1" />
-                    <Setter Property="BorderBrush" Value="#666666" />
-                </Style>
-            </ListBox.Styles>
-        </ListBox>
-
-        <Grid
-            Grid.Column="2"
-            Grid.Row="1"
-            Background="#141414"
-            RowDefinitions="Auto,*">
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Grid.Column="1"
+                    Margin="0,0,35,0">
+            
+            <Button
+                Width="48"
+                Height="48"
+                Margin="20"
+                Background="Transparent">
+                <Image
+                    Source="..\Assets\Buttons\sort.png"
+                    Stretch="Uniform" />
+            </Button>
+            
             <TextBox
-                Text="{Binding SelectedNote.NoteDescription}"
-                Padding="20,40,0,40"
-                HorizontalContentAlignment="Stretch"
-                AcceptsReturn="True"
-                Background="Transparent"
-                BorderBrush="#666666"
-                BorderThickness="0,0,0,1"
-                TextWrapping="Wrap"
-                Watermark="Add note desription" />
+                Width="200"
+                Height="40"
+                Background="#1e1e1e"
+                BorderBrush="#777777"
+                CornerRadius="25"
+                VerticalContentAlignment="Center"
+                Watermark="Find...">
+            </TextBox>
+        </StackPanel>
 
-            <TextBox
-                Grid.Row="1"
-                Text="{Binding SelectedNote.NoteText}"
-                Padding="20,40,0,40"
-                VerticalAlignment="Stretch"
-                HorizontalContentAlignment="Stretch"
-                AcceptsReturn="True"
+
+
+        <!-- Right part -->     
+        <Grid Grid.Column="2"
+              Grid.RowSpan="2"
+              Background="#161616"
+              ShowGridLines="False"
+              RowDefinitions="110,*,Auto,Auto">
+            
+            <Border Background="#2f2f2f"
+                    Height="1"
+                    VerticalAlignment="Bottom">
+            </Border>
+
+            <TextBox Grid.Row="1"
+                     Background="Transparent"
+                     BorderBrush="Transparent">
+            </TextBox>
+
+            <Expander
+                Grid.Row="2"
+                HorizontalAlignment="Stretch"
                 Background="Transparent"
-                BorderThickness="0"
-                TextWrapping="Wrap"
-                Watermark="Add note text" />
+                BorderBrush="Transparent"
+                IsExpanded="True">
+                <Expander.Header>
+                    Information
+                </Expander.Header>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Stretch">
+                    <TextBox Width="300"
+                             Watermark="Date:"
+                             CornerRadius="15"
+                             Background="#1e1e1e"
+                             BorderBrush="#777777"
+                             Margin="0,0,15,0">
+                    </TextBox>
+                    <TextBox HorizontalAlignment="Stretch"
+                             Watermark="Source:"
+                             CornerRadius="15"
+                             Background="#1e1e1e"
+                             BorderBrush="#777777"
+                             Margin="0,0,15,0">
+                    </TextBox>
+                </StackPanel>
+            </Expander>
+
+            <Expander
+                Grid.Row="3"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                IsExpanded="False">
+                <Expander.Header>
+                    Connections
+                </Expander.Header>
+            </Expander>
+
         </Grid>
     </Grid>
 </UserControl>
