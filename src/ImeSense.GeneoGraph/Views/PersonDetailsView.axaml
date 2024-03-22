@@ -8,113 +8,135 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
-    FontFamily="Cascadia Mono"
-    FontSize="14"
+    FontFamily="Inter"
+    FontSize="18"
     Foreground="#dedede"
     mc:Ignorable="d">
     <UserControl.DataContext>
         <vm:FamilyTreeViewModel />
     </UserControl.DataContext>
 
-    <Grid ColumnDefinitions="*, Auto">
+    <Grid ColumnDefinitions="*, Auto, Auto"
+          RowDefinitions="Auto, *, Auto"
+          ShowGridLines="True">
+
+        <!--Top bar-->
         <Border
-            Width="400"
-            Margin="15"
-            HorizontalAlignment="Left"
-            CornerRadius="15">
+            Grid.ColumnSpan="3"
+            Height="100"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
             <Border.Background>
-                <LinearGradientBrush SpreadMethod="Reflect" StartPoint="0%,40%" EndPoint="-148%,100%">
+                <LinearGradientBrush Opacity="0.6">
                     <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="#2c2c2c" Offset="0.1" />
-                        <GradientStop Color="#101010" Offset="0.8" />
+                        <GradientStop Color="#00C969" Offset="0.0" />
+                        <GradientStop Color="#B1D8A5" Offset="1.0" />
                     </LinearGradientBrush.GradientStops>
                 </LinearGradientBrush>
             </Border.Background>
+            <TextBox
+                HorizontalAlignment="Right"
+                Width="200"
+                Height="40"
+                Margin="0,0,35,0"
+                Background="#1e1e1e"
+                BorderBrush="#777777"
+                CornerRadius="25"
+                VerticalContentAlignment="Center"
+                Watermark="Find...">
+            </TextBox>
+        </Border>
 
-            <!-- Photo section -->
-            <StackPanel
-                Margin="20"
-                Orientation="Horizontal">
-                <Border
-                    Grid.Row="1"
-                    Grid.RowSpan="3"
-                    Width="150"
-                    Height="200"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    BorderBrush="#dedede"
-                    BorderThickness="2">
-                    <Label
-                        Grid.Row="1"
-                        Grid.RowSpan="3"
-                        Content="+"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="50" />
-                </Border>
+        <StackPanel Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch">
+            <Label 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="SemiBold"
+                   FontSize="20"
+                   Content="Nikita Sergeevich&#10;        Lebedin"
+                   Margin="0,0,350,0">
+            </Label>
 
-                <StackPanel
-                    Margin="20,0,0,0"
-                    Orientation="Vertical">
-                    <Label Content="{Binding SelectedPerson.FullName}" />
-                    <Label
-                        Content="{Binding SelectedPerson.BirthDate, StringFormat=dd-MMM-yyyy}"
-                        Margin="0,10,0,0"
-                        FontSize="12" />
-                    <Label
-                        Content="{Binding SelectedPerson.BirthPlace}"
-                        Margin="0,5,0,0"
-                        FontSize="12" />
-                </StackPanel>
-            </StackPanel>
+            <Label
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="SemiBold"
+                   FontSize="20"
+                   Content="3 mar 1998"
+                   Margin="0,0,0,0">
+            </Label>
+        </StackPanel>
+
+        <!--Profile picture-->
+        <Border
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                ClipToBounds="True"
+                CornerRadius="100"
+                Margin="15"
+                Height="130"
+                Width="130">
+            <Image
+                Source="..\Assets\Profile\Profile_picture.png"
+                Stretch="UniformToFill"
+                Width="140"
+                Height="140"/>
         </Border>
 
 
-        <!-- Search bar -->
-        <Grid
-            Grid.Column="1"
-            Background="#171717"
-            RowDefinitions="Auto,*">
-            <TextBox
-                Margin="10"
-                Padding="40,0,40,0"
-                VerticalContentAlignment="Center"
-                Background="#121212"
-                BorderBrush="#9dce8e"
-                BorderThickness="1"
-                CornerRadius="25"
-                FontSize="10"
-                Watermark="Find person...">
-                <TextBox.Background>
-                    <ImageBrush
-                        AlignmentX="Left"
-                        Source="..\Assets\Buttons\search.png"
-                        Stretch="Uniform">
-                        <ImageBrush.Transform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
-                                <TranslateTransform X="8" Y="7" />
-                            </TransformGroup>
-                        </ImageBrush.Transform>
-                    </ImageBrush>
-                </TextBox.Background>
-            </TextBox>
+        <!--Main info-->
+        <Border 
+            Grid.Row="1"
+            Background="#1e1e1e"
+            CornerRadius="25"
+            Margin="20,20,0,0"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch">
+        </Border>
 
-            <ListBox
-                Grid.Row="1"
-                Background="Transparent"
-                Foreground="#dedede"
-                ItemsSource="{Binding PeopleList}"
-                SelectedIndex="{Binding SelectedIndex}"
-                SelectedItem="{Binding SelectedPerson}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            Text="{Binding}"
-                            FontSize="12" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
+        <!--Family\Partners-->
+        <Border
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Background="#1e1e1e"
+            CornerRadius="25"
+            Margin="0,20,20,20"
+            Width="500"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Left">
+        </Border>
+
+        <!--Connections-->
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="#1e1e1e"
+            CornerRadius="25"
+            Margin="20,55,20,0"
+            Width="500"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Left">
+        </Border>
+
+        <!--Timeline-->
+        <Border
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Background="#1e1e1e"
+            CornerRadius="25"
+            Margin="20"
+            Height="180"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch">
+        </Border>
+
+
+
     </Grid>
 </UserControl>
