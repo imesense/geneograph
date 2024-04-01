@@ -3,7 +3,7 @@ using System;
 using Avalonia;
 using Avalonia.ReactiveUI;
 
-namespace ImeSense.GeneoGraph.Windows;
+namespace ImeSense.GeneoGraph.Linux;
 
 internal class Program {
     /// <summary>
@@ -16,7 +16,7 @@ internal class Program {
             .WithInterFont()
             .LogToTrace()
             .UseReactiveUI()
-            .UseWin32();
+            .UseX11();
 
     /// <summary>
     /// Initialization code
