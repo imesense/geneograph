@@ -1,15 +1,15 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 
 using ImeSense.GeneoGraph.Design.Models;
 using ImeSense.GeneoGraph.Design.Views;
-
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -22,6 +22,7 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
         public static Window? _addCategoryWindow;
 
         public int _selectedNoteIndex;
+
         public NotesViewModel() 
         {
             CategoryList = NoteCategory.CategoryList;
@@ -30,12 +31,10 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
             SelectedCategory = CategoryList[0];
 
-            AddNoteOpenCommand = ReactiveCommand.Create(AddNoteOpen);
             AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
             DeleteNoteCommand = ReactiveCommand.Create(DeleteNote);
             IsFavNoteChangeCommand = ReactiveCommand.Create(IsFavStateChange);
             LoadFavNoteCommand = ReactiveCommand.Create(LoadFavoriteNotes);
-
         }
 
         private NoteCategory _selectedCategory;
@@ -107,8 +106,6 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             }
         }
 
-
-        public IReactiveCommand<Unit, Unit> AddNoteOpenCommand { get; set; }
         public IReactiveCommand<Unit, Unit> AddCategoryOpenCommand { get; set; }
 
         public IReactiveCommand<Unit, Unit> DeleteNoteCommand { get; set; }

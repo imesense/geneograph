@@ -1,7 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Reactive.Linq;
+using System.Text;
+using System.Windows.Input;
+using ReactiveUI;
+
 using Dock.Model.Controls;
 using Dock.Model.Core;
 
-using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels;
@@ -12,6 +18,9 @@ public class MainViewModel : ReactiveObject {
     [Reactive]
     public IRootDock? Layout { get; set; }
 
+    public Interaction<AddNoteViewModel, AddNoteReturnViewModel?> ShowDialog { get; }
+    public ICommand AddNoteOpenCommand { get; }
+
     public MainViewModel() {
         _factory = new AppFactory();
 
@@ -19,6 +28,15 @@ public class MainViewModel : ReactiveObject {
         if (Layout is { }) {
             _factory?.InitLayout(Layout);
         }
+
+        ShowDialog = new Interaction<AddNoteViewModel, AddNoteReturnViewModel?>();
+
+        AddNoteOpenCommand = ReactiveCommand.CreateFromTask(async () =>
+        {
+            var store = new AddNoteViewModel();
+
+            var result = await ShowDialog.Handle(store);
+        });
     }
 
     public void CloseLayout() {
