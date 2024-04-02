@@ -67,7 +67,6 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             NotesList.Add(new Note() {
                 NoteId = NotesList.Last().NoteId + 1,
                 NoteHeader = NewNoteHeader,
-                NoteDescription = NewNoteDescription,
                 NoteText = NewNoteText,
                 Category = SelectedCategory,
                 AddedTime = DateTime.Now

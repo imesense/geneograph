@@ -7,15 +7,15 @@
     xmlns:views="using:ImeSense.GeneoGraph.Design.Views"
     xmlns:vm="using:ImeSense.GeneoGraph.Design.ViewModels"
     Width="950"
-    Height="650"
-    d:DesignHeight="650"
+    Height="750"
+    d:DesignHeight="750"
     d:DesignWidth="950"
     Background="Transparent"
     ExtendClientAreaChromeHints="NoChrome"
     ExtendClientAreaTitleBarHeightHint="-1"
     ExtendClientAreaToDecorationsHint="True"
-    FontFamily="Cascadia Mono"
-    FontSize="14"
+    FontFamily="Inter"
+    FontSize="16"
     Foreground="#dedede"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -35,20 +35,22 @@
     </Window.Styles>
 
     <Border
-        Background="#171717"
+        Background="#252525"
         BorderBrush="#3d3d3d"
         BorderThickness="1"
         CornerRadius="5">
         <Grid
             Margin="20"
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, *, Auto">
+            RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto"
+            ShowGridLines="False">
             <Label
                 Padding="0,0,0,20"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
                 BorderBrush="#dedede"
                 BorderThickness="0,0,0,1"
-                FontSize="18">
+                FontSize="20"
+                FontWeight="SemiBold">
                 Add note
             </Label>
 
@@ -56,18 +58,73 @@
                 Grid.Row="1"
                 Margin="0,20,0,0"
                 HorizontalAlignment="Stretch"
-                ColumnDefinitions="Auto,*"
-                RowDefinitions="Auto,Auto">
-                <Label>
+                ColumnDefinitions="Auto,*,*,Auto"
+                RowDefinitions="Auto,Auto"
+                ShowGridLines="False">
+                
+                <Label
+                    Margin="0,0,0,5"
+                    FontSize="16"
+                    FontWeight="Regular">
                     Category
                 </Label>
+                <ComboBox
+                    Grid.Row="1"
+                    Width="200"
+                    Background="#121212"
+                    BorderBrush="Transparent"
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{Binding CategoryList}"
+                    SelectedItem="{Binding SelectedCategory}"
+                    FontSize="18"
+                    Padding="12"
+                    CornerRadius="25"
+                    Margin="0,0,10,0"
+                    VerticalContentAlignment="Center"/>
+
+                <Label
+                    Grid.Column="1"
+                    Margin="20,0,20,5"
+                    FontSize="16"
+                    FontWeight="Regular">
+                    Source
+                </Label>
+                <TextBox
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    VerticalContentAlignment="Center"
+                    Margin="10,0,10,0"
+                    FontSize="18"
+                    Padding="12"
+                    CornerRadius="25"
+                    Background="#121212"
+                    BorderBrush="Transparent"/>
+
+                <Label
+                    Grid.Column="2"
+                    Margin="20,0,20,5"
+                    FontSize="16"
+                    FontWeight="Regular">
+                    Date
+                </Label>
+                <TextBox
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    VerticalContentAlignment="Center"
+                    Margin="10,0,20,0"
+                    FontSize="18"
+                    Padding="12"
+                    CornerRadius="25"
+                    Background="#121212"
+                    BorderBrush="Transparent"/>
+                
 
                 <Button
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
+                    Grid.Column="3"
+                    Grid.Row="1"
                     Command=""
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Center"
                     BorderThickness="2"
                     CornerRadius="25">
                     <Label
@@ -79,43 +136,30 @@
                         + Connect
                     </Label>
                 </Button>
-
-                <ComboBox
-                    Grid.Row="1"
-                    Width="150"
-                    HorizontalAlignment="Stretch"
-                    ItemsSource="{Binding CategoryList}"
-                    SelectedItem="{Binding SelectedCategory}" />
             </Grid>
 
             <StackPanel
                 Grid.Row="2"
                 Margin="0,20,0,0">
-                <Label>
+                <Label
+                    Margin="0,0,0,5"
+                    FontSize="16"
+                    FontWeight="Regular">
                     Header
                 </Label>
 
                 <TextBox
                     Text="{Binding NewNoteHeader}"
                     VerticalContentAlignment="Center"
-                    FontSize="12" />
+                    FontSize="18"
+                    Padding="12"
+                    CornerRadius="25"
+                    Background="#121212"
+                    BorderBrush="Transparent"/>
             </StackPanel>
 
             <StackPanel
                 Grid.Row="3"
-                Margin="0,20,0,0">
-                <Label>
-                    Description
-                </Label>
-                <TextBox
-                    Text="{Binding NewNoteDescription}"
-                    VerticalContentAlignment="Center"
-                    FontSize="12"
-                    Watermark="Add note description (optional)" />
-            </StackPanel>
-
-            <StackPanel
-                Grid.Row="4"
                 Margin="0,20,0,0">
                 <Label>
                     Note Text
@@ -123,11 +167,16 @@
             </StackPanel>
 
             <TextBox
-                Grid.Row="5"
+                Grid.Row="4"
                 Text="{Binding NewNoteText}"
                 VerticalContentAlignment="Top"
-                FontSize="12" />
-
+                FontSize="18"
+                Padding="12"
+                CornerRadius="25"
+                Background="#121212"
+                TextWrapping="Wrap"
+                BorderBrush="Transparent"/>
+            
             <StackPanel
                 Grid.Row="6"
                 HorizontalAlignment="Center"

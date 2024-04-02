@@ -21,6 +21,8 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
         public static Window? _addNoteWindow;
         public static Window? _addCategoryWindow;
+
+        public int _selectedNoteIndex;
         public NotesViewModel() 
         {
             CategoryList = NoteCategory.CategoryList;
@@ -31,6 +33,7 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
             AddNoteOpenCommand = ReactiveCommand.Create(AddNoteOpen);
             AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
+            DeleteNoteCommand = ReactiveCommand.Create(DeleteNote);
 
         }
 
@@ -63,6 +66,11 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             set => this.RaiseAndSetIfChanged(ref _selectedNote, value);
         }
 
+        public int SelectedNoteIndex {
+            get => _selectedNoteIndex;
+            set => this.RaiseAndSetIfChanged(ref _selectedNoteIndex, value);
+        }
+
         public static void AddNoteOpen() {
             _addNoteWindow = new AddNoteWindow();
             _addNoteWindow.Show();
@@ -79,9 +87,15 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             _addCategoryWindow.Show();
         }
 
+        public void DeleteNote() {
+            NotesList.RemoveAt(SelectedNoteIndex);
+        }
+
 
         public IReactiveCommand<Unit, Unit> AddNoteOpenCommand { get; set; }
         public IReactiveCommand<Unit, Unit> AddCategoryOpenCommand { get; set; }
+
+        public IReactiveCommand<Unit, Unit> DeleteNoteCommand { get; set; }
 
 
 

@@ -25,13 +25,13 @@ namespace ImeSense.GeneoGraph.Design.Models {
         {
                 new NoteCategory {
                 Id = 1,
-                CategoryName = "All notes"},
+                CategoryName = "Custom1"},
                 new NoteCategory {
                 Id = 2,
-                CategoryName = "Recent"},
+                CategoryName = "Custom2"},
                 new NoteCategory {
                 Id = 3,
-                CategoryName = "Custom"},
+                CategoryName = "Custom3"},
         };
 
     }
