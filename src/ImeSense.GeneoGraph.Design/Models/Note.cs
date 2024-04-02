@@ -25,6 +25,7 @@ namespace ImeSense.GeneoGraph.Design.Models {
         public DateTime? NoteDateProperty { get; set; }
 
         public string? NoteSource { get; set; }
+        public bool IsFavorite { get; set; } = false;
 
         [Reactive]
         public static ObservableCollection<Note> NotesList { get; set; } = new() {
@@ -53,6 +54,5 @@ namespace ImeSense.GeneoGraph.Design.Models {
                 AddedTime= DateTime.Now
                 },
             };
-
     }
 }

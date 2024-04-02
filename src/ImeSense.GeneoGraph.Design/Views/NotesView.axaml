@@ -235,7 +235,8 @@
                 Margin="20,20,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent">
+                Background="Transparent"
+                Command="{Binding LoadFavNoteCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -369,7 +370,7 @@
             Grid.Row="1"
             Background="Transparent"
             BorderBrush="Transparent"
-            ItemsSource="{Binding NotesList}"
+            ItemsSource="{Binding FilteredNotes}"
             SelectedItem="{Binding SelectedNote}"
             SelectedIndex="{Binding SelectedNoteIndex}">
             <ListBox.ItemTemplate>
@@ -471,7 +472,8 @@
                         Width="48"
                         Height="48"
                         Background="Transparent"
-                        Margin="20,0,20,0">
+                        Margin="20,0,20,0"
+                        Command="{Binding IsFavNoteChangeCommand}">
                         <Image
                             Source="..\Assets\Buttons\star_empty.png"
                             Stretch="Uniform" />

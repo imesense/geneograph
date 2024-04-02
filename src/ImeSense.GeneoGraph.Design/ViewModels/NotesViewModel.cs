@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
-using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 using Avalonia.Controls;
+using Avalonia.ReactiveUI;
 
 using ImeSense.GeneoGraph.Design.Models;
 using ImeSense.GeneoGraph.Design.Views;
@@ -16,7 +15,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.Design.ViewModels {
-    public class NotesViewModel : ReactiveObject 
+    public class NotesViewModel : ReactiveObject
     {
 
         public static Window? _addNoteWindow;
@@ -34,6 +33,8 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             AddNoteOpenCommand = ReactiveCommand.Create(AddNoteOpen);
             AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
             DeleteNoteCommand = ReactiveCommand.Create(DeleteNote);
+            IsFavNoteChangeCommand = ReactiveCommand.Create(IsFavStateChange);
+            LoadFavNoteCommand = ReactiveCommand.Create(LoadFavoriteNotes);
 
         }
 
@@ -76,19 +77,34 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             _addNoteWindow.Show();
         }
 
+        public static void AddCategoryOpen() {
+            _addCategoryWindow = new AddCategoryWindow();
+            _addCategoryWindow.Show();
+        }
 
         private void UpdateNotes() {
             var filterupdate = NotesList.Where(note => note.Category == _selectedCategory);
             FilteredNotes = new ObservableCollection<Note>(filterupdate);
         }
 
-        public static void AddCategoryOpen() {
-            _addCategoryWindow = new AddCategoryWindow();
-            _addCategoryWindow.Show();
+        private void LoadFavoriteNotes() {
+            var loadfavs = NotesList.Where(note => note.IsFavorite == true);
+            FilteredNotes.Clear();
+            FilteredNotes = new ObservableCollection<Note>(loadfavs);
         }
+
 
         public void DeleteNote() {
             NotesList.RemoveAt(SelectedNoteIndex);
+        }
+        public void IsFavStateChange() {
+            if (SelectedNote.IsFavorite == false) {
+                SelectedNote.IsFavorite = true;
+            } 
+            else 
+            {
+                SelectedNote.IsFavorite = false;
+            }
         }
 
 
@@ -96,6 +112,8 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
         public IReactiveCommand<Unit, Unit> AddCategoryOpenCommand { get; set; }
 
         public IReactiveCommand<Unit, Unit> DeleteNoteCommand { get; set; }
+        public IReactiveCommand<Unit, Unit> IsFavNoteChangeCommand { get; set; }
+        public IReactiveCommand<Unit, Unit> LoadFavNoteCommand { get; set; }
 
 
 

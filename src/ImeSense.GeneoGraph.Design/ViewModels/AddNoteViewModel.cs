@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 
 using ImeSense.GeneoGraph.Design.Models;
-
+using Avalonia.ReactiveUI;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -64,7 +64,7 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
 
         public void AddNote() {
-            NotesList.Add(new Note() {
+            Note.NotesList.Add(new Note() {
                 NoteId = NotesList.Last().NoteId + 1,
                 NoteHeader = NewNoteHeader,
                 NoteText = NewNoteText,
