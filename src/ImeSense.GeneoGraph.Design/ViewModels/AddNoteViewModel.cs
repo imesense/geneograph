@@ -11,24 +11,22 @@ using ImeSense.GeneoGraph.Models;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Reactive;
 
 namespace ImeSense.GeneoGraph.Design.ViewModels {
     public class AddNoteViewModel : ReactiveObject 
     {
 
         private NoteCategory _selectedCategory;
+        private Note _newNote;
 
-        private readonly Note _newnote;
-
-        public AddNoteViewModel(Note newnote) 
+        public AddNoteViewModel() 
         {
             CategoryList = NoteCategory.CategoryList;
             SelectedCategory = CategoryList[0];
-            NotesList = Note.NotesList;
 
-            _newnote = newnote;
+            ///_newNote = newnote;
         }
-
 
 
         [Reactive]
@@ -37,16 +35,17 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
         [Reactive]
         public string NewNoteText { get; set; } = string.Empty;
 
-        [Reactive]
-        public ObservableCollection<Note> NotesList { get; set; } = new();
-
-
 
         [Reactive]
         public ObservableCollection<NoteCategory> CategoryList { get; set; } = new();
 
         [Reactive]
         public string NewCategoryName { get; set; }
+
+        public Note NewNote {
+            get => _newNote;
+            set => this.RaiseAndSetIfChanged(ref _newNote, value);
+        }
 
         public NoteCategory SelectedCategory {
             get => _selectedCategory;
@@ -66,13 +65,15 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
 
         public void AddNote() {
-            Note.NotesList.Add(new Note() {
-                NoteId = NotesList.Last().NoteId + 1,
+
+
+            NewNote = new Note() {
+                NoteId = 5,
                 NoteHeader = NewNoteHeader,
                 NoteText = NewNoteText,
                 Category = SelectedCategory,
                 AddedTime = DateTime.Now
-            }); ;
+            };
 
             AddNoteClose();
 

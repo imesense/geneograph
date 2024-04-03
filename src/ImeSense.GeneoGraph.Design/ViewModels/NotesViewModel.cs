@@ -2,17 +2,17 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-using Avalonia.Controls;
-using Avalonia.ReactiveUI;
+using System;
 
+using Avalonia.Controls;
 using ImeSense.GeneoGraph.Design.Models;
 using ImeSense.GeneoGraph.Design.Views;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Reflection;
 
 namespace ImeSense.GeneoGraph.Design.ViewModels {
     public class NotesViewModel : ReactiveObject
@@ -23,8 +23,12 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
         public int _selectedNoteIndex;
 
+        private bool _rightDockVisibility = false;
+
         public Interaction<NotesViewModel, AddNoteViewModel?> ShowDialog { get; }
         public ICommand AddNoteOpenCommand { get; }
+
+        public ReactiveCommand<Unit, AddNoteViewModel?> AddNewNoteCommand { get; }
 
         public NotesViewModel() 
         {
@@ -47,6 +51,17 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
                 var result = await ShowDialog.Handle(store);
             });
+
+            this.WhenAnyValue(x => x.SelectedNoteIndex)
+                .Skip(2) // Skip initial null value
+                .Where(index => index >= 0)
+                .Subscribe(_ => RightDockVisibility = true);
+
+            this.WhenAnyValue(x => x.SelectedNoteIndex)
+                .Skip(2) // Skip initial null value
+                .Where(index => index < 0)
+                .Subscribe(_ => RightDockVisibility = false);
+
         }
 
         private NoteCategory _selectedCategory;
@@ -83,6 +98,12 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             set => this.RaiseAndSetIfChanged(ref _selectedNoteIndex, value);
         }
 
+        [Reactive]
+        public bool RightDockVisibility {
+            get => _rightDockVisibility;
+            set => this.RaiseAndSetIfChanged(ref _rightDockVisibility, value);
+        }
+
         public static void AddCategoryOpen() {
             _addCategoryWindow = new AddCategoryWindow();
             _addCategoryWindow.Show();
@@ -103,6 +124,7 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
         public void DeleteNote() {
             NotesList.RemoveAt(SelectedNoteIndex);
         }
+
         public void IsFavStateChange() {
             if (SelectedNote.IsFavorite == false) {
                 SelectedNote.IsFavorite = true;
@@ -118,7 +140,6 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
         public IReactiveCommand<Unit, Unit> DeleteNoteCommand { get; set; }
         public IReactiveCommand<Unit, Unit> IsFavNoteChangeCommand { get; set; }
         public IReactiveCommand<Unit, Unit> LoadFavNoteCommand { get; set; }
-
 
 
     }

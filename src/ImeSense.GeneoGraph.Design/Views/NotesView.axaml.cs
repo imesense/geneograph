@@ -5,6 +5,8 @@ using ReactiveUI;
 using System.Threading.Tasks;
 using Avalonia.LogicalTree;
 using System.Linq;
+using System;
+using System.Runtime.InteropServices;
 
 namespace ImeSense.GeneoGraph.Design.Views {
     public partial class NotesView : ReactiveUserControl<NotesViewModel> {
@@ -13,6 +15,8 @@ namespace ImeSense.GeneoGraph.Design.Views {
 
             this.WhenActivated(disposables =>
                 disposables(ViewModel!.ShowDialog.RegisterHandler(DoShowDialogAsync)));
+
+            ///this.WhenActivated(d => d(ViewModel!.AddNewNoteCommand.Subscribe(Close)));
         }
 
         private async Task DoShowDialogAsync(IInteractionContext<NotesViewModel, AddNoteViewModel?> interaction) {

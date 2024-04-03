@@ -20,6 +20,10 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
+    <Window.DataContext>
+        <vm:AddNoteViewModel/>
+    </Window.DataContext>
+
 
     <Window.Styles>
         <Style Selector="Button">
