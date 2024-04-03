@@ -24,7 +24,6 @@
         <vm:AddNoteViewModel/>
     </Window.DataContext>
 
-
     <Window.Styles>
         <Style Selector="Button">
             <Setter Property="Background" Value="#9dce8e" />
@@ -151,7 +150,7 @@
                 </Label>
 
                 <TextBox
-                    Text="{Binding NewNoteHeader}"
+                    Text="{Binding NewNoteHeader, Mode=TwoWay}"
                     VerticalContentAlignment="Center"
                     FontSize="18"
                     Padding="12"
@@ -170,7 +169,7 @@
 
             <TextBox
                 Grid.Row="4"
-                Text="{Binding NewNoteText}"
+                Text="{Binding NewNoteText, Mode=TwoWay}"
                 VerticalContentAlignment="Top"
                 FontSize="18"
                 Padding="12"
@@ -185,7 +184,7 @@
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
                 <Button
-                    Command="{Binding AddNote}"
+                    Command="{Binding AddNoteCommand}"
                     Width="120"
                     Margin="0,30,30,5"
                     HorizontalAlignment="Center"
@@ -203,7 +202,7 @@
                 </Button>
 
                 <Button
-                    Command="{Binding AddNoteClose}"
+                    Command="{Binding CancelCommand}"
                     Width="120"
                     Margin="30,30,0,5"
                     HorizontalAlignment="Center"

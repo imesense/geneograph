@@ -1,92 +1,53 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Avalonia.Controls;
-
-using ImeSense.GeneoGraph.Models;
-using Avalonia.ReactiveUI;
-using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 using System.Reactive;
 
+using ImeSense.GeneoGraph.Models;
+
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
+
 namespace ImeSense.GeneoGraph.Design.ViewModels {
-    public class AddNoteViewModel : ReactiveObject 
-    {
+    public class AddNoteViewModel : ReactiveObject {
 
-        private NoteCategory _selectedCategory;
-        private Note _newNote;
+        private readonly NotesViewModel _notesViewModel;
 
-        public AddNoteViewModel() 
-        {
+        [Reactive]
+        public string NewNoteHeader { get; set; }
+
+        [Reactive]
+        public string NewNoteText { get; set; }
+
+        [Reactive]
+        public ObservableCollection<NoteCategory> CategoryList { get; set; }
+
+        [Reactive]
+        public NoteCategory SelectedCategory { get; set; }
+
+        public ReactiveCommand<Unit, Unit> AddNoteCommand { get; }
+
+        public ReactiveCommand<Unit, Unit> CancelCommand { get; }
+
+        // Parameterless constructor
+        public AddNoteViewModel() {
+            // Initialize commands
+            AddNoteCommand = ReactiveCommand.Create(AddNote);
+            CancelCommand = ReactiveCommand.Create(() => { });
+
             CategoryList = NoteCategory.CategoryList;
             SelectedCategory = CategoryList[0];
-
-            ///_newNote = newnote;
         }
 
-
-        [Reactive]
-        public string NewNoteHeader { get; set; } = string.Empty;
-
-        [Reactive]
-        public string NewNoteText { get; set; } = string.Empty;
-
-
-        [Reactive]
-        public ObservableCollection<NoteCategory> CategoryList { get; set; } = new();
-
-        [Reactive]
-        public string NewCategoryName { get; set; }
-
-        public Note NewNote {
-            get => _newNote;
-            set => this.RaiseAndSetIfChanged(ref _newNote, value);
-        }
-
-        public NoteCategory SelectedCategory {
-            get => _selectedCategory;
-            set {
-                this.RaiseAndSetIfChanged(ref _selectedCategory, value);
-            }
-        }
-
-        public static void AddNoteClose() 
-        {
-            NotesViewModel._addNoteWindow.Close();
-        }
-
-        public static void AddCategoryClose() {
-            NotesViewModel._addCategoryWindow.Close();
-        }
-
-
-        public void AddNote() {
-
-
-            NewNote = new Note() {
-                NoteId = 5,
+        private void AddNote() {
+            var newNote = new Note {
                 NoteHeader = NewNoteHeader,
                 NoteText = NewNoteText,
                 Category = SelectedCategory,
                 AddedTime = DateTime.Now
             };
 
-            AddNoteClose();
-
+            // Add the new note to the collection
+            _notesViewModel.NotesList.Add(newNote);
         }
-
-        public void AddCategory() {
-            CategoryList.Add(new NoteCategory() {
-                Id = CategoryList.Last().Id + 1,
-                CategoryName = NewCategoryName
-            });
-
-            AddCategoryClose();
-        }
-
     }
 }
