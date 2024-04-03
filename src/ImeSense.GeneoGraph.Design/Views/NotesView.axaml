@@ -61,14 +61,14 @@
             Background="#1a1a1a" />
 
         <Button
-            x:Name="Createnew"
-            Command="{Binding AddNoteOpen}"
-            Width="200"
-            Height="50"
-            HorizontalAlignment="Center"
-            Background="#9dce8e"
-            CornerRadius="25"
-            Foreground="#121212">
+                x:Name="Createnew"
+                Command="{Binding AddNoteOpenCommand}"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="50"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212">
             <Label
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"

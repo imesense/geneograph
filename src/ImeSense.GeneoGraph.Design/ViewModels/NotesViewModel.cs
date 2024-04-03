@@ -23,6 +23,9 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
 
         public int _selectedNoteIndex;
 
+        public Interaction<NotesViewModel, AddNoteViewModel?> ShowDialog { get; }
+        public ICommand AddNoteOpenCommand { get; }
+
         public NotesViewModel() 
         {
             CategoryList = NoteCategory.CategoryList;
@@ -35,6 +38,15 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
             DeleteNoteCommand = ReactiveCommand.Create(DeleteNote);
             IsFavNoteChangeCommand = ReactiveCommand.Create(IsFavStateChange);
             LoadFavNoteCommand = ReactiveCommand.Create(LoadFavoriteNotes);
+
+            ShowDialog = new Interaction<NotesViewModel, AddNoteViewModel?>();
+
+            AddNoteOpenCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                var store = new NotesViewModel();
+
+                var result = await ShowDialog.Handle(store);
+            });
         }
 
         private NoteCategory _selectedCategory;
@@ -69,11 +81,6 @@ namespace ImeSense.GeneoGraph.Design.ViewModels {
         public int SelectedNoteIndex {
             get => _selectedNoteIndex;
             set => this.RaiseAndSetIfChanged(ref _selectedNoteIndex, value);
-        }
-
-        public static void AddNoteOpen() {
-            _addNoteWindow = new AddNoteWindow();
-            _addNoteWindow.Show();
         }
 
         public static void AddCategoryOpen() {

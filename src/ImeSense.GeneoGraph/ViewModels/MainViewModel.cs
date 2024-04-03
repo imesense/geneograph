@@ -18,9 +18,6 @@ public class MainViewModel : ReactiveObject {
     [Reactive]
     public IRootDock? Layout { get; set; }
 
-    public Interaction<AddNoteViewModel, AddNoteReturnViewModel?> ShowDialog { get; }
-    public ICommand AddNoteOpenCommand { get; }
-
     public MainViewModel() {
         _factory = new AppFactory();
 
@@ -28,15 +25,6 @@ public class MainViewModel : ReactiveObject {
         if (Layout is { }) {
             _factory?.InitLayout(Layout);
         }
-
-        ShowDialog = new Interaction<AddNoteViewModel, AddNoteReturnViewModel?>();
-
-        AddNoteOpenCommand = ReactiveCommand.CreateFromTask(async () =>
-        {
-            var store = new AddNoteViewModel();
-
-            var result = await ShowDialog.Handle(store);
-        });
     }
 
     public void CloseLayout() {
