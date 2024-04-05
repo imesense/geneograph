@@ -10,13 +10,17 @@ using ImeSense.GeneoGraph.Design.ViewModels;
 namespace ImeSense.GeneoGraph.Design.Models;
 
 public class Person {
+
+
+
+    // Main Parameters
     public int Id { get; set; }
 
     public string FirstName { get; set; } = "Unknown";
 
     public string? LastName { get; set; }
 
-    public string? Patronym { get; set; }
+    public string? Patronym { get; set; } //We can also use it for the Middle\Second name
 
     public string? MaidenName { get; set; }
 
@@ -24,24 +28,46 @@ public class Person {
 
     public bool IsDeceased { get; set; } = false;
 
-    public DateTime? BirthDate { get; set; }
+    public string? Prefix { get; set; }
+    public string? Suffix { get; set; }
 
+    public int? Age => GetAge(IsDeceased, BirthDate, DeathDate);  //Calculated based on BirthDate and DeathDate or Today's date
+
+
+    // Birth related: date and place
+    public DateTime? BirthDate { get; set; }
+    public DateTime? BirthDateRange { get; set; } //Used only if <see cref="BirthDateType" /> is set to "Between" and we need a date range
+    public string BirthDateType { get; set; } = "Exact";
     public string? BirthPlace { get; set; }
 
-    public DateTime? DeathDate { get; set; }
 
+    //Death related: date and place
+    public DateTime? DeathDate { get; set; }
+    public DateTime? DeathDateRange { get; set; } //Used only if <see cref="DeathDateType" /> is set to "Between" and we need a date range
+    public string DeathDateType { get; set; } = "Exact";
     public string? DeathPlace { get; set; }
     public string? DeathCause { get; set; }
     public string? BurialPlace { get; set; }
 
+
+    // Other info (currently used for religion only)
+    public string? Religion { get; set; }
+    public string? BaptismPlace { get; set; }
+    public DateTime? BaptismDate { get; set; }
+    public DateTime? BaptismRange { get; set; } //Used only if <see cref="BaptismDateType" /> is set to "Between" and we need a date range
+    public string BaptismDateType { get; set; } = "Exact";
+
+
+
+    // Education: we use collection here as one person can have multiple educations
+    public ObservableCollection<Education>? Educations { get; set; }
+
+
+    // Work: we use collection here as one person can have multiple work places
+    public ObservableCollection<Work> Works { get; set; }
+
     public Bitmap? ProfileImg { get; set; }
 
-
-    /// <summary>
-    /// Should be calculated based on <see cref="BirthDate" />
-    /// and <see cref="DeathDate" /> date
-    /// </summary>
-    public int? Age => GetAge(IsDeceased, BirthDate, DeathDate);
 
     public static int? GetAge(bool isdeceased, DateTime? birthdate, DateTime? deathdate) 
     {
@@ -66,6 +92,16 @@ public class Person {
     public override string ToString() => FullName;
 
     public string FullName => $"{FirstName} {LastName}";
+
+
+    public readonly ObservableCollection<string> DateTypes = new() {
+        "Exactly",
+        "Before",
+        "After",
+        "Circa",
+        "Between"
+    };
+
 
     public static ObservableCollection<Person>? PeopleList = new() {
         new Person() {

@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
+    xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Views.Tools"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
@@ -16,10 +17,38 @@
         <vm:FamilyTreeViewModel />
     </UserControl.DataContext>
 
-    <Grid
-        ColumnDefinitions="*, Auto, Auto"
-        RowDefinitions="Auto, *, Auto"
-        ShowGridLines="True">
+    <UserControl.Styles>
+        <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#83ad76" />
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
+        <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style Selector="TabItem /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#DFE4D8" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="*, Auto, Auto"
+          RowDefinitions="Auto, *, Auto"
+          ShowGridLines="True">
 
         <!-- Top bar -->
         <Border
@@ -92,10 +121,46 @@
         <Border
             Grid.Row="1"
             Margin="20,20,0,0"
+            VerticalAlignment="Top"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Background="#1e1e1e"
-            CornerRadius="25" />
+            MaxWidth="850"
+            MaxHeight="638">
+            <TabControl HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch">
+                <TabItem
+                    Header="MAIN INFORMATION"
+                    Margin="15,0,15,0"
+                    FontFamily="Roboto"
+                    FontWeight="SemiBold"
+                    FontSize="18">
+                    <vt:PDMainInfo/>
+                </TabItem>
+                <TabItem
+                    Header="EDUCATION"
+                    Margin="15,0,15,0"
+                    FontFamily="Roboto"
+                    FontWeight="SemiBold"
+                    FontSize="18">
+                    <vt:PDEducation/>
+                </TabItem>
+                <TabItem
+                    Header="WORK"
+                    Margin="15,0,15,0"
+                    FontFamily="Roboto"
+                    FontWeight="SemiBold"
+                    FontSize="18">
+                    <vt:PDWork/>
+                </TabItem>
+                <TabItem
+                    Header="OTHER"
+                    Margin="15,0,15,0"
+                    FontFamily="Roboto"
+                    FontWeight="SemiBold"
+                    FontSize="18">
+                    <vt:PDOther/>
+                </TabItem>
+            </TabControl>
+        </Border>
 
         <!-- Connections -->
         <Border

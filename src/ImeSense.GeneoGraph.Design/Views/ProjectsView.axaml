@@ -28,9 +28,9 @@
     </UserControl.Styles>
 
     <Grid
-        ColumnDefinitions="270, *, *"
+        ColumnDefinitions="Auto, *, *"
         RowDefinitions="80, 80, *"
-        ShowGridLines="True">
+        ShowGridLines="False">
         <!-- Left part -->
         <Border
             Grid.RowSpan="3"
@@ -70,7 +70,9 @@
             GeneoGraph
         </TextBlock>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel
+            Grid.Row="2"
+            Margin="35,0,35,0">
             <Button
                 x:Name="Createnew"
                 Width="200"
