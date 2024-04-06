@@ -218,6 +218,14 @@
         </StackPanel>
 
         <!-- Central part -->
+
+        <Border
+            Grid.Column="1"
+            Height="1"
+            VerticalAlignment="Bottom"
+            Background="#2f2f2f"
+            Margin="20,0,20,0"/>
+        
         <StackPanel Grid.Column="1"
                     Orientation="Vertical"
                     Margin="30,25,30,0">

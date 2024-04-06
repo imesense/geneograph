@@ -190,7 +190,27 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Stretch"
             Background="#1e1e1e"
-            CornerRadius="25" />
+            CornerRadius="25">
+            <TabControl
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch">
+                <TabItem
+                    Margin="15,0,15,0"
+                    FontFamily="Roboto"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Header="IMMEDIATE FAMILY">
+                </TabItem>
+
+                <TabItem
+                    Margin="15,0,15,0"
+                    FontFamily="Roboto"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Header="PARTNERS">
+                </TabItem>
+            </TabControl>
+        </Border>
 
         <!-- Timeline -->
         <Border
