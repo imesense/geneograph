@@ -28,7 +28,6 @@
     <Grid
         ColumnDefinitions="Auto, *, Auto"
         ShowGridLines="True">
-
         <!-- Left toolbar -->
         <Border Background="Transparent">
             <StackPanel
@@ -100,8 +99,6 @@
                         Source="..\Assets\Buttons\settings.png"
                         Stretch="Uniform" />
                 </Button>
-
-
             </StackPanel>
         </Border>
 

@@ -70,11 +70,12 @@ public class NewPersonViewModel : ReactiveObject {
         FirstName ??= "Unknown";
         AddPerson(SelectedGender, FirstName, LastName, Patronym, MaidenName, IsDeceased, BirthDate, BirthPlace, DeathDate, DeathPlace, DeathCause, BurialPlace);
         AddPersonClose();
-
     }
 
-       public static void AddPerson(string gender, string firstname, string? lastname, string? patronym, string? maidenname,
-    bool isDeceased, DateTime birthdate, string? birthplace, DateTime deathdate, string? deathplace, string? deathcause, string? burialplace) {
+    public static void AddPerson(
+        string gender, string firstname, string? lastname, string? patronym, string? maidenname,
+        bool isDeceased, DateTime birthdate, string? birthplace, DateTime deathdate, string? deathplace, string? deathcause, string? burialplace
+    ) {
         var list = Person.PeopleList;
         var newID = list?.Last().Id + 1;
         list?.Add(new Person() {
@@ -95,8 +96,8 @@ public class NewPersonViewModel : ReactiveObject {
     }
 
     public IReactiveCommand<Unit, Unit> AddPersonCommand { get; set; }
-    public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
 
+    public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
 
     public static void AddPersonClose() {
         FamilyTreeViewModel.AddPersonClose();

@@ -12,13 +12,11 @@
     FontSize="16"
     FontWeight="Medium"
     mc:Ignorable="d">
-
     <Grid
         Margin="25"
         Background="Transparent"
         ColumnDefinitions="*,*,Auto"
         RowDefinitions="Auto,Auto,Auto">
-
         <!-- Company Name -->
         <StackPanel Margin="0,0,10,0">
             <Label
@@ -98,6 +96,7 @@
                     BorderThickness="0,0,0,2"
                     CornerRadius="5" />
             </StackPanel>
+
             <TextBox
                 Grid.Column="1"
                 Text=""
@@ -142,6 +141,7 @@
                     BorderThickness="0,0,0,2"
                     CornerRadius="5" />
             </StackPanel>
+
             <TextBox
                 Grid.Column="1"
                 Text=""
@@ -165,5 +165,4 @@
                 CornerRadius="5" />
         </Grid>
     </Grid>
-
 </UserControl>

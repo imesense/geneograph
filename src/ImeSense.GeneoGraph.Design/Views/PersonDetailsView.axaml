@@ -65,6 +65,7 @@
                     </LinearGradientBrush.GradientStops>
                 </LinearGradientBrush>
             </Border.Background>
+
             <TextBox
                 Width="200"
                 Height="40"
@@ -117,7 +118,6 @@
                 Stretch="UniformToFill" />
         </Border>
 
-
         <!-- Main info -->
         <Border
             Grid.Row="1"
@@ -137,6 +137,7 @@
                     Header="MAIN INFORMATION">
                     <vt:PDMainInfo />
                 </TabItem>
+
                 <TabItem
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
@@ -145,6 +146,7 @@
                     Header="EDUCATION">
                     <vt:PDEducation />
                 </TabItem>
+
                 <TabItem
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
@@ -153,6 +155,7 @@
                     Header="WORK">
                     <vt:PDWork />
                 </TabItem>
+
                 <TabItem
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
@@ -197,8 +200,5 @@
             VerticalAlignment="Stretch"
             Background="#1e1e1e"
             CornerRadius="25" />
-
-
-
     </Grid>
 </UserControl>

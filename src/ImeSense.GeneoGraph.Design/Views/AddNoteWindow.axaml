@@ -19,9 +19,8 @@
     Foreground="#dedede"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-
     <Window.DataContext>
-        <vm:AddNoteViewModel/>
+        <vm:AddNoteViewModel />
     </Window.DataContext>
 
     <Window.Styles>
@@ -62,26 +61,12 @@
                 ColumnDefinitions="Auto,*,*,Auto"
                 RowDefinitions="Auto,Auto"
                 ShowGridLines="False">
-                
                 <Label
                     Margin="0,0,0,5"
                     FontSize="16"
                     FontWeight="Regular">
                     Category
                 </Label>
-                <ComboBox
-                    Grid.Row="1"
-                    Width="200"
-                    Background="#121212"
-                    BorderBrush="Transparent"
-                    HorizontalAlignment="Stretch"
-                    ItemsSource="{Binding CategoryList}"
-                    SelectedItem="{Binding SelectedCategory}"
-                    FontSize="18"
-                    Padding="12"
-                    CornerRadius="25"
-                    Margin="0,0,10,0"
-                    VerticalContentAlignment="Center"/>
 
                 <Label
                     Grid.Column="1"
@@ -90,16 +75,6 @@
                     FontWeight="Regular">
                     Source
                 </Label>
-                <TextBox
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    VerticalContentAlignment="Center"
-                    Margin="10,0,10,0"
-                    FontSize="18"
-                    Padding="12"
-                    CornerRadius="25"
-                    Background="#121212"
-                    BorderBrush="Transparent"/>
 
                 <Label
                     Grid.Column="2"
@@ -108,17 +83,39 @@
                     FontWeight="Regular">
                     Date
                 </Label>
+                <ComboBox
+                    Grid.Row="1"
+                    Width="200"
+                    Margin="0,0,10,0"
+                    Padding="12"
+                    HorizontalAlignment="Stretch"
+                    VerticalContentAlignment="Center"
+                    Background="#121212"
+                    BorderBrush="Transparent"
+                    CornerRadius="25"
+                    FontSize="18"
+                    ItemsSource="{Binding CategoryList}"
+                    SelectedItem="{Binding SelectedCategory}" />
+                <TextBox
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="10,0,10,0"
+                    Padding="12"
+                    VerticalContentAlignment="Center"
+                    Background="#121212"
+                    BorderBrush="Transparent"
+                    CornerRadius="25"
+                    FontSize="18" />
                 <TextBox
                     Grid.Column="2"
                     Grid.Row="1"
-                    VerticalContentAlignment="Center"
                     Margin="10,0,20,0"
-                    FontSize="18"
                     Padding="12"
-                    CornerRadius="25"
+                    VerticalContentAlignment="Center"
                     Background="#121212"
-                    BorderBrush="Transparent"/>
-                
+                    BorderBrush="Transparent"
+                    CornerRadius="25"
+                    FontSize="18" />
 
                 <Button
                     Grid.Column="3"
@@ -151,12 +148,12 @@
 
                 <TextBox
                     Text="{Binding NewNoteHeader, Mode=TwoWay}"
-                    VerticalContentAlignment="Center"
-                    FontSize="18"
                     Padding="12"
-                    CornerRadius="25"
+                    VerticalContentAlignment="Center"
                     Background="#121212"
-                    BorderBrush="Transparent"/>
+                    BorderBrush="Transparent"
+                    CornerRadius="25"
+                    FontSize="18" />
             </StackPanel>
 
             <StackPanel
@@ -170,14 +167,14 @@
             <TextBox
                 Grid.Row="4"
                 Text="{Binding NewNoteText, Mode=TwoWay}"
-                VerticalContentAlignment="Top"
-                FontSize="18"
                 Padding="12"
-                CornerRadius="25"
+                VerticalContentAlignment="Top"
                 Background="#121212"
-                TextWrapping="Wrap"
-                BorderBrush="Transparent"/>
-            
+                BorderBrush="Transparent"
+                CornerRadius="25"
+                FontSize="18"
+                TextWrapping="Wrap" />
+
             <StackPanel
                 Grid.Row="6"
                 HorizontalAlignment="Center"

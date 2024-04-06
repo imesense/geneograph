@@ -36,8 +36,6 @@
             Grid.RowSpan="3"
             Background="#1A1A1A" />
 
-
-
         <!-- Central part - Recent -->
         <Label
             Grid.Column="1"
@@ -47,8 +45,6 @@
             FontWeight="SemiBold">
             Recent
         </Label>
-
-
 
         <!-- Right part -->
         <Label
@@ -89,6 +85,7 @@
                     Create new
                 </Label>
             </Button>
+
             <Button
                 x:Name="Open"
                 Width="150"
@@ -106,9 +103,7 @@
                     Open
                 </Label>
             </Button>
-
         </StackPanel>
-
 
         <StackPanel
             Grid.Column="1"
@@ -136,26 +131,7 @@
                         </Label>
                     </StackPanel>
                 </Button>
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
+
                 <Button
                     Width="150"
                     Height="175"
@@ -177,7 +153,28 @@
                     </StackPanel>
                 </Button>
 
+                <Button
+                    Width="150"
+                    Height="175"
+                    Margin="0,0,0,35"
+                    Padding="0"
+                    Background="Transparent"
+                    CornerRadius="20">
+                    <StackPanel>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
             </StackPanel>
+
             <StackPanel Margin="70,0,0,0">
                 <Button
                     Width="150"
@@ -199,26 +196,7 @@
                         </Label>
                     </StackPanel>
                 </Button>
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
+
                 <Button
                     Width="150"
                     Height="175"
@@ -240,6 +218,26 @@
                     </StackPanel>
                 </Button>
 
+                <Button
+                    Width="150"
+                    Height="175"
+                    Margin="0,0,0,35"
+                    Padding="0"
+                    Background="Transparent"
+                    CornerRadius="20">
+                    <StackPanel>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            Project name
+                        </Label>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </StackPanel>
 
@@ -260,7 +258,5 @@
                 Location:
             </Label>
         </StackPanel>
-
-
     </Grid>
 </UserControl>

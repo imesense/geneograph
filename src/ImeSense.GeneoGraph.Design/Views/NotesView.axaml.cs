@@ -1,43 +1,41 @@
-using Avalonia.Controls;
-using ImeSense.GeneoGraph.Design.ViewModels;
-using Avalonia.ReactiveUI;
-using ReactiveUI;
-using System.Threading.Tasks;
-using Avalonia.LogicalTree;
 using System.Linq;
-using System;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
-namespace ImeSense.GeneoGraph.Design.Views {
-    public partial class NotesView : ReactiveUserControl<NotesViewModel> {
-        public NotesView() {
-            InitializeComponent();
+using Avalonia.Controls;
+using Avalonia.LogicalTree;
+using Avalonia.ReactiveUI;
 
-            this.WhenActivated(disposables =>
-                disposables(ViewModel!.ShowDialog.RegisterHandler(DoShowDialogAsync)));
+using ImeSense.GeneoGraph.Design.ViewModels;
 
-            ///this.WhenActivated(d => d(ViewModel!.AddNewNoteCommand.Subscribe(Close)));
-        }
+using ReactiveUI;
 
-        private async Task DoShowDialogAsync(IInteractionContext<NotesViewModel, AddNoteViewModel?> interaction) {
-            var dialog = new AddNoteWindow();
-            dialog.DataContext = interaction.Input;
+namespace ImeSense.GeneoGraph.Design.Views;
 
-            // Get the parent window from the UserControl's logical tree
-            var mainWindow = this.GetLogicalAncestors().OfType<Window>().FirstOrDefault();
+public partial class NotesView : ReactiveUserControl<NotesViewModel> {
+    public NotesView() {
+        InitializeComponent();
 
-            if (mainWindow != null) 
-            {
-                var result = await dialog.ShowDialog<AddNoteViewModel?>(mainWindow);
-                interaction.SetOutput(result);
+        this.WhenActivated(disposables =>
+            disposables(ViewModel!.ShowDialog.RegisterHandler(DoShowDialogAsync)));
 
-            } 
-            else 
-            {
-                // Handle the case where the parent window is not found
-                // For example, if the UserControl is not hosted within a Window
-                // You can provide an alternative behavior here
-            }
+        ///this.WhenActivated(d => d(ViewModel!.AddNewNoteCommand.Subscribe(Close)));
+    }
+
+    private async Task DoShowDialogAsync(IInteractionContext<NotesViewModel, AddNoteViewModel?> interaction) {
+        var dialog = new AddNoteWindow {
+            DataContext = interaction.Input
+        };
+
+        // Get the parent window from the UserControl's logical tree
+        var mainWindow = this.GetLogicalAncestors().OfType<Window>().FirstOrDefault();
+
+        if (mainWindow != null) {
+            var result = await dialog.ShowDialog<AddNoteViewModel?>(mainWindow);
+            interaction.SetOutput(result);
+        } else {
+            // Handle the case where the parent window is not found
+            // For example, if the UserControl is not hosted within a Window
+            // You can provide an alternative behavior here
         }
     }
 }

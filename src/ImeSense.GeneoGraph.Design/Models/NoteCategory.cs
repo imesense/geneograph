@@ -1,38 +1,31 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.Design.Models {
-    public class NoteCategory
-    {
-        public int Id { get; set; }
+namespace ImeSense.GeneoGraph.Design.Models;
 
-        public string CategoryName { get; set; } = string.Empty;
+public class NoteCategory {
+    public int Id { get; set; }
 
-        public override string ToString() 
-        { 
-            return CategoryName; 
-        
-        }
+    public string CategoryName { get; set; } = string.Empty;
 
-        [Reactive]
-        public static ObservableCollection<NoteCategory> CategoryList { get; set; } = new() 
-        {
-                new NoteCategory {
-                Id = 1,
-                CategoryName = "Custom1"},
-                new NoteCategory {
-                Id = 2,
-                CategoryName = "Custom2"},
-                new NoteCategory {
-                Id = 3,
-                CategoryName = "Custom3"},
-        };
-
+    public override string ToString() {
+        return CategoryName;
     }
+
+    [Reactive]
+    public static ObservableCollection<NoteCategory> CategoryList { get; set; } = new() {
+        new NoteCategory {
+            Id = 1,
+            CategoryName = "Custom1",
+        },
+        new NoteCategory {
+            Id = 2,
+            CategoryName = "Custom2",
+        },
+        new NoteCategory {
+            Id = 3,
+            CategoryName = "Custom3",
+        },
+    };
 }

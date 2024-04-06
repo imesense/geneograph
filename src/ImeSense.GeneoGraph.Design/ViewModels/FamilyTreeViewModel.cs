@@ -1,101 +1,93 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System;
 using System.Reactive;
 using System.Reactive.Linq;
+
 using Avalonia.Controls;
+
 using ImeSense.GeneoGraph.Design.Models;
 using ImeSense.GeneoGraph.Design.Views;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.Design.ViewModels {
-    public class FamilyTreeViewModel : ReactiveObject {
-        private static Window? _addPersonWindow;
-        private bool _sidebarStatus = false;
-        private bool _sidebarButtonVisibility = true;
-        private Person? _selectedPerson;
+namespace ImeSense.GeneoGraph.Design.ViewModels;
 
-        public FamilyTreeViewModel() {
-            PeopleGender = new() {
+public class FamilyTreeViewModel : ReactiveObject {
+    private static Window? _addPersonWindow;
+    private bool _sidebarStatus = false;
+    private bool _sidebarButtonVisibility = true;
+    private Person? _selectedPerson;
+
+    public FamilyTreeViewModel() {
+        PeopleGender = new() {
             "Male", "Female", "Unknown",
-            };
+        };
 
-            PeopleList = Person.PeopleList;
+        PeopleList = Person.PeopleList;
 
-            SideBarOpenCloseCommand = ReactiveCommand.Create(SideBarOpenClose);
+        SideBarOpenCloseCommand = ReactiveCommand.Create(SideBarOpenClose);
 
-            this.WhenAnyValue(x => x.SelectedPerson)
-                .Skip(2) // Skip initial null value
-                .Where(person => person != null)
-                .Subscribe(_ => SidebarStatus = true);
+        this.WhenAnyValue(x => x.SelectedPerson)
+            .Skip(2) // Skip initial null value
+            .Where(person => person != null)
+            .Subscribe(_ => SidebarStatus = true);
 
+        SidebarStatus = false;
+        SelectedPerson = null;
+    }
+
+    public List<string> PeopleGender { get; set; }
+
+    [Reactive]
+    public bool SidebarStatus {
+        get => _sidebarStatus;
+        set => this.RaiseAndSetIfChanged(ref _sidebarStatus, value);
+    }
+
+    public bool SidebarButtonVisibility {
+        get => _sidebarButtonVisibility;
+        set => this.RaiseAndSetIfChanged(ref _sidebarButtonVisibility, value);
+    }
+
+    [Reactive]
+    public ObservableCollection<Person>? PeopleList { get; set; }
+
+    [Reactive]
+    public Person? SelectedPerson {
+        get => _selectedPerson;
+        set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
+    }
+
+    [Reactive]
+    public int SelectedIndex { get; set; }
+
+    public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
+    public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
+    public IReactiveCommand<Unit, Unit> SideBarOpenCloseCommand { get; set; }
+
+    public static void AddPersonOpen() {
+        _addPersonWindow = new NewPerson();
+        _addPersonWindow.Show();
+    }
+
+    public static void AddPersonClose() {
+        _addPersonWindow?.Close();
+    }
+
+    public void SideBarOpenClose() {
+        if (SidebarStatus == false && SelectedPerson == null) {
+            SelectedPerson = PeopleList?.FirstOrDefault();
+            SidebarStatus = true;
+            SidebarButtonVisibility = false;
+        } else if (SidebarStatus == false) {
+            SidebarStatus = true;
+            SidebarButtonVisibility = false;
+        } else {
             SidebarStatus = false;
-            SelectedPerson= null;
-        }
-
-
-        public List<string> PeopleGender { get; set; }
-
-        [Reactive]
-        public bool SidebarStatus 
-        {
-            get => _sidebarStatus;
-            set => this.RaiseAndSetIfChanged(ref _sidebarStatus, value);
-        }
-
-        public bool SidebarButtonVisibility {
-            get => _sidebarButtonVisibility;
-            set => this.RaiseAndSetIfChanged(ref _sidebarButtonVisibility, value);
-        }
-
-        [Reactive]
-        public ObservableCollection<Person>? PeopleList { get; set; }
-
-        [Reactive]
-        public Person? SelectedPerson 
-        {
-            get => _selectedPerson;
-            set => this.RaiseAndSetIfChanged(ref _selectedPerson, value);
-        }
-
-        [Reactive]
-        public int SelectedIndex { get; set; }
-
-        public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
-        public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);
-        public IReactiveCommand<Unit, Unit> SideBarOpenCloseCommand { get; set; }
-
-        public static void AddPersonOpen() {
-            _addPersonWindow = new NewPerson();
-            _addPersonWindow.Show();
-
-        }
-
-        public static void AddPersonClose() {
-            _addPersonWindow?.Close();
-        }
-
-        public void SideBarOpenClose() 
-        {
-           if (SidebarStatus == false && SelectedPerson == null) 
-            {
-                SelectedPerson = PeopleList?.FirstOrDefault();
-                SidebarStatus = true;
-                SidebarButtonVisibility = false;
-            }
-           else if (SidebarStatus == false)
-            {
-                SidebarStatus = true;
-                SidebarButtonVisibility = false;
-            }
-           else 
-           {
-                SidebarStatus = false;
-                SidebarButtonVisibility = true;
-            }
+            SidebarButtonVisibility = true;
         }
     }
 }
