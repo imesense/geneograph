@@ -2,7 +2,92 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ImeSense.GeneoGraph.Views.Tools.PDOther">
-  Welcome to Avalonia!
+             mc:Ignorable="d"
+             x:Class="ImeSense.GeneoGraph.Views.Tools.PDOther"
+             d:DesignWidth="850"
+             d:DesignHeight="588"
+             Background="Transparent"
+             FontFamily="Inter"
+             FontSize="16"
+             FontWeight="Medium"
+             MinHeight="588">
+    
+    <Grid RowDefinitions="Auto,Auto,Auto"
+          ColumnDefinitions="*,*,*"
+          Margin="25">
+
+        <!--Religion-->
+        <StackPanel>
+            <Label
+                Content="Religion"
+                Margin="0,0,0,5"/>
+            <ComboBox
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                HorizontalAlignment="Stretch"/>
+        </StackPanel>
+
+        <!--Baptism place-->
+        <StackPanel
+                Margin="0,20,0,0"
+                Grid.Row="1">
+            <Label
+                Content="Baptism Place"
+                Margin="0,0,0,5"/>
+            <TextBox
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                Text=""/>
+        </StackPanel>
+
+        <!--Baptism date group-->
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,*"
+              RowDefinitions="Auto,Auto"
+              ShowGridLines="False"
+              Margin="0,35,0,0">
+            <StackPanel
+                Margin="0,0,15,0">
+                <Label
+                    Content="Baptism Date"
+                    Margin="0,0,0,5"/>
+                <ComboBox
+                    Grid.Row="1"
+                    Background="#121212"
+                    Height="40"
+                    BorderThickness="0,0,0,2"
+                    BorderBrush="#316A42"
+                    CornerRadius="5"
+                    HorizontalAlignment="Stretch"
+                    />
+            </StackPanel>
+            <TextBox
+                Grid.Column="1"
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                Text=""
+                VerticalAlignment="Bottom"
+                Margin="0,0,10,0"/>
+
+            <TextBox
+                Grid.Column="1"
+                Grid.Row="1"
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                Margin="0,20,10,0"
+                CornerRadius="5"
+                Text=""/>
+        </Grid>
+    </Grid>
 </UserControl>

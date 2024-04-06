@@ -2,7 +2,153 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ImeSense.GeneoGraph.Views.Tools.PDEducation">
-  Welcome to Avalonia!
+             mc:Ignorable="d"
+             d:DesignWidth="850"
+             d:DesignHeight="588"
+             x:Class="ImeSense.GeneoGraph.Views.Tools.PDEducation"
+             Background="Transparent"
+             FontFamily="Inter"
+             FontSize="16"
+             FontWeight="Medium"
+             MinHeight="588">
+
+    
+    <Grid Background="Transparent"
+          Margin="25"
+          ColumnDefinitions="*,*,Auto"
+          RowDefinitions="Auto,Auto,Auto">
+
+        <!--Add new Education place button-->
+        <Button Grid.Column="2"
+                Margin="20,0,5,0"
+                CornerRadius="32"
+                Width="35"
+                Height="35">
+            <Image
+                Source="..\..\Assets\Buttons\plus.png"
+                Stretch="Uniform" />
+        </Button>
+
+        <!--Education place-->
+        <StackPanel
+            Margin="0,0,10,0"
+            Grid.ColumnSpan="2">
+            <Label
+                Content="Education Place"
+                Margin="0,0,0,5"/>
+            <TextBox
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                Text=""/>
+        </StackPanel>
+
+        <!--Education notes-->
+        <StackPanel
+             Margin="0,20,10,0"
+             Grid.Row="1"
+             Grid.ColumnSpan="2">
+            <Label
+                Content="Notes"
+                Margin="0,0,0,5"/>
+            <TextBox
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                Text=""/>
+        </StackPanel>
+
+        <!--Education From date group-->
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,*"
+              RowDefinitions="Auto,Auto"
+              ShowGridLines="False"
+              Margin="0,35,25,0">
+            <StackPanel
+                Margin="0,0,15,0">
+                <Label
+                    Content="From"
+                    Margin="0,0,0,5"/>
+                <ComboBox
+                    Grid.Row="1"
+                    Background="#121212"
+                    Height="40"
+                    BorderThickness="0,0,0,2"
+                    BorderBrush="#316A42"
+                    CornerRadius="5"
+                    HorizontalAlignment="Stretch"
+                    />
+            </StackPanel>
+            <TextBox
+                Grid.Column="1"
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                Text=""
+                VerticalAlignment="Bottom"
+                Margin="0,0,10,0"/>
+
+            <TextBox
+                Grid.Column="1"
+                Grid.Row="1"
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                Margin="0,20,10,0"
+                CornerRadius="5"
+                Text=""/>
+        </Grid>
+
+        <!--Education To date group-->
+        <Grid Grid.Row="2"
+              Grid.Column="1"
+              ColumnDefinitions="*,*"
+              RowDefinitions="Auto,Auto"
+              ShowGridLines="False"
+              Margin="30,35,0,0">
+            <StackPanel
+                Margin="0,0,15,0">
+                <Label
+                    Content="To"
+                    Margin="0,0,0,5"/>
+                <ComboBox
+                    Grid.Row="1"
+                    Background="#121212"
+                    Height="40"
+                    BorderThickness="0,0,0,2"
+                    BorderBrush="#316A42"
+                    CornerRadius="5"
+                    HorizontalAlignment="Stretch"
+                    />
+            </StackPanel>
+            <TextBox
+                Grid.Column="1"
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                CornerRadius="5"
+                Text=""
+                VerticalAlignment="Bottom"
+                Margin="0,0,10,0"/>
+
+            <TextBox
+                Grid.Column="1"
+                Grid.Row="1"
+                Background="#121212"
+                Height="40"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#316A42"
+                Margin="0,20,10,0"
+                CornerRadius="5"
+                Text=""/>
+        </Grid>
+    </Grid>
 </UserControl>
