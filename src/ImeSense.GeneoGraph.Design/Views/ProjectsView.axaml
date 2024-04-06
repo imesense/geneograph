@@ -10,6 +10,7 @@
     FontFamily="Inter"
     Foreground="#dedede"
     mc:Ignorable="d">
+    
     <UserControl.Styles>
         <Style Selector="Button:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="Transparent" />
@@ -30,33 +31,14 @@
     <Grid
         ColumnDefinitions="Auto, *, *"
         RowDefinitions="80, 80, *"
-        ShowGridLines="False">
-        <!-- Left part -->
+        ShowGridLines="True">
+
+        <!--Left toolbar-->
         <Border
             Grid.RowSpan="3"
             Background="#1A1A1A" />
 
-        <!-- Central part - Recent -->
         <Label
-            Grid.Column="1"
-            Margin="120,0,0,0"
-            VerticalAlignment="Bottom"
-            FontSize="24"
-            FontWeight="SemiBold">
-            Recent
-        </Label>
-
-        <!-- Right part -->
-        <Label
-            Grid.Column="2"
-            Margin="20,0,0,0"
-            VerticalAlignment="Bottom"
-            FontSize="24"
-            FontWeight="SemiBold">
-            Project settings
-        </Label>
-
-        <TextBlock
             Grid.Row="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
@@ -64,7 +46,7 @@
             FontSize="24"
             FontWeight="SemiBold">
             GeneoGraph
-        </TextBlock>
+        </Label>
 
         <StackPanel
             Grid.Row="2"
@@ -105,142 +87,104 @@
             </Button>
         </StackPanel>
 
-        <StackPanel
+        <!--Central part (recent)-->
+        <Label
             Grid.Column="1"
-            Grid.Row="2"
             Margin="120,0,0,0"
-            Orientation="Horizontal">
-            <StackPanel>
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
+            VerticalAlignment="Bottom"
+            FontSize="24"
+            FontWeight="SemiBold">
+            Recent
+        </Label>
 
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
+        <StackPanel
+                Grid.Column="1"
+                Grid.Row="2"
+                Margin="120,0,0,0"
+                Orientation="Horizontal">
+            <ListBox
+                Background="Transparent"
+                BorderBrush="Transparent"
+                ItemsSource="1234"
+                HorizontalAlignment="Left">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto, Auto">
+                            <Image
+                                Width="150"
+                                Height="150"
+                                Source="..\Assets\Recent.png" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Text="Projectname"
+                                Margin="0,5,0,0"
+                                FontSize="16"
+                                FontWeight="Regular"
+                                HorizontalAlignment="Center"
+                                TextTrimming="WordEllipsis" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
 
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="#666666" />
+                    </Style>
+                    <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+            
+            <ListBox
+                Background="Transparent"
+                BorderBrush="Transparent"
+                ItemsSource="1234"
+                HorizontalAlignment="Left"
+                Margin="70,0,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto, Auto">
+                            <Image
+                                Width="150"
+                                Height="150"
+                                Source="..\Assets\Recent.png" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Text="Projectname"
+                                Margin="0,5,0,0"
+                                FontSize="16"
+                                FontWeight="Regular"
+                                HorizontalAlignment="Center"
+                                TextTrimming="WordEllipsis" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
 
-            <StackPanel Margin="70,0,0,0">
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
-
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
-
-                <Button
-                    Width="150"
-                    Height="175"
-                    Margin="0,0,0,35"
-                    Padding="0"
-                    Background="Transparent"
-                    CornerRadius="20">
-                    <StackPanel>
-                        <Border
-                            Width="150"
-                            Height="150"
-                            Background="#4A4A4A"
-                            CornerRadius="20" />
-                        <Label
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-                            Project name
-                        </Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="#666666" />
+                    </Style>
+                    <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+                      
         </StackPanel>
 
+        <!--Right part-->
+        <Label
+            Grid.Column="2"
+            Margin="20,0,0,0"
+            VerticalAlignment="Bottom"
+            FontSize="24"
+            FontWeight="SemiBold">
+            Project settings
+        </Label>
+        
         <StackPanel
             Grid.Column="2"
             Grid.Row="2"

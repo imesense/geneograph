@@ -125,7 +125,9 @@
             MaxHeight="638"
             Margin="20,20,0,0"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Top">
+            VerticalAlignment="Top"
+            Background="#1e1e1e"
+            CornerRadius="25">
             <TabControl
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch">
