@@ -2,7 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Reactive;
 
-using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Design.Models;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;

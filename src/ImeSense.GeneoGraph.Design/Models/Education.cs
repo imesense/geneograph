@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImeSense.GeneoGraph.Models {
+namespace ImeSense.GeneoGraph.Design.Models {
     public class Education 
     {
         public int Id { get; set; }

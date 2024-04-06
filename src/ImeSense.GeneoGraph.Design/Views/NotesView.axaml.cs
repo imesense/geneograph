@@ -1,5 +1,5 @@
 using Avalonia.Controls;
-using ImeSense.GeneoGraph.ViewModels;
+using ImeSense.GeneoGraph.Design.ViewModels;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
 using System.Threading.Tasks;

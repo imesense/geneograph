@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
-    xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Views.Tools"
+    xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Design.Views"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
@@ -46,9 +46,10 @@
         </Style>
     </UserControl.Styles>
 
-    <Grid ColumnDefinitions="*, Auto, Auto"
-          RowDefinitions="Auto, *, Auto"
-          ShowGridLines="True">
+    <Grid
+        ColumnDefinitions="*, Auto, Auto"
+        RowDefinitions="Auto, *, Auto"
+        ShowGridLines="True">
 
         <!-- Top bar -->
         <Border
@@ -120,44 +121,45 @@
         <!-- Main info -->
         <Border
             Grid.Row="1"
-            Margin="20,20,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Stretch"
             MaxWidth="850"
-            MaxHeight="638">
-            <TabControl HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Stretch">
+            MaxHeight="638"
+            Margin="20,20,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
+            <TabControl
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch">
                 <TabItem
-                    Header="MAIN INFORMATION"
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
+                    FontSize="18"
                     FontWeight="SemiBold"
-                    FontSize="18">
-                    <vt:PDMainInfo/>
+                    Header="MAIN INFORMATION">
+                    <vt:PDMainInfo />
                 </TabItem>
                 <TabItem
-                    Header="EDUCATION"
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
+                    FontSize="18"
                     FontWeight="SemiBold"
-                    FontSize="18">
-                    <vt:PDEducation/>
+                    Header="EDUCATION">
+                    <vt:PDEducation />
                 </TabItem>
                 <TabItem
-                    Header="WORK"
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
+                    FontSize="18"
                     FontWeight="SemiBold"
-                    FontSize="18">
-                    <vt:PDWork/>
+                    Header="WORK">
+                    <vt:PDWork />
                 </TabItem>
                 <TabItem
-                    Header="OTHER"
                     Margin="15,0,15,0"
                     FontFamily="Roboto"
+                    FontSize="18"
                     FontWeight="SemiBold"
-                    FontSize="18">
-                    <vt:PDOther/>
+                    Header="OTHER">
+                    <vt:PDOther />
                 </TabItem>
             </TabControl>
         </Border>
