@@ -7,7 +7,7 @@ using Avalonia;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 
-namespace ImeSense.GeneoGraph.Models {
+namespace ImeSense.GeneoGraph.Design.Models {
     public static class ImageHelper {
         public static Bitmap LoadFromResource(Uri resourceUri) {
             return new Bitmap(AssetLoader.Open(resourceUri));

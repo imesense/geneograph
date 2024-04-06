@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace ImeSense.GeneoGraph.Views;
+namespace ImeSense.GeneoGraph.Design.Views;
 
 /// <summary>
 /// Interaction logic for NewPerson.axaml

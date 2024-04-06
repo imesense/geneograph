@@ -1,0 +1,137 @@
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Design.Views.PersonDetailsView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#121212"
+    FontFamily="Inter"
+    FontSize="18"
+    Foreground="#dedede"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:FamilyTreeViewModel />
+    </UserControl.DataContext>
+
+    <Grid
+        ColumnDefinitions="*, Auto, Auto"
+        RowDefinitions="Auto, *, Auto"
+        ShowGridLines="True">
+
+        <!-- Top bar -->
+        <Border
+            Grid.ColumnSpan="3"
+            Height="100"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
+            <Border.Background>
+                <LinearGradientBrush Opacity="0.6">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#00C969" Offset="0.0" />
+                        <GradientStop Color="#B1D8A5" Offset="1.0" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBox
+                Width="200"
+                Height="40"
+                Margin="0,0,35,0"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Background="#1e1e1e"
+                BorderBrush="#777777"
+                CornerRadius="25"
+                Watermark="Find..." />
+        </Border>
+
+        <StackPanel
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Stretch"
+            Orientation="Horizontal">
+            <Label
+                Content="Nikita Sergeevich&#10;        Lebedin"
+                Margin="0,0,350,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" />
+
+            <Label
+                Content="3 mar 1998"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" />
+        </StackPanel>
+
+        <!-- Profile picture -->
+        <Border
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="2"
+            Width="130"
+            Height="130"
+            Margin="15"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            ClipToBounds="True"
+            CornerRadius="100">
+            <Image
+                Width="140"
+                Height="140"
+                Source="..\Assets\Profile\Profile_picture.png"
+                Stretch="UniformToFill" />
+        </Border>
+
+
+        <!-- Main info -->
+        <Border
+            Grid.Row="1"
+            Margin="20,20,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="#1e1e1e"
+            CornerRadius="25" />
+
+        <!-- Connections -->
+        <Border
+            Grid.Column="1"
+            Grid.Row="1"
+            Width="500"
+            Margin="20,55,20,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="#1e1e1e"
+            CornerRadius="25" />
+
+        <!-- Family\Partners -->
+        <Border
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Width="500"
+            Margin="0,20,20,20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="#1e1e1e"
+            CornerRadius="25" />
+
+        <!-- Timeline -->
+        <Border
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            Height="180"
+            Margin="20"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="#1e1e1e"
+            CornerRadius="25" />
+
+
+
+    </Grid>
+</UserControl>

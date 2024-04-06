@@ -5,13 +5,13 @@ using System;
 using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia.Controls;
-using ImeSense.GeneoGraph.Models;
-using ImeSense.GeneoGraph.Views;
+using ImeSense.GeneoGraph.Design.Models;
+using ImeSense.GeneoGraph.Design.Views;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.ViewModels {
+namespace ImeSense.GeneoGraph.Design.ViewModels {
     public class FamilyTreeViewModel : ReactiveObject {
         private static Window? _addPersonWindow;
         private bool _sidebarStatus = false;

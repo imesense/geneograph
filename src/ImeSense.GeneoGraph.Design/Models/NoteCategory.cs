@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.Models {
+namespace ImeSense.GeneoGraph.Design.Models {
     public class NoteCategory
     {
         public int Id { get; set; }

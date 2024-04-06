@@ -7,15 +7,15 @@ using System.Security.Cryptography.X509Certificates;
 
 using Avalonia.Controls;
 
-using ImeSense.GeneoGraph.Models;
-using ImeSense.GeneoGraph.Views;
+using ImeSense.GeneoGraph.Design.Models;
+using ImeSense.GeneoGraph.Design.Views;
 
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.ViewModels {
+namespace ImeSense.GeneoGraph.Design.ViewModels {
     public class NotesViewModel : ReactiveObject 
     {
 

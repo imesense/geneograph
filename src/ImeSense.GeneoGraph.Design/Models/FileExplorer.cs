@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Xml.Linq;
 
-namespace ImeSense.GeneoGraph.Models {
+namespace ImeSense.GeneoGraph.Design.Models {
     public class FileExplorer
     {
         public ObservableCollection<FileExplorer>? SubNodes { get; }

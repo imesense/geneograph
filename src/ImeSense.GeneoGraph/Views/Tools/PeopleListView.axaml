@@ -8,10 +8,6 @@
     d:DesignHeight="450"
     d:DesignWidth="200"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <vm:FamilyTreeViewModel />
-    </UserControl.DataContext>
-
     <Border>
         <Grid RowDefinitions="Auto,Auto,*">
             <Label

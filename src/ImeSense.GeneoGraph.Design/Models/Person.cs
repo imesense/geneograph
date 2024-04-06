@@ -5,9 +5,9 @@ using System.Linq;
 
 using Avalonia.Media.Imaging;
 
-using ImeSense.GeneoGraph.ViewModels;
+using ImeSense.GeneoGraph.Design.ViewModels;
 
-namespace ImeSense.GeneoGraph.Models;
+namespace ImeSense.GeneoGraph.Design.Models;
 
 public class Person {
     public int Id { get; set; }

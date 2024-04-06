@@ -1,5 +1,5 @@
 <UserControl
-    x:Class="ImeSense.GeneoGraph.Views.ProjectsView"
+    x:Class="ImeSense.GeneoGraph.Design.Views.ProjectsView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -33,27 +33,49 @@
         ShowGridLines="True">
         <!-- Left part -->
         <Border
-            Background="#1A1A1A"
-            Grid.RowSpan="3">
-        </Border>
-        
+            Grid.RowSpan="3"
+            Background="#1A1A1A" />
+
+
+
+        <!-- Central part - Recent -->
+        <Label
+            Grid.Column="1"
+            Margin="120,0,0,0"
+            VerticalAlignment="Bottom"
+            FontSize="24"
+            FontWeight="SemiBold">
+            Recent
+        </Label>
+
+
+
+        <!-- Right part -->
+        <Label
+            Grid.Column="2"
+            Margin="20,0,0,0"
+            VerticalAlignment="Bottom"
+            FontSize="24"
+            FontWeight="SemiBold">
+            Project settings
+        </Label>
+
         <TextBlock
             Grid.Row="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
+            FontFamily="Inter"
             FontSize="24"
-            FontWeight="SemiBold"
-            FontFamily="Inter">
+            FontWeight="SemiBold">
             GeneoGraph
         </TextBlock>
 
-        <StackPanel
-            Grid.Row="2">
+        <StackPanel Grid.Row="2">
             <Button
                 x:Name="Createnew"
-                HorizontalAlignment="Center"
                 Width="200"
                 Height="50"
+                HorizontalAlignment="Center"
                 Background="#9dce8e"
                 CornerRadius="25"
                 Foreground="#121212">
@@ -69,11 +91,11 @@
                 x:Name="Open"
                 Width="150"
                 Height="50"
+                Margin="0,50,0,0"
                 HorizontalAlignment="Center"
                 Background="#9dce8e"
                 CornerRadius="25"
-                Foreground="#121212"
-                Margin="0,50,0,0">
+                Foreground="#121212">
                 <Label
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -82,40 +104,29 @@
                     Open
                 </Label>
             </Button>
-            
+
         </StackPanel>
 
 
-
-        <!-- Central part - Recent -->
-        <Label
-            Grid.Column="1"
-            VerticalAlignment="Bottom"
-            Margin="120,0,0,0"
-            FontSize="24"
-            FontWeight="SemiBold">
-            Recent
-        </Label>
-
-
         <StackPanel
-            Margin="120,0,0,0"
             Grid.Column="1"
             Grid.Row="2"
+            Margin="120,0,0,0"
             Orientation="Horizontal">
             <StackPanel>
                 <Button
                     Width="150"
                     Height="175"
-                    Background="Transparent"
-                    CornerRadius="20"
+                    Margin="0,0,0,35"
                     Padding="0"
-                    Margin="0,0,0,35">
+                    Background="Transparent"
+                    CornerRadius="20">
                     <StackPanel>
-                        <Border Height="150"
-                                Width="150"
-                                Background="#4A4A4A"
-                                CornerRadius="20"/>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
@@ -126,15 +137,16 @@
                 <Button
                     Width="150"
                     Height="175"
-                    Background="Transparent"
-                    CornerRadius="20"
+                    Margin="0,0,0,35"
                     Padding="0"
-                    Margin="0,0,0,35">
+                    Background="Transparent"
+                    CornerRadius="20">
                     <StackPanel>
-                        <Border Height="150"
-                                Width="150"
-                                Background="#4A4A4A"
-                                CornerRadius="20"/>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
@@ -145,15 +157,16 @@
                 <Button
                     Width="150"
                     Height="175"
-                    Background="Transparent"
-                    CornerRadius="20"
+                    Margin="0,0,0,35"
                     Padding="0"
-                    Margin="0,0,0,35">
+                    Background="Transparent"
+                    CornerRadius="20">
                     <StackPanel>
-                        <Border Height="150"
-                                Width="150"
-                                Background="#4A4A4A"
-                                CornerRadius="20"/>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
@@ -163,20 +176,20 @@
                 </Button>
 
             </StackPanel>
-            <StackPanel
-                Margin="70,0,0,0">
+            <StackPanel Margin="70,0,0,0">
                 <Button
                     Width="150"
                     Height="175"
-                    Background="Transparent"
-                    CornerRadius="20"
+                    Margin="0,0,0,35"
                     Padding="0"
-                    Margin="0,0,0,35">
+                    Background="Transparent"
+                    CornerRadius="20">
                     <StackPanel>
-                        <Border Height="150"
-                                Width="150"
-                                Background="#4A4A4A"
-                                CornerRadius="20"/>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
@@ -187,15 +200,16 @@
                 <Button
                     Width="150"
                     Height="175"
-                    Background="Transparent"
-                    CornerRadius="20"
+                    Margin="0,0,0,35"
                     Padding="0"
-                    Margin="0,0,0,35">
+                    Background="Transparent"
+                    CornerRadius="20">
                     <StackPanel>
-                        <Border Height="150"
-                                Width="150"
-                                Background="#4A4A4A"
-                                CornerRadius="20"/>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
@@ -206,15 +220,16 @@
                 <Button
                     Width="150"
                     Height="175"
-                    Background="Transparent"
-                    CornerRadius="20"
+                    Margin="0,0,0,35"
                     Padding="0"
-                    Margin="0,0,0,35">
+                    Background="Transparent"
+                    CornerRadius="20">
                     <StackPanel>
-                        <Border Height="150"
-                                Width="150"
-                                Background="#4A4A4A"
-                                CornerRadius="20"/>
+                        <Border
+                            Width="150"
+                            Height="150"
+                            Background="#4A4A4A"
+                            CornerRadius="20" />
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
@@ -225,18 +240,6 @@
 
             </StackPanel>
         </StackPanel>
-
-
-
-        <!-- Right part -->
-        <Label
-            Grid.Column="2"
-            VerticalAlignment="Bottom"
-            Margin="20,0,0,0"
-            FontSize="24"
-            FontWeight="SemiBold">
-            Project settings
-        </Label>
 
         <StackPanel
             Grid.Column="2"
@@ -249,8 +252,9 @@
                 Project Name:
             </Label>
 
-            <Label FontSize="20"
-                   FontWeight="SemiBold">
+            <Label
+                FontSize="20"
+                FontWeight="SemiBold">
                 Location:
             </Label>
         </StackPanel>

@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ImeSense.GeneoGraph.ViewModels;
+using ImeSense.GeneoGraph.Design.ViewModels;
 
 using ReactiveUI.Fody.Helpers;
-using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Design.Models;
 using ReactiveUI;
 
-namespace ImeSense.GeneoGraph.Models {
+namespace ImeSense.GeneoGraph.Design.Models {
     public class Note {
 
         public int NoteId { get; set; }

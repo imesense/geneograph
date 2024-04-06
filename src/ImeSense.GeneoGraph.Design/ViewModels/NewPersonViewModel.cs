@@ -2,12 +2,12 @@ using System;
 using System.Linq;
 using System.Reactive;
 
-using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Design.Models;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.ViewModels;
+namespace ImeSense.GeneoGraph.Design.ViewModels;
 
 public class NewPersonViewModel : ReactiveObject {
     public NewPersonViewModel() {

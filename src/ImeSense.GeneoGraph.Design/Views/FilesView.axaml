@@ -1,10 +1,10 @@
 <UserControl
-    x:Class="ImeSense.GeneoGraph.Views.FilesView"
+    x:Class="ImeSense.GeneoGraph.Design.Views.FilesView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"

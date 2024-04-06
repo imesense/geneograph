@@ -1,14 +1,120 @@
 <Window
     x:Class="ImeSense.GeneoGraph.Design.Views.MainWindow"
+    x:DataType="vm:MainViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:ImeSense.GeneoGraph.Design.Views"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
+    xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Design.Views.Tools"
     Title="ImeSense.GeneoGraph.Design"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#121212"
+    FontFamily="Roboto"
     Icon="/Assets/avalonia-logo.ico"
     UseLayoutRounding="True"
     WindowStartupLocation="CenterScreen"
     WindowState="Normal"
     mc:Ignorable="d">
-    MainWindow
+    <Window.Styles>
+        <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#83ad76" />
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style Selector="TabItem /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#DFE4D8" />
+        </Style>
+    </Window.Styles>
+
+    <Grid
+        ColumnDefinitions="*"
+        RowDefinitions="*">
+        <Border
+            Height="2"
+            Margin="0,48,0,0"
+            VerticalAlignment="Top"
+            Background="#414141" />
+
+        <TabControl
+            Padding="0"
+            Background="Transparent">
+            <TabItem
+                Height="50"
+                Margin="70,0,0,0"
+                FontSize="20"
+                Header="PROJECTS">
+                <v:ProjectsView />
+            </TabItem>
+
+            <TabItem
+                Height="50"
+                Margin="20,0,0,0"
+                FontSize="20"
+                Header="GENEOGRAPH" />
+
+            <TabItem
+                Height="50"
+                Margin="20,0,0,0"
+                FontSize="20"
+                Header="FAMILY TREE">
+                <v:FamTreeView />
+            </TabItem>
+
+            <TabItem
+                Height="50"
+                Margin="20,0,0,0"
+                FontSize="20"
+                Header="PERSON DETAILS">
+                <v:PersonDetailsView />
+            </TabItem>
+
+            <TabItem
+                Height="50"
+                Margin="20,0,0,0"
+                FontSize="20"
+                Header="ALBUMS" />
+            <TabItem
+                Height="50"
+                Margin="20,0,0,0"
+                FontSize="20"
+                Header="FILES">
+                <v:FilesView />
+            </TabItem>
+            <TabItem
+                Height="50"
+                Margin="20,0,0,0"
+                FontSize="20"
+                Header="NOTES">
+                <v:NotesView />
+            </TabItem>
+        </TabControl>
+
+        <Image
+            Width="40"
+            Margin="12,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Source="..\Assets\ico_green.png" />
+    </Grid>
 </Window>

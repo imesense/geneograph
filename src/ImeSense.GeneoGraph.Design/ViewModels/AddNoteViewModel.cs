@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 using Avalonia.Controls;
 
-using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Design.Models;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace ImeSense.GeneoGraph.ViewModels {
+namespace ImeSense.GeneoGraph.Design.ViewModels {
     public class AddNoteViewModel : ReactiveObject 
     {
 

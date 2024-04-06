@@ -1,11 +1,11 @@
 <UserControl
-    x:Class="ImeSense.GeneoGraph.Views.FamTreeView"
+    x:Class="ImeSense.GeneoGraph.Design.Views.FamTreeView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:v="clr-namespace:ImeSense.GeneoGraph.Views"
-    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.ViewModels"
+    xmlns:v="clr-namespace:ImeSense.GeneoGraph.Design.Views"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
@@ -28,12 +28,13 @@
     <Grid
         ColumnDefinitions="Auto, *, Auto"
         ShowGridLines="True">
-        
+
         <!-- Left toolbar -->
         <Border Background="Transparent">
-            <StackPanel Orientation="Vertical"
-                        Margin="10"
-                        VerticalAlignment="Bottom">
+            <StackPanel
+                Margin="10"
+                VerticalAlignment="Bottom"
+                Orientation="Vertical">
                 <Button
                     Width="48"
                     Height="48"
@@ -44,7 +45,7 @@
                         Source="..\Assets\Buttons\family-tree.png"
                         Stretch="Uniform" />
                 </Button>
-                
+
                 <Button
                     Width="48"
                     Height="48"
@@ -55,7 +56,7 @@
                         Source="..\Assets\Buttons\family-tree_h.png"
                         Stretch="Uniform" />
                 </Button>
-                
+
                 <Button
                     Width="48"
                     Height="48"
@@ -66,7 +67,7 @@
                         Source="..\Assets\Buttons\table.png"
                         Stretch="Uniform" />
                 </Button>
-                
+
                 <Button
                     Width="48"
                     Height="48"
@@ -77,7 +78,7 @@
                         Source="..\Assets\Buttons\plus.png"
                         Stretch="Uniform" />
                 </Button>
-                
+
                 <Button
                     Width="48"
                     Height="48"
@@ -88,7 +89,7 @@
                         Source="..\Assets\Buttons\minus.png"
                         Stretch="Uniform" />
                 </Button>
-                
+
                 <Button
                     Width="48"
                     Height="48"
@@ -99,7 +100,7 @@
                         Source="..\Assets\Buttons\settings.png"
                         Stretch="Uniform" />
                 </Button>
-                
+
 
             </StackPanel>
         </Border>
@@ -154,27 +155,26 @@
             Orientation="Horizontal">
             <Button
                 Command="{Binding SideBarOpenCloseCommand}"
-                IsVisible="{Binding SidebarButtonVisibility}"
                 Width="60"
                 Height="40"
                 Margin="0,30,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                CornerRadius="20,0,0,20"
                 Background="#1e1e1e"
+                BorderBrush="#777777"
                 BorderThickness="1,1,0,1"
-                BorderBrush="#777777">
+                CornerRadius="20,0,0,20"
+                IsVisible="{Binding SidebarButtonVisibility}">
                 <Image
+                    RenderTransform="rotate(180deg)"
                     Source="..\Assets\Buttons\next.png"
-                    Stretch="Uniform"
-                    RenderTransform="rotate(180deg)"/>
+                    Stretch="Uniform" />
             </Button>
 
             <DockPanel
                 Grid.Column="2"
                 IsVisible="{Binding SidebarStatus, Mode=TwoWay}">
-                <Border
-                    Grid.Column="2">
+                <Border Grid.Column="2">
                     <v:PropertiesView />
                 </Border>
             </DockPanel>

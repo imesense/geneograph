@@ -1,10 +1,10 @@
 using System.Collections.ObjectModel;
 
-using ImeSense.GeneoGraph.Models;
+using ImeSense.GeneoGraph.Design.Models;
 
 using ReactiveUI;
 
-namespace ImeSense.GeneoGraph.ViewModels {
+namespace ImeSense.GeneoGraph.Design.ViewModels {
     public class FilesViewModel : ReactiveObject {
         public ObservableCollection<FileExplorer> Nodes { get; }
 

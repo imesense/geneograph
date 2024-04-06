@@ -7,7 +7,6 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
-        <AvaloniaResource Include="Assets\Photos\**" />
     </ItemGroup>
 
     <ItemGroup>
