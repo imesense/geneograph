@@ -5,6 +5,104 @@
              mc:Ignorable="d" 
              d:DesignWidth="500" 
              d:DesignHeight="785"
-             x:Class="ImeSense.GeneoGraph.Design.Views.PDImmediateFamily">
+             x:Class="ImeSense.GeneoGraph.Design.Views.PDImmediateFamily"
+             FontFamily="Inter"
+             FontSize="18"
+             FontWeight="Medium">
+    <Grid Background="Transparent"
+          Margin="10,20,10,20"
+          RowDefinitions="Auto,*">
 
+        <Button
+                Width="35"
+                Height="35"
+                Background="Transparent"
+                CornerRadius="32"
+                Margin="10,0,0,0">
+            <Image
+                Source="..\..\Assets\Buttons\plus.png"
+                Stretch="Uniform" />
+        </Button>
+
+        <ListBox
+            Grid.Row="1"
+            Margin="0,20,0,0"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            ItemsSource="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="Auto, *, Auto">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            ClipToBounds="True"
+                            CornerRadius="100">
+                            <Image
+                                Width="100"
+                                Height="100"
+                                Source="..\Assets\Profile\Profile_picture.png"
+                                Stretch="UniformToFill" />
+                        </Border>
+                        
+                        <StackPanel 
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0">
+                            <Label 
+                                Margin="0,0,0,5"
+                                FontSize="18">
+                                Nikita Lebedin
+                            </Label>
+                            <Label
+                                Margin="0,5,0,0"
+                                FontSize="16">
+                                Relative
+                            </Label>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <Button
+                                    Width="35"
+                                    Height="35"
+                                    HorizontalAlignment="Right"
+                                    Background="Transparent"
+                                    CornerRadius="32"
+                                    Margin="0,0,25,0">
+                                <Image
+                                    Source="..\..\Assets\Buttons\edit.png"
+                                    Stretch="Uniform" />
+                            </Button>
+
+                            <Button
+                                    Width="35"
+                                    Height="35"
+                                    Background="Transparent"
+                                    CornerRadius="32">
+                                <Image
+                                    Source="..\..\Assets\Buttons\unlink.png"
+                                    Stretch="Uniform" />
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="#666666" />
+                </Style>
+                <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </ListBox.Styles>
+        </ListBox>
+        
+    </Grid>
 </UserControl>
