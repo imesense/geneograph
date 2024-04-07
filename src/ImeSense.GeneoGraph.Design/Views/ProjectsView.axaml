@@ -31,7 +31,7 @@
     <Grid
         ColumnDefinitions="Auto, *, *"
         RowDefinitions="80, 80, *"
-        ShowGridLines="True">
+        ShowGridLines="false">
 
         <!--Left toolbar-->
         <Border
