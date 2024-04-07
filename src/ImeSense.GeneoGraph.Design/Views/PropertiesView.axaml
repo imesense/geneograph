@@ -47,7 +47,7 @@
                 VerticalAlignment="Top"
                 Background="#1e1e1e"
                 BorderBrush="#777777"
-                BorderThickness="1,1,0,1"
+                BorderThickness="0,1,1,1"
                 CornerRadius="0,20,20,0">
                 <Image
                     Source="..\Assets\Buttons\next.png"
