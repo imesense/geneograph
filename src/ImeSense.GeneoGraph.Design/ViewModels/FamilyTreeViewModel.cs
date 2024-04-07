@@ -20,6 +20,7 @@ public class FamilyTreeViewModel : ReactiveObject {
     private bool _sidebarStatus = false;
     private bool _sidebarButtonVisibility = true;
     private Person? _selectedPerson;
+    private int _selectedPersonIndex;
 
     public FamilyTreeViewModel() {
         PeopleGender = new() {
@@ -30,10 +31,25 @@ public class FamilyTreeViewModel : ReactiveObject {
 
         SideBarOpenCloseCommand = ReactiveCommand.Create(SideBarOpenClose);
 
-        this.WhenAnyValue(x => x.SelectedPerson)
+        this.WhenAnyValue(x => x.SelectedPersonIndex)
             .Skip(2) // Skip initial null value
-            .Where(person => person != null)
+            .Where(index => index >= 0)
             .Subscribe(_ => SidebarStatus = true);
+
+        this.WhenAnyValue(x => x.SelectedPersonIndex)
+            .Skip(2) // Skip initial null value
+            .Where(index => index < 0)
+            .Subscribe(_ => SidebarStatus = false);
+
+        this.WhenAnyValue(x => x.SelectedPersonIndex)
+            .Skip(2) // Skip initial null value
+            .Where(index => index >= 0)
+            .Subscribe(_ => SidebarButtonVisibility = false);
+
+        this.WhenAnyValue(x => x.SelectedPersonIndex)
+            .Skip(2) // Skip initial null value
+            .Where(index => index < 0)
+            .Subscribe(_ => SidebarButtonVisibility = true);
 
         SidebarStatus = false;
         SelectedPerson = null;
@@ -62,7 +78,10 @@ public class FamilyTreeViewModel : ReactiveObject {
     }
 
     [Reactive]
-    public int SelectedIndex { get; set; }
+    public int SelectedPersonIndex {
+        get => _selectedPersonIndex;
+        set => this.RaiseAndSetIfChanged(ref _selectedPersonIndex, value);
+    }
 
     public IReactiveCommand<Unit, Unit> AddPersonOpenCommand { get; set; } = ReactiveCommand.Create(AddPersonOpen);
     public IReactiveCommand<Unit, Unit> AddPersonCloseCommand { get; set; } = ReactiveCommand.Create(AddPersonClose);

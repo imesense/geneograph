@@ -27,7 +27,7 @@
 
     <Grid
         ColumnDefinitions="Auto, *, Auto"
-        ShowGridLines="True">
+        ShowGridLines="False">
         <!-- Left toolbar -->
         <Border Background="Transparent">
             <StackPanel
@@ -109,7 +109,7 @@
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding PeopleList, Mode=TwoWay}"
-            SelectedIndex="{Binding SelectedIndex}"
+            SelectedIndex="{Binding SelectedPersonIndex}"
             SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
             SelectionMode="Single">
             <DataGrid.Columns>

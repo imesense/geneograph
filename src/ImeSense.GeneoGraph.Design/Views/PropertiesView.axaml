@@ -34,7 +34,7 @@
         Width="465"
         ColumnDefinitions="*"
         RowDefinitions="150,Auto,Auto,Auto,Auto,Auto,Auto"
-        ShowGridLines="True">
+        ShowGridLines="False">
         <Grid
             ColumnDefinitions="Auto, *, Auto"
             ShowGridLines="False">
@@ -94,7 +94,7 @@
             <Grid
                 ColumnDefinitions="*,*"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-                ShowGridLines="True">
+                ShowGridLines="False">
                 <!-- First name -->
                 <StackPanel>
                     <Label>

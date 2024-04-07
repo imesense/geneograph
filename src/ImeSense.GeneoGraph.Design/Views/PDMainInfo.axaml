@@ -33,40 +33,6 @@
                 CornerRadius="5" />
         </StackPanel>
 
-        <!-- ///Column 2/// -->
-        <!-- Last name -->
-        <StackPanel
-            Grid.Column="1"
-            Margin="10,0,0,0">
-            <Label
-                Content="Last Name"
-                Margin="0,0,0,5" />
-            <TextBox
-                Text=""
-                Height="40"
-                Background="#121212"
-                BorderBrush="#316A42"
-                BorderThickness="0,0,0,2"
-                CornerRadius="5" />
-        </StackPanel>
-
-        <!-- ///Column 3/// -->
-        <!-- Gender -->
-        <StackPanel
-            Grid.Column="2"
-            Margin="40,0,0,0">
-            <Label
-                Content="Gender"
-                Margin="0,0,0,5" />
-            <ComboBox
-                Height="40"
-                HorizontalAlignment="Stretch"
-                Background="#121212"
-                BorderBrush="#316A42"
-                BorderThickness="0,0,0,2"
-                CornerRadius="5" />
-        </StackPanel>
-
         <!-- Patronym name -->
         <StackPanel
             Grid.Row="1"
@@ -82,60 +48,6 @@
                 BorderThickness="0,0,0,2"
                 CornerRadius="5" />
         </StackPanel>
-
-        <!-- Maiden name -->
-        <StackPanel
-            Grid.Column="1"
-            Grid.Row="1"
-            Margin="10,20,0,0">
-            <Label
-                Content="Maiden Name"
-                Margin="0,0,0,5" />
-            <TextBox
-                Text=""
-                Height="40"
-                Background="#121212"
-                BorderBrush="#316A42"
-                BorderThickness="0,0,0,2"
-                CornerRadius="5" />
-        </StackPanel>
-
-        <!-- Prefix and Suffix -->
-        <Grid
-            Grid.Column="2"
-            Grid.Row="1"
-            Margin="40,0,0,0"
-            ColumnDefinitions="*,*">
-            <StackPanel VerticalAlignment="Bottom">
-                <Label
-                    Content="Prefix"
-                    Margin="0,0,0,5" />
-                <TextBox
-                    Text=""
-                    Height="40"
-                    Margin="0,0,10,0"
-                    Background="#121212"
-                    BorderBrush="#316A42"
-                    BorderThickness="0,0,0,2"
-                    CornerRadius="5" />
-            </StackPanel>
-
-            <StackPanel
-                Grid.Column="1"
-                Margin="10,0,0,0"
-                VerticalAlignment="Bottom">
-                <Label
-                    Content="Suffix"
-                    Margin="0,0,0,5" />
-                <TextBox
-                    Text=""
-                    Height="40"
-                    Background="#121212"
-                    BorderBrush="#316A42"
-                    BorderThickness="0,0,0,2"
-                    CornerRadius="5" />
-            </StackPanel>
-        </Grid>
 
         <!-- Birth date group -->
         <Grid
@@ -181,40 +93,6 @@
                 CornerRadius="5" />
         </Grid>
 
-        <!-- Birth place -->
-        <StackPanel
-            Grid.Column="1"
-            Grid.Row="2"
-            Margin="10,35,0,0">
-            <Label
-                Content="Birth Place"
-                Margin="0,0,0,5" />
-            <TextBox
-                Text=""
-                Height="40"
-                Background="#121212"
-                BorderBrush="#316A42"
-                BorderThickness="0,0,0,2"
-                CornerRadius="5" />
-        </StackPanel>
-
-        <!-- Living and Deceased radio buttons -->
-        <Grid
-            Grid.Column="2"
-            Grid.Row="2"
-            Margin="40,0,0,0"
-            VerticalAlignment="Center"
-            ColumnDefinitions="*,*">
-
-            <RadioButton
-                Content="Living"
-                GroupName="IsDeceasedGr"
-                IsChecked="True" />
-            <RadioButton
-                Grid.Column="1"
-                Content="Deceased"
-                GroupName="IsDeceasedGr" />
-        </Grid>
 
         <!-- Death date group -->
         <Grid
@@ -261,6 +139,58 @@
                 CornerRadius="5" />
         </Grid>
 
+
+        <!-- ///Column 2/// -->
+        <!-- Last name -->
+        <StackPanel
+            Grid.Column="1"
+            Margin="10,0,0,0">
+            <Label
+                Content="Last Name"
+                Margin="0,0,0,5" />
+            <TextBox
+                Text=""
+                Height="40"
+                Background="#121212"
+                BorderBrush="#316A42"
+                BorderThickness="0,0,0,2"
+                CornerRadius="5" />
+        </StackPanel>
+
+        <!-- Maiden name -->
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="10,20,0,0">
+            <Label
+                Content="Maiden Name"
+                Margin="0,0,0,5" />
+            <TextBox
+                Text=""
+                Height="40"
+                Background="#121212"
+                BorderBrush="#316A42"
+                BorderThickness="0,0,0,2"
+                CornerRadius="5" />
+        </StackPanel>
+
+        <!-- Birth place -->
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="2"
+            Margin="10,35,0,0">
+            <Label
+                Content="Birth Place"
+                Margin="0,0,0,5" />
+            <TextBox
+                Text=""
+                Height="40"
+                Background="#121212"
+                BorderBrush="#316A42"
+                BorderThickness="0,0,0,2"
+                CornerRadius="5" />
+        </StackPanel>
+
         <!-- Death place -->
         <StackPanel
             Grid.Column="1"
@@ -277,6 +207,79 @@
                 BorderThickness="0,0,0,2"
                 CornerRadius="5" />
         </StackPanel>
+
+
+        <!-- ///Column 3/// -->
+        <!-- Gender -->
+        <StackPanel
+            Grid.Column="2"
+            Margin="40,0,0,0">
+            <Label
+                Content="Gender"
+                Margin="0,0,0,5" />
+            <ComboBox
+                Height="40"
+                HorizontalAlignment="Stretch"
+                Background="#121212"
+                BorderBrush="#316A42"
+                BorderThickness="0,0,0,2"
+                CornerRadius="5" />
+        </StackPanel>
+
+        <!-- Prefix and Suffix -->
+        <Grid
+            Grid.Column="2"
+            Grid.Row="1"
+            Margin="40,0,0,0"
+            ColumnDefinitions="*,*">
+            <StackPanel VerticalAlignment="Bottom">
+                <Label
+                    Content="Prefix"
+                    Margin="0,0,0,5" />
+                <TextBox
+                    Text=""
+                    Height="40"
+                    Margin="0,0,10,0"
+                    Background="#121212"
+                    BorderBrush="#316A42"
+                    BorderThickness="0,0,0,2"
+                    CornerRadius="5" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                Margin="10,0,0,0"
+                VerticalAlignment="Bottom">
+                <Label
+                    Content="Suffix"
+                    Margin="0,0,0,5" />
+                <TextBox
+                    Text=""
+                    Height="40"
+                    Background="#121212"
+                    BorderBrush="#316A42"
+                    BorderThickness="0,0,0,2"
+                    CornerRadius="5" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Living and Deceased radio buttons -->
+        <Grid
+            Grid.Column="2"
+            Grid.Row="2"
+            Margin="40,0,0,0"
+            VerticalAlignment="Center"
+            ColumnDefinitions="*,*">
+
+            <RadioButton
+                Content="Living"
+                GroupName="IsDeceasedGr"
+                IsChecked="True" />
+            <RadioButton
+                Grid.Column="1"
+                Content="Deceased"
+                GroupName="IsDeceasedGr" />
+        </Grid>
 
         <!-- Cause of death -->
         <StackPanel

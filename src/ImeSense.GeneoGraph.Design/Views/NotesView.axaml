@@ -50,7 +50,7 @@
     </UserControl.Styles>
 
     <Grid
-        ColumnDefinitions="270,*,*"
+        ColumnDefinitions="270,*,Auto"
         RowDefinitions="110,*"
         ShowGridLines="False">
 
@@ -235,7 +235,7 @@
                 FontSize="20"
                 FontWeight="SemiBold"/>
             <Label
-                Content="{Binding SelectedNoteIndex}"
+                Content="n notes"
                 VerticalAlignment="Center"
                 FontSize="16"
                 FontWeight="Regular"/>
@@ -341,7 +341,8 @@
         <DockPanel 
             Grid.Column="2"
             Grid.RowSpan="2"
-            IsVisible="{Binding RightDockVisibility, Mode=TwoWay}">
+            IsVisible="{Binding RightDockVisibility, Mode=TwoWay}"
+            Width="970">
             <Grid Grid.Column="2"
                   Grid.RowSpan="2"
                   Background="#161616"

@@ -60,10 +60,17 @@
             Padding="0"
             Background="Transparent">
             <TabItem
-                Height="50"
-                Margin="70,0,0,0"
-                FontSize="20"
-                Header="PROJECTS">
+                Height="40"
+                Margin="85,0,0,0"
+                FontSize="20">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image VerticalAlignment="Center"
+                               Source="..\Assets\Buttons\projects_inact.png"
+                               Width="40"
+                               Height="40"/>
+                    </StackPanel>
+                </TabItem.Header>
                 <v:ProjectsView />
             </TabItem>
 
@@ -71,14 +78,15 @@
                 Height="50"
                 Margin="20,0,0,0"
                 FontSize="20"
-                Header="GENEOGRAPH" />
+                Header="FAMILY TREE">
+                <v:FamTreeView />
+            </TabItem>
 
             <TabItem
                 Height="50"
                 Margin="20,0,0,0"
                 FontSize="20"
-                Header="FAMILY TREE">
-                <v:FamTreeView />
+                Header="GENEOGRAPH">
             </TabItem>
 
             <TabItem
@@ -93,7 +101,9 @@
                 Height="50"
                 Margin="20,0,0,0"
                 FontSize="20"
-                Header="ALBUMS" />
+                Header="ALBUMS">
+                <v:AlbumsView />
+            </TabItem>
             <TabItem
                 Height="50"
                 Margin="20,0,0,0"
