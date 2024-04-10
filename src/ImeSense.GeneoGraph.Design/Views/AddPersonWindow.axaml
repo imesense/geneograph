@@ -1,0 +1,153 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="850"
+        xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Design.Views"
+        x:Class="ImeSense.GeneoGraph.Design.Views.AddPersonWindow"
+        Title="AddPersonWindow"
+        FontFamily="Inter"
+        Background="Transparent">
+
+    <Window.Styles>
+        <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#83ad76" />
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:focus">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#BFF0B1" />
+        </Style>
+        <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
+        <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style Selector="TabItem /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#DFE4D8" />
+        </Style>
+    </Window.Styles>
+    
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Border
+            Height="100"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            CornerRadius="25,0">
+            <Border.Background>
+                <LinearGradientBrush Opacity="0.6">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#00C969" Offset="0.0" />
+                        <GradientStop Color="#B1D8A5" Offset="1.0" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Label FontSize="24"
+                   FontWeight="SemiBold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+                Add lorem of Lorem ipsum
+            </Label>
+        </Border>
+
+        <Border Grid.RowSpan="2"
+                Grid.Row="1"
+                Background="#1e1e1e">
+        </Border>
+        
+        <TabControl
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            Grid.Column="1"
+            Grid.Row="1">
+            <TabItem
+                Margin="15,0,15,0"
+                FontFamily="Roboto"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Header="MAIN INFORMATION">
+                <vt:PDMainInfo />
+            </TabItem>
+
+            <TabItem
+                Margin="15,0,15,0"
+                FontFamily="Roboto"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Header="EDUCATION">
+                <vt:PDEducation />
+            </TabItem>
+
+            <TabItem
+                Margin="15,0,15,0"
+                FontFamily="Roboto"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Header="WORK">
+                <vt:PDWork />
+            </TabItem>
+
+            <TabItem
+                Margin="15,0,15,0"
+                FontFamily="Roboto"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Header="OTHER">
+                <vt:PDOther />
+            </TabItem>
+        </TabControl>
+
+        <StackPanel
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal"
+            Margin="0,0,0,20">
+            <Button
+                Width="120"
+                Margin="0,30,30,5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                BorderThickness="2"
+                CornerRadius="25">
+                <Label
+                    Padding="20,5,20,5"
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="Black">
+                    Save
+                </Label>
+            </Button>
+
+            <Button
+                Width="120"
+                Margin="30,30,0,5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                BorderBrush="#dedede"
+                BorderThickness="2"
+                CornerRadius="25"
+                Foreground="#dedede">
+                <Label
+                    Padding="20,5,20,5"
+                    HorizontalAlignment="Center"
+                    FontSize="16">
+                    Cancel
+                </Label>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

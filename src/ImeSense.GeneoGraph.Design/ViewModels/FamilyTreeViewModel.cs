@@ -88,7 +88,7 @@ public class FamilyTreeViewModel : ReactiveObject {
     public IReactiveCommand<Unit, Unit> SideBarOpenCloseCommand { get; set; }
 
     public static void AddPersonOpen() {
-        _addPersonWindow = new NewPerson();
+        _addPersonWindow = new AddPersonWindow();
         _addPersonWindow.Show();
     }
 
