@@ -8,7 +8,10 @@ on:
       - '.github/workflows/**'
       - 'src/**'
       - '*.sln'
+      - '*.slnf'
+      - '*.config'
       - '*.props'
+      - '*.targets'
   pull_request:
     branches:
       - '**'
@@ -16,7 +19,10 @@ on:
       - '.github/workflows/**'
       - 'src/**'
       - '*.sln'
+      - '*.slnf'
+      - '*.config'
       - '*.props'
+      - '*.targets'
 
 defaults:
   run:
