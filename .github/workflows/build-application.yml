@@ -65,11 +65,11 @@ jobs:
       - name: Cache packages
         uses: actions/cache@v4
         with:
-          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
-            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
-            GeneoGraph-NuGet-${{ runner.os }}-
-            GeneoGraph-NuGet-
+            Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            Application-NuGet-${{ runner.os }}-
+            Application-NuGet-
           path: |
             ~/.nuget/packages
 
@@ -87,7 +87,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: geneograph-${{ matrix.system }}-${{ matrix.config }}-${{ github.sha }}
+          name: application-${{ matrix.system }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/
 
   test-common:
@@ -127,11 +127,11 @@ jobs:
       - name: Cache packages
         uses: actions/cache@v4
         with:
-          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
-            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
-            GeneoGraph-NuGet-${{ runner.os }}-
-            GeneoGraph-NuGet-
+            Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            Application-NuGet-${{ runner.os }}-
+            Application-NuGet-
           path: |
             ~/.nuget/packages
 
@@ -184,11 +184,11 @@ jobs:
       - name: Cache packages
         uses: actions/cache@v4
         with:
-          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
-            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
-            GeneoGraph-NuGet-${{ runner.os }}-
-            GeneoGraph-NuGet-
+            Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            Application-NuGet-${{ runner.os }}-
+            Application-NuGet-
           path: |
             ~/.nuget/packages
 
@@ -214,7 +214,7 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v4
         with:
-          name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
+          name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
 
   publish-linux:
@@ -255,11 +255,11 @@ jobs:
       - name: Cache packages
         uses: actions/cache@v4
         with:
-          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
-            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
-            GeneoGraph-NuGet-${{ runner.os }}-
-            GeneoGraph-NuGet-
+            Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            Application-NuGet-${{ runner.os }}-
+            Application-NuGet-
           path: |
             ~/.nuget/packages
 
@@ -285,7 +285,7 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v4
         with:
-          name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
+          name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
 
   publish-macos:
@@ -351,11 +351,11 @@ jobs:
       - name: Cache packages
         uses: actions/cache@v4
         with:
-          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
-            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
-            GeneoGraph-NuGet-${{ runner.os }}-
-            GeneoGraph-NuGet-
+            Application-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            Application-NuGet-${{ runner.os }}-
+            Application-NuGet-
           path: |
             ~/.nuget/packages
 
@@ -379,5 +379,5 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v4
         with:
-          name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
+          name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
