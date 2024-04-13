@@ -8,13 +8,19 @@
         <OutputPath>$(BaseOutputPath)\$(Configuration)\$(TargetFramework)</OutputPath>
         <UseAppHost>true</UseAppHost>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+
+        <ApplicationId>org.imesense.GeneoGraph</ApplicationId>
     </PropertyGroup>
 
-    <ItemGroup>
-        <None Include="Info.plist" />
-        <None Include="Entitlements.plist" />
-    </ItemGroup>
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-macos'">
+        <SupportedOSPlatformVersion >13.0</SupportedOSPlatformVersion>
+        <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-macos'">
+        <SupportedOSPlatformVersion >14.2</SupportedOSPlatformVersion>
+        <RuntimeIdentifiers>osx-arm64</RuntimeIdentifiers>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
