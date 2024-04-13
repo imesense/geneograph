@@ -58,44 +58,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Cache workloads (Windows)
-        uses: actions/cache@v4
-        if: ${{ contains(matrix.system, 'windows') }}
-        with:
-          key: GeneoGraph-Workloads-${{ runner.os }}-
-          restore-keys: |
-            GeneoGraph-Workloads-${{ runner.os }}-
-          path: |
-            C:\ProgramData\dotnet\workloads\**\*.msi
-
-      - name: Cache workloads (Linux)
-        uses: actions/cache@v4
-        if: ${{ contains(matrix.system, 'ubuntu') }}
-        with:
-          key: GeneoGraph-Workloads-${{ runner.os }}-
-          restore-keys: |
-            GeneoGraph-Workloads-${{ runner.os }}-
-          path: |
-            /usr/share/dotnet/packs/**/*.nupkg
-
-      - name: Cache workloads (macOS)
-        uses: actions/cache@v4
-        if: ${{ contains(matrix.system, 'macos') }}
-        with:
-          key: GeneoGraph-Workloads-${{ runner.os }}-
-          restore-keys: |
-            GeneoGraph-Workloads-${{ runner.os }}-
-          path: |
-            ~/.dotnet/packs/**/*.nupkg
-
-      - name: Install workloads
-        run: |
-          dotnet workload install `
-            wasm-tools `
-            wasm-tools-net7 `
-            macos
-
-      - name: Cache dependencies
+      - name: Cache packages
         uses: actions/cache@v4
         with:
           key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
@@ -106,7 +69,7 @@ jobs:
           path: |
             ~/.nuget/packages
 
-      - name: Restore dependencies
+      - name: Restore packages
         run: |
           dotnet restore $env:Solution `
             --locked-mode
@@ -155,7 +118,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Cache dependencies
+      - name: Cache packages
         uses: actions/cache@v4
         with:
           key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
@@ -166,7 +129,7 @@ jobs:
           path: |
             ~/.nuget/packages
 
-      - name: Restore dependencies
+      - name: Restore packages
         run: |
           dotnet restore $env:Solution `
             --locked-mode
@@ -175,3 +138,216 @@ jobs:
         run: |
           dotnet test $env:Solution `
             --no-restore
+
+  publish-windows:
+    name: 'Publish Windows'
+
+    needs:
+      - test-common
+
+    strategy:
+      matrix:
+        system:
+          - windows-2022
+        framework:
+          - net6.0-windows
+          - net7.0-windows
+          - net8.0-windows
+        runtime:
+          - win-x86
+          - win-x64
+        config:
+          - Release
+
+    runs-on: ${{ matrix.system }}
+
+    env:
+      Project: src\ImeSense.GeneoGraph.Windows\ImeSense.GeneoGraph.Windows.csproj
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache packages
+        uses: actions/cache@v4
+        with:
+          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-${{ runner.os }}-
+            GeneoGraph-NuGet-
+          path: |
+            ~/.nuget/packages
+
+      - name: Publish application
+        run: |
+          dotnet publish $env:Project `
+            --framework ${{ matrix.framework }} `
+            --runtime ${{ matrix.runtime }} `
+            --configuration ${{ matrix.config }} `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -p:PublishReadyToRun=true `
+            -p:IncludeAllContentForSelfExtract=true `
+            -p:EnableCompressionInSingleFile=true `
+            -p:DebugSymbols=false `
+            -p:DebugType=None
+
+      - name: Upload application
+        uses: actions/upload-artifact@v4
+        with:
+          name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
+          path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
+
+  publish-linux:
+    name: 'Publish Linux'
+
+    needs:
+      - test-common
+
+    strategy:
+      matrix:
+        system:
+          - ubuntu-22.04
+        framework:
+          - net6.0
+          - net7.0
+          - net8.0
+        runtime:
+          - linux-x64
+        config:
+          - Release
+
+    runs-on: ${{ matrix.system }}
+
+    env:
+      Project: src/ImeSense.GeneoGraph.Linux/ImeSense.GeneoGraph.Linux.csproj
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache packages
+        uses: actions/cache@v4
+        with:
+          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-${{ runner.os }}-
+            GeneoGraph-NuGet-
+          path: |
+            ~/.nuget/packages
+
+      - name: Publish application
+        run: |
+          dotnet publish $env:Project `
+            --framework ${{ matrix.framework }} `
+            --runtime ${{ matrix.runtime }} `
+            --configuration ${{ matrix.config }} `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -p:PublishReadyToRun=true `
+            -p:IncludeAllContentForSelfExtract=true `
+            -p:EnableCompressionInSingleFile=true `
+            -p:DebugSymbols=false `
+            -p:DebugType=None
+
+      - name: Upload application
+        uses: actions/upload-artifact@v4
+        with:
+          name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
+          path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
+
+  publish-macos:
+    name: 'Publish macOS'
+
+    needs:
+      - test-common
+
+    strategy:
+      matrix:
+        system:
+          - macos-14
+        framework:
+          - net7.0-macos
+          - net8.0-macos
+        runtime:
+          - osx-x64
+          - osx-arm64
+        config:
+          - Release
+
+    runs-on: ${{ matrix.system }}
+
+    env:
+      Project: src/ImeSense.GeneoGraph.macOS/ImeSense.GeneoGraph.macOS.csproj
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache workloads
+        uses: actions/cache@v4
+        with:
+          key: GeneoGraph-Workloads-${{ runner.os }}-
+          restore-keys: |
+            GeneoGraph-Workloads-${{ runner.os }}-
+          path: |
+            ~/.dotnet/packs/**/*.nupkg
+
+      - name: Install workloads
+        run: |
+          dotnet workload install `
+            macos
+
+      - name: Cache packages
+        uses: actions/cache@v4
+        with:
+          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-${{ runner.os }}-
+            GeneoGraph-NuGet-
+          path: |
+            ~/.nuget/packages
+
+      - name: Publish application
+        run: |
+          dotnet publish $env:Project `
+            --framework ${{ matrix.framework }} `
+            --runtime ${{ matrix.runtime }} `
+            --configuration ${{ matrix.config }} `
+            --self-contained true `
+            -p:PublishReadyToRun=true `
+            -p:CreatePackage=false `
+            -p:DebugSymbols=false `
+            -p:DebugType=None
+
+      - name: Upload application
+        uses: actions/upload-artifact@v4
+        with:
+          name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
+          path: |
+            bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/*.app/
+            bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/*.items

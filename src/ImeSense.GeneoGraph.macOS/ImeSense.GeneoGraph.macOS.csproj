@@ -16,7 +16,6 @@
         <SupportedOSPlatformVersion >13.0</SupportedOSPlatformVersion>
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
     </PropertyGroup>
-
     <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-macos'">
         <SupportedOSPlatformVersion >14.2</SupportedOSPlatformVersion>
         <RuntimeIdentifiers>osx-arm64</RuntimeIdentifiers>

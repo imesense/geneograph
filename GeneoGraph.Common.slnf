@@ -3,7 +3,8 @@
         "path": "GeneoGraph.sln",
         "projects": [
             "src\\ImeSense.GeneoGraph\\ImeSense.GeneoGraph.csproj",
-            "src\\ImeSense.GeneoGraph.Common\\ImeSense.GeneoGraph.Common.csproj"
+            "src\\ImeSense.GeneoGraph.Common\\ImeSense.GeneoGraph.Common.csproj",
+            "test\\ImeSense.GeneoGraph.Tests\\ImeSense.GeneoGraph.Tests.csproj"
         ]
     }
 }
