@@ -26,13 +26,28 @@ public partial class App : Application {
 
     public override void OnFrameworkInitializationCompleted() {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-            desktop.MainWindow = new MainWindow {
-                DataContext = new MainViewModel(),
+            var mainViewModel = new MainViewModel();
+            var mainWindow = new MainWindow {
+                DataContext = mainViewModel,
+            };
+            mainWindow.Closing += (_, _) => {
+                mainViewModel.CloseLayout();
+            };
+
+            desktop.MainWindow = mainWindow;
+            desktop.Exit += (_, _) => {
+                mainViewModel.CloseLayout();
             };
         } else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform) {
-            singleViewPlatform.MainView = new MainView {
-                DataContext = new MainViewModel(),
+            var mainViewModel = new MainViewModel();
+            var mainView = new MainView {
+                DataContext = mainViewModel,
             };
+            mainView.Unloaded += (_, _) => {
+                mainViewModel.CloseLayout();
+            };
+
+            singleViewPlatform.MainView = mainView;
         }
 
         base.OnFrameworkInitializationCompleted();

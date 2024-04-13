@@ -2,15 +2,18 @@ using Dock.Model.Controls;
 using Dock.Model.Core;
 
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels;
 
 public class MainViewModel : ReactiveObject {
     private readonly IFactory? _factory;
 
-    [Reactive]
-    public IRootDock? Layout { get; set; }
+    private IRootDock? _layout;
+
+    public IRootDock? Layout {
+        get => _layout;
+        set => this.RaiseAndSetIfChanged(ref _layout, value);
+    }
 
     public MainViewModel() {
         _factory = new AppFactory();
@@ -22,10 +25,7 @@ public class MainViewModel : ReactiveObject {
     }
 
     public void CloseLayout() {
-        if (Layout is IDock dock) {
-            if (dock.Close.CanExecute(null)) {
-                dock.Close.Execute(null);
-            }
-        }
+        Layout?.Close.Execute(null);
+        Layout = null;
     }
 }

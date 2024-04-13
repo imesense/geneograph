@@ -12,7 +12,9 @@ public class FileDocumentDock : DocumentDock {
             return;
         }
 
-        var document = new FileViewModel();
+        var document = new FileViewModel {
+            Title = "",
+        };
         Factory?.AddDockable(this, document);
         Factory?.SetActiveDockable(document);
         Factory?.SetFocusedDockable(this, document);

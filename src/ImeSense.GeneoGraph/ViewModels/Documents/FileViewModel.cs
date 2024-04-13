@@ -1,10 +1,14 @@
 using Dock.Model.ReactiveUI.Controls;
 
-using ReactiveUI.Fody.Helpers;
+using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels.Documents;
 
 public class FileViewModel : Document {
-    [Reactive]
-    public string? Path { get; set; }
+    private string? _path;
+
+    public string? Path {
+        get => _path;
+        set => this.RaiseAndSetIfChanged(ref _path, value);
+    }
 }

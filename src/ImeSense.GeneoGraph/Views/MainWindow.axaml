@@ -5,11 +5,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="using:ImeSense.GeneoGraph.Views"
+    xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
     Title="ImeSense.GeneoGraph"
+    d:DesignHeight="450"
+    d:DesignWidth="600"
     Icon="/Assets/avalonia-logo.ico"
     UseLayoutRounding="True"
     WindowStartupLocation="CenterScreen"
     WindowState="Normal"
     mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
     <v:MainView />
 </Window>
