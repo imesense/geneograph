@@ -70,7 +70,7 @@ jobs:
           restore-keys: |
             GeneoGraph-Workloads-${{ runner.os }}-
           path: |
-            ~/.dotnet/packs/**/*.nupkg
+            /usr/share/dotnet/packs/**/*.nupkg
 
       - name: Cache workloads (macOS)
         uses: actions/cache@v4
