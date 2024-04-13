@@ -266,7 +266,7 @@
             Grid.Column="2"
             Grid.RowSpan="2"
             IsVisible="{Binding RightDockVisibility, Mode=TwoWay}"
-            Width="970">
+            Width="900">
             <Grid Grid.Column="2"
                   Grid.RowSpan="2"
                   Background="#161616"

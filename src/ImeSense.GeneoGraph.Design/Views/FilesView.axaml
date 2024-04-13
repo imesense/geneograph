@@ -8,19 +8,421 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="#121212"
-    FontFamily="Cascadia Mono"
-    FontSize="12"
+    FontFamily="Inter"
     Foreground="#dedede"
     mc:Ignorable="d">
     <UserControl.DataContext>
         <vm:FilesViewModel />
     </UserControl.DataContext>
 
-    <TreeView ItemsSource="{Binding Nodes}">
-        <TreeView.ItemTemplate>
-            <TreeDataTemplate ItemsSource="{Binding SubNodes}">
-                <TextBlock Text="{Binding Title}" />
-            </TreeDataTemplate>
-        </TreeView.ItemTemplate>
-    </TreeView>
-</UserControl>
+    <UserControl.Styles>
+        <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
+        </Style>
+
+        <Style Selector="ToggleButton">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="100,0,0,0" />
+            <Setter Property="Margin" Value="0,30,0,0" />
+            <Setter Property="FlowDirection" Value="RightToLeft" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+
+        <Style Selector="ToggleButton:pointerover /template/ Border#ToggleButtonBackground">
+            <Setter Property="Background" Value="#272727" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ Border#ExpandCollapseChevronBorder">
+            <Setter Property="Background" Value="#272727" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ Path#ExpandCollapseChevron">
+            <Setter Property="Stroke" Value="White" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid
+        ColumnDefinitions="270,*,Auto"
+        RowDefinitions="110,*"
+        ShowGridLines="False">
+
+        <!-- Left bar -->
+        <Border
+            Grid.RowSpan="2"
+            Background="#1a1a1a" />
+        <Button
+                x:Name="Createnew"
+                Command=""
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="50"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212">
+            <Label
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold">
+                Add File
+            </Label>
+        </Button>
+
+        <Border
+            Height="1"
+            VerticalAlignment="Bottom"
+            Background="#2f2f2f" />
+
+        <StackPanel Grid.Row="1">
+            <Button
+                Margin="20,30,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="..\Assets\Buttons\home.png"
+                        Stretch="Uniform" />
+                    <Label
+                        Content="All Files"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                Margin="20,20,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="..\Assets\Buttons\recent.png"
+                        Stretch="Uniform" />
+                    <Label
+                        Content="Recent"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                Margin="20,20,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                Command="">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="..\Assets\Buttons\star.png"
+                        Stretch="Uniform" />
+                    <Label
+                        Content="Favorites"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                Margin="20,20,20,30"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="..\Assets\Buttons\source.png"
+                        Stretch="Uniform" />
+                    <Label
+                        Content="Sources"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Border
+                Height="1"
+                VerticalAlignment="Bottom"
+                Background="#2f2f2f" />
+
+            <Expander
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                IsExpanded="True">
+                <Expander.Header>
+                    Files
+                </Expander.Header>
+                <ListBox
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    ItemsSource=""
+                    SelectedItem="">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border
+                                    Width="8"
+                                    Height="8"
+                                    Margin="10,0,15,0"
+                                    Background="White"
+                                    CornerRadius="8" />
+                                <TextBlock
+                                    Text=""
+                                    Margin="0,5,0,0"
+                                    FontSize="18"
+                                    FontWeight="Medium" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="#666666" />
+                        </Style>
+                        <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Style>
+                    </ListBox.Styles>
+                </ListBox>
+            </Expander>
+        </StackPanel>
+
+        <!-- Central part -->
+
+        <Border
+            Grid.Column="1"
+            Height="1"
+            VerticalAlignment="Bottom"
+            Background="#2f2f2f"
+            Margin="20,0,20,0"/>
+
+        <StackPanel Grid.Column="1"
+                    Orientation="Vertical"
+                    Margin="30,25,30,0">
+            <Label
+                Content="All Files"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold"/>
+            <Label
+                Content="n files"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="Regular"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Grid.Column="1"
+                    Margin="0,0,35,0">
+
+            <Button
+                Width="48"
+                Height="48"
+                Margin="20"
+                Background="Transparent">
+                <Image
+                    Source="..\Assets\Buttons\sort.png"
+                    Stretch="Uniform" />
+            </Button>
+
+            <TextBox
+                Width="200"
+                Height="40"
+                Background="#1e1e1e"
+                BorderBrush="#777777"
+                CornerRadius="25"
+                VerticalContentAlignment="Center"
+                Watermark="Find...">
+            </TextBox>
+        </StackPanel>
+
+        <!-- Right part -->
+        <DockPanel
+            Grid.Column="2"
+            Grid.RowSpan="2"
+            IsVisible="{Binding RightDockVisibility, Mode=TwoWay}"
+            Width="900">
+            <Grid Grid.Column="2"
+                  Grid.RowSpan="2"
+                  Background="#161616"
+                  ShowGridLines="False"
+                  RowDefinitions="110,Auto,*,Auto,Auto">
+
+                <!--Toolbar-->
+                <Grid>
+                    <ComboBox
+                        Width="140"
+                        VerticalAlignment="Center"
+                        ItemsSource=""
+                        SelectedItem=""
+                        SelectedIndex="1"
+                        Background="Transparent"
+                        BorderThickness="0">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text=""
+                                    FontSize="18"
+                                    FontWeight="Medium"
+                                    HorizontalAlignment="Stretch"
+                                    TextTrimming="CharacterEllipsis"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <StackPanel HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <Button
+                            Width="48"
+                            Height="48"
+                            Background="Transparent"
+                            Margin="20,0,20,0"
+                            Command="">
+                            <Image
+                                Source="..\Assets\Buttons\star_empty.png"
+                                Stretch="Uniform" />
+                        </Button>
+
+                        <Border Height="40"
+                                Width="1"
+                                Background="#2F2F2F"/>
+                        <Button
+                            Width="48"
+                            Height="48"
+                            Background="Transparent"
+                            Command=""
+                            Margin="20,0,25,0">
+                            <Image
+                                Source="..\Assets\Buttons\delete.png"
+                                Stretch="Uniform" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+
+                <Border Background="#2f2f2f"
+                        Height="1"
+                        VerticalAlignment="Bottom">
+                </Border>
+
+                <!--Photo area-->
+                <Label Grid.Row="1"
+                       FontSize="18"
+                       FontWeight="Regular"
+                       Margin="20,30,0,0">
+                    Lorem ipsum dolor sit amet photo name.jpg
+                </Label>
+                <Border
+                    Grid.Row="2"
+                    Margin="20">
+                    <Image
+                        Source="..\Assets\Profile\Profile_picture.png"
+                        Stretch="Uniform"/>
+                </Border>
+                <Expander
+                    Grid.Row="3"
+                    HorizontalAlignment="Stretch"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    IsExpanded="True">
+                    <Expander.Header>
+                        Information
+                    </Expander.Header>
+                    <Grid RowDefinitions="*,*"
+                          ColumnDefinitions="*,*"
+                          HorizontalAlignment="Stretch"
+                          ShowGridLines="False">
+                        <TextBox
+                            Watermark="Date:"
+                            CornerRadius="15"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            Margin="0,0,15,0"
+                            Height="40"
+                            VerticalContentAlignment="Center">
+                        </TextBox>
+                        <TextBox
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Watermark="Source:"
+                            CornerRadius="15"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            Margin="0,0,15,0"
+                            Height="40"
+                            VerticalContentAlignment="Center">
+                        </TextBox>
+                        <TextBox
+                            Grid.Row="1"
+                            Watermark="Place:"
+                            CornerRadius="15"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            Margin="0,25,15,0"
+                            Height="80"
+                            TextWrapping="Wrap"
+                            VerticalContentAlignment="Top">
+                        </TextBox>
+                        <TextBox
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            HorizontalAlignment="Stretch"
+                            Watermark="Notes:"
+                            CornerRadius="15"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            Margin="0,25,15,0"
+                            Height="80"
+                            TextWrapping="Wrap"
+                            VerticalContentAlignment="Top">
+                        </TextBox>
+                    </Grid>
+                </Expander>
+
+                <Expander
+                    Grid.Row="4"
+                    HorizontalAlignment="Stretch"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    IsExpanded="False">
+                    <Expander.Header>
+                        Connections
+                    </Expander.Header>
+                </Expander>
+            </Grid>
+        </DockPanel>
+
+
+    </Grid>
+
+    </UserControl>
