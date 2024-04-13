@@ -1,0 +1,9 @@
+{
+    "solution": {
+        "path": "GeneoGraph.sln",
+        "projects": [
+            "src\\ImeSense.GeneoGraph\\ImeSense.GeneoGraph.csproj",
+            "src\\ImeSense.GeneoGraph.Common\\ImeSense.GeneoGraph.Common.csproj"
+        ]
+    }
+}
