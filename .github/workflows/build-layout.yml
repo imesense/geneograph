@@ -1,0 +1,91 @@
+name: 'Build layout'
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - '.github/workflows/**'
+      - 'src/**'
+      - 'test/**'
+      - '*.sln'
+      - '*.slnf'
+      - '*.config'
+      - '*.props'
+      - '*.targets'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - '.github/workflows/**'
+      - 'src/**'
+      - 'test/**'
+      - '*.sln'
+      - '*.slnf'
+      - '*.config'
+      - '*.props'
+      - '*.targets'
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build-layout:
+    name: 'Build layout'
+
+    strategy:
+      matrix:
+        system:
+          - windows-2022
+          - ubuntu-22.04
+          - macos-14
+        config:
+          - Debug
+          - Release
+
+    runs-on: ${{ matrix.system }}
+
+    env:
+      Solution: GeneoGraph.Design.slnf
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
+
+      - name: Cache packages
+        uses: actions/cache@v4
+        with:
+          key: Layout-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            Layout-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            Layout-NuGet-${{ runner.os }}-
+            Layout-NuGet-
+          path: |
+            ~/.nuget/packages
+
+      - name: Restore packages
+        run: |
+          dotnet restore $env:Solution `
+            --locked-mode
+
+      - name: Build application
+        run: |
+          dotnet build $env:Solution `
+            --configuration ${{ matrix.config }} `
+            --no-restore
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: layout-${{ matrix.system }}-${{ matrix.config }}-${{ github.sha }}
+          path: bin/${{ matrix.config }}/
