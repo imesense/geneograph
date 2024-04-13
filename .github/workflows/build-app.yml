@@ -23,13 +23,15 @@ defaults:
     shell: pwsh
 
 jobs:
-  build-app:
-    name: 'Build'
+  build-application:
+    name: 'Build application'
 
     strategy:
       matrix:
         system:
           - windows-2022
+          - ubuntu-22.04
+          - macos-14
         config:
           - Debug
           - Release
@@ -54,11 +56,31 @@ jobs:
         uses: actions/cache@v4
         if: ${{ contains(matrix.system, 'windows') }}
         with:
-          key: GeneoGraph-Workloads-
+          key: GeneoGraph-Workloads-${{ runner.os }}-
           restore-keys: |
-            GeneoGraph-Workloads-
+            GeneoGraph-Workloads-${{ runner.os }}-
           path: |
-            C:\ProgramData\dotnet\workloads
+            C:\ProgramData\dotnet\workloads\**\*.msi
+
+      - name: Cache workloads (Linux)
+        uses: actions/cache@v4
+        if: ${{ contains(matrix.system, 'ubuntu') }}
+        with:
+          key: GeneoGraph-Workloads-${{ runner.os }}-
+          restore-keys: |
+            GeneoGraph-Workloads-${{ runner.os }}-
+          path: |
+            ~/.dotnet/packs/**/*.nupkg
+
+      - name: Cache workloads (macOS)
+        uses: actions/cache@v4
+        if: ${{ contains(matrix.system, 'macos') }}
+        with:
+          key: GeneoGraph-Workloads-${{ runner.os }}-
+          restore-keys: |
+            GeneoGraph-Workloads-${{ runner.os }}-
+          path: |
+            ~/.dotnet/packs/**/*.nupkg
 
       - name: Install workloads
         run: |
@@ -70,9 +92,10 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          key: GeneoGraph-NuGet-${{ hashFiles('**/packages.lock.json') }}
+          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
-            GeneoGraph-NuGet-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-${{ runner.os }}-
             GeneoGraph-NuGet-
           path: |
             ~/.nuget/packages
