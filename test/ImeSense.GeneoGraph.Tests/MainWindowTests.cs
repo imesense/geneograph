@@ -7,13 +7,28 @@ namespace ImeSense.GeneoGraph.Tests;
 
 public class MainWindowTests {
     [AvaloniaTest]
-    public void MainWindow_Show_ShouldBeViewed() {
+    public void MainWindow_Show_ShouldBeVisible() {
         var window = new MainWindow {
             DataContext = new MainViewModel(),
         };
         window.Show();
 
-        Assert.That(window.DataContext, Is.Not.Null);
-        Assert.That(window.IsVisible, Is.True);
+        Assert.Multiple(() => {
+            Assert.That(window, Is.Not.Null);
+            Assert.That(window.DataContext, Is.Not.Null);
+            Assert.That(window.IsVisible, Is.True);
+        });
+    }
+
+    [AvaloniaTest]
+    public void MainWindow_CloseLayout_ShouldBeClosed() {
+        var window = new MainWindow {
+            DataContext = new MainViewModel(),
+        };
+        window.Show();
+
+        ((MainViewModel) window.DataContext).CloseLayout();
+
+        Assert.That(((MainViewModel) window.DataContext).Layout, Is.Null);
     }
 }

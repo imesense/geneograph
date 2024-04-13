@@ -10,12 +10,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="FodyWeavers.xsd">
-            <DependentUpon>FodyWeavers.xml</DependentUpon>
-        </None>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.10" />
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.10" />
         <PackageReference Include="Avalonia.Diagnostics" Version="11.0.10" Condition="'$(Configuration)' == 'Debug'" />
@@ -25,7 +19,6 @@
         <PackageReference Include="Dock.Avalonia" Version="11.0.0.7" />
         <PackageReference Include="Dock.Model.ReactiveUI" Version="11.0.0.7" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
     </ItemGroup>
 
     <ItemGroup>
