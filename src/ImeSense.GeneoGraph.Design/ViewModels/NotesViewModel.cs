@@ -120,22 +120,25 @@ public class NotesViewModel : ReactiveObject {
     }
 
     private void UpdateNotes() {
-        var filterupdate = NotesList.Where(note => note.Category == _selectedCategory);
+        var filterupdate = NotesList.Where(note => note.Category == SelectedCategory);
         FilteredNotes = new ObservableCollection<Note>(filterupdate);
         CountNotes();
     }
     private void LoadAllNotes() {
-        FilteredNotes.Clear();
-        DisplayCategory = "All Notes";
-        FilteredNotes = NotesList;
-        CountNotes();
+        if (DisplayCategory != "All Notes")
+        {
+            DisplayCategory = "All Notes";
+            FilteredNotes = NotesList;
+            CountNotes();
+        }
     }
     private void LoadFavoriteNotes() {
-        var loadall = NotesList.Where(note => note.IsFavorite == true);
-        FilteredNotes.Clear();
-        DisplayCategory = "Favorites";
-        FilteredNotes = new ObservableCollection<Note>(loadall);
-        CountNotes();
+        if (DisplayCategory != "Favorites") {
+            var loadall = NotesList.Where(note => note.IsFavorite == true);
+            DisplayCategory = "Favorites";
+            FilteredNotes = new ObservableCollection<Note>(loadall);
+            CountNotes();
+        }
     }
 
     private void CountNotes() {
