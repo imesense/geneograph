@@ -60,9 +60,12 @@ jobs:
           path: |
             C:\ProgramData\dotnet\workloads
 
-      - name: Restore workloads
+      - name: Install workloads
         run: |
-          dotnet workload restore
+          dotnet workload install `
+            wasm-tools `
+            wasm-tools-net7 `
+            macos
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -81,7 +84,7 @@ jobs:
 
       - name: Build application
         run: |
-          dotnet build $env:Project `
+          dotnet build $env:Solution `
             --configuration ${{ matrix.config }} `
             --no-restore
 
