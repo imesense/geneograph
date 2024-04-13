@@ -27,4 +27,8 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
     </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="ImeSense.GeneoGraph.Tests" />
+    </ItemGroup>
 </Project>

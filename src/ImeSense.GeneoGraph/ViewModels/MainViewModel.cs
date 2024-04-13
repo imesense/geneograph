@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Reactive.Linq;
-using System.Text;
-using System.Windows.Input;
-using ReactiveUI;
-
 using Dock.Model.Controls;
 using Dock.Model.Core;
 
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 namespace ImeSense.GeneoGraph.ViewModels;

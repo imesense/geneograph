@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <OutputType>Library</OutputType>
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
@@ -8,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Avalonia.Headless.NUnit" Version="11.0.10" />
         <PackageReference Include="coverlet.collector" Version="6.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj" />
+        <ProjectReference Include="..\..\src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj" />
     </ItemGroup>
 
     <ItemGroup>

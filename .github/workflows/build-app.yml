@@ -29,8 +29,8 @@ defaults:
     shell: pwsh
 
 jobs:
-  build-application:
-    name: 'Build application'
+  build-common:
+    name: 'Build common'
 
     strategy:
       matrix:
@@ -122,3 +122,56 @@ jobs:
         with:
           name: geneograph-${{ matrix.system }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/
+
+  test-common:
+    name: 'Test common'
+
+    needs:
+      - build-common
+
+    strategy:
+      matrix:
+        system:
+          - windows-2022
+          - ubuntu-22.04
+          - macos-14
+        config:
+          - Debug
+          - Release
+
+    runs-on: ${{ matrix.system }}
+
+    env:
+      Solution: GeneoGraph.Common.slnf
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          key: GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            GeneoGraph-NuGet-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+            GeneoGraph-NuGet-${{ runner.os }}-
+            GeneoGraph-NuGet-
+          path: |
+            ~/.nuget/packages
+
+      - name: Restore dependencies
+        run: |
+          dotnet restore $env:Solution `
+            --locked-mode
+
+      - name: Run tests
+        run: |
+          dotnet test $env:Solution `
+            --no-restore
