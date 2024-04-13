@@ -188,6 +188,11 @@ jobs:
           path: |
             ~/.nuget/packages
 
+      - name: Restore packages
+        run: |
+          dotnet restore $env:Project `
+            --locked-mode
+
       - name: Publish application
         run: |
           dotnet publish $env:Project `
@@ -254,6 +259,11 @@ jobs:
           path: |
             ~/.nuget/packages
 
+      - name: Restore packages
+        run: |
+          dotnet restore $env:Project `
+            --locked-mode
+
       - name: Publish application
         run: |
           dotnet publish $env:Project `
@@ -292,6 +302,15 @@ jobs:
           - osx-arm64
         config:
           - Release
+        exclude:
+          - system: macos-14
+            framework: net8.0-macos
+            runtime: osx-x64
+            config: Release
+          - system: macos-14
+            framework: net8.0-macos
+            runtime: osx-arm64
+            config: Release
 
     runs-on: ${{ matrix.system }}
 
@@ -334,6 +353,11 @@ jobs:
           path: |
             ~/.nuget/packages
 
+      - name: Restore packages
+        run: |
+          dotnet restore $env:Project `
+            --locked-mode
+
       - name: Publish application
         run: |
           dotnet publish $env:Project `
@@ -350,6 +374,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: geneograph-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
-          path: |
-            bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/*.app/
-            bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/*.items
+          path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
