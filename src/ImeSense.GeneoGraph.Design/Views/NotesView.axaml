@@ -15,6 +15,12 @@
         <vm:NotesViewModel />
     </UserControl.DataContext>
 
+    <UserControl.Resources>
+        <StreamGeometry x:Key="HomeGeometry">
+            M7.82369 18.7992V12.795H12.1715V18.7992C12.1715 19.4596 12.6606 20 13.2584 20H16.5193C17.1171 20 17.6062 19.4596 17.6062 18.7992V10.3933H19.454C19.954 10.3933 20.1932 9.7088 19.8127 9.34854L10.7258 0.306214C10.3128 -0.102071 9.68237 -0.102071 9.26933 0.306214L0.182446 9.34854C-0.187116 9.7088 0.041143 10.3933 0.541139 10.3933H2.38895V18.7992C2.38895 19.4596 2.87808 20 3.4759 20H6.73674C7.33456 20 7.82369 19.4596 7.82369 18.7992Z
+        </StreamGeometry>
+    </UserControl.Resources>
+
     <UserControl.Styles>
         <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#BFF0B1" />
@@ -87,7 +93,8 @@
                 Margin="20,30,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent">
+                Background="Transparent"
+                Command="{Binding LoadAllNotesCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -230,15 +237,23 @@
                     Orientation="Vertical"
                     Margin="30,25,30,0">
             <Label
-                Content="{Binding SelectedCategory}"
+                Content="{Binding DisplayCategory}"
                 VerticalAlignment="Center"
                 FontSize="20"
                 FontWeight="SemiBold"/>
-            <Label
-                Content="n notes"
-                VerticalAlignment="Center"
-                FontSize="16"
-                FontWeight="Regular"/>
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    Content="{Binding NumberNotes}"
+                    FontSize="16"
+                    FontWeight="Regular"
+                    VerticalAlignment="Center"/>
+                <Label
+                    Content="notes"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Regular"/>
+            </StackPanel>
+
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
@@ -442,34 +457,31 @@
                     <Expander.Header>
                         Information
                     </Expander.Header>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Stretch">
-                        <TextBox Width="300"
-                                 Watermark="Date:"
-                                 CornerRadius="15"
-                                 Background="#1e1e1e"
-                                 BorderBrush="#777777"
-                                 Margin="0,0,15,0">
+                    <Grid RowDefinitions="*,*"
+                          ColumnDefinitions="*,*"
+                          HorizontalAlignment="Stretch"
+                          ShowGridLines="False">
+                        <TextBox
+                            Watermark="Date:"
+                            CornerRadius="15"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            Margin="0,0,15,0"
+                            Height="40"
+                            VerticalContentAlignment="Center">
                         </TextBox>
-                        <TextBox HorizontalAlignment="Stretch"
-                                 Watermark="Source:"
-                                 CornerRadius="15"
-                                 Background="#1e1e1e"
-                                 BorderBrush="#777777"
-                                 Margin="0,0,15,0">
+                        <TextBox
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Watermark="Source:"
+                            CornerRadius="15"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            Margin="0,0,15,0"
+                            Height="40"
+                            VerticalContentAlignment="Center">
                         </TextBox>
-                    </StackPanel>
-                </Expander>
-
-                <Expander
-                    Grid.Row="4"
-                    HorizontalAlignment="Stretch"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    IsExpanded="False">
-                    <Expander.Header>
-                        Connections
-                    </Expander.Header>
+                    </Grid>
                 </Expander>
             </Grid>
         </DockPanel>

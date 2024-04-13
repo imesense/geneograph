@@ -21,6 +21,7 @@ public class NotesViewModel : ReactiveObject {
     public int _selectedNoteIndex;
 
     private bool _rightDockVisibility = false;
+    private int _numberNotes = 0;
 
     public Interaction<NotesViewModel, AddNoteViewModel?> ShowDialog { get; }
 
@@ -36,14 +37,13 @@ public class NotesViewModel : ReactiveObject {
 
         NotesList = Note.NotesList;
 
-        SelectedCategory = CategoryList[0];
-
         AddNewNoteCommand = ReactiveCommand.Create<AddNoteViewModel?, Unit>((_) => Unit.Default);
 
         AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
         DeleteNoteCommand = ReactiveCommand.Create(DeleteNote);
         IsFavNoteChangeCommand = ReactiveCommand.Create(IsFavStateChange);
         LoadFavNoteCommand = ReactiveCommand.Create(LoadFavoriteNotes);
+        LoadAllNotesCommand = ReactiveCommand.Create(LoadAllNotes);
 
         ShowDialog = new Interaction<NotesViewModel, AddNoteViewModel?>();
 
@@ -61,6 +61,11 @@ public class NotesViewModel : ReactiveObject {
             .Skip(2) // Skip initial null value
             .Where(index => index < 0)
             .Subscribe(_ => RightDockVisibility = false);
+
+        this.WhenAnyValue(x => x.SelectedCategory)
+            .Subscribe(_ => DisplayCategory = SelectedCategory.CategoryName);
+
+        LoadAllNotes();
     }
 
     private NoteCategory _selectedCategory;
@@ -84,6 +89,9 @@ public class NotesViewModel : ReactiveObject {
     }
 
     [Reactive]
+    public string DisplayCategory { get; set; } = "All Notes";
+
+    [Reactive]
     public Note SelectedNote {
         get => _selectedNote;
         set => this.RaiseAndSetIfChanged(ref _selectedNote, value);
@@ -92,6 +100,12 @@ public class NotesViewModel : ReactiveObject {
     public int SelectedNoteIndex {
         get => _selectedNoteIndex;
         set => this.RaiseAndSetIfChanged(ref _selectedNoteIndex, value);
+    }
+
+    [Reactive]
+    public int NumberNotes {
+        get => _numberNotes;
+        set => this.RaiseAndSetIfChanged(ref _numberNotes, value);
     }
 
     [Reactive]
@@ -108,11 +122,24 @@ public class NotesViewModel : ReactiveObject {
     private void UpdateNotes() {
         var filterupdate = NotesList.Where(note => note.Category == _selectedCategory);
         FilteredNotes = new ObservableCollection<Note>(filterupdate);
+        CountNotes();
+    }
+    private void LoadAllNotes() {
+        FilteredNotes.Clear();
+        DisplayCategory = "All Notes";
+        FilteredNotes = NotesList;
+        CountNotes();
     }
     private void LoadFavoriteNotes() {
-        var loadfavs = NotesList.Where(note => note.IsFavorite == true);
+        var loadall = NotesList.Where(note => note.IsFavorite == true);
         FilteredNotes.Clear();
-        FilteredNotes = new ObservableCollection<Note>(loadfavs);
+        DisplayCategory = "Favorites";
+        FilteredNotes = new ObservableCollection<Note>(loadall);
+        CountNotes();
+    }
+
+    private void CountNotes() {
+        NumberNotes = FilteredNotes.Count();
     }
 
     public void DeleteNote() {
@@ -131,4 +158,5 @@ public class NotesViewModel : ReactiveObject {
     public IReactiveCommand<Unit, Unit> DeleteNoteCommand { get; set; }
     public IReactiveCommand<Unit, Unit> IsFavNoteChangeCommand { get; set; }
     public IReactiveCommand<Unit, Unit> LoadFavNoteCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> LoadAllNotesCommand { get; set; }
 }
