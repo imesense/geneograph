@@ -15,12 +15,6 @@
         <vm:NotesViewModel />
     </UserControl.DataContext>
 
-    <UserControl.Resources>
-        <StreamGeometry x:Key="HomeGeometry">
-            M7.82369 18.7992V12.795H12.1715V18.7992C12.1715 19.4596 12.6606 20 13.2584 20H16.5193C17.1171 20 17.6062 19.4596 17.6062 18.7992V10.3933H19.454C19.954 10.3933 20.1932 9.7088 19.8127 9.34854L10.7258 0.306214C10.3128 -0.102071 9.68237 -0.102071 9.26933 0.306214L0.182446 9.34854C-0.187116 9.7088 0.041143 10.3933 0.541139 10.3933H2.38895V18.7992C2.38895 19.4596 2.87808 20 3.4759 20H6.73674C7.33456 20 7.82369 19.4596 7.82369 18.7992Z
-        </StreamGeometry>
-    </UserControl.Resources>
-
     <UserControl.Styles>
         <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#BFF0B1" />
@@ -66,14 +60,14 @@
             Grid.RowSpan="2"
             Background="#1a1a1a" />
         <Button
-                x:Name="Createnew"
-                Command="{Binding AddNoteOpenCommand}"
-                HorizontalAlignment="Center"
-                Width="200"
-                Height="50"
-                Background="#9dce8e"
-                CornerRadius="25"
-                Foreground="#121212">
+            x:Name="Createnew"
+            Command="{Binding AddNoteOpenCommand}"
+            Width="200"
+            Height="50"
+            HorizontalAlignment="Center"
+            Background="#9dce8e"
+            CornerRadius="25"
+            Foreground="#121212">
             <Label
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
@@ -88,13 +82,208 @@
             VerticalAlignment="Bottom"
             Background="#2f2f2f" />
 
+        <!-- Central part -->
+
+        <Border
+            Grid.Column="1"
+            Height="1"
+            Margin="20,0,20,0"
+            VerticalAlignment="Bottom"
+            Background="#2f2f2f" />
+
+        <StackPanel
+            Grid.Column="1"
+            Margin="30,25,30,0"
+            Orientation="Vertical">
+            <Label
+                Content="{Binding DisplayCategory}"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" />
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    Content="{Binding NumberNotes}"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Regular" />
+                <Label
+                    Content="notes"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Regular" />
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel
+            Grid.Column="1"
+            Margin="0,0,35,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                Width="48"
+                Height="48"
+                Margin="20"
+                Background="Transparent">
+                <Image
+                    Source="..\Assets\Buttons\sort.png"
+                    Stretch="Uniform" />
+            </Button>
+
+            <TextBox
+                Width="200"
+                Height="40"
+                VerticalContentAlignment="Center"
+                Background="#1e1e1e"
+                BorderBrush="#777777"
+                CornerRadius="25"
+                Watermark="Find..." />
+        </StackPanel>
+
+
+        <!-- Right part -->
+        <DockPanel
+            Grid.Column="2"
+            Grid.RowSpan="2"
+            Width="970"
+            IsVisible="{Binding RightDockVisibility, Mode=TwoWay}">
+            <Grid
+                Grid.Column="2"
+                Grid.RowSpan="2"
+                Background="#161616"
+                RowDefinitions="110,Auto,*,Auto,Auto"
+                ShowGridLines="False">
+
+                <!-- Toolbar -->
+                <Grid>
+                    <ComboBox
+                        Width="140"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        ItemsSource="{Binding NotesList}"
+                        SelectedIndex="1"
+                        SelectedItem="{Binding SelectedNote}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding Category}"
+                                    HorizontalAlignment="Stretch"
+                                    FontSize="18"
+                                    FontWeight="Medium"
+                                    TextTrimming="CharacterEllipsis" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <StackPanel
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                        <Button
+                            Command="{Binding IsFavNoteChangeCommand}"
+                            Width="48"
+                            Height="48"
+                            Margin="20,0,20,0"
+                            Background="Transparent">
+                            <Image
+                                Source="..\Assets\Buttons\star_empty.png"
+                                Stretch="Uniform" />
+                        </Button>
+
+                        <Border
+                            Width="1"
+                            Height="40"
+                            Background="#2F2F2F" />
+                        <Button
+                            Command="{Binding DeleteNoteCommand}"
+                            Width="48"
+                            Height="48"
+                            Margin="20,0,25,0"
+                            Background="Transparent">
+                            <Image
+                                Source="..\Assets\Buttons\delete.png"
+                                Stretch="Uniform" />
+                        </Button>
+                    </StackPanel>
+
+
+                </Grid>
+
+
+                <Border
+                    Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="#2f2f2f" />
+
+                <!-- Note area -->
+                <TextBox
+                    Grid.Row="1"
+                    Text="{Binding SelectedNote.NoteHeader}"
+                    Padding="20,30,0,30"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="20"
+                    FontWeight="SemiBold" />
+
+                <TextBox
+                    Grid.Row="2"
+                    Text="{Binding SelectedNote.NoteText}"
+                    Padding="30,10,20,0"
+                    VerticalAlignment="Stretch"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    LineHeight="30"
+                    TextWrapping="Wrap" />
+
+
+                <Expander
+                    Grid.Row="3"
+                    HorizontalAlignment="Stretch"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    IsExpanded="True">
+                    <Expander.Header>
+                        Information
+                    </Expander.Header>
+                    <Grid
+                        HorizontalAlignment="Stretch"
+                        ColumnDefinitions="*,*"
+                        RowDefinitions="*,*"
+                        ShowGridLines="False">
+                        <TextBox
+                            Height="40"
+                            Margin="0,0,15,0"
+                            VerticalContentAlignment="Center"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            CornerRadius="15"
+                            Watermark="Date:" />
+                        <TextBox
+                            Grid.Column="1"
+                            Height="40"
+                            Margin="0,0,15,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Background="#1e1e1e"
+                            BorderBrush="#777777"
+                            CornerRadius="15"
+                            Watermark="Source:" />
+                    </Grid>
+                </Expander>
+            </Grid>
+        </DockPanel>
+
         <StackPanel Grid.Row="1">
             <Button
+                Command="{Binding LoadAllNotesCommand}"
                 Margin="20,30,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent"
-                Command="{Binding LoadAllNotesCommand}">
+                Background="Transparent">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -133,11 +322,11 @@
             </Button>
 
             <Button
+                Command="{Binding LoadFavNoteCommand}"
                 Margin="20,20,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent"
-                Command="{Binding LoadFavNoteCommand}">
+                Background="Transparent">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -224,115 +413,57 @@
             </Expander>
         </StackPanel>
 
-        <!-- Central part -->
-
-        <Border
-            Grid.Column="1"
-            Height="1"
-            VerticalAlignment="Bottom"
-            Background="#2f2f2f"
-            Margin="20,0,20,0"/>
-        
-        <StackPanel Grid.Column="1"
-                    Orientation="Vertical"
-                    Margin="30,25,30,0">
-            <Label
-                Content="{Binding DisplayCategory}"
-                VerticalAlignment="Center"
-                FontSize="20"
-                FontWeight="SemiBold"/>
-            <StackPanel Orientation="Horizontal">
-                <Label
-                    Content="{Binding NumberNotes}"
-                    FontSize="16"
-                    FontWeight="Regular"
-                    VerticalAlignment="Center"/>
-                <Label
-                    Content="notes"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Regular"/>
-            </StackPanel>
-
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Grid.Column="1"
-                    Margin="0,0,35,0">
-            
-            <Button
-                Width="48"
-                Height="48"
-                Margin="20"
-                Background="Transparent">
-                <Image
-                    Source="..\Assets\Buttons\sort.png"
-                    Stretch="Uniform" />
-            </Button>
-            
-            <TextBox
-                Width="200"
-                Height="40"
-                Background="#1e1e1e"
-                BorderBrush="#777777"
-                CornerRadius="25"
-                VerticalContentAlignment="Center"
-                Watermark="Find...">
-            </TextBox>
-        </StackPanel>
-
         <ListBox
             Grid.Column="1"
             Grid.Row="1"
             Background="Transparent"
             BorderBrush="Transparent"
             ItemsSource="{Binding FilteredNotes}"
-            SelectedItem="{Binding SelectedNote}"
-            SelectedIndex="{Binding SelectedNoteIndex}">
+            SelectedIndex="{Binding SelectedNoteIndex}"
+            SelectedItem="{Binding SelectedNote}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid ColumnDefinitions="Auto, *">
-                        <Border Width="2"
-                                Height="78"
-                                Background="#316A42"
-                                CornerRadius="8"
-                                Margin="10,0,15,0"
-                                />
-                        <StackPanel 
+                        <Border
+                            Width="2"
+                            Height="78"
+                            Margin="10,0,15,0"
+                            Background="#316A42"
+                            CornerRadius="8" />
+                        <StackPanel
                             Grid.Column="1"
                             Orientation="Vertical">
                             <TextBlock
                                 Text="{Binding NoteHeader}"
-                                TextTrimming="WordEllipsis"
                                 Margin="0,5,0,0"
                                 FontSize="18"
-                                FontWeight="Medium"/>
+                                FontWeight="Medium"
+                                TextTrimming="WordEllipsis" />
                             <TextBlock
                                 Text="{Binding NoteText}"
-                                Foreground="#B2B2B2"
-                                HorizontalAlignment="Left"
-                                TextTrimming="CharacterEllipsis"
                                 Margin="5,8,0,0"
+                                HorizontalAlignment="Left"
                                 FontSize="18"
-                                FontWeight="Regular"/>
+                                FontWeight="Regular"
+                                Foreground="#B2B2B2"
+                                TextTrimming="CharacterEllipsis" />
                             <StackPanel
-                                Orientation="Horizontal"
-                                Margin="5,12,0,0">
+                                Margin="5,12,0,0"
+                                Orientation="Horizontal">
                                 <TextBlock
-                                    Margin="0,5,0,0"
                                     Text="Modified: "
-                                    Foreground="#B2B2B2"
+                                    Margin="0,5,0,0"
+                                    VerticalAlignment="Center"
                                     FontSize="16"
                                     FontWeight="Regular"
-                                    VerticalAlignment="Center"/>
+                                    Foreground="#B2B2B2" />
                                 <TextBlock
                                     Text="{Binding AddedTime}"
-                                    Foreground="#B2B2B2"
                                     Margin="0,5,0,0"
+                                    VerticalAlignment="Center"
                                     FontSize="16"
                                     FontWeight="Regular"
-                                    VerticalAlignment="Center"/>
+                                    Foreground="#B2B2B2" />
                             </StackPanel>
 
                         </StackPanel>
@@ -350,140 +481,5 @@
                 </Style>
             </ListBox.Styles>
         </ListBox>
-        
-        
-            <!-- Right part -->
-        <DockPanel 
-            Grid.Column="2"
-            Grid.RowSpan="2"
-            IsVisible="{Binding RightDockVisibility, Mode=TwoWay}"
-            Width="970">
-            <Grid Grid.Column="2"
-                  Grid.RowSpan="2"
-                  Background="#161616"
-                  ShowGridLines="False"
-                  RowDefinitions="110,Auto,*,Auto,Auto">
-
-                <!--Toolbar-->
-                <Grid>
-                    <ComboBox
-                        Width="140"
-                        VerticalAlignment="Center"
-                        ItemsSource="{Binding NotesList}"
-                        SelectedItem="{Binding SelectedNote}"
-                        SelectedIndex="1"
-                        Background="Transparent"
-                        BorderThickness="0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Text="{Binding Category}"
-                                    FontSize="18"
-                                    FontWeight="Medium"
-                                    HorizontalAlignment="Stretch"
-                                    TextTrimming="CharacterEllipsis"/>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-
-                    <StackPanel HorizontalAlignment="Right"
-                                Orientation="Horizontal">
-
-                        <Button
-                            Width="48"
-                            Height="48"
-                            Background="Transparent"
-                            Margin="20,0,20,0"
-                            Command="{Binding IsFavNoteChangeCommand}">
-                            <Image
-                                Source="..\Assets\Buttons\star_empty.png"
-                                Stretch="Uniform" />
-                        </Button>
-
-                        <Border Height="40"
-                                Width="1"
-                                Background="#2F2F2F"/>
-                        <Button
-                            Width="48"
-                            Height="48"
-                            Background="Transparent"
-                            Command="{Binding DeleteNoteCommand}"
-                            Margin="20,0,25,0">
-                            <Image
-                                Source="..\Assets\Buttons\delete.png"
-                                Stretch="Uniform" />
-                        </Button>
-                    </StackPanel>
-
-
-                </Grid>
-
-
-                <Border Background="#2f2f2f"
-                        Height="1"
-                        VerticalAlignment="Bottom">
-                </Border>
-
-                <!--Note area-->
-                <TextBox
-                    Grid.Row="1"
-                    FontWeight="SemiBold"
-                    FontSize="20"
-                    Padding="20,30,0,30"
-                    Text="{Binding SelectedNote.NoteHeader}"
-                    Background="Transparent"
-                    BorderThickness="0"/>
-
-                <TextBox
-                    Grid.Row="2"
-                    FontWeight="Medium"
-                    FontSize="16"
-                    Padding="30,10,20,0"
-                    TextWrapping="Wrap"
-                    LineHeight="30"
-                    Text="{Binding SelectedNote.NoteText}"
-                    VerticalAlignment="Stretch"
-                    Background="Transparent"
-                    BorderThickness="0">
-                </TextBox>
-
-
-                <Expander
-                    Grid.Row="3"
-                    HorizontalAlignment="Stretch"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    IsExpanded="True">
-                    <Expander.Header>
-                        Information
-                    </Expander.Header>
-                    <Grid RowDefinitions="*,*"
-                          ColumnDefinitions="*,*"
-                          HorizontalAlignment="Stretch"
-                          ShowGridLines="False">
-                        <TextBox
-                            Watermark="Date:"
-                            CornerRadius="15"
-                            Background="#1e1e1e"
-                            BorderBrush="#777777"
-                            Margin="0,0,15,0"
-                            Height="40"
-                            VerticalContentAlignment="Center">
-                        </TextBox>
-                        <TextBox
-                            Grid.Column="1"
-                            HorizontalAlignment="Stretch"
-                            Watermark="Source:"
-                            CornerRadius="15"
-                            Background="#1e1e1e"
-                            BorderBrush="#777777"
-                            Margin="0,0,15,0"
-                            Height="40"
-                            VerticalContentAlignment="Center">
-                        </TextBox>
-                    </Grid>
-                </Expander>
-            </Grid>
-        </DockPanel>
     </Grid>
 </UserControl>

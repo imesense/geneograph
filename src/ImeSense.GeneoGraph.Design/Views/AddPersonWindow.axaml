@@ -1,14 +1,24 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        d:DesignWidth="850"
-        xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Design.Views"
-        x:Class="ImeSense.GeneoGraph.Design.Views.AddPersonWindow"
-        Title="AddPersonWindow"
-        FontFamily="Inter"
-        Background="Transparent">
+<Window
+    x:Class="ImeSense.GeneoGraph.Design.Views.AddPersonWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Design.ViewModels"
+    xmlns:vt="clr-namespace:ImeSense.GeneoGraph.Design.Views"
+    Title="AddPersonWindow"
+    d:DesignWidth="850"
+    Background="Transparent"
+    ExtendClientAreaChromeHints="NoChrome"
+    ExtendClientAreaTitleBarHeightHint="-1"
+    ExtendClientAreaToDecorationsHint="True"
+    FontFamily="Inter"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <vm:NewPersonViewModel />
+    </Window.DataContext>
 
     <Window.Styles>
         <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -38,7 +48,7 @@
             <Setter Property="Foreground" Value="#DFE4D8" />
         </Style>
     </Window.Styles>
-    
+
     <Grid RowDefinitions="Auto,*,Auto">
         <Border
             Height="100"
@@ -46,33 +56,34 @@
             VerticalAlignment="Top"
             CornerRadius="25,0">
             <Border.Background>
-                <LinearGradientBrush Opacity="0.6">
+                <LinearGradientBrush Opacity="1">
                     <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="#00C969" Offset="0.0" />
-                        <GradientStop Color="#B1D8A5" Offset="1.0" />
+                        <GradientStop Color="#123a27" Offset="0.0" />
+                        <GradientStop Color="#546851" Offset="1.0" />
                     </LinearGradientBrush.GradientStops>
                 </LinearGradientBrush>
             </Border.Background>
-            <Label FontSize="24"
-                   FontWeight="SemiBold"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
+            <Label
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="24"
+                FontWeight="SemiBold">
                 Add lorem of Lorem ipsum
             </Label>
         </Border>
 
-        <Border Grid.RowSpan="2"
-                Grid.Row="1"
-                Background="#1e1e1e">
-        </Border>
-        
+        <Border
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Background="#1e1e1e" />
+
         <TabControl
-            HorizontalAlignment="Stretch"
-            HorizontalContentAlignment="Stretch"
             Grid.Column="1"
-            Grid.Row="1">
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch">
             <TabItem
-                Margin="15,0,15,0"
+                Margin="15,0,15,25"
                 FontFamily="Roboto"
                 FontSize="18"
                 FontWeight="SemiBold"
@@ -81,7 +92,7 @@
             </TabItem>
 
             <TabItem
-                Margin="15,0,15,0"
+                Margin="15,0,15,25"
                 FontFamily="Roboto"
                 FontSize="18"
                 FontWeight="SemiBold"
@@ -90,7 +101,7 @@
             </TabItem>
 
             <TabItem
-                Margin="15,0,15,0"
+                Margin="15,0,15,25"
                 FontFamily="Roboto"
                 FontSize="18"
                 FontWeight="SemiBold"
@@ -99,7 +110,7 @@
             </TabItem>
 
             <TabItem
-                Margin="15,0,15,0"
+                Margin="15,0,15,25"
                 FontFamily="Roboto"
                 FontSize="18"
                 FontWeight="SemiBold"
@@ -110,11 +121,12 @@
 
         <StackPanel
             Grid.Row="2"
+            Margin="0,0,0,20"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Orientation="Horizontal"
-            Margin="0,0,0,20">
+            Orientation="Horizontal">
             <Button
+                Command="{Binding AddPersonCommand}"
                 Width="120"
                 Margin="0,30,30,5"
                 HorizontalAlignment="Center"
@@ -132,6 +144,7 @@
             </Button>
 
             <Button
+                Command="{Binding AddPersonCloseCommand}"
                 Width="120"
                 Margin="30,30,0,5"
                 HorizontalAlignment="Center"

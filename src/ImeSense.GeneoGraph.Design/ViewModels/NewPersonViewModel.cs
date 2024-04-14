@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 
@@ -13,12 +14,6 @@ public class NewPersonViewModel : ReactiveObject {
     public NewPersonViewModel() {
         AddPersonCommand = ReactiveCommand.Create(AddPerson);
     }
-
-    [Reactive]
-    public bool GenderMale { get; set; }
-
-    [Reactive]
-    public bool GenderFemale { get; set; }
 
     [Reactive]
     public string SelectedGender { get; set; } = "Unknown";
@@ -55,18 +50,16 @@ public class NewPersonViewModel : ReactiveObject {
 
     [Reactive]
     public string? BurialPlace { get; set; }
-    private void GenderSelector() {
-        if (GenderMale == true) {
-            SelectedGender = "Male";
-        } else if (GenderFemale == true) {
-            SelectedGender = "Female";
-        } else {
-            SelectedGender = "Unknown";
-        }
-    }
+
+    public List<string> GenderList = new() 
+    {
+        "Male",
+        "Female",
+        "Unknown"
+    };
 
     public void AddPerson() {
-        GenderSelector();
+        //GenderSelector();
         FirstName ??= "Unknown";
         AddPerson(SelectedGender, FirstName, LastName, Patronym, MaidenName, IsDeceased, BirthDate, BirthPlace, DeathDate, DeathPlace, DeathCause, BurialPlace);
         AddPersonClose();

@@ -218,6 +218,8 @@
                 Content="Gender"
                 Margin="0,0,0,5" />
             <ComboBox
+                ItemsSource=""
+                SelectedItem=""
                 Height="40"
                 HorizontalAlignment="Stretch"
                 Background="#121212"
