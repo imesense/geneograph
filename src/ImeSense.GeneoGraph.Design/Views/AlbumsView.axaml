@@ -61,7 +61,6 @@
         RowDefinitions="110,*"
         ShowGridLines="False">
 
-        <!-- Left bar -->
         <Border
             Grid.RowSpan="2"
             Background="#1a1a1a" />
@@ -106,11 +105,18 @@
                 VerticalAlignment="Center"
                 FontSize="20"
                 FontWeight="SemiBold" />
-            <Label
-                Content="n photos"
-                VerticalAlignment="Center"
-                FontSize="16"
-                FontWeight="Regular" />
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    Content="{Binding NumberPhotos}"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Regular" />
+                <Label
+                    Content="photos"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Regular" />
+            </StackPanel>
         </StackPanel>
 
         <StackPanel
@@ -160,8 +166,7 @@
                         Background="Transparent"
                         BorderThickness="0"
                         ItemsSource="{Binding AlbumsList}"
-                        SelectedIndex="1"
-                        SelectedItem="">
+                        SelectedItem="{Binding SelectedPhoto.Album}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock
@@ -214,11 +219,10 @@
                 <!-- Photo area -->
                 <Label
                     Grid.Row="1"
+                    Content="{Binding SelectedPhoto.PhotoName}"
                     Margin="20,30,0,0"
                     FontSize="18"
-                    FontWeight="Regular">
-                    Lorem ipsum dolor sit amet photo name.jpg
-                </Label>
+                    FontWeight="Regular" />
                 <Border
                     Grid.Row="2"
                     Margin="20">
@@ -269,14 +273,14 @@
                             ColumnDefinitions="*,*"
                             RowDefinitions="*,*"
                             ShowGridLines="False">
-                            <TextBox
+                            <CalendarDatePicker
+                                Text="{Binding SelectedPhoto.PhotoDate}"
                                 Height="40"
                                 Margin="0,0,15,0"
-                                VerticalContentAlignment="Center"
+                                HorizontalAlignment="Stretch"
                                 Background="#1e1e1e"
                                 BorderBrush="#777777"
-                                CornerRadius="15"
-                                Watermark="Date:" />
+                                CornerRadius="15" />
                             <TextBox
                                 Grid.Column="1"
                                 Height="40"
@@ -289,6 +293,7 @@
                                 Watermark="Source:" />
                             <TextBox
                                 Grid.Row="1"
+                                Text="{Binding SelectedPhoto.PhotoPlace}"
                                 Height="80"
                                 Margin="0,25,15,0"
                                 VerticalContentAlignment="Top"
@@ -300,6 +305,7 @@
                             <TextBox
                                 Grid.Column="1"
                                 Grid.Row="1"
+                                Text="{Binding SelectedPhoto.PhotoNotes}"
                                 Height="80"
                                 Margin="0,25,15,0"
                                 HorizontalAlignment="Stretch"
@@ -363,7 +369,7 @@
                         Grid.ColumnSpan="2"
                         Grid.Row="2"
                         Margin="20"
-                        IsVisible="{Binding ConnectionsOpen}"/>
+                        IsVisible="{Binding ConnectionsOpen}" />
                 </Grid>
             </Grid>
         </DockPanel>
@@ -488,6 +494,7 @@
                 </Button>
                 <Button
                     Grid.Column="2"
+                    Command="{Binding AddAlbumOpenCommand}"
                     Width="35"
                     Height="35"
                     Margin="20,0,5,0"
@@ -506,7 +513,7 @@
                     Background="Transparent"
                     BorderBrush="Transparent"
                     ItemsSource="{Binding AlbumsList}"
-                    SelectedItem="">
+                    SelectedItem="{Binding SelectedAlbum}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -537,5 +544,73 @@
                 </ListBox>
             </DockPanel>
         </StackPanel>
+
+        <ListBox
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="20"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            ItemsSource="{Binding PhotosList}"
+            SelectedIndex="{Binding SelectedPhotoIndex}"
+            SelectedItem="{Binding SelectedPhoto}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="Auto, *">
+                        <Image
+                            Width="150"
+                            Height="150"
+                            Source="avares:/Assets/Profile/Profile_picture.png"
+                            Stretch="UniformToFill" />
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Text="{Binding PhotoName}"
+                                Margin="20,5,0,0"
+                                FontSize="18"
+                                FontWeight="Medium"
+                                TextTrimming="WordEllipsis" />
+                            <TextBlock
+                                Text="{Binding Album}"
+                                Margin="25,8,0,0"
+                                HorizontalAlignment="Left"
+                                FontSize="18"
+                                FontWeight="Regular"
+                                Foreground="#B2B2B2"
+                                TextTrimming="CharacterEllipsis" />
+                            <StackPanel
+                                Margin="5,20,0,0"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Text="Modified: "
+                                    Margin="20,5,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Regular"
+                                    Foreground="#B2B2B2" />
+                                <TextBlock
+                                    Text="{Binding PhotoAddedTime}"
+                                    Margin="0,5,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Regular"
+                                    Foreground="#B2B2B2" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="#666666" />
+                </Style>
+                <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </ListBox.Styles>
+        </ListBox>
     </Grid>
 </UserControl>
