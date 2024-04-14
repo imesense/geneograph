@@ -158,9 +158,9 @@ public class AlbumsViewModel : ReactiveObject {
     }
 
     public IReactiveCommand<Unit, Unit> AlbumsOpenCloseCommand { get; set; }
-    public IReactiveCommand<Unit, Unit> AddAlbumOpenCommand { get; set; }
     public IReactiveCommand<Unit, Unit> InfoOpenCloseCommand { get; set; }
     public IReactiveCommand<Unit, Unit> ConnectionsOpenCloseCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> AddAlbumOpenCommand { get; set; }
 
     public static ObservableCollection<PhotoAlbum> AlbumsList { get; set; } = new()
     {

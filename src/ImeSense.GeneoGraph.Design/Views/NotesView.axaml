@@ -15,6 +15,12 @@
         <vm:NotesViewModel />
     </UserControl.DataContext>
 
+    <UserControl.Resources>
+        <StreamGeometry x:Key="Shevron">
+            M6.5 6L0.00480895 -2.69824e-07L12.9952 8.65831e-07L6.5 6Z
+        </StreamGeometry>
+    </UserControl.Resources>
+
     <UserControl.Styles>
         <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#BFF0B1" />
@@ -240,40 +246,123 @@
                     TextWrapping="Wrap" />
 
 
-                <Expander
+
+                <!-- Information section -->
+                <Grid
                     Grid.Row="3"
-                    HorizontalAlignment="Stretch"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    IsExpanded="True">
-                    <Expander.Header>
-                        Information
-                    </Expander.Header>
-                    <Grid
-                        HorizontalAlignment="Stretch"
-                        ColumnDefinitions="*,*"
-                        RowDefinitions="*,*"
-                        ShowGridLines="False">
-                        <TextBox
-                            Height="40"
-                            Margin="0,0,15,0"
-                            VerticalContentAlignment="Center"
-                            Background="#1e1e1e"
-                            BorderBrush="#777777"
-                            CornerRadius="15"
-                            Watermark="Date:" />
-                        <TextBox
-                            Grid.Column="1"
-                            Height="40"
-                            Margin="0,0,15,0"
+                    Margin="0,30,0,10"
+                    RowDefinitions="Auto,Auto,Auto">
+                    <Button
+                        Command="{Binding InfoOpenCloseCommand}"
+                        Background="Transparent">
+                        <StackPanel
+                            Margin="20,0,0,0"
+                            Orientation="Horizontal">
+                            <PathIcon
+                                Data="{DynamicResource Shevron}"
+                                Width="16"
+                                Height="8"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                Foreground="#dedede"
+                                RenderTransform="{Binding ShevronInfoRotation}" />
+                            <Label
+                                Padding="5,5,1000,5"
+                                FontSize="20"
+                                FontWeight="SemiBold">
+                                Information
+                            </Label>
+                        </StackPanel>
+                    </Button>
+
+                    <Border
+                        Grid.Row="1"
+                        Height="1"
+                        Background="#2F2F2F" />
+
+                    <DockPanel
+                        Grid.Row="2"
+                        Margin="20"
+                        IsVisible="{Binding InfoOpen}">
+                        <Grid
                             HorizontalAlignment="Stretch"
-                            VerticalContentAlignment="Center"
-                            Background="#1e1e1e"
-                            BorderBrush="#777777"
-                            CornerRadius="15"
-                            Watermark="Source:" />
-                    </Grid>
-                </Expander>
+                            ColumnDefinitions="*,*"
+                            RowDefinitions="*,*"
+                            ShowGridLines="False">
+                            <CalendarDatePicker
+                                Text=""
+                                Height="40"
+                                Margin="0,0,15,0"
+                                HorizontalAlignment="Stretch"
+                                Background="#1e1e1e"
+                                BorderBrush="#777777"
+                                CornerRadius="15" />
+                            <TextBox
+                                Grid.Column="1"
+                                Height="40"
+                                Margin="0,0,15,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalContentAlignment="Center"
+                                Background="#1e1e1e"
+                                BorderBrush="#777777"
+                                CornerRadius="15"
+                                Watermark="Source:" />
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+
+                <!-- Connections section -->
+                <Grid
+                    Grid.Row="4"
+                    Margin="0,30,0,10"
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="Auto,Auto,Auto">
+                    <Button
+                        Command="{Binding ConnectionsOpenCloseCommand}"
+                        Background="Transparent">
+                        <StackPanel
+                            Margin="20,0,0,0"
+                            Orientation="Horizontal">
+                            <PathIcon
+                                Data="{DynamicResource Shevron}"
+                                Width="16"
+                                Height="8"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                Foreground="#dedede"
+                                RenderTransform="{Binding ShevronConnectionsRotation}" />
+                            <Label
+                                Padding="5,5,1000,5"
+                                FontSize="20"
+                                FontWeight="SemiBold">
+                                Connections
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Grid.Column="1"
+                        Width="35"
+                        Height="35"
+                        Margin="20,0,30,0"
+                        Background="Transparent"
+                        CornerRadius="32">
+                        <Image
+                            Source="..\..\Assets\Buttons\unlink.png"
+                            Stretch="Uniform" />
+                    </Button>
+
+                    <Border
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Height="1"
+                        Background="#2F2F2F" />
+
+                    <DockPanel
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Margin="20"
+                        IsVisible="{Binding ConnectionsOpen}" />
+                </Grid>
             </Grid>
         </DockPanel>
 
@@ -369,14 +458,50 @@
                 VerticalAlignment="Bottom"
                 Background="#2f2f2f" />
 
-            <Expander
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                IsExpanded="True">
-                <Expander.Header>
-                    Categories
-                </Expander.Header>
+
+            <!-- Left bar Categories -->
+            <Grid
+                Margin="0,30,0,10"
+                ColumnDefinitions="*,Auto">
+                <Button
+                    Command="{Binding CategoriesOpenCloseCommand}"
+                    Background="Transparent">
+                    <StackPanel
+                        Margin="20,0,0,0"
+                        Orientation="Horizontal">
+                        <PathIcon
+                            Data="{DynamicResource Shevron}"
+                            Width="16"
+                            Height="8"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"
+                            Foreground="#dedede"
+                            RenderTransform="{Binding ShevronCategoriesRotation}" />
+                        <Label
+                            Padding="5,5,200,5"
+                            FontSize="20"
+                            FontWeight="SemiBold">
+                            Categories
+                        </Label>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding AddCategoryOpenCommand}"
+                    Width="35"
+                    Height="35"
+                    Margin="20,0,5,0"
+                    Background="Transparent"
+                    CornerRadius="32">
+                    <Image
+                        Source="..\..\Assets\Buttons\plus.png"
+                        Stretch="Uniform" />
+                </Button>
+            </Grid>
+
+            <DockPanel
+                Margin="30,0,0,0"
+                IsVisible="{Binding CategoriesOpen}">
                 <ListBox
                     Background="Transparent"
                     BorderBrush="Transparent"
@@ -410,7 +535,7 @@
                         </Style>
                     </ListBox.Styles>
                 </ListBox>
-            </Expander>
+            </DockPanel>
         </StackPanel>
 
         <ListBox

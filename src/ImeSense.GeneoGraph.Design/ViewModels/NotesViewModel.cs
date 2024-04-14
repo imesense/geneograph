@@ -18,16 +18,20 @@ namespace ImeSense.GeneoGraph.Design.ViewModels;
 public class NotesViewModel : ReactiveObject {
     private Window? _addCategoryWindow;
 
-    public int _selectedNoteIndex;
+    private bool _categoriesOpen = true;
+    private bool _infoOpen = true;
+    private bool _connectionsOpen = false;
+    private string? _shevronCategoriesRotation = "rotate(180deg)";
+    private string? _shevronInfoRotation = "rotate(180deg)";
+    private string? _shevronConnectionsRotation;
 
-    private bool _rightDockVisibility = false;
     private int _numberNotes = 0;
+    public int _selectedNoteIndex;
+    private bool _rightDockVisibility = false;
 
     public Interaction<NotesViewModel, AddNoteViewModel?> ShowDialog { get; }
-
-    public ICommand AddNoteOpenCommand { get; }
-
     public ReactiveCommand<AddNoteViewModel?, Unit> AddNewNoteCommand { get; }
+    public ICommand AddNoteOpenCommand { get; }
 
     public NotesViewModel() {
         _selectedCategory = new NoteCategory();
@@ -37,6 +41,9 @@ public class NotesViewModel : ReactiveObject {
 
         NotesList = Note.NotesList;
 
+        CategoriesOpenCloseCommand = ReactiveCommand.Create(CategoriesOpenClose);
+        InfoOpenCloseCommand = ReactiveCommand.Create(InfoOpenClose);
+        ConnectionsOpenCloseCommand = ReactiveCommand.Create(ConnectionsOpenClose);
         AddNewNoteCommand = ReactiveCommand.Create<AddNoteViewModel?, Unit>((_) => Unit.Default);
 
         AddCategoryOpenCommand = ReactiveCommand.Create(AddCategoryOpen);
@@ -114,6 +121,42 @@ public class NotesViewModel : ReactiveObject {
         set => this.RaiseAndSetIfChanged(ref _rightDockVisibility, value);
     }
 
+    [Reactive]
+    public bool CategoriesOpen {
+        get => _categoriesOpen;
+        set => this.RaiseAndSetIfChanged(ref _categoriesOpen, value);
+    }
+
+    [Reactive]
+    public bool InfoOpen {
+        get => _infoOpen;
+        set => this.RaiseAndSetIfChanged(ref _infoOpen, value);
+    }
+
+    [Reactive]
+    public bool ConnectionsOpen {
+        get => _connectionsOpen;
+        set => this.RaiseAndSetIfChanged(ref _connectionsOpen, value);
+    }
+
+    [Reactive]
+    public string? ShevronCategoriesRotation {
+        get => _shevronCategoriesRotation;
+        set => this.RaiseAndSetIfChanged(ref _shevronCategoriesRotation, value);
+    }
+
+    [Reactive]
+    public string? ShevronInfoRotation {
+        get => _shevronInfoRotation;
+        set => this.RaiseAndSetIfChanged(ref _shevronInfoRotation, value);
+    }
+
+    [Reactive]
+    public string? ShevronConnectionsRotation {
+        get => _shevronConnectionsRotation;
+        set => this.RaiseAndSetIfChanged(ref _shevronConnectionsRotation, value);
+    }
+
     public void AddCategoryOpen() {
         _addCategoryWindow = new AddCategoryWindow();
         _addCategoryWindow.Show();
@@ -157,9 +200,46 @@ public class NotesViewModel : ReactiveObject {
         }
     }
 
+    public void CategoriesOpenClose() {
+        if (CategoriesOpen == true) {
+            CategoriesOpen = false;
+            ShevronCategoriesRotation = null;
+
+        } else {
+            CategoriesOpen = true;
+            ShevronCategoriesRotation = "rotate(180deg)";
+        }
+
+    }
+    public void InfoOpenClose() {
+        if (InfoOpen == true) {
+            InfoOpen = false;
+            ShevronInfoRotation = null;
+
+        } else {
+            InfoOpen = true;
+            ShevronInfoRotation = "rotate(180deg)";
+        }
+
+    }
+    public void ConnectionsOpenClose() {
+        if (ConnectionsOpen == true) {
+            ConnectionsOpen = false;
+            ShevronConnectionsRotation = null;
+
+        } else {
+            ConnectionsOpen = true;
+            ShevronConnectionsRotation = "rotate(180deg)";
+        }
+
+    }
+
     public IReactiveCommand<Unit, Unit> AddCategoryOpenCommand { get; set; }
     public IReactiveCommand<Unit, Unit> DeleteNoteCommand { get; set; }
     public IReactiveCommand<Unit, Unit> IsFavNoteChangeCommand { get; set; }
     public IReactiveCommand<Unit, Unit> LoadFavNoteCommand { get; set; }
     public IReactiveCommand<Unit, Unit> LoadAllNotesCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> CategoriesOpenCloseCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> InfoOpenCloseCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> ConnectionsOpenCloseCommand { get; set; }
 }
