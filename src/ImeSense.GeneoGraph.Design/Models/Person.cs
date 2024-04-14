@@ -26,13 +26,13 @@ public class Person {
     // Birth related: date and place
     public DateTime? BirthDate { get; set; }
     public DateTime? BirthDateRange { get; set; } //Used only if <see cref="BirthDateType" /> is set to "Between" and we need a date range
-    public string BirthDateType { get; set; } = "Exact";
+    public DateType? BirthDateType { get; set; }
     public string? BirthPlace { get; set; }
 
     //Death related: date and place
     public DateTime? DeathDate { get; set; }
     public DateTime? DeathDateRange { get; set; } //Used only if <see cref="DeathDateType" /> is set to "Between" and we need a date range
-    public string DeathDateType { get; set; } = "Exact";
+    public DateType? DeathDateType { get; set; }
     public string? DeathPlace { get; set; }
     public string? DeathCause { get; set; }
     public string? BurialPlace { get; set; }
@@ -42,13 +42,13 @@ public class Person {
     public string? BaptismPlace { get; set; }
     public DateTime? BaptismDate { get; set; }
     public DateTime? BaptismRange { get; set; } //Used only if <see cref="BaptismDateType" /> is set to "Between" and we need a date range
-    public string BaptismDateType { get; set; } = "Exact";
+    public DateType? BaptismDateType { get; set; }
 
     // Education: we use collection here as one person can have multiple educations
     public ObservableCollection<Education>? Educations { get; set; }
 
     // Work: we use collection here as one person can have multiple work places
-    public ObservableCollection<Work> Works { get; set; } = new();
+    public ObservableCollection<Work>? Works { get; set; }
 
     public Bitmap? ProfileImg { get; set; }
 
@@ -68,13 +68,6 @@ public class Person {
 
     public string FullName => $"{FirstName} {LastName}";
 
-    public static ObservableCollection<string> DateTypes => new() {
-        "Exactly",
-        "Before",
-        "After",
-        "Circa",
-        "Between"
-    };
 
     public static ObservableCollection<Person>? PeopleList => new() {
         new Person() {
