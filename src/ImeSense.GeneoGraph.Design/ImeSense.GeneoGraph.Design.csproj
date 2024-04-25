@@ -27,4 +27,8 @@
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
     </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj" />
+    </ItemGroup>
 </Project>

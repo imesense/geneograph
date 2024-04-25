@@ -716,7 +716,14 @@
           "Avalonia.Themes.Fluent": "[11.0.10, )",
           "Dock.Avalonia": "[11.0.0.7, )",
           "Dock.Model.ReactiveUI": "[11.0.0.7, )",
+          "ImeSense.GeneoGraph.Themes": "[1.0.0, )",
           "Microsoft.Extensions.DependencyInjection": "[8.0.0, )"
+        }
+      },
+      "imesense.geneograph.themes": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.0.10, )"
         }
       }
     },
@@ -1435,7 +1442,14 @@
           "Avalonia.Themes.Fluent": "[11.0.10, )",
           "Dock.Avalonia": "[11.0.0.7, )",
           "Dock.Model.ReactiveUI": "[11.0.0.7, )",
+          "ImeSense.GeneoGraph.Themes": "[1.0.0, )",
           "Microsoft.Extensions.DependencyInjection": "[8.0.0, )"
+        }
+      },
+      "imesense.geneograph.themes": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.0.10, )"
         }
       }
     },
@@ -2154,7 +2168,14 @@
           "Avalonia.Themes.Fluent": "[11.0.10, )",
           "Dock.Avalonia": "[11.0.0.7, )",
           "Dock.Model.ReactiveUI": "[11.0.0.7, )",
+          "ImeSense.GeneoGraph.Themes": "[1.0.0, )",
           "Microsoft.Extensions.DependencyInjection": "[8.0.0, )"
+        }
+      },
+      "imesense.geneograph.themes": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.0.10, )"
         }
       }
     }

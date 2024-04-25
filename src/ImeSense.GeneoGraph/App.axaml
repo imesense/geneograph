@@ -10,6 +10,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <GeneographTheme />
         <StyleInclude Source="avares://Dock.Avalonia/Themes/DockFluentTheme.axaml" />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
     </Application.Styles>

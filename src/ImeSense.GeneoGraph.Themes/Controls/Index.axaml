@@ -1,0 +1,8 @@
+<ResourceDictionary
+    x:ClassModifier="public"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="/Controls/Button.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

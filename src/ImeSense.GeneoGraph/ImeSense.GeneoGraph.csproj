@@ -24,4 +24,8 @@
     <ItemGroup>
         <InternalsVisibleTo Include="ImeSense.GeneoGraph.Tests" />
     </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj" />
+    </ItemGroup>
 </Project>

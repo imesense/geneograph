@@ -697,6 +697,12 @@
         "dependencies": {
           "System.IO.Pipelines": "6.0.0"
         }
+      },
+      "imesense.geneograph.themes": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.0.10, )"
+        }
       }
     },
     "net7.0": {
@@ -1391,6 +1397,12 @@
         "dependencies": {
           "System.IO.Pipelines": "6.0.0"
         }
+      },
+      "imesense.geneograph.themes": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.0.10, )"
+        }
       }
     },
     "net8.0": {
@@ -2084,6 +2096,12 @@
         "contentHash": "QVo/Y39nTYcCKBqrZuwHjXdwaky0yTQPIT3qUTEEK2MZfDtZWrJ2XyZ59zH8LBgB2fL5cWaTuP2pBTpGz/GeDQ==",
         "dependencies": {
           "System.IO.Pipelines": "6.0.0"
+        }
+      },
+      "imesense.geneograph.themes": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.0.10, )"
         }
       }
     }
