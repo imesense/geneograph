@@ -21,7 +21,10 @@ public class AppFactory : Factory {
     }
 
     public override IRootDock CreateLayout() {
-        var emptyFileViewModel = new FileViewModel();
+        var emptyFileViewModel = new FileViewModel {
+            Title = "Projects",
+            CanClose = false,
+        };
 
         // Tabs
         var documentDock = new FileDocumentDock {
