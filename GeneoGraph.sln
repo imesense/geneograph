@@ -34,7 +34,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6774BEDE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Tests", "test\ImeSense.GeneoGraph.Tests\ImeSense.GeneoGraph.Tests.csproj", "{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Themes", "src\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj", "{E6293961-C0B9-475C-A52F-319C8C333888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Themes", "src\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj", "{E6293961-C0B9-475C-A52F-319C8C333888}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{D89A7F88-2C37-4822-9E51-B434E712D937}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,7 +85,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A51A4007-FD61-442F-AA79-E126F17CE394} = {D89A7F88-2C37-4822-9E51-B434E712D937}
 		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74} = {6774BEDE-1700-487D-8C06-90DD778759CB}
+		{E6293961-C0B9-475C-A52F-319C8C333888} = {D89A7F88-2C37-4822-9E51-B434E712D937}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9D8E7CD-036D-4FF2-A7EB-7A2A25F376E7}
