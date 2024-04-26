@@ -13,11 +13,6 @@ public class GeneographTheme : Styles {
     /// </summary>
     /// <exception cref="InvalidOperationException"></exception>
     public GeneographTheme() {
-        if (!Design.IsDesignMode) {
-            throw new InvalidOperationException(
-                $"Calling parameterless constructor of {nameof(GeneographTheme)} class not in design-time!"
-            );
-        }
     }
 
     /// <summary>
