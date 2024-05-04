@@ -4,9 +4,109 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
-            <StackPanel Spacing="20">
-                <Button Content="Button" />
+            <StackPanel
+                Orientation="Vertical"
+                Spacing="5">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Button Content="Button" />
+                    <Button
+                        Content="Button"
+                        IsEnabled="False" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Button
+                        Content="Button"
+                        Classes="accent" />
+                    <Button
+                        Content="Button"
+                        Classes="accent"
+                        IsEnabled="False" />
+                </StackPanel>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+
+    <ControlTheme
+        x:Key="{x:Type Button}"
+        TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Transparent.Brushes.60}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Transparent.Brushes.60}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="16" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="RenderTransform" Value="none" />
+
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition
+                    Property="RenderTransform"
+                    Duration="0:0:0.075" />
+            </Transitions>
+        </Setter>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    x:Name="PART_ContentPresenter"
+                    Content="{TemplateBinding Content}"
+                    Padding="{TemplateBinding Padding}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    RecognizesAccessKey="True" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource Transparent.Brushes.90}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Transparent.Brushes.90}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.98)" />
+        </Style>
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderBrush" Value="{DynamicResource Transparent.Brushes.75}" />
+            <Setter Property="Foreground" Value="{DynamicResource Transparent.Brushes.75}" />
+        </Style>
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource Transparent.Brushes.25}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Transparent.Brushes.25}" />
+        </Style>
+
+        <Style Selector="^.accent">
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Accent.Brushes.Primary80}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{DynamicResource Accent.Brushes.Secondary100}" />
+            </Style>
+
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Accent.Brushes.Primary90}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{DynamicResource Accent.Brushes.Secondary100}" />
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Accent.Brushes.Primary75}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{DynamicResource Accent.Brushes.Secondary100}" />
+            </Style>
+            <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Accent.Brushes.Primary25}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{DynamicResource Accent.Brushes.Secondary100}" />
+            </Style>
+        </Style>
+    </ControlTheme>
 </ResourceDictionary>
