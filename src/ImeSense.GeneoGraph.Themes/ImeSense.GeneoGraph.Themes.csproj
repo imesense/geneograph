@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Controls\*.axaml" />
+        <AvaloniaResource Include="Palettes\*.axaml" />
     </ItemGroup>
 
     <ItemGroup>

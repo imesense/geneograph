@@ -1,0 +1,172 @@
+<ResourceDictionary
+    x:ClassModifier="public"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel
+                Orientation="Vertical"
+                Spacing="5">
+                <Label Content="Transparent" />
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.100}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.90}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.80}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.70}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.60}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.50}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.40}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.30}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.20}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.10}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.75}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Transparent.Brushes.25}" />
+                </StackPanel>
+
+                <Label Content="Background" />
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Background.Brushes.Main}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Background.Colors.Bar1}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Background.Colors.Bar2}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Background.Colors.Bar3}" />
+                </StackPanel>
+
+                <Label Content="Accent" />
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Inactive}" />
+                </StackPanel>
+
+                <Label Content="Gradient" />
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Gradient.Brushes.70}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <Color x:Key="Monochrome.Colors.White">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="Transparent.Brushes.100" Color="{StaticResource Monochrome.Colors.White}" Opacity="1.0" />
+    <SolidColorBrush x:Key="Transparent.Brushes.90" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.9" />
+    <SolidColorBrush x:Key="Transparent.Brushes.80" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.8" />
+    <SolidColorBrush x:Key="Transparent.Brushes.70" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.7" />
+    <SolidColorBrush x:Key="Transparent.Brushes.60" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.6" />
+    <SolidColorBrush x:Key="Transparent.Brushes.50" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.5" />
+    <SolidColorBrush x:Key="Transparent.Brushes.40" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.4" />
+    <SolidColorBrush x:Key="Transparent.Brushes.30" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.3" />
+    <SolidColorBrush x:Key="Transparent.Brushes.20" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.2" />
+    <SolidColorBrush x:Key="Transparent.Brushes.10" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.1" />
+
+    <SolidColorBrush x:Key="Transparent.Brushes.75" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.75" />
+    <SolidColorBrush x:Key="Transparent.Brushes.25" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.25" />
+
+    <Color x:Key="Background.Colors.Main">#121212</Color>
+    <Color x:Key="Background.Colors.Bar1">#1A1A1A</Color>
+    <Color x:Key="Background.Colors.Bar2">#1E1E1E</Color>
+    <Color x:Key="Background.Colors.Bar3">#161616</Color>
+
+    <SolidColorBrush x:Key="Background.Brushes.Main" Color="{StaticResource Background.Colors.Main}" />
+    <SolidColorBrush x:Key="Background.Brushes.Bar1" Color="{StaticResource Background.Colors.Bar1}" />
+    <SolidColorBrush x:Key="Background.Brushes.Bar2" Color="{StaticResource Background.Colors.Bar2}" />
+    <SolidColorBrush x:Key="Background.Brushes.Bar3" Color="{StaticResource Background.Colors.Bar3}" />
+
+    <Color x:Key="Accent.Colors.Primary">#BFF0B1</Color>
+    <Color x:Key="Accent.Colors.Secondary">#316A42</Color>
+    <Color x:Key="Accent.Colors.Inactive">#474747</Color>
+
+    <SolidColorBrush x:Key="Accent.Brushes.Primary" Color="{StaticResource Accent.Colors.Primary}" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary" Color="{StaticResource Accent.Colors.Secondary}" />
+    <SolidColorBrush x:Key="Accent.Brushes.Inactive" Color="{StaticResource Accent.Colors.Inactive}" />
+
+    <Color x:Key="Gradient.Color1">#B1D8A5</Color>
+    <Color x:Key="Gradient.Color2">#00C969</Color>
+
+    <LinearGradientBrush x:Key="Gradient.Brushes.70" StartPoint="0%,100%" EndPoint="100%,100%">
+        <GradientStop Color="{StaticResource Gradient.Color1}" Offset="0" />
+        <GradientStop Color="{StaticResource Gradient.Color2}" Offset="1" />
+    </LinearGradientBrush>
+</ResourceDictionary>

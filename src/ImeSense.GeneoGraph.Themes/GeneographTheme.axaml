@@ -5,6 +5,7 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Palettes/Index.axaml" />
                 <ResourceInclude Source="/Controls/Index.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
