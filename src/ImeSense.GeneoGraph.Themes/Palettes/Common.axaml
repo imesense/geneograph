@@ -103,11 +103,129 @@
                     <Ellipse
                         Width="32"
                         Height="32"
-                        Fill="{DynamicResource Accent.Brushes.Primary}" />
+                        Fill="{DynamicResource Accent.Brushes.Primary100}" />
                     <Ellipse
                         Width="32"
                         Height="32"
-                        Fill="{DynamicResource Accent.Brushes.Secondary}" />
+                        Fill="{DynamicResource Accent.Brushes.Primary90}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary80}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary70}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary60}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary50}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary40}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary30}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary20}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary10}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary75}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Primary25}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary100}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary90}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary80}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary70}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary60}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary50}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary40}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary30}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary20}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary10}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary75}" />
+                    <Ellipse
+                        Width="32"
+                        Height="32"
+                        Fill="{DynamicResource Accent.Brushes.Secondary25}" />
+                </StackPanel>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="5">
                     <Ellipse
                         Width="32"
                         Height="32"
@@ -158,8 +276,34 @@
     <Color x:Key="Accent.Colors.Secondary">#316A42</Color>
     <Color x:Key="Accent.Colors.Inactive">#474747</Color>
 
-    <SolidColorBrush x:Key="Accent.Brushes.Primary" Color="{StaticResource Accent.Colors.Primary}" />
-    <SolidColorBrush x:Key="Accent.Brushes.Secondary" Color="{StaticResource Accent.Colors.Secondary}" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary100" Color="{StaticResource Accent.Colors.Primary}" Opacity="1.0" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary90" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.9" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary80" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.8" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary70" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.7" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary60" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.6" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary50" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.5" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary40" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.4" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary30" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.3" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary20" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.2" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary10" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.1" />
+
+    <SolidColorBrush x:Key="Accent.Brushes.Primary75" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.75" />
+    <SolidColorBrush x:Key="Accent.Brushes.Primary25" Color="{StaticResource Accent.Colors.Primary}" Opacity="0.25" />
+
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary100" Color="{StaticResource Accent.Colors.Secondary}" Opacity="1.0" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary90" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.9" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary80" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.8" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary70" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.7" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary60" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.6" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary50" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.5" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary40" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.4" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary30" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.3" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary20" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.2" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary10" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.1" />
+
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary75" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.75" />
+    <SolidColorBrush x:Key="Accent.Brushes.Secondary25" Color="{StaticResource Accent.Colors.Secondary}" Opacity="0.25" />
+
     <SolidColorBrush x:Key="Accent.Brushes.Inactive" Color="{StaticResource Accent.Colors.Inactive}" />
 
     <Color x:Key="Gradient.Color1">#B1D8A5</Color>
