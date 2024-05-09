@@ -4,7 +4,7 @@ using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels.Documents;
 
-public class FileViewModel : Document {
+public class ProjectsViewModel : Document {
     private string? _path;
 
     public string? Path {

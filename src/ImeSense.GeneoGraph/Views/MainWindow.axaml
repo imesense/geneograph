@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="using:ImeSense.GeneoGraph.Views"
     xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
-    Title="ImeSense.GeneoGraph"
+    Title="ImeSense GeneoGraph"
     d:DesignHeight="450"
     d:DesignWidth="600"
     Icon="/Assets/avalonia-logo.ico"

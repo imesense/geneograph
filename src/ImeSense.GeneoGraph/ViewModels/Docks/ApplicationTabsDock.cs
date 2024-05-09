@@ -6,13 +6,13 @@ using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels.Docks;
 
-public class FileDocumentDock : DocumentDock {
+public class ApplicationTabsDock : DocumentDock {
     private void CreateNewDocument() {
         if (!CanCreateDocument) {
             return;
         }
 
-        var document = new FileViewModel {
+        var document = new ProjectsViewModel {
             Title = "",
         };
         Factory?.AddDockable(this, document);
@@ -20,7 +20,7 @@ public class FileDocumentDock : DocumentDock {
         Factory?.SetFocusedDockable(this, document);
     }
 
-    public FileDocumentDock() {
+    public ApplicationTabsDock() {
         CreateDocument = ReactiveCommand.Create(CreateNewDocument);
     }
 }

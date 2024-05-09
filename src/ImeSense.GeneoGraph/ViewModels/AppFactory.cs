@@ -14,22 +14,22 @@ namespace ImeSense.GeneoGraph.ViewModels;
 
 public class AppFactory : Factory {
     private IRootDock? _rootDock;
-    private IDocumentDock? _documentDock;
+    private IDocumentDock? _tabsDock;
 
     public override IDocumentDock CreateDocumentDock() {
-        return new FileDocumentDock();
+        return new ApplicationTabsDock();
     }
 
     public override IRootDock CreateLayout() {
-        var emptyFileViewModel = new FileViewModel {
+        var emptyFileViewModel = new ProjectsViewModel {
             Title = "Projects",
             CanClose = false,
         };
 
         // Tabs
-        var documentDock = new FileDocumentDock {
-            Id = "Files",
-            Title = "Files",
+        var tabsDock = new ApplicationTabsDock {
+            Id = "Tabs",
+            Title = "Tabs",
             IsCollapsable = false,
             Proportion = double.NaN,
             ActiveDockable = emptyFileViewModel,
@@ -38,14 +38,14 @@ public class AppFactory : Factory {
         };
 
         var windowLayout = CreateRootDock();
-        windowLayout.Title = "Default";
+        windowLayout.Title = "Geneograph";
         windowLayout.IsCollapsable = false;
 
         // Content
         var windowLayoutContent = new ProportionalDock {
             Orientation = Orientation.Horizontal,
             IsCollapsable = false,
-            VisibleDockables = CreateList<IDockable>(documentDock),
+            VisibleDockables = CreateList<IDockable>(tabsDock),
         };
         windowLayout.VisibleDockables = CreateList<IDockable>(windowLayoutContent);
         windowLayout.ActiveDockable = windowLayoutContent;
@@ -57,7 +57,7 @@ public class AppFactory : Factory {
         rootDock.ActiveDockable = windowLayout;
         rootDock.DefaultDockable = windowLayout;
 
-        _documentDock = documentDock;
+        _tabsDock = tabsDock;
         _rootDock = rootDock;
 
         return rootDock;
@@ -66,7 +66,7 @@ public class AppFactory : Factory {
     public override void InitLayout(IDockable layout) {
         DockableLocator = new Dictionary<string, Func<IDockable?>> {
             ["Root"] = () => _rootDock,
-            ["Tabs"] = () => _documentDock,
+            ["Tabs"] = () => _tabsDock,
         };
 
         HostWindowLocator = new Dictionary<string, Func<IHostWindow?>> {
