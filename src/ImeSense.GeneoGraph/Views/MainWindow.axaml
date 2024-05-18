@@ -9,7 +9,7 @@
     Title="ImeSense GeneoGraph"
     d:DesignHeight="450"
     d:DesignWidth="600"
-    Icon="/Assets/avalonia-logo.ico"
+    Icon="/Assets/Logo_32x32.ico"
     UseLayoutRounding="True"
     WindowStartupLocation="CenterScreen"
     WindowState="Normal"
