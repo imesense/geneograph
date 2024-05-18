@@ -4,11 +4,9 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
+using ImeSense.GeneoGraph.Extensions;
 using ImeSense.GeneoGraph.ViewModels;
-using ImeSense.GeneoGraph.ViewModels.Docks;
-using ImeSense.GeneoGraph.ViewModels.Documents;
 using ImeSense.GeneoGraph.Views;
-using ImeSense.GeneoGraph.Views.Documents;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -20,13 +18,8 @@ public partial class App : Application {
 
     public App() {
         _serviceProvider = new ServiceCollection()
-            .AddSingleton<MainViewModel>()
-            .AddSingleton<MainWindow>()
-            .AddSingleton<MainView>()
-            .AddSingleton<ProjectsViewModel>()
-            .AddSingleton<ProjectsView>()
-            .AddSingleton<AppFactory>()
-            .AddSingleton<ApplicationTabsDock>()
+            .AddViews()
+            .AddViewModels()
             .AddLogging(builder => builder.AddConsole())
             .BuildServiceProvider();
     }
