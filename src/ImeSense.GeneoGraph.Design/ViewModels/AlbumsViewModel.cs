@@ -48,18 +48,16 @@ public class AlbumsViewModel : ReactiveObject {
             .Subscribe(_ => RightDockVisibility = false);
 
         NumberPhotos = PhotosList.Count();
-
     }
 
-
     [Reactive]
-    public PhotoAlbum SelectedAlbum {
+    public PhotoAlbum? SelectedAlbum {
         get => _selectedAlbum;
         set => this.RaiseAndSetIfChanged(ref _selectedAlbum, value);
     }
 
     [Reactive]
-    public Photo SelectedPhoto {
+    public Photo? SelectedPhoto {
         get => _selectedPhoto;
         set => this.RaiseAndSetIfChanged(ref _selectedPhoto, value);
     }
