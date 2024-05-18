@@ -11,6 +11,7 @@ using ImeSense.GeneoGraph.Views;
 using ImeSense.GeneoGraph.Views.Documents;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace ImeSense.GeneoGraph;
 
@@ -26,6 +27,7 @@ public partial class App : Application {
             .AddSingleton<ProjectsView>()
             .AddSingleton<AppFactory>()
             .AddSingleton<ApplicationTabsDock>()
+            .AddLogging(builder => builder.AddConsole())
             .BuildServiceProvider();
     }
 

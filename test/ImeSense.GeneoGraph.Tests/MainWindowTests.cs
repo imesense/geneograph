@@ -5,9 +5,14 @@ using ImeSense.GeneoGraph.ViewModels.Docks;
 using ImeSense.GeneoGraph.ViewModels.Documents;
 using ImeSense.GeneoGraph.Views;
 
+using Microsoft.Extensions.Logging;
+
+using Moq;
+
 namespace ImeSense.GeneoGraph.Tests;
 
 public class MainWindowTests {
+    private Mock<ILogger<ProjectsViewModel>> _logger;
     private ProjectsViewModel _projectsViewModel;
     private ApplicationTabsDock _applicationTabsDock;
     private AppFactory _appFactory;
@@ -15,7 +20,8 @@ public class MainWindowTests {
 
     [SetUp]
     public void Initialize() {
-        _projectsViewModel = new ProjectsViewModel();
+        _logger = new Mock<ILogger<ProjectsViewModel>>();
+        _projectsViewModel = new ProjectsViewModel(_logger.Object);
         _applicationTabsDock = new ApplicationTabsDock(_projectsViewModel);
         _appFactory = new AppFactory(_projectsViewModel, _applicationTabsDock);
         _mainViewModel = new MainViewModel(_appFactory);
