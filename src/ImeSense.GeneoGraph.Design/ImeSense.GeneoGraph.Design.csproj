@@ -31,10 +31,4 @@
     <ItemGroup>
         <ProjectReference Include="..\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\AddAlbumWindow.axaml.cs">
-        <DependentUpon>AddAlbumWindow.axaml</DependentUpon>
-      </Compile>
-    </ItemGroup>
 </Project>

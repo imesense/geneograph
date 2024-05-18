@@ -9,5 +9,141 @@
     d:DesignHeight="450"
     d:DesignWidth="600"
     mc:Ignorable="d">
-    <Grid Background="{DynamicResource Background.Brushes.Main}" />
+    <Grid
+        Background="{DynamicResource Background.Brushes.Main}"
+        ColumnDefinitions="Auto, *, *"
+        RowDefinitions="60, *"
+        ShowGridLines="True">
+        <!-- Left toolbar background -->
+        <Border
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Background="{DynamicResource Background.Brushes.Bar1}" />
+
+        <!-- Left toolbar header -->
+        <Label
+            Grid.Column="0"
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontFamily="Inter"
+            FontSize="18"
+            FontWeight="SemiBold">
+            GeneoGraph
+        </Label>
+
+        <!-- Central part header -->
+        <Label
+            Grid.Column="1"
+            Grid.Row="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="18"
+            FontWeight="SemiBold">
+            Recent
+        </Label>
+
+        <!-- Right part header -->
+        <Label
+            Grid.Column="2"
+            Grid.Row="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="18"
+            FontWeight="SemiBold">
+            Project settings
+        </Label>
+
+        <!-- Left toolbar buttons -->
+        <StackPanel
+            Grid.Row="1"
+            Margin="35,0,35,0"
+            Orientation="Vertical"
+            Spacing="5">
+            <!-- Create new button -->
+            <Button
+                Padding="12,4,12,4"
+                HorizontalAlignment="Center"
+                Classes="accent"
+                CornerRadius="20">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="SemiBold">
+                    Create new
+                </Label>
+            </Button>
+
+            <!-- Open button -->
+            <Button
+                Padding="12,4,12,4"
+                HorizontalAlignment="Center"
+                Classes="accent"
+                CornerRadius="20">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="SemiBold">
+                    Open
+                </Label>
+            </Button>
+        </StackPanel>
+
+        <!-- Central part content -->
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="1"
+            Orientation="Vertical">
+            <ListBox
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <!-- Right part content -->
+        <StackPanel
+            Grid.Column="2"
+            Grid.Row="2"
+            Margin="20,0,0,0"
+            Orientation="Vertical"
+            Spacing="5">
+            <!-- Name field -->
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    FontSize="14"
+                    FontWeight="SemiBold">
+                    Name:
+                </Label>
+            </StackPanel>
+
+            <!-- Location field -->
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    FontSize="14"
+                    FontWeight="SemiBold">
+                    Location:
+                </Label>
+            </StackPanel>
+
+            <!-- Export button -->
+            <Button
+                Margin="0,5,0,0"
+                Padding="12,4,12,4"
+                HorizontalAlignment="Left"
+                Classes="accent"
+                CornerRadius="20">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="SemiBold">
+                    Export
+                </Label>
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>
