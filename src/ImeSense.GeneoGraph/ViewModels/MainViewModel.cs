@@ -1,6 +1,8 @@
 using Dock.Model.Controls;
 using Dock.Model.Core;
 
+using ImeSense.GeneoGraph.Helpers;
+
 using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels;
@@ -15,13 +17,17 @@ public class MainViewModel : ReactiveObject {
         set => this.RaiseAndSetIfChanged(ref _layout, value);
     }
 
-    public MainViewModel() {
-        _factory = new AppFactory();
+    public MainViewModel(AppFactory factory) {
+        _factory = factory;
 
         Layout = _factory?.CreateLayout();
         if (Layout is { }) {
             _factory?.InitLayout(Layout);
         }
+    }
+
+    public MainViewModel() {
+        ExceptionHelper.EnsureNotInDesignTime(nameof(MainViewModel));
     }
 
     public void CloseLayout() {

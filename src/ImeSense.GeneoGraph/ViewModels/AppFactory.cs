@@ -16,26 +16,33 @@ public class AppFactory : Factory {
     private IRootDock? _rootDock;
     private IDocumentDock? _tabsDock;
 
+    private readonly ProjectsViewModel _projectsViewModel;
+    private readonly ApplicationTabsDock _applicationTabsDock;
+
+    public AppFactory(ProjectsViewModel projectsViewModel,
+        ApplicationTabsDock applicationTabsDock) {
+        _projectsViewModel = projectsViewModel;
+        _applicationTabsDock = applicationTabsDock;
+    }
+
     public override IDocumentDock CreateDocumentDock() {
-        return new ApplicationTabsDock();
+        return _applicationTabsDock;
     }
 
     public override IRootDock CreateLayout() {
-        var emptyFileViewModel = new ProjectsViewModel {
-            Title = "Projects",
-            CanClose = false,
-        };
+        var emptyFileViewModel = _projectsViewModel;
+        emptyFileViewModel.Title = "Projects";
+        emptyFileViewModel.CanClose = false;
 
         // Tabs
-        var tabsDock = new ApplicationTabsDock {
-            Id = "Tabs",
-            Title = "Tabs",
-            IsCollapsable = false,
-            Proportion = double.NaN,
-            ActiveDockable = emptyFileViewModel,
-            VisibleDockables = CreateList<IDockable>(emptyFileViewModel),
-            CanCreateDocument = false,
-        };
+        var tabsDock = _applicationTabsDock;
+        tabsDock.Id = "Tabs";
+        tabsDock.Title = "Tabs";
+        tabsDock.IsCollapsable = false;
+        tabsDock.Proportion = double.NaN;
+        tabsDock.ActiveDockable = emptyFileViewModel;
+        tabsDock.VisibleDockables = CreateList<IDockable>(emptyFileViewModel);
+        tabsDock.CanCreateDocument = false;
 
         var windowLayout = CreateRootDock();
         windowLayout.Title = "Geneograph";
