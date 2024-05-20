@@ -1,5 +1,6 @@
 using Avalonia.Headless.NUnit;
 
+using ImeSense.GeneoGraph.Services;
 using ImeSense.GeneoGraph.ViewModels;
 using ImeSense.GeneoGraph.ViewModels.Docks;
 using ImeSense.GeneoGraph.ViewModels.Documents;
@@ -13,6 +14,7 @@ namespace ImeSense.GeneoGraph.Tests;
 
 public class MainWindowTests {
     private Mock<ILogger<ProjectsViewModel>> _logger;
+    private Mock<IFilesService> _filesService;
     private ProjectsViewModel _projectsViewModel;
     private ApplicationTabsDock _applicationTabsDock;
     private AppFactory _appFactory;
@@ -21,7 +23,8 @@ public class MainWindowTests {
     [SetUp]
     public void Initialize() {
         _logger = new Mock<ILogger<ProjectsViewModel>>();
-        _projectsViewModel = new ProjectsViewModel(_logger.Object);
+        _filesService = new Mock<IFilesService>();
+        _projectsViewModel = new ProjectsViewModel(_logger.Object, _filesService.Object);
         _applicationTabsDock = new ApplicationTabsDock(_projectsViewModel);
         _appFactory = new AppFactory(_projectsViewModel, _applicationTabsDock);
         _mainViewModel = new MainViewModel(_appFactory);

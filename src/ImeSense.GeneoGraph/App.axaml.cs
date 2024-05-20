@@ -1,10 +1,12 @@
 using System;
 
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 using ImeSense.GeneoGraph.Extensions;
+using ImeSense.GeneoGraph.Services;
 using ImeSense.GeneoGraph.ViewModels;
 using ImeSense.GeneoGraph.Views;
 
@@ -20,6 +22,7 @@ public partial class App : Application {
         _serviceProvider = new ServiceCollection()
             .AddViews()
             .AddViewModels()
+            .AddTransient<IFilesService, FilesService>()
             .AddLogging(builder => builder.AddConsole())
             .BuildServiceProvider();
     }
@@ -40,6 +43,8 @@ public partial class App : Application {
             desktop.Exit += (_, _) => {
                 mainViewModel.CloseLayout();
             };
+
+            StorageLocator.StorageProvider = mainWindow.StorageProvider;
         } else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform) {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             var mainView = _serviceProvider.GetRequiredService<MainView>();
@@ -49,6 +54,8 @@ public partial class App : Application {
             };
 
             singleViewPlatform.MainView = mainView;
+
+            StorageLocator.StorageProvider = TopLevel.GetTopLevel(mainView)!.StorageProvider;
         }
 
         base.OnFrameworkInitializationCompleted();
