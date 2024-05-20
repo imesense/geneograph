@@ -16,22 +16,21 @@ using Microsoft.Extensions.Logging;
 namespace ImeSense.GeneoGraph;
 
 public partial class App : Application {
-    private readonly IServiceProvider _serviceProvider = null!;
-
-    public App() {
-        _serviceProvider = new ServiceCollection()
-            .AddViews()
-            .AddViewModels()
-            .AddTransient<IFilesService, FilesService>()
-            .AddLogging(builder => builder.AddConsole())
-            .BuildServiceProvider();
-    }
+    private IServiceProvider _serviceProvider = null!;
 
     public override void Initialize() =>
         AvaloniaXamlLoader.Load(this);
 
     public override void OnFrameworkInitializationCompleted() {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
+            _serviceProvider = new ServiceCollection()
+                .AddSingleton<MainWindow>()
+                .AddViews()
+                .AddViewModels()
+                .AddServices()
+                .AddLogging(builder => builder.AddConsole())
+                .BuildServiceProvider();
+
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.DataContext = mainViewModel;
@@ -46,6 +45,13 @@ public partial class App : Application {
 
             StorageLocator.StorageProvider = mainWindow.StorageProvider;
         } else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform) {
+            _serviceProvider = new ServiceCollection()
+                .AddViews()
+                .AddViewModels()
+                .AddServices()
+                .AddLogging()
+                .BuildServiceProvider();
+
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             var mainView = _serviceProvider.GetRequiredService<MainView>();
             mainView.DataContext = mainViewModel;
