@@ -92,6 +92,7 @@
                 Margin="20,0,0,0"
                 FontSize="20"
                 Header="GENEOGRAPH">
+                <v:MapView />
             </TabItem>
 
             <TabItem

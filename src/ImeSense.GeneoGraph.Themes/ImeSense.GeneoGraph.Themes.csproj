@@ -12,5 +12,6 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.10" />
+        <PackageReference Include="Mapsui.Avalonia" Version="4.1.6" />
     </ItemGroup>
 </Project>
