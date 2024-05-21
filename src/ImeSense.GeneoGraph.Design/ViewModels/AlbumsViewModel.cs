@@ -48,6 +48,8 @@ public class AlbumsViewModel : ReactiveObject {
             .Subscribe(_ => RightDockVisibility = false);
 
         NumberPhotos = PhotosList.Count();
+
+        LoadImages();
     }
 
     [Reactive]
@@ -200,29 +202,38 @@ public class AlbumsViewModel : ReactiveObject {
             PhotoNotes = "Lorem ipsum dolor",
             PhotoPlace = "Nowhere",
             PhotoAddedTime = DateTime.Now,
-            //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
+            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture.png",
         },
         new Photo
         {
-            PhotoId = 1,
+            PhotoId = 2,
             PhotoName = "Another Test Photo name that is longer",
             Album = AlbumsList[2],
             PhotoAddedTime = DateTime.Now,
             PhotoDate = DateTime.Now,
             PhotoNotes = "Lorem ipsum dolor",
             PhotoPlace = "Anywhere",
+            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
             //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
         },
         new Photo
         {
-            PhotoId = 1,
+            PhotoId = 3,
             PhotoName = "An example of a very long photo name that is longer than the previous examples",
             Album = AlbumsList[3],
             PhotoAddedTime = DateTime.Now,
             PhotoDate = DateTime.Now,
             PhotoNotes = "Lorem ipsum dolor",
             PhotoPlace = "Somewhere",
+            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
             //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
         },
     };
+
+    private void LoadImages() 
+    {
+        foreach (var photo in PhotosList) {
+            photo.LoadImage();
+        }
+    }
 }

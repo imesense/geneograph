@@ -227,7 +227,7 @@
                     Grid.Row="2"
                     Margin="20">
                     <Image
-                        Source="..\Assets\Profile\Profile_picture.png"
+                        Source="{Binding SelectedPhoto.PhotoBitmap}"
                         Stretch="Uniform" />
                 </Border>
 
@@ -560,7 +560,7 @@
                         <Image
                             Width="150"
                             Height="150"
-                            Source="avares:/Assets/Profile/Profile_picture.png"
+                            Source="{Binding PhotoBitmap}"
                             Stretch="UniformToFill" />
                         <StackPanel
                             Grid.Column="1"
