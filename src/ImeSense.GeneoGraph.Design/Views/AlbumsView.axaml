@@ -100,8 +100,10 @@
             Grid.Column="1"
             Margin="30,25,30,0"
             Orientation="Vertical">
+
+            <!--Category name & items count-->
             <Label
-                Content="All Photos"
+                Content="{Binding DisplayCategory}"
                 VerticalAlignment="Center"
                 FontSize="20"
                 FontWeight="SemiBold" />
@@ -119,6 +121,7 @@
             </StackPanel>
         </StackPanel>
 
+        <!--Sort & Search-->
         <StackPanel
             Grid.Column="1"
             Margin="0,0,35,0"
@@ -183,7 +186,7 @@
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
                         <Button
-                            Command=""
+                            Command="{Binding IsFavPhotoChangeCommand}"
                             Width="48"
                             Height="48"
                             Margin="20,0,20,0"
@@ -374,13 +377,14 @@
             </Grid>
         </DockPanel>
 
-        <!-- Left bar -->
+        <!-- Left bar buttons -->
         <StackPanel Grid.Row="1">
             <Button
                 Margin="20,30,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent">
+                Background="Transparent"
+                Command="{Binding LoadAllPhotosCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -419,11 +423,11 @@
             </Button>
 
             <Button
-                Command=""
                 Margin="20,20,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent">
+                Background="Transparent"
+                Command="{Binding LoadFavPhotosCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -551,7 +555,7 @@
             Margin="20"
             Background="Transparent"
             BorderBrush="Transparent"
-            ItemsSource="{Binding PhotosList}"
+            ItemsSource="{Binding FilteredPhotos}"
             SelectedIndex="{Binding SelectedPhotoIndex}"
             SelectedItem="{Binding SelectedPhoto}">
             <ListBox.ItemTemplate>

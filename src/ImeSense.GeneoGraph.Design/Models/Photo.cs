@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 
 using Avalonia.Media.Imaging;
 
@@ -14,11 +15,12 @@ public class Photo : ReactiveObject {
 
     public int PhotoId { get; set; }
     public string PhotoName { get; set; } = string.Empty;
-    public PhotoAlbum? Album { get; set; }
+    public PhotoAlbum? Album { get; set; } = new();
     public DateTime? PhotoDate { get; set; }
     public Source? PhotoSource { get; set; }
     public string? PhotoPlace { get; set; }
     public string? PhotoNotes { get; set; }
+    public bool IsFavorite { get; set; } = false;
 
     public DateTime PhotoAddedTime { get; set; }
 
@@ -39,4 +41,44 @@ public class Photo : ReactiveObject {
             PhotoBitmap = null;
         }
     }
+
+    public static ObservableCollection<Photo> PhotosList { get; set; } = new()
+{
+        new Photo
+        {
+            PhotoId = 1,
+            PhotoName = "Test Photo Name",
+            Album = PhotoAlbum.AlbumsList[0],
+            PhotoDate = DateTime.Now,
+            PhotoNotes = "Lorem ipsum dolor",
+            PhotoPlace = "Nowhere",
+            PhotoAddedTime = DateTime.Now,
+            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture.png",
+        },
+        new Photo
+        {
+            PhotoId = 2,
+            PhotoName = "Another Test Photo name that is longer",
+            Album = PhotoAlbum.AlbumsList[2],
+            PhotoAddedTime = DateTime.Now,
+            PhotoDate = DateTime.Now,
+            PhotoNotes = "Lorem ipsum dolor",
+            PhotoPlace = "Anywhere",
+            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
+            //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
+        },
+        new Photo
+        {
+            PhotoId = 3,
+            PhotoName = "An example of a very long photo name that is longer than the previous examples",
+            Album = PhotoAlbum.AlbumsList[3],
+            PhotoAddedTime = DateTime.Now,
+            PhotoDate = DateTime.Now,
+            PhotoNotes = "Lorem ipsum dolor",
+            PhotoPlace = "Somewhere",
+            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
+            //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
+        },
+    };
+
 }

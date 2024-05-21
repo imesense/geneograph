@@ -28,14 +28,23 @@ public class AlbumsViewModel : ReactiveObject {
     private int _selectedPhotoIndex;
     private bool _rightDockVisibility = false;
 
-    private PhotoAlbum? _selectedAlbum;
-    private Photo? _selectedPhoto;
+    private PhotoAlbum _selectedAlbum;
+    private Photo _selectedPhoto;
 
     public AlbumsViewModel() {
+        _selectedAlbum = new PhotoAlbum();
+        _selectedPhoto = new Photo();
+
+        AlbumsList = PhotoAlbum.AlbumsList;
+        PhotosList = Photo.PhotosList;
+
         AlbumsOpenCloseCommand = ReactiveCommand.Create(AlbumsOpenClose);
         InfoOpenCloseCommand = ReactiveCommand.Create(InfoOpenClose);
         ConnectionsOpenCloseCommand = ReactiveCommand.Create(ConnectionsOpenClose);
         AddAlbumOpenCommand = ReactiveCommand.Create(AddAlbumOpen);
+        IsFavPhotoChangeCommand = ReactiveCommand.Create(IsFavStateChange);
+        LoadFavPhotosCommand = ReactiveCommand.Create(LoadFavoritePhotos);
+        LoadAllPhotosCommand = ReactiveCommand.Create(LoadAllPhotos);
 
         this.WhenAnyValue(x => x.SelectedPhotoIndex)
             .Skip(1) // Skip initial null value
@@ -47,19 +56,36 @@ public class AlbumsViewModel : ReactiveObject {
             .Where(index => index < 0)
             .Subscribe(_ => RightDockVisibility = false);
 
-        NumberPhotos = PhotosList.Count();
+        this.WhenAnyValue(x => x.SelectedAlbum)
+            .Subscribe(_ => DisplayCategory = SelectedAlbum.AlbumName);
+
+        LoadAllPhotos();
 
         LoadImages();
     }
 
     [Reactive]
-    public PhotoAlbum? SelectedAlbum {
+    public ObservableCollection<Photo> FilteredPhotos { get; set; } = new();
+
+    [Reactive]
+    public ObservableCollection<PhotoAlbum> AlbumsList { get; set;} = new();
+    [Reactive]
+    public ObservableCollection<Photo> PhotosList { get; set; } = new();
+
+    [Reactive]
+    public string DisplayCategory { get; set; } = "All Photos";
+
+
+    public PhotoAlbum SelectedAlbum {
         get => _selectedAlbum;
-        set => this.RaiseAndSetIfChanged(ref _selectedAlbum, value);
+        set {
+            this.RaiseAndSetIfChanged(ref _selectedAlbum, value);
+            UpdatePhotos();
+        }
     }
 
     [Reactive]
-    public Photo? SelectedPhoto {
+    public Photo SelectedPhoto {
         get => _selectedPhoto;
         set => this.RaiseAndSetIfChanged(ref _selectedPhoto, value);
     }
@@ -151,84 +177,51 @@ public class AlbumsViewModel : ReactiveObject {
         }
 
     }
-
-    public void AddAlbumOpen() {
+        public void AddAlbumOpen() {
         _addAlbumWindow = new AddAlbumWindow();
         _addAlbumWindow.Show();
     }
 
+    private void UpdatePhotos() {
+        var filterupdate = PhotosList.Where(photo => photo.Album == SelectedAlbum);
+        FilteredPhotos = new ObservableCollection<Photo>(filterupdate);
+        CountPhotos();
+    }
+    private void LoadAllPhotos() {
+        if (DisplayCategory != "All Photos") {
+            DisplayCategory = "All Photos";
+            FilteredPhotos = PhotosList;
+            CountPhotos();
+        }
+    }
+    private void LoadFavoritePhotos() {
+        if (DisplayCategory != "Favorites") {
+            var loadall = PhotosList.Where(photo => photo.IsFavorite == true);
+            DisplayCategory = "Favorites";
+            FilteredPhotos = new ObservableCollection<Photo>(loadall);
+            CountPhotos();
+        }
+    }
+
+    private void CountPhotos() {
+        NumberPhotos = PhotosList.Count();
+    }
+
+    public void IsFavStateChange() {
+        if (SelectedPhoto.IsFavorite == false) {
+            SelectedPhoto.IsFavorite = true;
+        } else {
+            SelectedPhoto.IsFavorite = false;
+        }
+    }
+
     public IReactiveCommand<Unit, Unit> AlbumsOpenCloseCommand { get; set; }
     public IReactiveCommand<Unit, Unit> InfoOpenCloseCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> IsFavPhotoChangeCommand { get; set; }
     public IReactiveCommand<Unit, Unit> ConnectionsOpenCloseCommand { get; set; }
     public IReactiveCommand<Unit, Unit> AddAlbumOpenCommand { get; set; }
-
-    public static ObservableCollection<PhotoAlbum> AlbumsList { get; set; } = new()
-    {
-        new PhotoAlbum
-        {
-            AlbumId = 1,
-            AlbumName = "Album 1",
-        },
-        new PhotoAlbum
-        {
-            AlbumId = 2,
-            AlbumName = "Album 2",
-        },
-        new PhotoAlbum
-        {
-            AlbumId = 3,
-            AlbumName = "Album 3",
-        },
-        new PhotoAlbum
-        {
-            AlbumId = 4,
-            AlbumName = "Album 4",
-        },
-        new PhotoAlbum
-        {
-            AlbumId = 5,
-            AlbumName = "Album 5",
-        },
-    };
-
-    public ObservableCollection<Photo> PhotosList { get; set; } = new()
-    {
-        new Photo
-        {
-            PhotoId = 1,
-            PhotoName = "Test Photo Name",
-            Album = AlbumsList.FirstOrDefault(),
-            PhotoDate = DateTime.Now,
-            PhotoNotes = "Lorem ipsum dolor",
-            PhotoPlace = "Nowhere",
-            PhotoAddedTime = DateTime.Now,
-            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture.png",
-        },
-        new Photo
-        {
-            PhotoId = 2,
-            PhotoName = "Another Test Photo name that is longer",
-            Album = AlbumsList[2],
-            PhotoAddedTime = DateTime.Now,
-            PhotoDate = DateTime.Now,
-            PhotoNotes = "Lorem ipsum dolor",
-            PhotoPlace = "Anywhere",
-            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
-            //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
-        },
-        new Photo
-        {
-            PhotoId = 3,
-            PhotoName = "An example of a very long photo name that is longer than the previous examples",
-            Album = AlbumsList[3],
-            PhotoAddedTime = DateTime.Now,
-            PhotoDate = DateTime.Now,
-            PhotoNotes = "Lorem ipsum dolor",
-            PhotoPlace = "Somewhere",
-            FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
-            //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
-        },
-    };
+    public IReactiveCommand<Unit, Unit> LoadFavPhotosCommand { get; set; }
+    public IReactiveCommand<Unit, Unit> LoadAllPhotosCommand { get; set; }
 
     private void LoadImages() 
     {

@@ -89,7 +89,6 @@
             Background="#2f2f2f" />
 
         <!-- Central part -->
-
         <Border
             Grid.Column="1"
             Height="1"
