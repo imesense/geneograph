@@ -18,7 +18,7 @@ public class Photo : ReactiveObject {
     public PhotoAlbum? Album { get; set; } = new();
     public DateTime? PhotoDate { get; set; }
     public Source? PhotoSource { get; set; }
-    public string? PhotoPlace { get; set; }
+    public Location? PhotoLocation { get; set; }
     public string? PhotoNotes { get; set; }
     public bool IsFavorite { get; set; } = false;
 
@@ -51,7 +51,6 @@ public class Photo : ReactiveObject {
             Album = PhotoAlbum.AlbumsList[0],
             PhotoDate = DateTime.Now,
             PhotoNotes = "Lorem ipsum dolor",
-            PhotoPlace = "Nowhere",
             PhotoAddedTime = DateTime.Now,
             FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture.png",
         },
@@ -63,7 +62,6 @@ public class Photo : ReactiveObject {
             PhotoAddedTime = DateTime.Now,
             PhotoDate = DateTime.Now,
             PhotoNotes = "Lorem ipsum dolor",
-            PhotoPlace = "Anywhere",
             FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
             //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
         },
@@ -75,7 +73,6 @@ public class Photo : ReactiveObject {
             PhotoAddedTime = DateTime.Now,
             PhotoDate = DateTime.Now,
             PhotoNotes = "Lorem ipsum dolor",
-            PhotoPlace = "Somewhere",
             FilePath = "avares://ImeSense.GeneoGraph.Design/Assets/Profile/Profile_picture2.png"
             //PhotoBitmap = ImageHelper.LoadFromResource(new Uri("avares://Assets/Profile/Profile_picture.png"))
         },

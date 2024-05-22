@@ -80,11 +80,11 @@ public class NewPersonViewModel : ReactiveObject {
             MaidenName = maidenname,
             IsDeceased = isDeceased,
             BirthDate = birthdate,
-            BirthPlace = birthplace,
+            //BirthPlace = birthplace,
             DeathDate = deathdate,
-            DeathPlace = deathplace,
+            //DeathPlace = deathplace,
             DeathCause = deathcause,
-            BurialPlace = burialplace
+            //BurialPlace = burialplace
         });
     }
 

@@ -9,6 +9,9 @@ namespace ImeSense.GeneoGraph.Design.Models;
 
 public class PhotoAlbum 
 {
+    /// <summary>
+    /// Maybe we can create a single class for Albums and Note Categories, they will likely have the same parameters. To be discussed
+    /// </summary>
     public int AlbumId { get; set; }
 
     public string AlbumName { get; set; } = string.Empty;

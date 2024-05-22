@@ -15,7 +15,7 @@ public class Note {
     public DateTime AddedTime { get; set; }
     public DateTime? NoteDateProperty { get; set; }
 
-    public string? NoteSource { get; set; }
+    public Source? NoteSource { get; set; }
     public bool IsFavorite { get; set; } = false;
 
     [Reactive]

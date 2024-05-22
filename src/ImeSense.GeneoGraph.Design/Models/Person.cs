@@ -27,19 +27,19 @@ public class Person {
     public DateTime? BirthDate { get; set; }
     public DateTime? BirthDateRange { get; set; } //Used only if <see cref="BirthDateType" /> is set to "Between" and we need a date range
     public DateType? BirthDateType { get; set; }
-    public string? BirthPlace { get; set; }
+    public Location? BirthPlace { get; set; }
 
     //Death related: date and place
     public DateTime? DeathDate { get; set; }
     public DateTime? DeathDateRange { get; set; } //Used only if <see cref="DeathDateType" /> is set to "Between" and we need a date range
     public DateType? DeathDateType { get; set; }
-    public string? DeathPlace { get; set; }
+    public Location? DeathPlace { get; set; }
     public string? DeathCause { get; set; }
-    public string? BurialPlace { get; set; }
+    public Location? BurialPlace { get; set; }
 
     // Other info (currently used for religion only)
     public string? Religion { get; set; }
-    public string? BaptismPlace { get; set; }
+    public Location? BaptismPlace { get; set; }
     public DateTime? BaptismDate { get; set; }
     public DateTime? BaptismRange { get; set; } //Used only if <see cref="BaptismDateType" /> is set to "Between" and we need a date range
     public DateType? BaptismDateType { get; set; }
@@ -77,7 +77,6 @@ public class Person {
             LastName = "Lebedin",
             IsDeceased = false,
             BirthDate = new DateTime(1998,03,03),
-            BirthPlace = "Kharkov, Ukraine"
 
         },
         new Person() {
@@ -88,7 +87,6 @@ public class Person {
             IsDeceased = true,
             BirthDate = new DateTime(1898,01,01),
             DeathDate = new DateTime(1975,01,07),
-            BirthPlace = "Unknown"
         },
         new Person() {
             Id = 3,
@@ -97,7 +95,6 @@ public class Person {
             LastName = "Aristova",
             IsDeceased = true,
             BirthDate = new DateTime(1888,12,12),
-            BirthPlace = "Somewhere"
 
         },
         new Person() {
@@ -107,7 +104,6 @@ public class Person {
             LastName = "Vanov",
             IsDeceased = false,
             BirthDate = new DateTime(1765,05,23),
-            BirthPlace = "Mukhosransk"
         },
         new Person() {
             Id = 5,
@@ -116,7 +112,6 @@ public class Person {
             LastName = "Shrekova",
             IsDeceased = true,
             BirthDate = new DateTime(1856,02,13),
-            BirthPlace = "Gradograd, Hochland"
         },
     };
 }
