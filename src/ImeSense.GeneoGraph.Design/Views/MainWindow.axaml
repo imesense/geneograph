@@ -49,7 +49,7 @@
 
     <Window.Resources>
         <StreamGeometry x:Key="HomeGeometry">
-            M7.82369 18.7992V12.795H12.1715V18.7992C12.1715 19.4596 12.6606 20 13.2584 20H16.5193C17.1171 20 17.6062 19.4596 17.6062 18.7992V10.3933H19.454C19.954 10.3933 20.1932 9.7088 19.8127 9.34854L10.7258 0.306214C10.3128 -0.102071 9.68237 -0.102071 9.26933 0.306214L0.182446 9.34854C-0.187116 9.7088 0.041143 10.3933 0.541139 10.3933H2.38895V18.7992C2.38895 19.4596 2.87808 20 3.4759 20H6.73674C7.33456 20 7.82369 19.4596 7.82369 18.7992Z
+            M21.71,11.29l-9-9a1,1,0,0,0-1.42,0l-9,9a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,13H4v7.3A1.77,1.77,0,0,0,5.83,22H8.5a1,1,0,0,0,1-1V16.1a1,1,0,0,1,1-1h3a1,1,0,0,1,1,1V21a1,1,0,0,0,1,1h2.67A1.77,1.77,0,0,0,20,20.3V13h1a1,1,0,0,0,.92-.62A1,1,0,0,0,21.71,11.29Z
         </StreamGeometry>
     </Window.Resources>
 
@@ -70,11 +70,12 @@
                 Margin="85,0,0,0"
                 FontSize="20">
                 <TabItem.Header>
-                    <PathIcon Data="{DynamicResource HomeGeometry}"
-                              Foreground="#dedede"
-                              Width="24"
-                              Height="24"
-                              VerticalAlignment="Center"/>
+                    <PathIcon
+                        Data="{DynamicResource HomeGeometry}"
+                        Width="24"
+                        Height="24"
+                        VerticalAlignment="Center"
+                        Foreground="#dedede" />
                 </TabItem.Header>
                 <v:ProjectsView />
             </TabItem>

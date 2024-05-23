@@ -68,6 +68,7 @@ public class AlbumsViewModel : ReactiveObject {
         LoadImages();
     }
 
+
     [Reactive]
     public ObservableCollection<PhotoAlbum> AlbumsList { get; set; } = new();
     [Reactive]
