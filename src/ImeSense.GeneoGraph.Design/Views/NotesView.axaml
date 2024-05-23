@@ -289,7 +289,7 @@
                             RowDefinitions="*,*"
                             ShowGridLines="False">
                             <CalendarDatePicker
-                                Text=""
+                                Text="{Binding SelectedNote.NoteDate}"
                                 Height="40"
                                 Margin="0,0,15,0"
                                 HorizontalAlignment="Stretch"
@@ -298,6 +298,7 @@
                                 CornerRadius="15" />
                             <TextBox
                                 Grid.Column="1"
+                                Text="{Binding SelectedNote.NoteSource.SourceName}"
                                 Height="40"
                                 Margin="0,0,15,0"
                                 HorizontalAlignment="Stretch"

@@ -1,10 +1,12 @@
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 
 using Avalonia.Controls;
+using Avalonia.Media.Imaging;
 
 using ImeSense.GeneoGraph.Design.Models;
 using ImeSense.GeneoGraph.Design.Views;
@@ -30,6 +32,8 @@ public class AlbumsViewModel : ReactiveObject {
 
     private PhotoAlbum _selectedAlbum;
     private Photo _selectedPhoto;
+
+    private ObservableCollection<Photo> _filteredPhotos;
 
     public AlbumsViewModel() {
         _selectedAlbum = new PhotoAlbum();
@@ -65,10 +69,13 @@ public class AlbumsViewModel : ReactiveObject {
     }
 
     [Reactive]
-    public ObservableCollection<Photo> FilteredPhotos { get; set; } = new();
-
+    public ObservableCollection<PhotoAlbum> AlbumsList { get; set; } = new();
     [Reactive]
-    public ObservableCollection<PhotoAlbum> AlbumsList { get; set;} = new();
+    public ObservableCollection<Photo> FilteredPhotos 
+        {
+        get => _filteredPhotos;
+        set => this.RaiseAndSetIfChanged(ref _filteredPhotos, value);
+    }
     [Reactive]
     public ObservableCollection<Photo> PhotosList { get; set; } = new();
 
@@ -87,7 +94,11 @@ public class AlbumsViewModel : ReactiveObject {
     [Reactive]
     public Photo SelectedPhoto {
         get => _selectedPhoto;
-        set => this.RaiseAndSetIfChanged(ref _selectedPhoto, value);
+        set {
+            if (_selectedPhoto != value) {
+                this.RaiseAndSetIfChanged(ref _selectedPhoto, value);
+            }
+        }
     }
 
     [Reactive]
@@ -185,6 +196,7 @@ public class AlbumsViewModel : ReactiveObject {
     private void UpdatePhotos() {
         var filterupdate = PhotosList.Where(photo => photo.Album == SelectedAlbum);
         FilteredPhotos = new ObservableCollection<Photo>(filterupdate);
+        SelectedPhoto = FilteredPhotos.FirstOrDefault();
         CountPhotos();
     }
     private void LoadAllPhotos() {
@@ -204,7 +216,7 @@ public class AlbumsViewModel : ReactiveObject {
     }
 
     private void CountPhotos() {
-        NumberPhotos = PhotosList.Count();
+        NumberPhotos = FilteredPhotos.Count;
     }
 
     public void IsFavStateChange() {
@@ -225,7 +237,7 @@ public class AlbumsViewModel : ReactiveObject {
 
     private void LoadImages() 
     {
-        foreach (var photo in PhotosList) {
+        foreach (var photo in FilteredPhotos) {
             photo.LoadImage();
         }
     }

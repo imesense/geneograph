@@ -101,7 +101,7 @@
             Margin="30,25,30,0"
             Orientation="Vertical">
 
-            <!--Category name & items count-->
+            <!-- Category name & items count -->
             <Label
                 Content="{Binding DisplayCategory}"
                 VerticalAlignment="Center"
@@ -121,7 +121,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!--Sort & Search-->
+        <!-- Sort & Search -->
         <StackPanel
             Grid.Column="1"
             Margin="0,0,35,0"
@@ -277,7 +277,7 @@
                             RowDefinitions="*,*"
                             ShowGridLines="False">
                             <CalendarDatePicker
-                                Text=""
+                                Text="{Binding SelectedPhoto.PhotoDate}"
                                 Height="40"
                                 Margin="0,0,15,0"
                                 HorizontalAlignment="Stretch"
@@ -286,6 +286,7 @@
                                 CornerRadius="15" />
                             <TextBox
                                 Grid.Column="1"
+                                Text="{Binding SelectedPhoto.PhotoSource.SourceName}"
                                 Height="40"
                                 Margin="0,0,15,0"
                                 HorizontalAlignment="Stretch"
@@ -296,7 +297,7 @@
                                 Watermark="Source:" />
                             <TextBox
                                 Grid.Row="1"
-                                Text="{Binding SelectedPhoto.PhotoPlace}"
+                                Text="{Binding SelectedPhoto.PhotoLocation.LocationName}"
                                 Height="80"
                                 Margin="0,25,15,0"
                                 VerticalContentAlignment="Top"
@@ -380,11 +381,11 @@
         <!-- Left bar buttons -->
         <StackPanel Grid.Row="1">
             <Button
+                Command="{Binding LoadAllPhotosCommand}"
                 Margin="20,30,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent"
-                Command="{Binding LoadAllPhotosCommand}">
+                Background="Transparent">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -423,11 +424,11 @@
             </Button>
 
             <Button
+                Command="{Binding LoadFavPhotosCommand}"
                 Margin="20,20,20,0"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
-                Background="Transparent"
-                Command="{Binding LoadFavPhotosCommand}">
+                Background="Transparent">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Width="32"
@@ -565,7 +566,7 @@
                             Width="150"
                             Height="150"
                             Source="{Binding PhotoBitmap}"
-                            Stretch="UniformToFill" />
+                            Stretch="UniformToFill"/>
                         <StackPanel
                             Grid.Column="1"
                             Orientation="Vertical">
