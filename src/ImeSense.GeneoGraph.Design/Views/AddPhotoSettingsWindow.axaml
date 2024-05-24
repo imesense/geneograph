@@ -1,0 +1,175 @@
+<Window
+    x:Class="ImeSense.GeneoGraph.Design.Views.AddPhotoSettingsWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    Title="AddPhotoSettingsWindow"
+    d:DesignHeight="710"
+    Background="#212121"
+    FontFamily="Inter"
+    FontSize="16"
+    Foreground="#dedede"
+    mc:Ignorable="d">
+
+    <Grid
+        ColumnDefinitions="*,Auto"
+        ShowGridLines="False">
+        <ListBox
+            Grid.Column="0"
+            Width="650"
+            Height="650"
+            Margin="30"
+            CornerRadius="20" />
+
+        <Grid
+            Grid.Column="1"
+            Margin="0,30,0,30"
+            ColumnDefinitions="Auto,*,Auto"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*,Auto"
+            ShowGridLines="False">
+
+            <!-- Photo name -->
+            <Label
+                Content="Name"
+                Margin="0,10,10,10"
+                VerticalAlignment="Center" />
+            <TextBox
+                Grid.Column="1"
+                Text="LoremIpsumDolor.png" />
+
+            <!-- Photo Album -->
+            <Label
+                Grid.Row="1"
+                Content="Album"
+                Margin="0,10,10,10"
+                VerticalAlignment="Center" />
+            <ComboBox
+                Grid.Column="1"
+                Grid.Row="1" />
+
+            <!-- Checkboxes -->
+            <CheckBox
+                Grid.Column="2"
+                Grid.Row="1"
+                Margin="10"
+                HorizontalAlignment="Center" />
+
+            <!-- Photo Date \\ can we get it from the metadata? -->
+            <Label
+                Grid.Row="2"
+                Content="Date"
+                Margin="0,10,10,10"
+                VerticalAlignment="Center" />
+            <CalendarDatePicker
+                Grid.Column="1"
+                Grid.Row="2" />
+            <CheckBox
+                Grid.Column="2"
+                Grid.Row="2"
+                Margin="10"
+                HorizontalAlignment="Center" />
+
+            <!-- Photo Location -->
+            <Label
+                Grid.Row="3"
+                Content="Location"
+                Margin="0,10,10,10"
+                VerticalAlignment="Center" />
+            <CheckBox
+                Grid.Column="2"
+                Grid.Row="3"
+                Margin="10"
+                HorizontalAlignment="Center" />
+
+
+            <!-- Photo Source -->
+            <Label
+                Grid.Row="4"
+                Content="Source"
+                Margin="0,10,10,10"
+                VerticalAlignment="Center" />
+            <CheckBox
+                Grid.Column="2"
+                Grid.Row="4"
+                Margin="10"
+                HorizontalAlignment="Center" />
+
+            <!-- Photo Notes -->
+            <Label
+                Grid.Row="5"
+                Content="Notes"
+                Margin="0,10,10,10"
+                VerticalAlignment="Bottom" />
+
+            <!-- Apply to All button -->
+            <Button
+                Grid.Column="2"
+                Grid.Row="5"
+                Width="80"
+                Height="40"
+                Margin="10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="#C2C8BC"
+                CornerRadius="5"
+                Foreground="Black">
+                <Label FontSize="10">
+                    Apply to all
+                </Label>
+            </Button>
+
+            <TextBox
+                Grid.ColumnSpan="3"
+                Grid.Row="6"
+                Margin="10"
+                CornerRadius="10" />
+
+            <!-- Buttons -->
+            <StackPanel
+                Grid.ColumnSpan="3"
+                Grid.Row="7"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Orientation="Horizontal">
+                <Button
+                    Width="120"
+                    Margin="0,30,30,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    BorderThickness="2"
+                    CornerRadius="25">
+                    <Label
+                        Padding="20,5,20,5"
+                        HorizontalAlignment="Center"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="Black">
+                        Save
+                    </Label>
+                </Button>
+
+                <Button
+                    Width="120"
+                    Margin="30,30,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Background="Transparent"
+                    BorderBrush="#dedede"
+                    BorderThickness="2"
+                    CornerRadius="25"
+                    Foreground="#dedede">
+                    <Label
+                        Padding="20,5,20,5"
+                        HorizontalAlignment="Center"
+                        FontSize="16">
+                        Cancel
+                    </Label>
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+    </Grid>
+</Window>
