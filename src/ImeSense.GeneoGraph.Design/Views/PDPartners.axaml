@@ -1,38 +1,55 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="ImeSense.GeneoGraph.Design.Views.PDPartners"
-             d:DesignWidth="500" 
-             d:DesignHeight="785"
-             FontFamily="Inter"
-             FontSize="16"
-             FontWeight="Medium">
-    <Grid Background="Transparent"
-          Margin="20"
-          ShowGridLines="False"
-          RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-          ColumnDefinitions="*,Auto">
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Design.Views.PDPartners"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    d:DesignHeight="785"
+    d:DesignWidth="500"
+    FontFamily="Inter"
+    FontSize="16"
+    FontWeight="Medium"
+    mc:Ignorable="d">
 
-        <!--Add new partner-->
+
+    <UserControl.Resources>
+        <StreamGeometry x:Key="Arrow">
+            M13.2599 16.2802C13.0699 16.2802 12.8799 16.2102 12.7299 16.0602L9.19992 12.5302C8.90992 12.2402 8.90992 11.7602 9.19992 11.4702L12.7299 7.94016C13.0199 7.65016 13.4999 7.65016 13.7899 7.94016C14.0799 8.23016 14.0799 8.71016 13.7899 9.00016L10.7899 12.0002L13.7899 15.0002C14.0799 15.2902 14.0799 15.7702 13.7899 16.0602C13.6499 16.2102 13.4599 16.2802 13.2599 16.2802Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Plus">
+            M960 448H576V64a64 64 0 0 0-128 0v384H64a64 64 0 0 0 0 128h384v384a64 64 0 0 0 128 0V576h384a64 64 0 0 0 0-128z
+        </StreamGeometry>
+    </UserControl.Resources>
+
+    <Grid
+        Margin="20"
+        Background="Transparent"
+        ColumnDefinitions="*,Auto"
+        RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+        ShowGridLines="False">
+
+        <!-- Add new partner -->
         <StackPanel Orientation="Horizontal">
             <Button
-                    Width="35"
-                    Height="35"
-                    Background="Transparent"
-                    CornerRadius="32"
-                    Margin="0,0,10,0">
-                <Image
-                    Source="..\..\Assets\Buttons\plus.png"
-                    Stretch="Uniform" />
+                Width="35"
+                Height="35"
+                Margin="0,0,10,0"
+                Background="Transparent"
+                CornerRadius="32">
+                <PathIcon
+                    Data="{DynamicResource Plus}"
+                    Width="16"
+                    Height="16"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Center"
+                    Foreground="#dedede" />
             </Button>
 
             <Button
-                    Width="35"
-                    Height="35"
-                    Background="Transparent"
-                    CornerRadius="32">
+                Width="35"
+                Height="35"
+                Background="Transparent"
+                CornerRadius="32">
                 <Image
                     Source="..\..\Assets\Buttons\unlink.png"
                     Stretch="Uniform" />
@@ -40,31 +57,44 @@
         </StackPanel>
 
         <Button
-        Width="35"
-        Height="35"
-        Background="Transparent"
-        HorizontalAlignment="Right"
-        CornerRadius="32"
-        Margin="0,0,0,0">
-            <Image
-                Source="..\..\Assets\Buttons\next.png"
-                Stretch="Uniform" />
+            Width="35"
+            Height="35"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Right"
+            Background="Transparent"
+            CornerRadius="32">
+            <Border
+                Width="26"
+                Height="26"
+                BorderBrush="#dedede"
+                BorderThickness="2"
+                CornerRadius="32">
+                <PathIcon
+                    Data="{DynamicResource Arrow}"
+                    Width="14"
+                    Height="14"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Center"
+                    Foreground="#dedede"
+                    RenderTransform="rotate(180deg)" />
+            </Border>
         </Button>
 
 
-        <!--Partner info: Photo, name, dates, status-->
-        <Grid Grid.Row="1"
-              ColumnDefinitions="Auto,*"
-              VerticalAlignment="Top"
-              Margin="0,20,0,0">
+        <!-- Partner info: Photo, name, dates, status -->
+        <Grid
+            Grid.Row="1"
+            Margin="0,20,0,0"
+            VerticalAlignment="Top"
+            ColumnDefinitions="Auto,*">
             <Border
-                    Width="100"
-                    Height="100"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    ClipToBounds="True"
-                    CornerRadius="100"
-                    Margin="0,0,25,0">
+                Width="100"
+                Height="100"
+                Margin="0,0,25,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                ClipToBounds="True"
+                CornerRadius="100">
                 <Image
                     Width="100"
                     Height="100"
@@ -73,14 +103,14 @@
             </Border>
 
             <StackPanel Grid.Column="1">
-                <Label 
-                    FontSize="18"
-                    Margin="0,0,0,5">
+                <Label
+                    Margin="0,0,0,5"
+                    FontSize="18">
                     Nikita Lebedin
                 </Label>
-                <Label 
-                    FontSize="16"
-                    Margin="0,0,0,15">
+                <Label
+                    Margin="0,0,0,15"
+                    FontSize="16">
                     2022 - Present
                 </Label>
                 <ComboBox
@@ -93,13 +123,13 @@
             </StackPanel>
         </Grid>
 
-        <!--Relashionship start group-->
+        <!-- Relashionship start group -->
         <Grid
-                    Grid.Row="2"
-                    Margin="0,35,0,0"
-                    ColumnDefinitions="*,*"
-                    RowDefinitions="Auto,Auto"
-                    ShowGridLines="False">
+            Grid.Row="2"
+            Margin="0,35,0,0"
+            ColumnDefinitions="*,*"
+            RowDefinitions="Auto,Auto"
+            ShowGridLines="False">
             <StackPanel Margin="0,0,15,0">
                 <Label
                     Content="Relationship Start Date"
@@ -136,7 +166,7 @@
                 CornerRadius="5" />
         </Grid>
 
-        <!--Relationship start place-->
+        <!-- Relationship start place -->
         <StackPanel
             Grid.Row="3"
             Margin="0,35,0,0">
@@ -152,7 +182,7 @@
                 CornerRadius="5" />
         </StackPanel>
 
-        <!--Witnesses-->
+        <!-- Witnesses -->
         <StackPanel
             Grid.Row="4"
             Margin="0,35,0,0">
@@ -168,13 +198,13 @@
                 CornerRadius="5" />
         </StackPanel>
 
-        <!--Relashionship end group-->
+        <!-- Relashionship end group -->
         <Grid
-                    Grid.Row="5"
-                    Margin="0,35,0,0"
-                    ColumnDefinitions="*,*"
-                    RowDefinitions="Auto,Auto"
-                    ShowGridLines="False">
+            Grid.Row="5"
+            Margin="0,35,0,0"
+            ColumnDefinitions="*,*"
+            RowDefinitions="Auto,Auto"
+            ShowGridLines="False">
             <StackPanel Margin="0,0,15,0">
                 <Label
                     Content="Relationship End Date"
@@ -210,6 +240,6 @@
                 BorderThickness="0,0,0,2"
                 CornerRadius="5" />
         </Grid>
-        
+
     </Grid>
 </UserControl>

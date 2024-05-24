@@ -1,27 +1,43 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" 
-             d:DesignWidth="500" 
-             d:DesignHeight="785"
-             x:Class="ImeSense.GeneoGraph.Design.Views.PDImmediateFamily"
-             FontFamily="Inter"
-             FontSize="18"
-             FontWeight="Medium">
-    <Grid Background="Transparent"
-          Margin="10,20,10,20"
-          RowDefinitions="Auto,*">
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Design.Views.PDImmediateFamily"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    d:DesignHeight="785"
+    d:DesignWidth="500"
+    FontFamily="Inter"
+    FontSize="18"
+    FontWeight="Medium"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <StreamGeometry x:Key="Plus">
+            M960 448H576V64a64 64 0 0 0-128 0v384H64a64 64 0 0 0 0 128h384v384a64 64 0 0 0 128 0V576h384a64 64 0 0 0 0-128z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Edit">
+            M14.846 1.403l3.752 3.753.625-.626A2.653 2.653 0 0015.471.778l-.625.625zm2.029 5.472l-3.752-3.753L1.218 15.028 0 19.998l4.97-1.217L16.875 6.875z
+        </StreamGeometry>
+    </UserControl.Resources>
+
+    <Grid
+        Margin="10,20,10,20"
+        Background="Transparent"
+        RowDefinitions="Auto,*">
 
         <Button
-                Width="35"
-                Height="35"
-                Background="Transparent"
-                CornerRadius="32"
-                Margin="10,0,0,0">
-            <Image
-                Source="..\..\Assets\Buttons\plus.png"
-                Stretch="Uniform" />
+            Width="35"
+            Height="35"
+            Margin="10,0,0,0"
+            Background="Transparent"
+            CornerRadius="32">
+            <PathIcon
+                Data="{DynamicResource Plus}"
+                Width="16"
+                Height="16"
+                Margin="0,0,0,0"
+                VerticalAlignment="Center"
+                Foreground="#dedede" />
         </Button>
 
         <ListBox
@@ -46,12 +62,12 @@
                                 Source="..\Assets\Profile\Profile_picture.png"
                                 Stretch="UniformToFill" />
                         </Border>
-                        
-                        <StackPanel 
+
+                        <StackPanel
                             Grid.Column="1"
-                            VerticalAlignment="Center"
-                            Margin="20,0,0,0">
-                            <Label 
+                            Margin="20,0,0,0"
+                            VerticalAlignment="Center">
+                            <Label
                                 Margin="0,0,0,5"
                                 FontSize="18">
                                 Nikita Lebedin
@@ -62,27 +78,32 @@
                                 Relative
                             </Label>
                         </StackPanel>
-                        
-                        <StackPanel Grid.Column="2"
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center">
+
+                        <StackPanel
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
                             <Button
-                                    Width="35"
-                                    Height="35"
-                                    HorizontalAlignment="Right"
-                                    Background="Transparent"
-                                    CornerRadius="32"
-                                    Margin="0,0,25,0">
-                                <Image
-                                    Source="..\..\Assets\Buttons\edit.png"
-                                    Stretch="Uniform" />
+                                Width="35"
+                                Height="35"
+                                Margin="0,0,25,0"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                CornerRadius="32">
+                                <PathIcon
+                                    Data="{DynamicResource Edit}"
+                                    Width="16"
+                                    Height="16"
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="#dedede" />
                             </Button>
 
                             <Button
-                                    Width="35"
-                                    Height="35"
-                                    Background="Transparent"
-                                    CornerRadius="32">
+                                Width="35"
+                                Height="35"
+                                Background="Transparent"
+                                CornerRadius="32">
                                 <Image
                                     Source="..\..\Assets\Buttons\unlink.png"
                                     Stretch="Uniform" />
@@ -103,6 +124,6 @@
                 </Style>
             </ListBox.Styles>
         </ListBox>
-        
+
     </Grid>
 </UserControl>
