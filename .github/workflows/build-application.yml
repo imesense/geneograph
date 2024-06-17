@@ -75,8 +75,7 @@ jobs:
 
       - name: Restore packages
         run: |
-          dotnet restore $env:Solution `
-            --locked-mode
+          dotnet restore $env:Solution
 
       - name: Build application
         run: |
@@ -137,8 +136,7 @@ jobs:
 
       - name: Restore packages
         run: |
-          dotnet restore $env:Solution `
-            --locked-mode
+          dotnet restore $env:Solution
 
       - name: Run tests
         run: |
@@ -194,8 +192,7 @@ jobs:
 
       - name: Restore packages
         run: |
-          dotnet restore $env:Project `
-            --locked-mode
+          dotnet restore $env:Project
 
       - name: Publish application
         run: |
@@ -265,8 +262,7 @@ jobs:
 
       - name: Restore packages
         run: |
-          dotnet restore $env:Project `
-            --locked-mode
+          dotnet restore $env:Project
 
       - name: Publish application
         run: |
@@ -361,8 +357,7 @@ jobs:
 
       - name: Restore packages
         run: |
-          dotnet restore $env:Project `
-            --locked-mode
+          dotnet restore $env:Project
 
       - name: Publish application
         run: |
