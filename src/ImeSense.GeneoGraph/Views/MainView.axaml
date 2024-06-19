@@ -14,6 +14,10 @@
     </Design.DataContext>
 
     <Panel>
-        <DockControl Layout="{Binding Layout}" />
+        <TabControl>
+            <TabItem Header="Projects">
+                <ContentControl Content="{Binding ProjectsTabContent}" />
+            </TabItem>
+        </TabControl>
     </Panel>
 </UserControl>

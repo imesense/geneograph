@@ -1,11 +1,11 @@
 <UserControl
-    x:Class="ImeSense.GeneoGraph.Views.Documents.ProjectsView"
-    x:DataType="vmd:ProjectsViewModel"
+    x:Class="ImeSense.GeneoGraph.Views.ProjectsView"
+    x:DataType="vm:ProjectsViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:vmd="using:ImeSense.GeneoGraph.ViewModels.Documents"
+    xmlns:vm="using:ImeSense.GeneoGraph.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="600"
     mc:Ignorable="d">

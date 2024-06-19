@@ -2,8 +2,6 @@ using Avalonia.Headless.NUnit;
 
 using ImeSense.GeneoGraph.Services;
 using ImeSense.GeneoGraph.ViewModels;
-using ImeSense.GeneoGraph.ViewModels.Docks;
-using ImeSense.GeneoGraph.ViewModels.Documents;
 using ImeSense.GeneoGraph.Views;
 
 using Microsoft.Extensions.Logging;
@@ -13,26 +11,19 @@ using Moq;
 namespace ImeSense.GeneoGraph.Tests;
 
 public class MainWindowTests {
-    private Mock<ILogger<ProjectsViewModel>> _logger;
+    private Mock<ILogger<ProjectsViewModel>> _projectsLogger;
+    private Mock<ILogger<MainViewModel>> _mainLogger;
     private Mock<IFilesService> _filesService;
     private ProjectsViewModel _projectsViewModel;
-    private ApplicationTabsDock _applicationTabsDock;
-    private AppFactory _appFactory;
     private MainViewModel _mainViewModel;
 
     [SetUp]
     public void Initialize() {
-        _logger = new Mock<ILogger<ProjectsViewModel>>();
+        _projectsLogger = new Mock<ILogger<ProjectsViewModel>>();
+        _mainLogger = new Mock<ILogger<MainViewModel>>();
         _filesService = new Mock<IFilesService>();
-        _projectsViewModel = new ProjectsViewModel(_logger.Object, _filesService.Object);
-        _applicationTabsDock = new ApplicationTabsDock(_projectsViewModel);
-        _appFactory = new AppFactory(_projectsViewModel, _applicationTabsDock);
-        _mainViewModel = new MainViewModel(_appFactory);
-    }
-
-    [TearDown]
-    public void Deinitialization() {
-        _mainViewModel.CloseLayout();
+        _projectsViewModel = new ProjectsViewModel(_projectsLogger.Object, _filesService.Object);
+        _mainViewModel = new MainViewModel(_mainLogger.Object, _projectsViewModel);
     }
 
     [AvaloniaTest]
@@ -47,17 +38,5 @@ public class MainWindowTests {
             Assert.That(window.DataContext, Is.Not.Null);
             Assert.That(window.IsVisible, Is.True);
         });
-    }
-
-    [AvaloniaTest]
-    public void MainWindow_CloseLayout_ShouldBeClosed() {
-        var window = new MainWindow {
-            DataContext = _mainViewModel,
-        };
-        window.Show();
-
-        ((MainViewModel) window.DataContext).CloseLayout();
-
-        Assert.That(((MainViewModel) window.DataContext).Layout, Is.Null);
     }
 }

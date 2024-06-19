@@ -2,8 +2,6 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-using Dock.Model.ReactiveUI.Controls;
-
 using ImeSense.GeneoGraph.Helpers;
 using ImeSense.GeneoGraph.Services;
 
@@ -11,9 +9,9 @@ using Microsoft.Extensions.Logging;
 
 using ReactiveUI;
 
-namespace ImeSense.GeneoGraph.ViewModels.Documents;
+namespace ImeSense.GeneoGraph.ViewModels;
 
-public class ProjectsViewModel : Document {
+public class ProjectsViewModel : ReactiveObject {
     private readonly ILogger<ProjectsViewModel> _logger;
     private readonly IFilesService _filesService;
 

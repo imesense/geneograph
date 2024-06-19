@@ -1,37 +1,34 @@
-using Dock.Model.Controls;
-using Dock.Model.Core;
-
 using ImeSense.GeneoGraph.Helpers;
+
+using Microsoft.Extensions.Logging;
 
 using ReactiveUI;
 
 namespace ImeSense.GeneoGraph.ViewModels;
 
 public class MainViewModel : ReactiveObject {
-    private readonly IFactory? _factory;
+    private readonly ILogger _logger;
+    private readonly ProjectsViewModel _projectsViewModel;
 
-    private IRootDock? _layout;
+    private ReactiveObject? _projectsTabContent;
 
-    public IRootDock? Layout {
-        get => _layout;
-        set => this.RaiseAndSetIfChanged(ref _layout, value);
+    public ReactiveObject? ProjectsTabContent {
+        get => _projectsTabContent;
+        set => this.RaiseAndSetIfChanged(ref _projectsTabContent, value);
     }
 
-    public MainViewModel(AppFactory factory) {
-        _factory = factory;
+    public MainViewModel(ILogger<MainViewModel> logger,
+        ProjectsViewModel projectsViewModel) {
+        _logger = logger;
+        _projectsViewModel = projectsViewModel;
 
-        Layout = _factory?.CreateLayout();
-        if (Layout is { }) {
-            _factory?.InitLayout(Layout);
-        }
+        ProjectsTabContent = _projectsViewModel;
     }
 
     public MainViewModel() {
         ExceptionHelper.EnsureNotInDesignTime(nameof(MainViewModel));
-    }
 
-    public void CloseLayout() {
-        Layout?.Close.Execute(null);
-        Layout = null;
+        _logger = null!;
+        _projectsViewModel = null!;
     }
 }

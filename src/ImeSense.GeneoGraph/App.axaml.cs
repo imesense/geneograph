@@ -34,14 +34,8 @@ public partial class App : Application {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.DataContext = mainViewModel;
-            mainWindow.Closing += (_, _) => {
-                mainViewModel.CloseLayout();
-            };
 
             desktop.MainWindow = mainWindow;
-            desktop.Exit += (_, _) => {
-                mainViewModel.CloseLayout();
-            };
 
             StorageLocator.StorageProvider = mainWindow.StorageProvider;
         } else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform) {
@@ -55,9 +49,6 @@ public partial class App : Application {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             var mainView = _serviceProvider.GetRequiredService<MainView>();
             mainView.DataContext = mainViewModel;
-            mainView.Unloaded += (_, _) => {
-                mainViewModel.CloseLayout();
-            };
 
             singleViewPlatform.MainView = mainView;
 

@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace ImeSense.GeneoGraph.Views.Documents;
+namespace ImeSense.GeneoGraph.Views;
 
 /// <summary>
 /// Interaction logic for ProjectsView.axaml
