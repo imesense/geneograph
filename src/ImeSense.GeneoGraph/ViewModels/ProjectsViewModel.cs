@@ -17,11 +17,21 @@ public class ProjectsViewModel : ReactiveObject {
 
     public ICommand CreateProjectCommand { get; }
 
+    public ICommand OpenProjectCommand { get; }
+
     private async Task CreateProjectAsync() {
         try {
-            var filesService = _filesService;
+            var file = await _filesService.SaveFileAsync();
+            if (file is null) {
+                return;
+            }
+        } catch (Exception) {
+        }
+    }
 
-            var file = await filesService.SaveFileAsync();
+    private async Task OpenProjectAsync() {
+        try {
+            var file = await _filesService.OpenFileAsync();
             if (file is null) {
                 return;
             }
@@ -37,6 +47,7 @@ public class ProjectsViewModel : ReactiveObject {
         _filesService = filesService;
 
         CreateProjectCommand = ReactiveCommand.CreateFromTask(CreateProjectAsync);
+        OpenProjectCommand = ReactiveCommand.CreateFromTask(OpenProjectAsync);
     }
 
     public ProjectsViewModel() {
@@ -46,5 +57,6 @@ public class ProjectsViewModel : ReactiveObject {
         _filesService = null!;
 
         CreateProjectCommand = null!;
+        OpenProjectCommand = null!;
     }
 }
