@@ -1,8 +1,12 @@
 using System;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 using ImeSense.GeneoGraph.Helpers;
+using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Services;
 
 using Microsoft.Extensions.Logging;
@@ -25,6 +29,14 @@ public class ProjectsViewModel : ReactiveObject {
             if (file is null) {
                 return;
             }
+
+            var project = new Project {
+                Name = file.Name,
+            };
+            var json = JsonSerializer.Serialize(project);
+            var stream = new MemoryStream(Encoding.Default.GetBytes(json));
+            await using var writeStream = await file.OpenWriteAsync();
+            await stream.CopyToAsync(writeStream);
         } catch (Exception) {
         }
     }
