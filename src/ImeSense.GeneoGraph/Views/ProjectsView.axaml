@@ -75,7 +75,7 @@
                     VerticalAlignment="Center"
                     FontSize="14"
                     FontWeight="SemiBold">
-                    Create new
+                    Create
                 </Label>
             </Button>
 
@@ -92,6 +92,22 @@
                     FontSize="14"
                     FontWeight="SemiBold">
                     Open
+                </Label>
+            </Button>
+
+            <!-- Close button -->
+            <Button
+                Command="{Binding CloseProjectCommand}"
+                Padding="12,4,12,4"
+                HorizontalAlignment="Center"
+                Classes="accent"
+                CornerRadius="20">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="SemiBold">
+                    Close
                 </Label>
             </Button>
         </StackPanel>
