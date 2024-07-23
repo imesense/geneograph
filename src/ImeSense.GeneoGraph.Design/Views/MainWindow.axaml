@@ -111,6 +111,7 @@
                 Header="ALBUMS">
                 <v:AlbumsView />
             </TabItem>
+
             <TabItem
                 Height="50"
                 Margin="20,0,0,0"

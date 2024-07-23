@@ -33,7 +33,7 @@ public class AlbumsViewModel : ReactiveObject {
     private PhotoAlbum _selectedAlbum;
     private Photo _selectedPhoto;
 
-    private ObservableCollection<Photo> _filteredPhotos;
+    private ObservableCollection<Photo> _filteredPhotos = new();
 
     public AlbumsViewModel() {
         _selectedAlbum = new PhotoAlbum();
@@ -49,6 +49,7 @@ public class AlbumsViewModel : ReactiveObject {
         IsFavPhotoChangeCommand = ReactiveCommand.Create(IsFavStateChange);
         LoadFavPhotosCommand = ReactiveCommand.Create(LoadFavoritePhotos);
         LoadAllPhotosCommand = ReactiveCommand.Create(LoadAllPhotos);
+        LoadAllPhotosCommand.Execute();
 
         this.WhenAnyValue(x => x.SelectedPhotoIndex)
             .Skip(1) // Skip initial null value
@@ -62,8 +63,6 @@ public class AlbumsViewModel : ReactiveObject {
 
         this.WhenAnyValue(x => x.SelectedAlbum)
             .Subscribe(_ => DisplayCategory = SelectedAlbum.AlbumName);
-
-        LoadAllPhotos();
 
         LoadImages();
     }

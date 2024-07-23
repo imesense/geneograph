@@ -324,14 +324,14 @@
                             ColumnDefinitions="*,*"
                             RowDefinitions="*,*"
                             ShowGridLines="False">
-                            <CalendarDatePicker
+                            <!--<CalendarDatePicker
                                 Text="{Binding SelectedNote.NoteDate}"
                                 Height="40"
                                 Margin="0,0,15,0"
                                 HorizontalAlignment="Stretch"
                                 Background="#1e1e1e"
                                 BorderBrush="#777777"
-                                CornerRadius="15" />
+                                CornerRadius="15" />-->
                             <TextBox
                                 Grid.Column="1"
                                 Text="{Binding SelectedNote.NoteSource.SourceName}"
