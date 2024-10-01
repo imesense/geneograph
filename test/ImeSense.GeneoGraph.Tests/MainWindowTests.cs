@@ -21,6 +21,7 @@ public class MainWindowTests
             .AddViews()
             .AddViewModels()
             .AddServices()
+            .AddManagers()
             .AddLogging()
             .BuildServiceProvider();
 
