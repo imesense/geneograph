@@ -5,7 +5,8 @@ using Avalonia.ReactiveUI;
 
 namespace ImeSense.GeneoGraph.Windows;
 
-internal class Program {
+internal class Program
+{
     /// <summary>
     /// Avalonia configuration, also used by visual designer
     /// </summary>

@@ -5,7 +5,8 @@ using Avalonia.ReactiveUI;
 
 namespace ImeSense.GeneoGraph.macOS;
 
-internal class Program {
+internal class Program
+{
     /// <summary>
     /// Avalonia configuration, also used by visual designer
     /// </summary>
