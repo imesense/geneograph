@@ -39,7 +39,6 @@ jobs:
         system:
           - windows-2022
           - ubuntu-22.04
-          - macos-14
         config:
           - Debug
           - Release

@@ -39,7 +39,6 @@ jobs:
         system:
           - windows-2022
           - ubuntu-22.04
-          - macos-14
         config:
           - Debug
           - Release
@@ -65,7 +64,6 @@ jobs:
       - name: Setup workloads
         run: |
           dotnet workload install `
-            macos `
             wasm-tools
 
       - name: Cache packages
@@ -106,7 +104,6 @@ jobs:
         system:
           - windows-2022
           - ubuntu-22.04
-          - macos-14
         config:
           - Debug
           - Release
