@@ -28,8 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Design"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.macOS", "src\ImeSense.GeneoGraph.macOS\ImeSense.GeneoGraph.macOS.csproj", "{007C4034-DA5E-4137-8AC4-5CE3267361F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Common", "src\ImeSense.GeneoGraph.Common\ImeSense.GeneoGraph.Common.csproj", "{B3D694FA-32A9-4626-9843-91BE73F3EF59}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6774BEDE-1700-487D-8C06-90DD778759CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Tests", "test\ImeSense.GeneoGraph.Tests\ImeSense.GeneoGraph.Tests.csproj", "{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}"
@@ -68,10 +66,6 @@ Global
 		{007C4034-DA5E-4137-8AC4-5CE3267361F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{007C4034-DA5E-4137-8AC4-5CE3267361F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{007C4034-DA5E-4137-8AC4-5CE3267361F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3D694FA-32A9-4626-9843-91BE73F3EF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3D694FA-32A9-4626-9843-91BE73F3EF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3D694FA-32A9-4626-9843-91BE73F3EF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3D694FA-32A9-4626-9843-91BE73F3EF59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
