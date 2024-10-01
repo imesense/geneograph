@@ -9,6 +9,7 @@ using ImeSense.GeneoGraph.Helpers;
 using ImeSense.GeneoGraph.Models;
 using ImeSense.GeneoGraph.Services;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using ReactiveUI;
@@ -51,12 +52,11 @@ public class ProjectsViewModel : ReactiveObject {
         }
     }
 
-    public ProjectsViewModel(ILogger<ProjectsViewModel> logger,
-        IFilesService filesService) {
-        _logger = logger;
+    public ProjectsViewModel(IServiceProvider serviceProvider) {
+        _logger = serviceProvider.GetRequiredService<ILogger<ProjectsViewModel>>();
         _logger.BeginScope(nameof(ProjectsViewModel));
 
-        _filesService = filesService;
+        _filesService = serviceProvider.GetRequiredService<IFilesService>();
 
         CreateProjectCommand = ReactiveCommand.CreateFromTask(CreateProjectAsync);
         OpenProjectCommand = ReactiveCommand.CreateFromTask(OpenProjectAsync);

@@ -1,5 +1,8 @@
+using System;
+
 using ImeSense.GeneoGraph.Helpers;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using ReactiveUI;
@@ -17,10 +20,9 @@ public class MainViewModel : ReactiveObject {
         set => this.RaiseAndSetIfChanged(ref _projectsTabContent, value);
     }
 
-    public MainViewModel(ILogger<MainViewModel> logger,
-        ProjectsViewModel projectsViewModel) {
-        _logger = logger;
-        _projectsViewModel = projectsViewModel;
+    public MainViewModel(IServiceProvider serviceProvider) {
+        _logger = serviceProvider.GetRequiredService<ILogger<MainViewModel>>();
+        _projectsViewModel = serviceProvider.GetRequiredService<ProjectsViewModel>();
 
         ProjectsTabContent = _projectsViewModel;
     }

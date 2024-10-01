@@ -1,29 +1,29 @@
 using Avalonia.Headless.NUnit;
 
-using ImeSense.GeneoGraph.Services;
+using ImeSense.GeneoGraph.Extensions;
 using ImeSense.GeneoGraph.ViewModels;
 using ImeSense.GeneoGraph.Views;
 
-using Microsoft.Extensions.Logging;
-
-using Moq;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ImeSense.GeneoGraph.Tests;
 
 public class MainWindowTests {
-    private Mock<ILogger<ProjectsViewModel>> _projectsLogger;
-    private Mock<ILogger<MainViewModel>> _mainLogger;
-    private Mock<IFilesService> _filesService;
     private ProjectsViewModel _projectsViewModel;
     private MainViewModel _mainViewModel;
 
     [SetUp]
     public void Initialize() {
-        _projectsLogger = new Mock<ILogger<ProjectsViewModel>>();
-        _mainLogger = new Mock<ILogger<MainViewModel>>();
-        _filesService = new Mock<IFilesService>();
-        _projectsViewModel = new ProjectsViewModel(_projectsLogger.Object, _filesService.Object);
-        _mainViewModel = new MainViewModel(_mainLogger.Object, _projectsViewModel);
+        var serviceProvider = new ServiceCollection()
+            .AddSingleton<MainWindow>()
+            .AddViews()
+            .AddViewModels()
+            .AddServices()
+            .AddLogging()
+            .BuildServiceProvider();
+
+        _projectsViewModel = new ProjectsViewModel(serviceProvider);
+        _mainViewModel = new MainViewModel(serviceProvider);
     }
 
     [AvaloniaTest]
