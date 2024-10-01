@@ -10,15 +10,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.11" Condition="'$(Configuration)' == 'Debug'" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.11" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+        <PackageReference Include="Avalonia" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" />
+        <PackageReference Include="Avalonia.Diagnostics" Condition="'$(Configuration)' == 'Debug'" />
+        <PackageReference Include="Avalonia.Fonts.Inter" />
+        <PackageReference Include="Avalonia.ReactiveUI" />
+        <PackageReference Include="Avalonia.Themes.Fluent" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="Microsoft.Extensions.Logging" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" />
     </ItemGroup>
 
     <ItemGroup>

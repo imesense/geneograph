@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.11" />
-        <PackageReference Include="Mapsui.Avalonia" Version="4.1.7" />
+        <PackageReference Include="Avalonia" />
+        <PackageReference Include="Mapsui.Avalonia" />
     </ItemGroup>
 </Project>

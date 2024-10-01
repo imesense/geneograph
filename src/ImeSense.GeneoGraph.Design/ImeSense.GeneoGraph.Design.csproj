@@ -18,15 +18,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.11" Condition="'$(Configuration)' == 'Debug'" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.11" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.11" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11" />
-        <PackageReference Include="Mapsui.Avalonia" Version="4.1.7" />
-        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
+        <PackageReference Include="Avalonia" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" />
+        <PackageReference Include="Avalonia.Desktop" />
+        <PackageReference Include="Avalonia.Diagnostics" Condition="'$(Configuration)' == 'Debug'" />
+        <PackageReference Include="Avalonia.Fonts.Inter" />
+        <PackageReference Include="Avalonia.ReactiveUI" />
+        <PackageReference Include="Avalonia.Themes.Fluent" />
+        <PackageReference Include="Mapsui.Avalonia" />
+        <PackageReference Include="ReactiveUI.Fody" />
     </ItemGroup>
 
     <ItemGroup>
