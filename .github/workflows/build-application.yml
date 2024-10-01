@@ -46,7 +46,7 @@ jobs:
     runs-on: ${{ matrix.system }}
 
     env:
-      Solution: GeneoGraph.sln
+      Solution: GeneoGraph.Common.slnf
 
     steps:
       - name: Checkout
@@ -60,11 +60,6 @@ jobs:
           dotnet-version: |
             6.0.x
             8.0.x
-
-      - name: Setup workloads
-        run: |
-          dotnet workload install `
-            wasm-tools
 
       - name: Cache packages
         uses: actions/cache@v4
@@ -111,7 +106,7 @@ jobs:
     runs-on: ${{ matrix.system }}
 
     env:
-      Solution: GeneoGraph.sln
+      Solution: GeneoGraph.Common.slnf
 
     steps:
       - name: Checkout
