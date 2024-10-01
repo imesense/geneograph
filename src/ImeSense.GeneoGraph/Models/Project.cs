@@ -5,7 +5,8 @@ namespace ImeSense.GeneoGraph.Models;
 /// <summary>
 /// Represents project fields for file serialization and deserialization
 /// </summary>
-public sealed class Project {
+public sealed class Project
+{
     /// <summary>
     /// Name of project
     /// </summary>

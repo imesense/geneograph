@@ -6,8 +6,10 @@ using ImeSense.GeneoGraph.ViewModels;
 
 namespace ImeSense.GeneoGraph.Services;
 
-public class FilesService : IFilesService {
-    private static FilePickerFileType ProjectsFilePickerFileType { get; } = new("GeneoGraph Projects") {
+public class FilesService : IFilesService
+{
+    private static FilePickerFileType ProjectsFilePickerFileType { get; } = new("GeneoGraph Projects")
+    {
         Patterns = new[] {
             "*.ggph",
             "*.json",
@@ -20,9 +22,11 @@ public class FilesService : IFilesService {
         },
     };
 
-    public async Task<IStorageFile?> OpenFileAsync() {
+    public async Task<IStorageFile?> OpenFileAsync()
+    {
         var files = await StorageLocator.StorageProvider
-            .OpenFilePickerAsync(new FilePickerOpenOptions() {
+            .OpenFilePickerAsync(new FilePickerOpenOptions()
+            {
                 Title = "Open file",
                 AllowMultiple = false,
                 FileTypeFilter = new[] {
@@ -34,9 +38,11 @@ public class FilesService : IFilesService {
             : null;
     }
 
-    public async Task<IStorageFile?> SaveFileAsync() {
+    public async Task<IStorageFile?> SaveFileAsync()
+    {
         return await StorageLocator.StorageProvider
-            .SaveFilePickerAsync(new FilePickerSaveOptions() {
+            .SaveFilePickerAsync(new FilePickerSaveOptions()
+            {
                 Title = "Save file",
                 DefaultExtension = "ggph",
                 FileTypeChoices = new[] {

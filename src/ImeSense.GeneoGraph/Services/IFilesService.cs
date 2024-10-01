@@ -4,7 +4,8 @@ using Avalonia.Platform.Storage;
 
 namespace ImeSense.GeneoGraph.Services;
 
-public interface IFilesService {
+public interface IFilesService
+{
     public Task<IStorageFile?> OpenFileAsync();
     public Task<IStorageFile?> SaveFileAsync();
 }

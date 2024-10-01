@@ -6,7 +6,6 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 using ImeSense.GeneoGraph.Extensions;
-using ImeSense.GeneoGraph.Services;
 using ImeSense.GeneoGraph.ViewModels;
 using ImeSense.GeneoGraph.Views;
 
@@ -15,19 +14,25 @@ using Microsoft.Extensions.Logging;
 
 namespace ImeSense.GeneoGraph;
 
-public partial class App : Application {
+public partial class App : Application
+{
     private IServiceProvider _serviceProvider = null!;
 
-    public override void Initialize() =>
+    public override void Initialize()
+    {
         AvaloniaXamlLoader.Load(this);
+    }
 
-    public override void OnFrameworkInitializationCompleted() {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
+    public override void OnFrameworkInitializationCompleted()
+    {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
             _serviceProvider = new ServiceCollection()
                 .AddSingleton<MainWindow>()
                 .AddViews()
                 .AddViewModels()
                 .AddServices()
+                .AddManagers()
                 .AddLogging(builder => builder.AddConsole())
                 .BuildServiceProvider();
 
@@ -38,11 +43,14 @@ public partial class App : Application {
             desktop.MainWindow = mainWindow;
 
             StorageLocator.StorageProvider = mainWindow.StorageProvider;
-        } else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform) {
+        }
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
+        {
             _serviceProvider = new ServiceCollection()
                 .AddViews()
                 .AddViewModels()
                 .AddServices()
+                .AddManagers()
                 .AddLogging()
                 .BuildServiceProvider();
 

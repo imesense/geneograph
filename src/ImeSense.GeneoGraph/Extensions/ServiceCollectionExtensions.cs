@@ -1,3 +1,4 @@
+using ImeSense.GeneoGraph.Managers;
 using ImeSense.GeneoGraph.Services;
 using ImeSense.GeneoGraph.ViewModels;
 using ImeSense.GeneoGraph.Views;
@@ -6,8 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ImeSense.GeneoGraph.Extensions;
 
-internal static class ServiceCollectionExtensions {
-    public static IServiceCollection AddViews(this IServiceCollection serviceCollection) {
+internal static class ServiceCollectionExtensions
+{
+    public static IServiceCollection AddViews(this IServiceCollection serviceCollection)
+    {
         serviceCollection.AddSingleton<MainView>();
 
         serviceCollection.AddSingleton<ProjectsView>();
@@ -15,7 +18,8 @@ internal static class ServiceCollectionExtensions {
         return serviceCollection;
     }
 
-    public static IServiceCollection AddViewModels(this IServiceCollection serviceCollection) {
+    public static IServiceCollection AddViewModels(this IServiceCollection serviceCollection)
+    {
         serviceCollection.AddSingleton<MainViewModel>();
 
         serviceCollection.AddSingleton<ProjectsViewModel>();
@@ -23,8 +27,16 @@ internal static class ServiceCollectionExtensions {
         return serviceCollection;
     }
 
-    public static IServiceCollection AddServices(this IServiceCollection serviceCollection) {
+    public static IServiceCollection AddServices(this IServiceCollection serviceCollection)
+    {
         serviceCollection.AddTransient<IFilesService, FilesService>();
+
+        return serviceCollection;
+    }
+
+    public static IServiceCollection AddManagers(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddSingleton<IProjectManager, ProjectManager>();
 
         return serviceCollection;
     }
