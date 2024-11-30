@@ -13,5 +13,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj" />
+        <ProjectReference Include="..\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj" />
     </ItemGroup>
 </Project>

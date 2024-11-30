@@ -246,21 +246,42 @@
         </Border>
     </Design.PreviewWith>
 
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="Transparent.Brushes.100" Color="{StaticResource Monochrome.Colors.Black}" Opacity="1.0" />
+            <SolidColorBrush x:Key="Transparent.Brushes.90" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.9" />
+            <SolidColorBrush x:Key="Transparent.Brushes.80" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.8" />
+            <SolidColorBrush x:Key="Transparent.Brushes.70" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.7" />
+            <SolidColorBrush x:Key="Transparent.Brushes.60" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.6" />
+            <SolidColorBrush x:Key="Transparent.Brushes.50" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.5" />
+            <SolidColorBrush x:Key="Transparent.Brushes.40" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.4" />
+            <SolidColorBrush x:Key="Transparent.Brushes.30" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.3" />
+            <SolidColorBrush x:Key="Transparent.Brushes.20" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.2" />
+            <SolidColorBrush x:Key="Transparent.Brushes.10" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.1" />
+
+            <SolidColorBrush x:Key="Transparent.Brushes.75" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.75" />
+            <SolidColorBrush x:Key="Transparent.Brushes.25" Color="{StaticResource Monochrome.Colors.Black}" Opacity="0.25" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="Transparent.Brushes.100" Color="{StaticResource Monochrome.Colors.White}" Opacity="1.0" />
+            <SolidColorBrush x:Key="Transparent.Brushes.90" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.9" />
+            <SolidColorBrush x:Key="Transparent.Brushes.80" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.8" />
+            <SolidColorBrush x:Key="Transparent.Brushes.70" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.7" />
+            <SolidColorBrush x:Key="Transparent.Brushes.60" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.6" />
+            <SolidColorBrush x:Key="Transparent.Brushes.50" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.5" />
+            <SolidColorBrush x:Key="Transparent.Brushes.40" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.4" />
+            <SolidColorBrush x:Key="Transparent.Brushes.30" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.3" />
+            <SolidColorBrush x:Key="Transparent.Brushes.20" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.2" />
+            <SolidColorBrush x:Key="Transparent.Brushes.10" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.1" />
+
+            <SolidColorBrush x:Key="Transparent.Brushes.75" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.75" />
+            <SolidColorBrush x:Key="Transparent.Brushes.25" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.25" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <Color x:Key="Monochrome.Colors.Black">#000000</Color>
     <Color x:Key="Monochrome.Colors.White">#FFFFFF</Color>
-
-    <SolidColorBrush x:Key="Transparent.Brushes.100" Color="{StaticResource Monochrome.Colors.White}" Opacity="1.0" />
-    <SolidColorBrush x:Key="Transparent.Brushes.90" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.9" />
-    <SolidColorBrush x:Key="Transparent.Brushes.80" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.8" />
-    <SolidColorBrush x:Key="Transparent.Brushes.70" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.7" />
-    <SolidColorBrush x:Key="Transparent.Brushes.60" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.6" />
-    <SolidColorBrush x:Key="Transparent.Brushes.50" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.5" />
-    <SolidColorBrush x:Key="Transparent.Brushes.40" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.4" />
-    <SolidColorBrush x:Key="Transparent.Brushes.30" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.3" />
-    <SolidColorBrush x:Key="Transparent.Brushes.20" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.2" />
-    <SolidColorBrush x:Key="Transparent.Brushes.10" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.1" />
-
-    <SolidColorBrush x:Key="Transparent.Brushes.75" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.75" />
-    <SolidColorBrush x:Key="Transparent.Brushes.25" Color="{StaticResource Monochrome.Colors.White}" Opacity="0.25" />
 
     <Color x:Key="Background.Colors.Main">#121212</Color>
     <Color x:Key="Background.Colors.Bar1">#1A1A1A</Color>
