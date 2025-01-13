@@ -3,6 +3,7 @@
         <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
         <OutputType>WinExe</OutputType>
         <Nullable>enable</Nullable>
+
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
