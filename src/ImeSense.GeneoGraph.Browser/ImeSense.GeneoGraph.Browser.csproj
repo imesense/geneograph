@@ -3,6 +3,7 @@
         <TargetFrameworks>net8.0-browser</TargetFrameworks>
         <OutputType>Exe</OutputType>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 
     <ItemGroup>
