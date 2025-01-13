@@ -1,14 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
     <PropertyGroup>
         <TargetFrameworks>net8.0-browser</TargetFrameworks>
         <OutputType>Exe</OutputType>
-        <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
-        <WasmMainJSPath>AppBundle\main.js</WasmMainJSPath>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
-
-    <ItemGroup>
-        <WasmExtraFilesToDeploy Include="AppBundle\**" />
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Browser" />
