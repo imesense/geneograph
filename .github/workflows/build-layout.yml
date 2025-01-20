@@ -46,7 +46,7 @@ jobs:
     runs-on: ${{ matrix.system }}
 
     env:
-      Solution: GeneoGraph.Layout.sln
+      Solution: GeneoGraph.Layout.slnf
 
     steps:
       - name: Checkout
