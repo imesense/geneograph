@@ -1,0 +1,552 @@
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Layout.Views.FilesView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:ImeSense.GeneoGraph.Layout.ViewModels"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#121212"
+    FontFamily="Inter"
+    Foreground="#dedede"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:FilesViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <StreamGeometry x:Key="Shevron">
+            M6.5 6L0.00480895 -2.69824e-07L12.9952 8.65831e-07L6.5 6Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Star">
+            M15.8967 2.07654L18.928 8.21853C19.365 9.10396 20.2097 9.71767 21.1868 9.85965L27.9649 10.8446C28.7851 10.9638 29.1126 11.9717 28.5191 12.5503L23.6144 17.3311C22.9074 18.0203 22.5847 19.0133 22.7516 19.9865L23.9095 26.7372C24.0496 27.5541 23.1922 28.1771 22.4585 27.7914L16.396 24.6042C15.5221 24.1447 14.4779 24.1447 13.604 24.6042L7.54147 27.7914C6.80784 28.1771 5.95041 27.5541 6.09052 26.7372L7.24836 19.9865C7.41527 19.0133 7.09262 18.0203 6.38557 17.3311L1.48089 12.5503C0.887377 11.9717 1.21488 10.9638 2.03511 10.8446L8.8132 9.85965C9.79033 9.71767 10.635 9.10396 11.072 8.21853L14.1033 2.07654C14.4701 1.33329 15.5299 1.33329 15.8967 2.07654Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="StarEmpty">
+            M11.4434703,19.4783366 L7.11534027,21.8561884 C6.53071469,22.1773786 5.80762087,21.9424899 5.50026501,21.3315498 C5.3778743,21.0882703 5.3356403,20.8096129 5.38010133,20.5387172 L6.2067006,15.5023462 C6.27323987,15.0969303 6.14461904,14.6832584 5.86275418,14.3961413 L2.36122346,10.8293635 C1.88825143,10.3475782 1.87857357,9.55633639 2.33960735,9.06207547 C2.52319342,8.86525818 2.76374635,8.73717345 3.02402575,8.69765029 L7.8630222,7.96285367 C8.25254987,7.90370429 8.58928356,7.64804097 8.76348563,7.27918144 L10.9275506,2.69693973 C11.2198634,2.07798981 11.936976,1.82386417 12.5292664,2.12933421 C12.7651196,2.25097399 12.9560234,2.45047063 13.0724239,2.69693973 L15.2364889,7.27918144 C15.410691,7.64804097 15.7474247,7.90370429 16.1369524,7.96285367 L20.9759488,8.69765029 C21.6295801,8.79690353 22.0824579,9.43108706 21.9874797,10.1141388 C21.9496589,10.3861337 21.827091,10.6375141 21.6387511,10.8293635 L18.1372204,14.3961413 C17.8553555,14.6832584 17.7267347,15.0969303 17.793274,15.5023462 L18.6198732,20.5387172 C18.7315268,21.219009 18.2943081,21.8650816 17.6433179,21.9817608 C17.3840902,22.028223 17.1174353,21.984088 16.8846343,21.8561884 L12.5565043,19.4783366 C12.2081001,19.2869252 11.7918744,19.2869252 11.4434703,19.4783366 Z M10.4804474,17.7254569 C11.4285912,17.2045517 12.5713833,17.2045517 13.5195271,17.7254569 L16.3902376,19.3026102 L15.819679,15.8262644 C15.6504974,14.7954609 15.9786587,13.7400243 16.7100131,12.9950419 L19.2066263,10.4519072 L15.8366964,9.9401868 C14.7818036,9.78000242 13.8837002,9.09812209 13.4280265,8.13326784 L11.9999873,5.10950433 L10.5719481,8.13326784 C10.1162743,9.09812209 9.21817098,9.78000242 8.1632782,9.9401868 L4.79334826,10.4519072 L7.28996143,12.9950419 C8.02131584,13.7400243 8.34947716,14.7954609 8.18029555,15.8262644 L7.60973692,19.3026102 L10.4804474,17.7254569 Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Home">
+            M21.71,11.29l-9-9a1,1,0,0,0-1.42,0l-9,9a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,13H4v7.3A1.77,1.77,0,0,0,5.83,22H8.5a1,1,0,0,0,1-1V16.1a1,1,0,0,1,1-1h3a1,1,0,0,1,1,1V21a1,1,0,0,0,1,1h2.67A1.77,1.77,0,0,0,20,20.3V13h1a1,1,0,0,0,.92-.62A1,1,0,0,0,21.71,11.29Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Recent">
+            M9.682,18.75a.75.75,0,0,1,.75-.75,8.25,8.25,0,1,0-6.189-2.795V12.568a.75.75,0,0,1,1.5,0v4.243a.75.75,0,0,1-.751.75H.75a.75.75,0,0,1,0-1.5H3a9.75,9.75,0,1,1,7.433,3.44A.75.75,0,0,1,9.682,18.75Zm2.875-4.814L9.9,11.281a.754.754,0,0,1-.22-.531V5.55a.75.75,0,1,1,1.5,0v4.889l2.436,2.436a.75.75,0,1,1-1.061,1.06Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Source">
+            M702.537143 218.477714c31.085714-10.825143 55.003429-23.113143 69.924571-35.328 10.24-8.338286 13.458286-13.824 13.458286-16.018285s-3.218286-7.68-13.458286-16.091429c-14.921143-12.141714-38.765714-24.429714-69.924571-35.254857C634.368 92.16 540.013714 78.336 438.857143 78.336s-195.510857 13.897143-263.68 37.449143c-31.085714 10.825143-55.003429 23.113143-69.924572 35.328-10.24 8.338286-13.458286 13.750857-13.458285 16.018286 0 2.194286 3.218286 7.68 13.458285 16.091428 14.921143 12.141714 38.765714 24.429714 69.924572 35.254857 68.169143 23.625143 162.523429 37.449143 263.68 37.449143s195.510857-13.897143 263.68-37.449143zM69.485714 464.749714v128.804572c37.961143 40.009143 140.068571 88.722286 264.777143 103.277714 182.857143 21.284571 355.986286-18.651429 473.526857-98.304l0.438857-131.657143C683.008 540.525714 506.733714 571.465143 328.484571 550.619429c-110.372571-12.8-204.361143-46.08-259.072-85.869715z m0-80.457143c38.034286 39.936 140.068571 88.649143 264.777143 103.131429 183.222857 21.357714 356.717714-18.724571 474.258286-98.742857l0.512-145.993143C734.208 286.573714 596.48 315.977143 438.857143 315.977143c-156.964571 0-294.253714-29.257143-369.152-72.777143A132116.333714 132116.333714 0 0 0 69.485714 384.219429z m0.146286 289.865143l0.292571 108.105143-1.097142-7.460571c22.381714 74.020571 165.302857 133.485714 378.148571 133.485714 115.931429 0 206.774857-17.554286 276.626286-52.077714 19.602286-9.728 34.523429-17.92 49.152-28.598857 9.728-7.094857 16.091429-11.410286 26.550857-20.626286 10.825143-9.581714 27.501714-7.241143 37.156571 3.657143 9.581714 10.752 10.825143 28.306286 0 37.961143-11.702857 10.24-17.188571 14.848-28.598857 23.186285-17.042286 12.434286-36.425143 25.380571-58.806857 36.498286-77.092571 38.107429-155.648 60.854857-302.08 60.854857-243.931429 0-405.211429-77.165714-436.077714-179.2l-1.097143-3.657143v-3.803428L9.362286 628.077714a116682.532571 116682.532571 0 0 1 0.365714-455.68 52.662857 52.662857 0 0 1-0.292571-5.266285C9.508571 84.918857 201.728 18.285714 438.857143 18.285714c237.129143 0 429.348571 66.633143 429.348571 148.845715a53.028571 53.028571 0 0 1-0.804571 9.581714 23.405714 23.405714 0 0 1 1.024 7.094857l-1.682286 520.411429c-0.073143 14.482286-13.385143 26.185143-29.769143 26.112-16.384 0-29.622857-11.776-29.549714-26.331429v-27.355429c-125.074286 73.216-301.056 104.082286-478.939429 83.382858-110.226286-12.873143-204.214857-46.08-258.925714-85.869715z m668.525714-290.962285a25.746286 25.746286 0 0 1-25.965714-25.453715c0-14.043429 11.702857-25.380571 26.038857-25.380571 14.336 0 26.038857 11.337143 26.038857 25.380571 0 14.116571-11.702857 25.453714-26.038857 25.453715z m0 209.408a25.746286 25.746286 0 0 1-25.965714-25.453715c0-14.043429 11.702857-25.453714 26.038857-25.453714 14.336 0 26.038857 11.410286 26.038857 25.453714 0 14.043429-11.702857 25.453714-26.038857 25.453715z m0 212.114285a25.746286 25.746286 0 0 1-25.965714-25.526857c0-14.043429 11.702857-25.453714 26.038857-25.453714 14.336 0 26.038857 11.410286 26.038857 25.453714 0 14.043429-11.702857 25.453714-26.038857 25.453714z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Delete">
+            M19.5,16 C22.5375661,16 25,18.4624339 25,21.5 C25,24.5375661 22.5375661,27 19.5,27 C16.4624339,27 14,24.5375661 14,21.5 C14,18.4624339 16.4624339,16 19.5,16 Z M14,2 C16.1421954,2 17.8910789,3.68396847 17.9951047,5.80035966 L18,6 L23,6 C23.5522847,6 24,6.44771525 24,7 C24,7.51283584 23.6139598,7.93550716 23.1166211,7.99327227 L23,8 L22.151,8 L21.5567191,15.3321126 C20.910333,15.1166725 20.2187917,15 19.5,15 C15.9101491,15 13,17.9101491 13,21.5 C13,23.2469007 13.6891263,24.8328473 14.8103588,26.0008195 L10.7666018,26 C8.81304683,26 7.18674613,24.5002245 7.02886788,22.5530595 L5.848,8 L5,8 C4.48716416,8 4.06449284,7.61395981 4.00672773,7.11662113 L4,7 C4,6.48716416 4.38604019,6.06449284 4.88337887,6.00672773 L5,6 L10,6 C10,3.790861 11.790861,2 14,2 Z M17.7309061,19.0241379 L17.6616582,18.9662824 C17.4911486,18.8481609 17.2635568,18.8481609 17.0930472,18.9662824 L17.0237993,19.0241379 L16.9659438,19.0933858 C16.8478223,19.2638954 16.8478223,19.4914871 16.9659438,19.6619968 L17.0237993,19.7312446 L18.7933527,21.5006913 L17.0263884,23.2674911 L16.968533,23.3367389 C16.8504114,23.5072486 16.8504114,23.7348403 16.968533,23.9053499 L17.0263884,23.9745978 L17.0956363,24.0324533 C17.2661459,24.1505748 17.4937377,24.1505748 17.6642473,24.0324533 L17.7334952,23.9745978 L19.5003527,22.2076913 L21.2693951,23.9768405 L21.338643,24.0346959 C21.5091526,24.1528175 21.7367444,24.1528175 21.907254,24.0346959 L21.9765019,23.9768405 L22.0343574,23.9075926 C22.1524789,23.737083 22.1524789,23.5094912 22.0343574,23.3389816 L21.9765019,23.2697337 L20.2073527,21.5006913 L21.9792686,19.7312918 L22.0371241,19.6620439 C22.1552456,19.4915343 22.1552456,19.2639425 22.0371241,19.0934329 L21.9792686,19.024185 L21.9100208,18.9663296 C21.7395111,18.848208 21.5119194,18.848208 21.3414098,18.9663296 L21.2721619,19.024185 L19.5003527,20.7936913 L17.7309061,19.0241379 L17.6616582,18.9662824 L17.7309061,19.0241379 Z M14,4 C12.9456382,4 12.0818349,4.81587779 12.0054857,5.85073766 L12,6 L16,6 L15.9945143,5.85073766 C15.9181651,4.81587779 15.0543618,4 14,4 Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Sort">
+            M7.00002 5C7.00002 4.44772 6.5523 4 6.00002 4C5.44773 4 5.00002 4.44772 5.00002 5V16.5858L3.7071 15.2929C3.31658 14.9024 2.68341 14.9024 2.29289 15.2929C1.90237 15.6834 1.90237 16.3166 2.2929 16.7071L5.29291 19.7071C5.48045 19.8946 5.73481 20 6.00002 20C6.26524 20 6.51959 19.8946 6.70713 19.7071L9.70711 16.7071C10.0976 16.3166 10.0976 15.6834 9.7071 15.2929C9.31658 14.9024 8.68341 14.9024 8.29289 15.2929L7.00002 16.5858V5ZM13 6C12.4477 6 12 6.44772 12 7C12 7.55228 12.4477 8 13 8H21C21.5523 8 22 7.55228 22 7C22 6.44772 21.5523 6 21 6H13ZM13 11C12.4477 11 12 11.4477 12 12C12 12.5523 12.4477 13 13 13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13ZM13 16C12.4477 16 12 16.4477 12 17C12 17.5523 12.4477 18 13 18H14C14.5523 18 15 17.5523 15 17C15 16.4477 14.5523 16 14 16H13Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="Plus">
+            M960 448H576V64a64 64 0 0 0-128 0v384H64a64 64 0 0 0 0 128h384v384a64 64 0 0 0 128 0V576h384a64 64 0 0 0 0-128z
+        </StreamGeometry>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
+        </Style>
+
+        <Style Selector="ToggleButton">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="100,0,0,0" />
+            <Setter Property="Margin" Value="0,30,0,0" />
+            <Setter Property="FlowDirection" Value="RightToLeft" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+
+        <Style Selector="ToggleButton:pointerover /template/ Border#ToggleButtonBackground">
+            <Setter Property="Background" Value="#272727" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ Border#ExpandCollapseChevronBorder">
+            <Setter Property="Background" Value="#272727" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ Path#ExpandCollapseChevron">
+            <Setter Property="Stroke" Value="White" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid
+        ColumnDefinitions="270,*,Auto"
+        RowDefinitions="110,*"
+        ShowGridLines="False">
+
+        <!-- Left bar -->
+        <Border
+            Grid.RowSpan="2"
+            Background="#1a1a1a" />
+        <Button
+            x:Name="Createnew"
+            Command=""
+            Width="200"
+            Height="50"
+            HorizontalAlignment="Center"
+            Background="#9dce8e"
+            CornerRadius="25"
+            Foreground="#121212">
+            <Label
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold">
+                Add File
+            </Label>
+        </Button>
+
+        <Border
+            Height="1"
+            VerticalAlignment="Bottom"
+            Background="#2f2f2f" />
+
+        <!-- Central part -->
+
+        <Border
+            Grid.Column="1"
+            Height="1"
+            Margin="20,0,20,0"
+            VerticalAlignment="Bottom"
+            Background="#2f2f2f" />
+
+        <StackPanel
+            Grid.Column="1"
+            Margin="30,25,30,0"
+            Orientation="Vertical">
+            <Label
+                Content="All Files"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" />
+            <Label
+                Content="n files"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="Regular" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Column="1"
+            Margin="0,0,35,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                Width="48"
+                Height="48"
+                Margin="20"
+                Background="Transparent">
+                <PathIcon
+                    Data="{DynamicResource Sort}"
+                    Width="32"
+                    Height="32"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Center"
+                    Foreground="#dedede" />
+            </Button>
+
+            <TextBox
+                Width="200"
+                Height="40"
+                VerticalContentAlignment="Center"
+                Background="#1e1e1e"
+                BorderBrush="#777777"
+                CornerRadius="25"
+                Watermark="Find..." />
+        </StackPanel>
+
+        <!-- Right part -->
+        <DockPanel
+            Grid.Column="2"
+            Grid.RowSpan="2"
+            Width="900"
+            IsVisible="{Binding RightDockVisibility, Mode=TwoWay}">
+            <Grid
+                Grid.Column="2"
+                Grid.RowSpan="2"
+                Background="#161616"
+                RowDefinitions="110,Auto,*,Auto,Auto"
+                ShowGridLines="False">
+
+                <!-- Toolbar -->
+                <Grid>
+                    <ComboBox
+                        Width="140"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        ItemsSource=""
+                        SelectedIndex="1"
+                        SelectedItem="">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text=""
+                                    HorizontalAlignment="Stretch"
+                                    FontSize="18"
+                                    FontWeight="Medium"
+                                    TextTrimming="CharacterEllipsis" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <StackPanel
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Command=""
+                            Width="48"
+                            Height="48"
+                            Margin="20,0,20,0"
+                            Background="Transparent">
+                            <PathIcon
+                                Data="{DynamicResource Star}"
+                                Width="32"
+                                Height="32"
+                                Margin="0,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="#dedede" />
+                        </Button>
+
+                        <Border
+                            Width="1"
+                            Height="40"
+                            Background="#2F2F2F" />
+                        <Button
+                            Command=""
+                            Width="48"
+                            Height="48"
+                            Margin="20,0,25,0"
+                            Background="Transparent">
+                            <PathIcon
+                                Data="{DynamicResource Delete}"
+                                Width="32"
+                                Height="32"
+                                Margin="0,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="#dedede" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+
+                <Border
+                    Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="#2f2f2f" />
+
+                <!-- Photo area -->
+                <Label
+                    Grid.Row="1"
+                    Margin="20,30,0,0"
+                    FontSize="18"
+                    FontWeight="Regular">
+                    Lorem ipsum dolor sit amet photo name.jpg
+                </Label>
+                <Border
+                    Grid.Row="2"
+                    Margin="20">
+                    <Image
+                        Source="..\Assets\Profile\Profile_picture.png"
+                        Stretch="Uniform" />
+                </Border>
+                <!-- Information section -->
+                <Grid
+                    Grid.Row="3"
+                    Margin="0,30,0,10"
+                    RowDefinitions="Auto,Auto,Auto">
+                    <Button
+                        Command=""
+                        Background="Transparent">
+                        <StackPanel
+                            Margin="20,0,0,0"
+                            Orientation="Horizontal">
+                            <PathIcon
+                                Data="{DynamicResource Shevron}"
+                                Width="16"
+                                Height="8"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                Foreground="#dedede"
+                                RenderTransform="{Binding ShevronInfoRotation}" />
+                            <Label
+                                Padding="5,5,1000,5"
+                                FontSize="20"
+                                FontWeight="SemiBold">
+                                Information
+                            </Label>
+                        </StackPanel>
+                    </Button>
+
+                    <Border
+                        Grid.Row="1"
+                        Height="1"
+                        Background="#2F2F2F" />
+
+                    <DockPanel
+                        Grid.Row="2"
+                        Margin="20"
+                        IsVisible="{Binding InfoOpen}">
+                        <Grid
+                            HorizontalAlignment="Stretch"
+                            ColumnDefinitions="*,*"
+                            RowDefinitions="*,*"
+                            ShowGridLines="False">
+                            <CalendarDatePicker
+                                Text=""
+                                Height="40"
+                                Margin="0,0,15,0"
+                                HorizontalAlignment="Stretch"
+                                Background="#1e1e1e"
+                                BorderBrush="#777777"
+                                CornerRadius="15" />
+                            <TextBox
+                                Grid.Column="1"
+                                Height="40"
+                                Margin="0,0,15,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalContentAlignment="Center"
+                                Background="#1e1e1e"
+                                BorderBrush="#777777"
+                                CornerRadius="15"
+                                Watermark="Source:" />
+                            <TextBox
+                                Grid.Row="1"
+                                Text=""
+                                Height="80"
+                                Margin="0,25,15,0"
+                                VerticalContentAlignment="Top"
+                                Background="#1e1e1e"
+                                BorderBrush="#777777"
+                                CornerRadius="15"
+                                TextWrapping="Wrap"
+                                Watermark="Place:" />
+                            <TextBox
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Text=""
+                                Height="80"
+                                Margin="0,25,15,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalContentAlignment="Top"
+                                Background="#1e1e1e"
+                                BorderBrush="#777777"
+                                CornerRadius="15"
+                                TextWrapping="Wrap"
+                                Watermark="Notes:" />
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+
+                <!-- Connections section -->
+                <Grid
+                    Grid.Row="4"
+                    Margin="0,30,0,10"
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="Auto,Auto,Auto">
+                    <Button
+                        Command=""
+                        Background="Transparent">
+                        <StackPanel
+                            Margin="20,0,0,0"
+                            Orientation="Horizontal">
+                            <PathIcon
+                                Data="{DynamicResource Shevron}"
+                                Width="16"
+                                Height="8"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                Foreground="#dedede"
+                                RenderTransform="{Binding ShevronConnectionsRotation}" />
+                            <Label
+                                Padding="5,5,1000,5"
+                                FontSize="20"
+                                FontWeight="SemiBold">
+                                Connections
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Grid.Column="1"
+                        Width="35"
+                        Height="35"
+                        Margin="20,0,30,0"
+                        Background="Transparent"
+                        CornerRadius="32">
+                        <Image
+                            Source="..\..\Assets\Buttons\unlink.png"
+                            Stretch="Uniform" />
+                    </Button>
+
+                    <Border
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Height="1"
+                        Background="#2F2F2F" />
+
+                    <DockPanel
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Margin="20"
+                        IsVisible="" />
+                </Grid>
+            </Grid>
+        </DockPanel>
+
+        <StackPanel Grid.Row="1">
+            <Button
+                Margin="20,30,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <PathIcon
+                        Data="{DynamicResource Home}"
+                        Width="32"
+                        Height="32"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Center"
+                        Foreground="#dedede" />
+                    <Label
+                        Content="All Files"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                Margin="20,20,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <PathIcon
+                        Data="{DynamicResource Recent}"
+                        Width="32"
+                        Height="32"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Center"
+                        Foreground="#dedede" />
+                    <Label
+                        Content="Recent"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                Command=""
+                Margin="20,20,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <PathIcon
+                        Data="{DynamicResource Star}"
+                        Width="32"
+                        Height="32"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Center"
+                        Foreground="#dedede" />
+                    <Label
+                        Content="Favorites"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                Margin="20,20,20,30"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <PathIcon
+                        Data="{DynamicResource Source}"
+                        Width="32"
+                        Height="32"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Center"
+                        Foreground="#dedede" />
+                    <Label
+                        Content="Sources"
+                        Margin="15,0,0,0"
+                        Padding="0,5,0,5"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Button>
+
+            <Border
+                Height="1"
+                VerticalAlignment="Bottom"
+                Background="#2f2f2f" />
+
+            <Grid
+                Margin="0,30,0,10"
+                ColumnDefinitions="*,Auto">
+                <Button
+                    Command=""
+                    Background="Transparent">
+                    <StackPanel
+                        Margin="20,0,0,0"
+                        Orientation="Horizontal">
+                        <PathIcon
+                            Data="{DynamicResource Shevron}"
+                            Width="16"
+                            Height="8"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"
+                            Foreground="#dedede"
+                            RenderTransform="{Binding ShevronAlbumsRotation}" />
+                        <Label
+                            Padding="5,5,200,5"
+                            FontSize="20"
+                            FontWeight="SemiBold">
+                            Files
+                        </Label>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Grid.Column="2"
+                    Command=""
+                    Width="35"
+                    Height="35"
+                    Margin="20,0,5,0"
+                    Background="Transparent"
+                    CornerRadius="32">
+                    <PathIcon
+                        Data="{DynamicResource Plus}"
+                        Width="16"
+                        Height="16"
+                        Foreground="#dedede" />
+                </Button>
+            </Grid>
+
+        </StackPanel>
+
+
+    </Grid>
+
+</UserControl>

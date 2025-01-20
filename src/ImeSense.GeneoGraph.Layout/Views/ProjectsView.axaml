@@ -1,0 +1,206 @@
+<UserControl
+    x:Class="ImeSense.GeneoGraph.Layout.Views.ProjectsView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#121212"
+    FontFamily="Inter"
+    Foreground="#dedede"
+    mc:Ignorable="d">
+    
+    <UserControl.Styles>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style Selector="Button#Createnew:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
+        </Style>
+        <Style Selector="Button#Open:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#BFF0B1" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#121212" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid
+        ColumnDefinitions="Auto, *, *"
+        RowDefinitions="80, 80, *"
+        ShowGridLines="false">
+
+        <!--Left toolbar-->
+        <Border
+            Grid.RowSpan="3"
+            Background="#1A1A1A" />
+
+        <Label
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontFamily="Inter"
+            FontSize="24"
+            FontWeight="SemiBold">
+            GeneoGraph
+        </Label>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="35,0,35,0">
+            <Button
+                x:Name="Createnew"
+                Width="200"
+                Height="50"
+                HorizontalAlignment="Center"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold">
+                    Create new
+                </Label>
+            </Button>
+
+            <Button
+                x:Name="Open"
+                Width="150"
+                Height="50"
+                Margin="0,50,0,0"
+                HorizontalAlignment="Center"
+                Background="#9dce8e"
+                CornerRadius="25"
+                Foreground="#121212">
+                <Label
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold">
+                    Open
+                </Label>
+            </Button>
+        </StackPanel>
+
+        <!--Central part (recent)-->
+        <Label
+            Grid.Column="1"
+            Margin="120,0,0,0"
+            VerticalAlignment="Bottom"
+            FontSize="24"
+            FontWeight="SemiBold">
+            Recent
+        </Label>
+
+        <StackPanel
+                Grid.Column="1"
+                Grid.Row="2"
+                Margin="120,0,0,0"
+                Orientation="Horizontal">
+            <ListBox
+                Background="Transparent"
+                BorderBrush="Transparent"
+                ItemsSource="1234"
+                HorizontalAlignment="Left">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto, Auto">
+                            <Image
+                                Width="150"
+                                Height="150"
+                                Source="..\Assets\Recent.png" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Text="Projectname"
+                                Margin="0,5,0,0"
+                                FontSize="16"
+                                FontWeight="Regular"
+                                HorizontalAlignment="Center"
+                                TextTrimming="WordEllipsis" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="#666666" />
+                    </Style>
+                    <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+            
+            <ListBox
+                Background="Transparent"
+                BorderBrush="Transparent"
+                ItemsSource="1234"
+                HorizontalAlignment="Left"
+                Margin="70,0,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto, Auto">
+                            <Image
+                                Width="150"
+                                Height="150"
+                                Source="..\Assets\Recent.png" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Text="Projectname"
+                                Margin="0,5,0,0"
+                                FontSize="16"
+                                FontWeight="Regular"
+                                HorizontalAlignment="Center"
+                                TextTrimming="WordEllipsis" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="#666666" />
+                    </Style>
+                    <Style Selector="ListBoxItem:selected  /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+                      
+        </StackPanel>
+
+        <!--Right part-->
+        <Label
+            Grid.Column="2"
+            Margin="20,0,0,0"
+            VerticalAlignment="Bottom"
+            FontSize="24"
+            FontWeight="SemiBold">
+            Project settings
+        </Label>
+        
+        <StackPanel
+            Grid.Column="2"
+            Grid.Row="2"
+            Margin="30,0,0,0">
+            <Label
+                Margin="0,0,0,60"
+                FontSize="20"
+                FontWeight="SemiBold">
+                Project Name:
+            </Label>
+
+            <Label
+                FontSize="20"
+                FontWeight="SemiBold">
+                Location:
+            </Label>
+        </StackPanel>
+    </Grid>
+</UserControl>

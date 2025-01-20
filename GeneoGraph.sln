@@ -21,17 +21,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6774BEDE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{D89A7F88-2C37-4822-9E51-B434E712D937}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Design", "src\ImeSense.GeneoGraph.Design\ImeSense.GeneoGraph.Design.csproj", "{73B3A529-DA1F-4BCE-B918-848A26898E10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Layout", "src\ImeSense.GeneoGraph.Layout\ImeSense.GeneoGraph.Layout.csproj", "{73B3A529-DA1F-4BCE-B918-848A26898E10}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph", "src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj", "{0272B723-5128-4DE0-82AA-07C51B86F58D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Themes", "src\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj", "{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Windows", "src\ImeSense.GeneoGraph.Windows\ImeSense.GeneoGraph.Windows.csproj", "{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Desktop.Windows", "src\ImeSense.GeneoGraph.Desktop.Windows\ImeSense.GeneoGraph.Desktop.Windows.csproj", "{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Linux", "src\ImeSense.GeneoGraph.Linux\ImeSense.GeneoGraph.Linux.csproj", "{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Desktop.Linux", "src\ImeSense.GeneoGraph.Desktop.Linux\ImeSense.GeneoGraph.Desktop.Linux.csproj", "{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Browser", "src\ImeSense.GeneoGraph.Browser\ImeSense.GeneoGraph.Browser.csproj", "{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Web.WebAssembly", "src\ImeSense.GeneoGraph.Web.WebAssembly\ImeSense.GeneoGraph.Web.WebAssembly.csproj", "{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Tests", "test\ImeSense.GeneoGraph.Tests\ImeSense.GeneoGraph.Tests.csproj", "{D50ECC93-CF79-4D5A-996E-42070F69B9FE}"
 EndProject

@@ -164,7 +164,7 @@ jobs:
     runs-on: ${{ matrix.system }}
 
     env:
-      Project: src\ImeSense.GeneoGraph.Windows\ImeSense.GeneoGraph.Windows.csproj
+      Project: src\ImeSense.GeneoGraph.Desktop.Windows\ImeSense.GeneoGraph.Desktop.Windows.csproj
 
     steps:
       - name: Checkout
@@ -245,7 +245,7 @@ jobs:
     runs-on: ${{ matrix.system }}
 
     env:
-      Project: src/ImeSense.GeneoGraph.Linux/ImeSense.GeneoGraph.Linux.csproj
+      Project: src/ImeSense.GeneoGraph.Desktop.Linux/ImeSense.GeneoGraph.Desktop.Linux.csproj
 
     steps:
       - name: Checkout
