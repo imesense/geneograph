@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Windows", "src\ImeSense.GeneoGraph.Windows\ImeSense.GeneoGraph.Windows.csproj", "{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E40F277-C83D-4970-8823-A693E229D4D4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -19,21 +17,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Settings.XamlStyler = Settings.XamlStyler
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph", "src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj", "{A51A4007-FD61-442F-AA79-E126F17CE394}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Browser", "src\ImeSense.GeneoGraph.Browser\ImeSense.GeneoGraph.Browser.csproj", "{143E1605-CD5B-464B-A710-5F022C975501}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Linux", "src\ImeSense.GeneoGraph.Linux\ImeSense.GeneoGraph.Linux.csproj", "{7FA9E273-35C1-4214-8204-6331F85DE0D0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6774BEDE-1700-487D-8C06-90DD778759CB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Tests", "test\ImeSense.GeneoGraph.Tests\ImeSense.GeneoGraph.Tests.csproj", "{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImeSense.GeneoGraph.Themes", "src\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj", "{E6293961-C0B9-475C-A52F-319C8C333888}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{D89A7F88-2C37-4822-9E51-B434E712D937}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Design", "src\ImeSense.GeneoGraph.Design\ImeSense.GeneoGraph.Design.csproj", "{5CDD1E15-C684-407E-9AE6-EFE8DD28450D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Design", "src\ImeSense.GeneoGraph.Design\ImeSense.GeneoGraph.Design.csproj", "{73B3A529-DA1F-4BCE-B918-848A26898E10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph", "src\ImeSense.GeneoGraph\ImeSense.GeneoGraph.csproj", "{0272B723-5128-4DE0-82AA-07C51B86F58D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Themes", "src\ImeSense.GeneoGraph.Themes\ImeSense.GeneoGraph.Themes.csproj", "{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Windows", "src\ImeSense.GeneoGraph.Windows\ImeSense.GeneoGraph.Windows.csproj", "{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Linux", "src\ImeSense.GeneoGraph.Linux\ImeSense.GeneoGraph.Linux.csproj", "{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Browser", "src\ImeSense.GeneoGraph.Browser\ImeSense.GeneoGraph.Browser.csproj", "{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImeSense.GeneoGraph.Tests", "test\ImeSense.GeneoGraph.Tests\ImeSense.GeneoGraph.Tests.csproj", "{D50ECC93-CF79-4D5A-996E-42070F69B9FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,42 +41,42 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B72A3105-0983-4CC8-AEE3-F7BDE5E55767}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A51A4007-FD61-442F-AA79-E126F17CE394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A51A4007-FD61-442F-AA79-E126F17CE394}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A51A4007-FD61-442F-AA79-E126F17CE394}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A51A4007-FD61-442F-AA79-E126F17CE394}.Release|Any CPU.Build.0 = Release|Any CPU
-		{143E1605-CD5B-464B-A710-5F022C975501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{143E1605-CD5B-464B-A710-5F022C975501}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{143E1605-CD5B-464B-A710-5F022C975501}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{143E1605-CD5B-464B-A710-5F022C975501}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FA9E273-35C1-4214-8204-6331F85DE0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FA9E273-35C1-4214-8204-6331F85DE0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FA9E273-35C1-4214-8204-6331F85DE0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FA9E273-35C1-4214-8204-6331F85DE0D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6293961-C0B9-475C-A52F-319C8C333888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6293961-C0B9-475C-A52F-319C8C333888}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6293961-C0B9-475C-A52F-319C8C333888}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6293961-C0B9-475C-A52F-319C8C333888}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CDD1E15-C684-407E-9AE6-EFE8DD28450D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CDD1E15-C684-407E-9AE6-EFE8DD28450D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CDD1E15-C684-407E-9AE6-EFE8DD28450D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CDD1E15-C684-407E-9AE6-EFE8DD28450D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B3A529-DA1F-4BCE-B918-848A26898E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B3A529-DA1F-4BCE-B918-848A26898E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B3A529-DA1F-4BCE-B918-848A26898E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B3A529-DA1F-4BCE-B918-848A26898E10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0272B723-5128-4DE0-82AA-07C51B86F58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0272B723-5128-4DE0-82AA-07C51B86F58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0272B723-5128-4DE0-82AA-07C51B86F58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0272B723-5128-4DE0-82AA-07C51B86F58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA584E7E-67C4-4941-8111-3DAD7CFE6AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75014B1E-0FF9-49FC-BDBA-7ACAC4FE4C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8C2D2D-0028-4E63-9F58-5E739E0D6B86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D50ECC93-CF79-4D5A-996E-42070F69B9FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50ECC93-CF79-4D5A-996E-42070F69B9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50ECC93-CF79-4D5A-996E-42070F69B9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50ECC93-CF79-4D5A-996E-42070F69B9FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A51A4007-FD61-442F-AA79-E126F17CE394} = {D89A7F88-2C37-4822-9E51-B434E712D937}
-		{9554765E-68ED-4CC1-A9B9-CE9371C8EA74} = {6774BEDE-1700-487D-8C06-90DD778759CB}
-		{E6293961-C0B9-475C-A52F-319C8C333888} = {D89A7F88-2C37-4822-9E51-B434E712D937}
+		{0272B723-5128-4DE0-82AA-07C51B86F58D} = {D89A7F88-2C37-4822-9E51-B434E712D937}
+		{436EBC9A-7B8F-4DF7-A240-EB6BA9824B73} = {D89A7F88-2C37-4822-9E51-B434E712D937}
+		{D50ECC93-CF79-4D5A-996E-42070F69B9FE} = {6774BEDE-1700-487D-8C06-90DD778759CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9D8E7CD-036D-4FF2-A7EB-7A2A25F376E7}
