@@ -12,6 +12,5 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" />
-        <PackageReference Include="Mapsui.Avalonia" />
     </ItemGroup>
 </Project>
