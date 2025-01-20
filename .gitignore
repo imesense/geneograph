@@ -11,3 +11,6 @@ bin/
 
 # Generated files
 FodyWeavers.xsd
+
+# Dependencies
+dep/
