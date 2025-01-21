@@ -5,8 +5,9 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="/Palettes/Index.axaml" />
-                <ResourceInclude Source="/Controls/Index.axaml" />
+                <ResourceInclude Source="avares://ImeSense.GeneoGraph.Themes/Palettes/Index.axaml" />
+                <ResourceInclude Source="avares://ImeSense.GeneoGraph.Themes/Fonts/Index.axaml" />
+                <ResourceInclude Source="avares://ImeSense.GeneoGraph.Themes/Controls/Index.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>

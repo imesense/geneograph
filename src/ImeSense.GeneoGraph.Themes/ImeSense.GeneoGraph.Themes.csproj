@@ -6,11 +6,23 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AvaloniaResource Include="Controls\*.axaml" />
-        <AvaloniaResource Include="Palettes\*.axaml" />
+        <AvaloniaResource Include="Controls\**" />
+        <AvaloniaResource Include="Fonts\**" />
+        <AvaloniaResource Include="Palettes\**" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" />
     </ItemGroup>
+
+    <Target Name="PreBuildCopy" BeforeTargets="BeforeBuild">
+        <Copy
+            SourceFiles="$(ProjectDir)\dep\Inter\4.1\InterVariable.ttf"
+            DestinationFiles="$(MSBuildThisFileDirectory)\Fonts\InterVariable.ttf"
+            Condition="Exists('$(MSBuildThisFileDirectory)\Fonts\InterVariable.ttf')" />
+        <Copy
+            SourceFiles="$(ProjectDir)\dep\Roboto\3.010\Roboto_v3.010\hinted\Roboto[ital,wdth,wght].ttf"
+            DestinationFiles="$(MSBuildThisFileDirectory)\Fonts\Roboto.ttf"
+            Condition="Exists('$(MSBuildThisFileDirectory)\Fonts\Roboto.ttf')" />
+    </Target>
 </Project>

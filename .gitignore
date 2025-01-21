@@ -14,3 +14,4 @@ FodyWeavers.xsd
 
 # Dependencies
 dep/
+src/**/*.ttf

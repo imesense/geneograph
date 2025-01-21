@@ -1,0 +1,7 @@
+<ResourceDictionary
+    x:ClassModifier="public"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FontFamily x:Key="Fonts.InterVariable">avares://ImeSense.GeneoGraph.Themes/Fonts/InterVariable.ttf#Inter Variable</FontFamily>
+    <FontFamily x:Key="Fonts.Roboto">avares://ImeSense.GeneoGraph.Themes/Fonts/Roboto.ttf#Roboto</FontFamily>
+</ResourceDictionary>
