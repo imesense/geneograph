@@ -3,6 +3,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="/Palettes/Common.axaml" />
+        <ResourceInclude Source="avares://ImeSense.GeneoGraph.Themes/Palettes/Common.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -25,9 +25,7 @@
                 <Label Content="Transparent" />
 
                 <!-- Transparent brushes 1 -->
-                <StackPanel
-                    Orientation="Horizontal"
-                    Spacing="5">
+                <StackPanel Orientation="Horizontal">
                     <Border>
                         <Ellipse Fill="{DynamicResource Transparent.Brushes.100}" />
                     </Border>
