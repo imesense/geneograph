@@ -1,0 +1,215 @@
+<ResourceDictionary
+    x:ClassModifier="public"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Preview styles -->
+            <Border.Styles>
+                <Style Selector="Border StackPanel">
+                    <Setter Property="Spacing" Value="5" />
+                </Style>
+            </Border.Styles>
+
+            <StackPanel Orientation="Vertical">
+                <!-- Default theme -->
+                <Border>
+                    <Label>Default</Label>
+                </Border>
+
+                <!-- Header themes -->
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Headers.H1}">Header H1</Label>
+                </Border>
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Headers.H2}">Header H2</Label>
+                </Border>
+
+                <!-- Text Tabs themes -->
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.Tabs1}">Text Tabs 1</Label>
+                </Border>
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.Tabs2}">Text Tabs 2</Label>
+                </Border>
+
+                <!-- Text Buttom theme -->
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.Button}">Text Button</Label>
+                </Border>
+
+                <!-- Text Body Medium themes -->
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.BodyMedium1}">Text Body Medium 1</Label>
+                </Border>
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.BodyMedium2}">Text Body Medium 2</Label>
+                </Border>
+
+                <!-- Text Body Regular themes -->
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.BodyRegular1}">Text Body Regular 1</Label>
+                </Border>
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.BodyRegular2}">Text Body Regular 2</Label>
+                </Border>
+
+                <!-- Text Sub Regular theme -->
+                <Border>
+                    <Label Theme="{DynamicResource Themes.Label.Text.SubRegular}">Text Sub Regular</Label>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Default theme -->
+    <ControlTheme
+        x:Key="{x:Type Label}"
+        TargetType="Label">
+        <Setter Property="Padding" Value="3" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    x:Name="PART_ContentPresenter"
+                    Content="{TemplateBinding Content}"
+                    Padding="{TemplateBinding Padding}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    RecognizesAccessKey="True" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- Header H1 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Headers.H1"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.InterVariable}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.05" />
+        <Setter Property="TextBlock.LineHeight" Value="36" />
+    </ControlTheme>
+
+    <!-- Header H2 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Headers.H2"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.InterVariable}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.05" />
+        <Setter Property="TextBlock.LineHeight" Value="32" />
+    </ControlTheme>
+
+    <!-- Text Tabs 1 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.Tabs1"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Roboto}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.05" />
+        <Setter Property="TextBlock.LineHeight" Value="24" />
+    </ControlTheme>
+
+    <!-- Text Tabs 2 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.Tabs2"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Roboto}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.05" />
+        <Setter Property="TextBlock.LineHeight" Value="24" />
+    </ControlTheme>
+
+    <!-- Text Button theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.Button"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Inter}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.05" />
+        <Setter Property="TextBlock.LineHeight" Value="24" />
+    </ControlTheme>
+
+    <!-- Text Body Medium 1 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.BodyMedium1"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Inter}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Medium" />
+
+        <Setter Property="TextBlock.LineHeight" Value="24" />
+    </ControlTheme>
+
+    <!-- Text Body Medium 2 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.BodyMedium2"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Inter}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
+
+        <Setter Property="TextBlock.LineHeight" Value="22" />
+    </ControlTheme>
+
+    <!-- Text Body Regular 1 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.BodyRegular1"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Inter}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Regular" />
+
+        <Setter Property="TextBlock.LineHeight" Value="24" />
+    </ControlTheme>
+
+    <!-- Text Body Regular 2 theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.BodyRegular2"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Inter}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Regular" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.08" />
+        <Setter Property="TextBlock.LineHeight" Value="22" />
+    </ControlTheme>
+
+    <!-- Text Sub Regular theme -->
+    <ControlTheme
+        x:Key="Themes.Label.Text.SubRegular"
+        TargetType="Label"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontFamily" Value="{DynamicResource Fonts.Inter}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+
+        <Setter Property="TextBlock.LetterSpacing" Value="0.05" />
+        <Setter Property="TextBlock.LineHeight" Value="20" />
+    </ControlTheme>
+</ResourceDictionary>
