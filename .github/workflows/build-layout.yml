@@ -75,6 +75,7 @@ jobs:
 
       - name: Restore packages
         run: |
+          ${{ github.workspace }}/get-dependencies.ps1
           dotnet restore $env:Solution
 
       - name: Build application

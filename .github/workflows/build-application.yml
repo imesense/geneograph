@@ -75,6 +75,7 @@ jobs:
 
       - name: Restore packages
         run: |
+          ${{ github.workspace }}/get-dependencies.ps1
           dotnet restore $env:Solution
 
       - name: Build application
@@ -215,16 +216,6 @@ jobs:
           name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
 
-      - name: Set output
-        run: |
-          echo "${{ steps.upload-artifact.outputs.artifact-url }}" >> application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}.url
-
-      - name: Upload output
-        uses: actions/upload-artifact@v4
-        with:
-          name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}-url
-          path: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}.url
-
   publish-linux:
     name: 'Publish Linux'
 
@@ -295,124 +286,3 @@ jobs:
         with:
           name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}
           path: bin/${{ matrix.config }}/${{ matrix.framework }}/${{ matrix.runtime }}/publish/
-
-      - name: Set output
-        run: |
-          echo "${{ steps.upload-artifact.outputs.artifact-url }}" >> application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}.url
-
-      - name: Upload output
-        uses: actions/upload-artifact@v4
-        with:
-          name: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}-url
-          path: application-${{ matrix.framework }}-${{ matrix.runtime }}-${{ matrix.config }}-${{ github.sha }}.url
-
-  print-output:
-    name: 'Print output'
-
-    needs:
-      - publish-windows
-      - publish-linux
-
-    strategy:
-      matrix:
-        system:
-          - ubuntu-22.04
-
-    runs-on: ${{ matrix.system }}
-
-    steps:
-      - name: Download output
-        uses: actions/download-artifact@v4
-        with:
-          pattern: "*-url"
-          path: ./
-          merge-multiple: true
-
-      - name: Print summary
-        run: |
-          echo '## Summary' > summary.md
-          echo '' >> summary.md
-
-          echo 'Login GitHub to download artifacts' >> summary.md
-          echo '' >> summary.md
-
-          echo '## Publish' >> summary.md
-          echo '' >> summary.md
-
-          echo '<table>' >> summary.md
-          echo '  <thead>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <th align="center">Target</td>' >> summary.md
-          echo '      <th align="center">Framework</td>' >> summary.md
-          echo '      <th align="center">File</td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '  </thead>' >> summary.md
-
-          echo '  <tbody>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net6.0-windows</td>' >> summary.md
-          echo '      <td>win-x86</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net6.0-windows-win-x86-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net7.0-windows</td>' >> summary.md
-          echo '      <td>win-x86</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net7.0-windows-win-x86-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net8.0-windows</td>' >> summary.md
-          echo '      <td>win-x86</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net8.0-windows-win-x86-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-
-          echo '    <tr>' >> summary.md
-          echo '      <td>net6.0-windows</td>' >> summary.md
-          echo '      <td>win-x64</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net6.0-windows-win-x64-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net7.0-windows</td>' >> summary.md
-          echo '      <td>win-x86</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net7.0-windows-win-x64-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net8.0-windows</td>' >> summary.md
-          echo '      <td>win-x64</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net8.0-windows-win-x64-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-
-          echo '    <tr>' >> summary.md
-          echo '      <td>net6.0</td>' >> summary.md
-          echo '      <td>linux-x64</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net6.0-linux-x64-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net7.0</td>' >> summary.md
-          echo '      <td>linux-x64</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net7.0-linux-x64-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '    <tr>' >> summary.md
-          echo '      <td>net8.0</td>' >> summary.md
-          echo '      <td>linux-x64</td>' >> summary.md
-          echo '      <td><a href="'$(cat application-net8.0-linux-x64-Release-${{ github.sha }}.url)'">Application</a></td>' >> summary.md
-          echo '    </tr>' >> summary.md
-          echo '  </tbody>' >> summary.md
-          echo '</table>' >> summary.md
-
-          cat summary.md >> $GITHUB_STEP_SUMMARY
-        shell:
-          bash
-
-      - name: Delete output
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name: |
-            application-net6.0-windows-win-x86-Release-${{ github.sha }}-url
-            application-net7.0-windows-win-x86-Release-${{ github.sha }}-url
-            application-net8.0-windows-win-x86-Release-${{ github.sha }}-url
-            application-net6.0-windows-win-x64-Release-${{ github.sha }}-url
-            application-net7.0-windows-win-x64-Release-${{ github.sha }}-url
-            application-net8.0-windows-win-x64-Release-${{ github.sha }}-url
-            application-net6.0-linux-x64-Release-${{ github.sha }}-url
-            application-net7.0-linux-x64-Release-${{ github.sha }}-url
-            application-net8.0-linux-x64-Release-${{ github.sha }}-url
